@@ -19,13 +19,12 @@
 typedef struct	s_gr_vm
 {
 	SDL_Window		*arena;
-	SDL_Surface		*ui;
-	SDL_Surface		*main;
-	SDL_Surface		*screen;
+	SDL_Window		*UI;
 	SDL_GLContext	glcontext;
 	GLuint			glbuffer;
 	GLuint			glcolor;
 	GLuint			gldepth;
+	GLuint			program;
 	void			*buffer;
 	struct s_key	*keys;
 	int				nkeys;

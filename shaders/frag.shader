@@ -1,4 +1,4 @@
-#version 400
+#version 300
 
 in vec3 			pos_color;
 in vec3				camPos;

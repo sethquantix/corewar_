@@ -29,8 +29,8 @@ CRWROD = $(OBJD)/corewar_objs/
 ASMOD  = $(OBJD)/asm_objs/
 LIBFT  = https://www.github.com/sethquantix/libft.git
 HANDLER= https://www.github.com/sethquantix/glhandler.git
-ALIBS  = -Llibs/libft -lft
-CLIBS  = -Llibs/libft -lft -L$(BLIB) -lglew -lSDL2 -framework OpenGL
+ALIBS  = -Llibs/libft -lft 
+CLIBS  = -Llibs/libft -lft -L$(BLIB) -Llibs/glhandler -lglhandler -lglew -lSDL2 -framework OpenGL
 CRWRS  = $(addprefix $(CRWRSD), $(CRWRF))
 CRWRO  = $(addprefix $(CRWROD), $(CRWRF:.c=.o))
 ASMS   = $(addprefix $(ASMSD), $(ASMF))
