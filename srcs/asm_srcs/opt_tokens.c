@@ -14,7 +14,7 @@
 
 int		tok_func_path(char **s)
 {
-	if (*s && **s == '-')
+	if (*s && (**s == '-' || !**s))
 		return (1);
 	while (**s && !ft_iswhite(**s))
 		(*s)++;
