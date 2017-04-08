@@ -12,7 +12,7 @@
 
 CRWR   = corewar
 ASM    = asm
-CFLG   = -Wextra -Wall -Werror -g -fsanitize=address
+CFLG   = -g -fsanitize=address
 CRWRF  = corewar.c gr_vm_run.c gr_vm_init.c gr_vm_inputs.c gr_vm_handlers.c \
 		 gr_gl_buffer.c utils.c arena_ini.c process.c op.c mem.c \
 		 ins_basic.c ins_fork.c ins_index.c ins_calc.c check_process.c \

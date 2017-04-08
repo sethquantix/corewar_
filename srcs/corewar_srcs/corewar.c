@@ -29,14 +29,14 @@ int		main(int ac, char **av)
 {
 	t_arena		arena;
 	t_expr		*expr;
-	// t_gr_vm		context;
+	t_gr_vm		context;
 	(void)ac;
 	(void)av;
 	init(&arena);
-	expr = parse_opts(av + 1);
-	read_opts(&arena, expr);
-	// gr_vm_init(&context);
-	// gr_vm_run(loop, &arena, &context);
-	// gr_vm_end(&context);
+	//expr = parse_opts(av + 1);
+	//read_opts(&arena, expr);
+	gr_vm_init(&context);
+	gr_vm_run(loop, &arena, &context);
+	gr_vm_end(&context);
 	return (0);
 }
