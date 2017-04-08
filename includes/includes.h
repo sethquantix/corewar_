@@ -12,9 +12,8 @@
 
 #ifndef INCLUDES_H
 # define INCLUDES_H
-
-# include "GL/glew.h"
-# include <OpenGL/opengl.h>
+#define GL3_PROTOTYPES 1
+# include <OpenGL/GL3.h>
 # include "../libs/libft/libft.h"
 # include "SDL2/SDL.h"
 # include "op.h"

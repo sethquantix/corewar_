@@ -45,36 +45,20 @@ void	gr_vm_init(t_gr_vm *cxt)
 		WIN_HEIGHT / 2, SDL_WINDOW_OPENGL);
 	cxt->UI = SDL_CreateWindow("UI", SDL_POS, SDL_POS, WIN_WIDTH / 2,
 		WIN_HEIGHT / 2, 0);
-	cxt->glcontext = SDL_GL_CreateContext(cxt->arena);
 	SDL_GL_SetSwapInterval(1);
 	cxt->run = 1;
 	set_keys(&cxt->keys, &cxt->nkeys);
-	//mglewInit();
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+	cxt->glcontext = SDL_GL_CreateContext(cxt->arena);
 	shaders[0].file = ft_strdup("./shaders/vertex.shader");
 	shaders[0].type = GL_VERTEX_SHADER;
 	shaders[1].file = ft_strdup("./shaders/frag.shader");
 	shaders[1].type = GL_FRAGMENT_SHADER;
-
 	cxt->program = create_program(2, shaders);
 	free(shaders[0].file);
 	free(shaders[1].file);
 	printf("%d\n", cxt->program);
 }
-
-/*
-	cxt->glcontext = SDL_GL_CreateContext(cxt->arena);
-	cxt->screen = SDL_GetWindowSurface(cxt->arena);
-	SDL_FillRect(cxt->screen, NULL, SDL_MapRGB(cxt->screen->format, 0, 0, 0));
-	cxt->main = SDL_CreateRGBSurfaceWithFormat(0, 2048, WIN_HEIGHT, 32,
-		SDL_PIXELFORMAT_RGBA32);
-	cxt->ui = SDL_CreateRGBSurfaceWithFormat(0, WIN_WIDTH, WIN_HEIGHT, 32,
-		SDL_PIXELFORMAT_RGBA32);
-	SDL_FillRect(cxt->main, NULL, SDL_MapRGBA(cxt->main->format, 0, 0, 0, 0));
-	SDL_FillRect(cxt->ui, NULL, SDL_MapRGBA(cxt->ui->format, 0, 0, 0, 0));
-	if (cxt->arena == NULL)
-		ft_printf("Couldnt create window\nSDL error : %s\n", SDL_GetError());
-*/

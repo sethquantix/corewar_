@@ -1,2 +1,6 @@
 libs
 *.o
+**/*.o
+asm
+corewar
+.DS_Store
