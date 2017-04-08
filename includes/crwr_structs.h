@@ -56,6 +56,7 @@ typedef struct	s_arena
 	t_champ		*champs;
 	t_list		*procs;
 	uint8_t		arena[MEM_SIZE];
+	uint32_t	mem[MEM_SIZE];
 	t_f_load	load;
 	t_f_add		add_proc;
 	t_f_kill	kill_proc;
