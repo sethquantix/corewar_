@@ -41,9 +41,9 @@ void	gr_vm_init(t_gr_vm *cxt)
 	t_gl_shader shaders[2];
 	SDL_Init(SDL_INIT_VIDEO);
 
-	cxt->arena = SDL_CreateWindow("corewar", SDL_POS, SDL_POS, WIN_WIDTH / 2,
+	cxt->arena = SDL_CreateWindow("corewar", WIN_WIDTH / 2, WIN_HEIGHT / 2, WIN_WIDTH / 2,
 		WIN_HEIGHT / 2, SDL_WINDOW_OPENGL);
-	cxt->UI = SDL_CreateWindow("UI", SDL_POS, SDL_POS, WIN_WIDTH / 2,
+	cxt->UI = SDL_CreateWindow("UI", 0, 0, WIN_WIDTH / 2,
 		WIN_HEIGHT / 2, 0);
 	SDL_GL_SetSwapInterval(1);
 	cxt->run = 1;
