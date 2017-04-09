@@ -49,7 +49,7 @@ int		proc_read_params(t_proc *p, uint8_t mem[])
 	{
 		if ((PROC_ARG(p->oct, i + 1) & p->op->args[i]) == 0)
 			return (-1);
-		read_mem(addr, val(p->params + i, p->p_sizes[i]), MOD_MEM, mem);
+		read_mem(addr, VAL(p->params + i, p->p_sizes[i]), MOD_MEM, mem);
 		addr += p->p_sizes[i++];
 	}
 	return (0);

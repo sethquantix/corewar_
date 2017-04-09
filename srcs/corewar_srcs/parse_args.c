@@ -50,6 +50,7 @@ t_expr		*parse_opts(char **av)
 	arg = join_args(av);
 	expr = NULL;
 	p = parse_engine("rules/crwr_opts", g_crwr_opts, (char **)list);
+	ft_printf("parser built\n");
 	err = run_parser(p, arg, "FORMAT", &expr);
 	destroy_engine(p);
 	parse_error(err);

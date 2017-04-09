@@ -18,6 +18,29 @@ int		loop(void *d)
 	return (1);
 }
 
+int		usage(char *s)
+{
+	ft_printf("Usage: %s [-d N -s N -v N | -g] [-a] [[-n N] <champ1.cor>]", s);
+	ft_printf(" [...] \n");
+	ft_printf(" -a               : Prints output from \"aff\"");
+	ft_printf("(Default is to hide it)\n");
+	ft_printf(" (--graphic) -g   : Graphical mode\n");
+	ft_printf("############ TEXT OUTPUT MODE #################\n");
+	ft_printf(" (--dump) -d N    : Dumps memory after N cycles then exits\n");
+	ft_printf(" (--step) -s N    : Runs N cycles, dumps memory, pauses, then");
+	ft_printf("repeats\n");
+	ft_printf(" (--verbose) -v N : Verbosity levels, can be added\n");
+	ft_printf("                    - 0  : Show only essentials\n");
+	ft_printf("                    - 1  : Show lives\n");
+	ft_printf("                    - 2  : Show cycles\n");
+	ft_printf("                    - 4  : Show operations (Params are NOT");
+	ft_printf("litteral ...)s\n");
+	ft_printf("                    - 8  : Show deaths\n");
+	ft_printf("                    - 16 : Show PC movements (except zjmp)\n");
+	ft_printf("##############################################\n");
+	return (0);
+}
+
 void	init(t_arena *arena)
 {
 	arena->load = load_champ;
@@ -25,16 +48,29 @@ void	init(t_arena *arena)
 	arena->add_proc = (t_f_add)add_proc;
 }
 
+void	print_expr(t_expr *expr)
+{
+	while (expr)
+	{
+		ft_printf("(%s) %s\n", expr->rule, expr->expr);
+		expr = expr->next;
+	}
+}
+
 int		main(int ac, char **av)
 {
 	t_arena		arena;
 	t_expr		*expr;
 	// t_gr_vm		context;
-	(void)ac;
-	(void)av;
+
+	if (ac == 1)
+		return (usage(av[0]));
+	ft_bzero(&arena, sizeof(t_arena));
 	init(&arena);
 	expr = parse_opts(av + 1);
-	read_opts(&arena, expr);
+	print_expr(expr);
+	read_args(expr, &arena);
+	set_champs(&arena);
 	// gr_vm_init(&context);
 	// gr_vm_run(loop, &arena, &context);
 	// gr_vm_end(&context);

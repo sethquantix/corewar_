@@ -21,10 +21,15 @@
 # define MOD_MEM			0
 # define MOD_IDX			1 
 
-# define G_OPT				0x1
-# define V_OPT				0x2
-# define D_OPT				0x4
+# define G_OPT				0x01
+# define V_OPT				0x02
+# define D_OPT				0x04
+# define O_OPT				0x08
+# define S_OPT				0x10
 
+# define DUMP_OUT			0x20
+# define DUMP_64			0x40
 
+# define VAL(p, s)			(t_val){p, s}
 
 #endif

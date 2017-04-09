@@ -25,7 +25,7 @@ typedef struct	s_val
 typedef struct	s_champ
 {
 	char		*file_name;
-	void		*source;
+	uint8_t		*source;
 	header_t	head;
 	int			id;
 	int			num;
@@ -66,6 +66,7 @@ typedef struct	s_arena
 	int			ctd;
 	int			last_check;
 	int			check_cycles;
+	int			dump_cycles;
 	int			opts;
 	int			debug_fd;
 	int			verbose_lvl;

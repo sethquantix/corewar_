@@ -49,7 +49,6 @@ int		tok_func_number(char **s)
 	char	*p;
 	int		n;
 
-	ft_printf("checking number : |%s\n", *s);
 	p = *s;
 	if (**s == '+' || **s == '-')
 		(*s)++;
@@ -61,17 +60,22 @@ int		tok_func_number(char **s)
 	}
 	if (!n)
 		*s = p;
-	ft_printf("it's a number : %s | %s\n", n ? "TRUE" : "FALSE", *s);
 	return (n ? 0 : 1);
 }
 
 t_token	g_crwr_opts[] = {
 	{"PATH", tok_func_path, 0, TOKEN_TYPE_FNC},
 	{"WS", 0, " \t", TOKEN_TYPE_STR},
-	{"OPT_V", 0, "-v", TOKEN_TYPE_EXP},
 	{"OPT_G", 0, "-g", TOKEN_TYPE_EXP},
+	{"OPT_GRAPHIC", 0, "--graphic", TOKEN_TYPE_EXP},
 	{"OPT_N", 0, "-n", TOKEN_TYPE_EXP},
+	{"OPT_O", 0, "-o", TOKEN_TYPE_EXP},
+	{"OPT_V", 0, "-v", TOKEN_TYPE_EXP},
+	{"OPT_VERBOSE", 0, "--verbose", TOKEN_TYPE_EXP},
+	{"OPT_DUMP", 0, "--dump", TOKEN_TYPE_EXP},
 	{"OPT_D", 0, "-d", TOKEN_TYPE_EXP},
+	{"OPT_STEP", 0, "--step", TOKEN_TYPE_EXP},
+	{"OPT_S", 0, "-s", TOKEN_TYPE_EXP},
 	{"NUMBER", tok_func_number, 0, TOKEN_TYPE_FNC},
 	{"VERBOSE", tok_func_verbose, 0, TOKEN_TYPE_FNC},
 	{"ENDLINE", 0, "\0", TOKEN_TYPE_ONE},
