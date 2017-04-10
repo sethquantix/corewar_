@@ -54,7 +54,7 @@ static void		push_plane(GLfloat *data)
 	i = 0;
 	while (i < sizeof(g_cube) / (sizeof(float) * 6))
 	{
-		data = g_cube[i % (sizeof(g_cube) / sizeof(GLfloat))];
+		*data = g_cube[i % (sizeof(g_cube) / sizeof(GLfloat))];
 		i++;
 		data++;
 	}
@@ -68,10 +68,10 @@ static GLfloat	*push_cube(GLfloat *data, float offx, float offy, float sz)
 	while (i < sizeof(g_cube) / sizeof(float))
 	{
 		if ((i % 8) <= 2)
-			data = (g_cube[i % (sizeof(g_cube) /
+			*data = (g_cube[i % (sizeof(g_cube) /
 				sizeof(GLfloat))]) + offx + offy * sz;
 		else
-			data = g_cube[i % (sizeof(g_cube) / sizeof(GLfloat))];
+			*data = g_cube[i % (sizeof(g_cube) / sizeof(GLfloat))];
 		i++;
 		data++;
 	}
@@ -85,8 +85,9 @@ static GLfloat	*create_vertex(uint n)
 	GLfloat	*ret;
 	GLfloat	*data;
 
-	ret = malloc(sizeof(GLfloat) * n
-		* n * 8 * 8 * 3);
+	ret = malloc((1 + sizeof(GLfloat)) * n
+		* n * 8 * 8 * 3 * 10);
+	data = ret;
 	if (ret == NULL)
 		exit(-1);
 	i = 0;
@@ -139,5 +140,6 @@ GLuint			generate_cube(uint n)
 	vertex = create_vertex(n);
 	glGenVertexArrays(1, &(vaoid));
 	createVBO_VNT(vertex, 6 * n * n * sizeof(g_cube) / (sizeof(GLfloat) * 8) + 32, vaoid);
+	free(vertex);
 	return (vaoid);
 }

@@ -25,6 +25,7 @@ typedef struct	s_gr_vm
 	GLuint			glcolor;
 	GLuint			gldepth;
 	GLuint			program;
+	GLuint			vao;
 	void			*buffer;
 	struct s_key	*keys;
 	int				nkeys;

@@ -29,6 +29,7 @@ void		quit_press(void *data, t_gr_vm *vm, t_key *key);
 **	for kicks. And because I can
 */
 
+GLuint		generate_cube(uint n);
 GLuint		createGLBuffer(int w, int h, GLuint *color, GLuint *depth);
 void		renderGLBuffer(GLuint buffer, GLuint color, int w, int h);
 void		readColor(GLuint buffer, int w, int h, void *p);
