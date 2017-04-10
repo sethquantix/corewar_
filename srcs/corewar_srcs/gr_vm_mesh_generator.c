@@ -67,26 +67,23 @@ static uint32_t		createVBO_VNT(float *vertices, uint32_t vertex_size, uint32_t v
 	return (vertexBufferID);
 }
 
-static void init_instancing()
+static GLuint init_instancing()
 {
 	GLuint instanceVBO;
 
 	glGenBuffers(1, &instanceVBO);
 	glBindBuffer(GL_ARRAY_BUFFER, instanceVBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec2) * 100, &translations[0], GL_STATIC_DRAW);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	glEnableVertexAttribArray(2);
-
-	glBindBuffer(GL_ARRAY_BUFFER, instanceVBO);
-	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), (GLvoid*)0);
+	glEnableVertexAttribArray(3);
+	glVertexAttribPointer(3, 16, GL_FLOAT, GL_FALSE, 16 * sizeof(GLfloat), (GLvoid*)0);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);	
-	glVertexAttribDivisor(2, 1);  
+	glVertexAttribDivisor(3, 1);  
 }
 
-GLuint			generate_cube(uint n)
+GLuint			generate_cube(t_gr_vm *cxt)
 {
 	GLuint		vaoid;
 
 	createVBO_VNT(g_cube, sizeof(g_cube) / sizeof(float) / 8, vaoid);
+	cxt->mat = init_instancing();
 	return (vaoid);
 }

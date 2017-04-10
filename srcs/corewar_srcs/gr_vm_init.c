@@ -60,5 +60,5 @@ void	gr_vm_init(t_gr_vm *cxt)
 	cxt->program = create_program(2, shaders);
 	free(shaders[0].file);
 	free(shaders[1].file);
-	cxt->vao = generate_cube(64);
+	cxt->vao = generate_cube(cxt);
 }
