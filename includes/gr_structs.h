@@ -25,8 +25,9 @@ typedef struct	s_gr_vm
 	GLuint			glcolor;
 	GLuint			gldepth;
 	GLuint			program;
-	GLuint			mat;
+	GLuint			matVBO;
 	GLuint			vao;
+	t_mat			modelTransform[MEM_SIZE];
 	void			*buffer;
 	struct s_key	*keys;
 	int				nkeys;

@@ -67,7 +67,7 @@ static uint32_t		createVBO_VNT(float *vertices, uint32_t vertex_size, uint32_t v
 	return (vertexBufferID);
 }
 
-static GLuint init_instancing()
+static GLuint		init_instancing()
 {
 	GLuint instanceVBO;
 
@@ -79,11 +79,25 @@ static GLuint init_instancing()
 	glVertexAttribDivisor(3, 1);  
 }
 
-GLuint			generate_cube(t_gr_vm *cxt)
+static void			init_pos(t_gr_vm *cxt)
+{
+	uint i;
+
+	i = 0;
+	while (i < MEM_SIZE)
+	{
+		mat_ident(&(cxt->modelTransform[i]));
+		//cxt->modelTransform[i][3];
+		i++;
+	}
+}
+
+GLuint				generate_cube(t_gr_vm *cxt)
 {
 	GLuint		vaoid;
 
 	createVBO_VNT(g_cube, sizeof(g_cube) / sizeof(float) / 8, vaoid);
-	cxt->mat = init_instancing();
+	cxt->matVBO = init_instancing();
 	return (vaoid);
 }
+
