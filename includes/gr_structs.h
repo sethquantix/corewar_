@@ -27,7 +27,7 @@ typedef struct	s_gr_vm
 	GLuint			program;
 	GLuint			matVBO;
 	GLuint			vao;
-	t_mat			modelTransform[MEM_SIZE];
+	GLfloat			model[MEM_SIZE][6];
 	void			*buffer;
 	struct s_key	*keys;
 	int				nkeys;

@@ -54,7 +54,6 @@ static uint32_t		createVBO_VNT(float *vertices, uint32_t vertex_size, uint32_t v
 	GLuint  textCoordBufferID;
 
 	glBindVertexArray(vaoId);
-
 	glGenBuffers(1, &(vertexBufferID));
 	glBindBuffer(GL_ARRAY_BUFFER, vertexBufferID);
 	glBufferData(GL_ARRAY_BUFFER,  vertex_size * sizeof(float) * 8, &vertices[0], GL_STATIC_DRAW);
@@ -74,9 +73,14 @@ static GLuint		init_instancing()
 	glGenBuffers(1, &instanceVBO);
 	glBindBuffer(GL_ARRAY_BUFFER, instanceVBO);
 	glEnableVertexAttribArray(3);
-	glVertexAttribPointer(3, 16, GL_FLOAT, GL_FALSE, 16 * sizeof(GLfloat), (GLvoid*)0);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);	
-	glVertexAttribDivisor(3, 1);  
+
+	glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)0);
+	glVertexAttribDivisor(3, 1);
+
+	glEnableVertexAttribArray(4);
+	glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (void*)(sizeof(GLfloat)*3));
+	glVertexAttribDivisor(4, 1);
+	return (instanceVBO);
 }
 
 static void			init_pos(t_gr_vm *cxt)
@@ -86,8 +90,6 @@ static void			init_pos(t_gr_vm *cxt)
 	i = 0;
 	while (i < MEM_SIZE)
 	{
-		mat_ident(&(cxt->modelTransform[i]));
-		//cxt->modelTransform[i][3];
 		i++;
 	}
 }
@@ -96,8 +98,10 @@ GLuint				generate_cube(t_gr_vm *cxt)
 {
 	GLuint		vaoid;
 
+	glGenVertexArrays(1, &vaoid);
 	createVBO_VNT(g_cube, sizeof(g_cube) / sizeof(float) / 8, vaoid);
+	cxt->vao = vaoid;
 	cxt->matVBO = init_instancing();
+	init_pos(cxt);
 	return (vaoid);
 }
-
