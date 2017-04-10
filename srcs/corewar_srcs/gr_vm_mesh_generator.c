@@ -47,65 +47,6 @@ static const float g_cube[] = {
 	0.5, -0.5, 0.5, 0, 0, -1, 0, 1,
 };
 
-static void		push_plane(GLfloat *data)
-{
-	int i;
-
-	i = 0;
-	while (i < sizeof(g_cube) / (sizeof(float) * 6))
-	{
-		*data = g_cube[i % (sizeof(g_cube) / sizeof(GLfloat))];
-		i++;
-		data++;
-	}
-}
-
-static GLfloat	*push_cube(GLfloat *data, float offx, float offy, float sz)
-{
-	int i;
-
-	i = 0;
-	while (i < sizeof(g_cube) / sizeof(float))
-	{
-		if ((i % 8) <= 2)
-			*data = (g_cube[i % (sizeof(g_cube) /
-				sizeof(GLfloat))]) + offx + offy * sz;
-		else
-			*data = g_cube[i % (sizeof(g_cube) / sizeof(GLfloat))];
-		i++;
-		data++;
-	}
-	return (data);
-}
-
-static GLfloat	*create_vertex(uint n)
-{
-	int		i;
-	int		j;
-	GLfloat	*ret;
-	GLfloat	*data;
-
-	ret = malloc((1 + sizeof(GLfloat)) * n
-		* n * 8 * 8 * 3 * 10);
-	data = ret;
-	if (ret == NULL)
-		exit(-1);
-	i = 0;
-	while (i < n)
-	{
-		j = 0;
-		while (j < n)
-		{
-			data = push_cube(data, (i * 1.3) - (1.3 * n / 2),
-				(j * 1.3) - (1.3 * n / 2), 1.0f / (n * n));
-			j++;
-		}
-		i++;
-	}
-	push_plane(data);
-	return (ret);
-}
-
 static uint32_t		createVBO_VNT(float *vertices, uint32_t vertex_size, uint32_t vaoId)
 {
 	GLuint  vertexBufferID;
@@ -126,20 +67,26 @@ static uint32_t		createVBO_VNT(float *vertices, uint32_t vertex_size, uint32_t v
 	return (vertexBufferID);
 }
 
+static void init_instancing()
+{
+	GLuint instanceVBO;
 
-/*
- ** This function create a mesh with a "n * n" cubes
- ** and and a plane and return a vao ID to this mesh.
-*/
+	glGenBuffers(1, &instanceVBO);
+	glBindBuffer(GL_ARRAY_BUFFER, instanceVBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec2) * 100, &translations[0], GL_STATIC_DRAW);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glEnableVertexAttribArray(2);
+
+	glBindBuffer(GL_ARRAY_BUFFER, instanceVBO);
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), (GLvoid*)0);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);	
+	glVertexAttribDivisor(2, 1);  
+}
 
 GLuint			generate_cube(uint n)
 {
-	GLfloat		*vertex;
 	GLuint		vaoid;
 
-	vertex = create_vertex(n);
-	glGenVertexArrays(1, &(vaoid));
-	createVBO_VNT(vertex, 6 * n * n * sizeof(g_cube) / (sizeof(GLfloat) * 8) + 32, vaoid);
-	free(vertex);
+	createVBO_VNT(g_cube, sizeof(g_cube) / sizeof(float) / 8, vaoid);
 	return (vaoid);
 }
