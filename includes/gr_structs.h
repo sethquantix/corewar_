@@ -28,6 +28,7 @@ typedef struct	s_gr_vm
 	GLuint			matVBO;
 	GLuint			vao;
 	GLfloat			model[MEM_SIZE][6];
+	t_mat			camera;
 	void			*buffer;
 	struct s_key	*keys;
 	int				nkeys;

@@ -33,5 +33,9 @@ void			render_opengl(t_gr_vm *cxt)
 	push_uniform(cxt);
 	glDrawArraysInstanced(GL_TRIANGLES, 0, 36, MEM_SIZE);
 	SDL_GL_SwapWindow(cxt->arena);
-	printf("%d\n", glGetError());
+	if (glGetError())
+	{
+		printf("Opengl error: %d\n", glGetError());
+		exit(0);
+	}
 }
