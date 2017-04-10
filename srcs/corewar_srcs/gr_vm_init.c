@@ -33,7 +33,10 @@ int		add_key(t_key **keys, int keycode, t_f_key press, t_f_key hold)
 void	set_keys(t_key **keys, int *nkeys)
 {
 	*nkeys += add_key(keys, SDLK_ESCAPE, quit_press, NULL);
-	*nkeys += add_key(keys, SDL_BUTTON_RIGHT, quit_press, NULL);
+	*nkeys += add_key(keys, SDLK_w, cam_trans_forwad, NULL);
+	*nkeys += add_key(keys, SDLK_s, cam_trans_back, NULL);
+	*nkeys += add_key(keys, SDLK_d, cam_trans_right, NULL);
+	*nkeys += add_key(keys, SDLK_a, cam_trans_left, NULL);
 }
 
 void	gr_vm_init(t_gr_vm *cxt)
@@ -61,7 +64,7 @@ void	gr_vm_init(t_gr_vm *cxt)
 	free(shaders[0].file);
 	free(shaders[1].file);
 	glEnable(GL_DEPTH_TEST);
-	glClearColor(0.1, 0.4, 0.8, 1); 
+	glClearColor(0.1, 0.4, 0, 1); 
 	mat_ident(&cxt->camera);
 	cxt->vao = generate_cube(cxt);
 }

@@ -1,7 +1,7 @@
 #include "corewar.h"
 #include "gr_vm_internals.h"
 
-void    load_identity(float *m)
+void	load_identity(float *m)
 {
 	m[0] = 1;
 	m[1] = 0;

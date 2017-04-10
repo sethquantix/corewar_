@@ -15,5 +15,5 @@ void main(void)
 //	diffuse_color = texture(textDiffuse, uv).rgb;
 
 //	FragColor = vec4(diffuse_color.xyz, 1);
-	FragColor = vec4(1, 1, 1, 1);
+	FragColor = vec4(normal.xyz, 1);
 }
