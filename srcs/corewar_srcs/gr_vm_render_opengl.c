@@ -19,10 +19,10 @@ static void		push_uniform(t_gr_vm *cxt)
 
 void			render_opengl(t_gr_vm *cxt)
 {
+	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 	stream_transform(cxt);
 	glUseProgram(cxt->program);
 	push_uniform(cxt);
 	glDrawArraysInstanced(GL_TRIANGLES, 0, 36, MEM_SIZE);
-	printf("%d\n", glGetError());
-//	exit(0);
+	SDL_GL_SwapWindow(cxt->arena);
 }
