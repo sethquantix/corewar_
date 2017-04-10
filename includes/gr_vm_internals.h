@@ -35,6 +35,8 @@ GLuint		createGLBuffer(int w, int h, GLuint *color, GLuint *depth);
 void		renderGLBuffer(GLuint buffer, GLuint color, int w, int h);
 void		readColor(GLuint buffer, int w, int h, void *p);
 
+void		load_projection(float *out, float near, float far, float aspect);
+void		load_identity(float *m);
 /*
 **
 */

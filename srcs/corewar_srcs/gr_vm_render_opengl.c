@@ -14,7 +14,15 @@ static void		stream_transform(t_gr_vm *cxt)
 
 static void		push_uniform(t_gr_vm *cxt)
 {
+	GLuint		loc;
+	GLfloat		mat[16];
 
+	loc = glGetUniformLocation(cxt->program, "V");
+	load_identity(mat);
+	glUniformMatrix4fv(loc, 1, GL_FALSE, mat);
+	loc = glGetUniformLocation(cxt->program, "P");
+	load_projection(mat, 0.001, 100, 1);
+	glUniformMatrix4fv(loc, 1, GL_FALSE, mat);
 }
 
 void			render_opengl(t_gr_vm *cxt)
@@ -25,4 +33,5 @@ void			render_opengl(t_gr_vm *cxt)
 	push_uniform(cxt);
 	glDrawArraysInstanced(GL_TRIANGLES, 0, 36, MEM_SIZE);
 	SDL_GL_SwapWindow(cxt->arena);
+	printf("%d\n", glGetError());
 }
