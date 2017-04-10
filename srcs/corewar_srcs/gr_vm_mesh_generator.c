@@ -105,9 +105,30 @@ static GLfloat	*create_vertex(uint n)
 	return (ret);
 }
 
+static uint32_t		createVBO_VNT(float *vertices, uint32_t vertex_size, uint32_t vaoId)
+{
+	GLuint  vertexBufferID;
+	GLuint  normalBufferID;
+	GLuint  textCoordBufferID;
+
+	glBindVertexArray(vaoId);
+
+	glGenBuffers(1, &(vertexBufferID));
+	glBindBuffer(GL_ARRAY_BUFFER, vertexBufferID);
+	glBufferData(GL_ARRAY_BUFFER,  vertex_size * sizeof(float) * 8, &vertices[0], GL_STATIC_DRAW);
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (void*)0);
+	glEnableVertexAttribArray(1);
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (void*)(sizeof(float)*3));
+	glEnableVertexAttribArray(2);
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (void*)(sizeof(float)*6));
+	return (vertexBufferID);
+}
+
+
 /*
  ** This function create a mesh with a "n * n" cubes
- ** and return a vao ID to this mesh.
+ ** and and a plane and return a vao ID to this mesh.
 */
 
 GLuint			generate_cube(uint n)
@@ -117,25 +138,6 @@ GLuint			generate_cube(uint n)
 
 	vertex = create_vertex(n);
 	glGenVertexArrays(1, &(vaoid));
+	createVBO_VNT(vertex, 6 * n * n * sizeof(g_cube) / (sizeof(GLfloat) * 8) + 32, vaoid);
 	return (vaoid);
-}
-
-uint32_t renderDataSys::createVBO_VNT(float *vertices, uint32_t vertex_size, uint32_t vaoId)
-{
-    GLuint  vertexBufferID;
-    GLuint  normalBufferID;
-    GLuint  textCoordBufferID;
-
-    glBindVertexArray(vaoId);
-
-    glGenBuffers(1, &(vertexBufferID));
-    glBindBuffer(GL_ARRAY_BUFFER, vertexBufferID);
-    glBufferData(GL_ARRAY_BUFFER,  vertex_size * sizeof(float) * 8, &vertices[0], GL_STATIC_DRAW);
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (void*)0);
-    glEnableVertexAttribArray(1);
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (void*)(sizeof(float)*3));
-    glEnableVertexAttribArray(2);
-    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (void*)(sizeof(float)*6));
-    return vertexBufferID;
 }
