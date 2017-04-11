@@ -17,7 +17,7 @@ CRWRF  = corewar.c gr_vm_run.c gr_vm_init.c gr_vm_inputs.c gr_vm_handlers.c \
 		 gr_gl_buffer.c utils.c arena_ini.c process.c op.c mem.c \
 		 ins_basic.c ins_fork.c ins_index.c ins_calc.c check_process.c \
 		 opts_tokens.c parse_args.c gr_vm_init_cube.c gr_vm_render_opengl.c \
-		 gr_vm_matrix.c gr_vm_camera_handling.c
+		 gr_vm_matrix.c gr_vm_camera_handling.c gr_vm_camera_handling_rot.c
 
 ASMF   = asm.c opt_tokens.c parse_opts.c utils.c read_opts.c \
 		 asm_tokens.c parse_asm.c op.c compile.c write.c print.c 

@@ -44,7 +44,10 @@ void		cam_trans_back(void *data, t_gr_vm *vm, t_key *key);
 void		cam_trans_right(void *data, t_gr_vm *vm, t_key *key);
 void		cam_trans_left(void *data, t_gr_vm *vm, t_key *key);
 
-
+void		cam_rot_forwad(void *data, t_gr_vm *vm, t_key *key);
+void		cam_rot_back(void *data, t_gr_vm *vm, t_key *key);
+void		cam_rot_right(void *data, t_gr_vm *vm, t_key *key);
+void		cam_rot_left(void *data, t_gr_vm *vm, t_key *key);
 /*
 **
 */

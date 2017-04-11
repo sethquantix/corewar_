@@ -20,7 +20,7 @@ static void		push_uniform(t_gr_vm *cxt)
 	loc = glGetUniformLocation(cxt->program, "V");
 	glUniformMatrix4fv(loc, 1, GL_FALSE, cxt->camera.t);
 	loc = glGetUniformLocation(cxt->program, "P");
-	load_projection(mat, 0.001, 100, 1);
+	load_projection(mat, 0.1, 100, 1);
 	glUniformMatrix4fv(loc, 1, GL_FALSE, mat);
 }
 
