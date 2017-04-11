@@ -37,9 +37,13 @@ void load_light(uint32_t in[MEM_SIZE], uint32_t out[MEM_SIZE])
 	i = 0;
 	while (i < MEM_SIZE)
 	{
-		out[i] = 0x00FFFFFF / (i % 256 + 1);
+		out[i] = 0x000000;
 		i++;
 	}
+	out[1] = 0xFFFFFFFF;
+	out[MEM_SIZE - 10] = 0xFFFFFFFF;
+	out[64 * 12] = 0xFFF00FFF;
+	out[32 + 64 * 64 / 2] = 0xFFF00F0F;
 }
 
 GLuint light_to_texture(uint32_t l[MEM_SIZE])
