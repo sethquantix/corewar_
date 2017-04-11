@@ -13,7 +13,7 @@ uniform sampler2D	textLight;
 layout(location = 0) out vec4 FragColor;
 
 
-vec3 compute_light()
+vec3 deduce_light_pos(int i, int j)
 {
 	return (vec3(0, 0, 0));
 }
@@ -28,6 +28,17 @@ vec3 get_light_at(int x, int y)
 	return (texture(textLight, vec2(a, b))).xyz;
 }
 
+
+vec3 compute_light()
+{
+	for (int i = 0; i < 4; i++)
+		for (int j = 0; j < 4; j++)
+		{
+			get_light_at(i - 2, j - 2);
+		}
+	return (vec3(0, 0, 0));
+}
+
 void main(void)
 {
 	vec3 diffuse_color;
@@ -40,6 +51,6 @@ void main(void)
 		c = 0;
 
 	//FragColor = vec4(texture(textDiffuse, uv).xyz * (c + 0.2), 1);
-
-	FragColor = vec4((.2f + get_light_at(0, 0)) * texture(textDiffuse, uv).xyz, 1);
+	compute_light();
+	FragColor = vec4((.15f + get_light_at(0, 0)) * texture(textDiffuse, uv).xyz, 1);
 }
