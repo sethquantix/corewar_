@@ -28,8 +28,8 @@ void main(void)
 	camPos = tmpcamPos.xyz;
 	gl_Position = vec4(in_Position.x, in_Position.y, in_Position.z, 1.0);
 	normal = (vec4(in_Normal.xyz, 0)).xyz;
-	pos_color = gl_Position.xyz;
 	gl_Position.xyz += in_trans;
+	pos_color = gl_Position.xyz;
 	gl_Position *= V;
 	gl_Position *= P;
 }

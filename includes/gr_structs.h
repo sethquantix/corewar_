@@ -27,6 +27,7 @@ typedef struct	s_gr_vm
 	GLuint			program;
 	GLuint			matVBO;
 	GLuint			vao;
+	GLuint			diffuseTexture;
 	GLfloat			model[MEM_SIZE][6];
 	t_mat			camera;
 	void			*buffer;

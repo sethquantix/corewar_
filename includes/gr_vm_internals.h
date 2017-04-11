@@ -29,7 +29,7 @@ void		quit_press(void *data, t_gr_vm *vm, t_key *key);
 **	for kicks. And because I can
 */
 
-void		render_opengl(t_gr_vm *cxt);
+void		render_opengl(t_gr_vm *cxt, t_arena arena);
 GLuint		generate_cube(t_gr_vm *c);
 GLuint		createGLBuffer(int w, int h, GLuint *color, GLuint *depth);
 void		renderGLBuffer(GLuint buffer, GLuint color, int w, int h);
@@ -48,6 +48,9 @@ void		cam_rot_forwad(void *data, t_gr_vm *vm, t_key *key);
 void		cam_rot_back(void *data, t_gr_vm *vm, t_key *key);
 void		cam_rot_right(void *data, t_gr_vm *vm, t_key *key);
 void		cam_rot_left(void *data, t_gr_vm *vm, t_key *key);
+
+GLuint		load_bmp_to_opengl(char *b);
+
 /*
 **
 */

@@ -49,8 +49,8 @@ void	gr_vm_init(t_gr_vm *cxt)
 	t_gl_shader shaders[2];
 	SDL_Init(SDL_INIT_VIDEO);
 
-	cxt->arena = SDL_CreateWindow("corewar", WIN_WIDTH / 2, WIN_HEIGHT / 2, WIN_WIDTH / 2,
-		WIN_HEIGHT / 2, SDL_WINDOW_OPENGL);
+	cxt->arena = SDL_CreateWindow("corewar", WIN_WIDTH / 2, WIN_HEIGHT / 2, WIN_WIDTH,
+		WIN_HEIGHT, SDL_WINDOW_OPENGL | SDL_WINDOW_FULLSCREEN);
 	cxt->UI = SDL_CreateWindow("UI", 0, 0, WIN_WIDTH / 2,
 		WIN_HEIGHT / 2, 0);
 	SDL_GL_SetSwapInterval(1);
@@ -69,7 +69,12 @@ void	gr_vm_init(t_gr_vm *cxt)
 	free(shaders[0].file);
 	free(shaders[1].file);
 	glEnable(GL_DEPTH_TEST);
-	glClearColor(0.1, 0.1, 0.1, 1); 
+	glClearColor(0.1, 0.1, 0.1, 1);
+	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
+	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 512);
 	mat_ident(&cxt->camera);
+	SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
 	cxt->vao = generate_cube(cxt);
+	cxt->diffuseTexture = load_bmp_to_opengl("texture/coretext.bmp");
+	glEnable(GL_MULTISAMPLE);
 }

@@ -90,9 +90,9 @@ static void			init_pos(t_gr_vm *cxt)
 	i = 0;
 	while (i < MEM_SIZE)
 	{
-		cxt->model[i][0] = (i % (int)sqrt(MEM_SIZE) - (sqrt(MEM_SIZE)) / 2) * 1.3;
+		cxt->model[i][0] = (i % (int)sqrt(MEM_SIZE) - (sqrt(MEM_SIZE)) / 2) * 2.3;
 		cxt->model[i][1] = 0;
-		cxt->model[i][2] = (i / (int)sqrt(MEM_SIZE) - (sqrt(MEM_SIZE)) / 2) * 1.3;
+		cxt->model[i][2] = (i / (int)sqrt(MEM_SIZE) - (sqrt(MEM_SIZE)) / 2) * 2.3;
 		i++;
 	}
 }
