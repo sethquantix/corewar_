@@ -37,7 +37,7 @@ void load_light(uint32_t in[MEM_SIZE], uint32_t out[MEM_SIZE])
 	i = 0;
 	while (i < MEM_SIZE)
 	{
-		out[i] = 0x00FF00FF;
+		out[i] = 0x00FFFFFF / (i % 256 + 1);
 		i++;
 	}
 }
@@ -50,7 +50,7 @@ GLuint light_to_texture(uint32_t l[MEM_SIZE])
 	glGenTextures(1, &(textID));
 	glBindTexture(GL_TEXTURE_2D, (textID));
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA,
-	sqrt(MEM_SIZE), sqrt(MEM_SIZE), 0, GL_RGBA, GL_UNSIGNED_BYTE, l);
+	sqrt(MEM_SIZE), sqrt(MEM_SIZE), 0, GL_BGRA, GL_UNSIGNED_BYTE, l);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);

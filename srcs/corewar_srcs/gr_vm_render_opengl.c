@@ -28,7 +28,6 @@ static void		push_uniform(t_gr_vm *cxt)
 
 	loc = glGetUniformLocation(cxt->program, "textLight");
 	glUniform1i(loc, 1);
-	printf("%d\n", glGetError());
 	loc = glGetUniformLocation(cxt->program, "V");
 	glUniformMatrix4fv(loc, 1, GL_FALSE, cxt->camera.t);
 	loc = glGetUniformLocation(cxt->program, "P");
