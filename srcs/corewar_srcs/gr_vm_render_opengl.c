@@ -21,7 +21,14 @@ static void		push_uniform(t_gr_vm *cxt)
 {
 	GLuint		loc;
 	GLfloat		mat[16];
+	uint32_t	light[MEM_SIZE];
 
+	loc = glGetUniformLocation(cxt->program, "textDiffuse");
+	glUniform1i(loc, 0);
+
+	loc = glGetUniformLocation(cxt->program, "textLight");
+	glUniform1i(loc, 1);
+	printf("%d\n", glGetError());
 	loc = glGetUniformLocation(cxt->program, "V");
 	glUniformMatrix4fv(loc, 1, GL_FALSE, cxt->camera.t);
 	loc = glGetUniformLocation(cxt->program, "P");
@@ -29,6 +36,12 @@ static void		push_uniform(t_gr_vm *cxt)
 	glUniformMatrix4fv(loc, 1, GL_FALSE, mat);
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, cxt->diffuseTexture);
+	load_light(light, light);
+	if (cxt->lightText != 0)
+		glDeleteTextures(1, &cxt->lightText);
+	cxt->lightText = light_to_texture(light);
+	glActiveTexture(GL_TEXTURE1);
+	glBindTexture(GL_TEXTURE_2D, cxt->lightText);
 }
 
 void			render_opengl(t_gr_vm *cxt, t_arena arena)

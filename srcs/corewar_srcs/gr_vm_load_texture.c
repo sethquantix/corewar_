@@ -17,6 +17,7 @@ GLuint load_bmp_to_opengl(char *b)
 	size[2] = *(int*)&(header[0x16]);
 	b = malloc(size[0] * sizeof(unsigned char));
 	read(fd, b, size[0]);
+	glActiveTexture(GL_TEXTURE0);
 	glGenTextures(1, &(textID));
 	glBindTexture(GL_TEXTURE_2D, (textID));
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB,
@@ -29,14 +30,27 @@ GLuint load_bmp_to_opengl(char *b)
 	return (textID);
 }
 
+void load_light(uint32_t in[MEM_SIZE], uint32_t out[MEM_SIZE])
+{
+	int i;
+
+	i = 0;
+	while (i < MEM_SIZE)
+	{
+		out[i] = 0x00FF00FF;
+		i++;
+	}
+}
+
 GLuint light_to_texture(uint32_t l[MEM_SIZE])
 {
 	GLuint textID;
 
+	glActiveTexture(GL_TEXTURE1);
 	glGenTextures(1, &(textID));
 	glBindTexture(GL_TEXTURE_2D, (textID));
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB,
-	sqrt(MEM_SIZE), sqrt(MEM_SIZE), 0, GL_RGB, GL_UNSIGNED_BYTE, l);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA,
+	sqrt(MEM_SIZE), sqrt(MEM_SIZE), 0, GL_RGBA, GL_UNSIGNED_BYTE, l);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
