@@ -69,9 +69,9 @@ void	gr_vm_init(t_gr_vm *cxt)
 	free(shaders[0].file);
 	free(shaders[1].file);
 	glEnable(GL_DEPTH_TEST);
-	glClearColor(0.1, 0.1, 0.1, 1);
+	glClearColor(0, 0, 0, 1);
 	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
-	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 512);
+	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 32);
 	mat_ident(&cxt->camera);
 	SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
 	cxt->vao = generate_cube(cxt);

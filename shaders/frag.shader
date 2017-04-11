@@ -5,6 +5,8 @@ in vec3				camPos;
 in vec2 			uv;
 in vec3 			normal;
 
+flat in int index;
+
 uniform sampler2D	textDiffuse;
 
 layout(location = 0) out vec4 FragColor;
@@ -16,7 +18,8 @@ void main(void)
 
 //	FragColor = vec4(diffuse_color.xyz, 1);
 	float c = dot(normalize(-pos_color - vec3(0, 0, 0)), normal);
-	if (c < 0.4)
-		c = 0.4; 
-	FragColor = vec4(texture(textDiffuse, uv).xyz * c, 1);
+	if (c < 0)
+		c = 0;
+
+	FragColor = vec4(texture(textDiffuse, uv).xyz * (c + 0.2), 1);
 }

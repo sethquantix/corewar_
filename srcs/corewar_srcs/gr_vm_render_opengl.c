@@ -8,7 +8,7 @@ static void		stream_transform(t_gr_vm *cxt)
 	i = 0;
 	while (i < MEM_SIZE)
 	{
-		//cxt->model[i][1] += (((float)rand() / RAND_MAX) - 0.5f) * 0.5;
+		cxt->model[i][1] += (((float)rand() / RAND_MAX) - 0.5f) * 0.5;
 		i++;
 	}
 	glBindVertexArray(cxt->vao);

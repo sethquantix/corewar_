@@ -14,6 +14,8 @@ out vec2 uv;
 out vec3 normal;
 out vec3 camPos;
 
+flat out int index;
+
 void main(void)
 {
 	vec4 tmpcamPos;
@@ -32,4 +34,5 @@ void main(void)
 	pos_color = gl_Position.xyz;
 	gl_Position *= V;
 	gl_Position *= P;
+	index = gl_InstanceID;
 }
