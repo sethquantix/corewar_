@@ -30,23 +30,24 @@ GLuint load_bmp_to_opengl(char *b)
 	return (textID);
 }
 
-void load_light(uint32_t in[MEM_SIZE], uint32_t out[MEM_SIZE])
+void load_light(uint32_t in[MEM_SIZE], float out[MEM_SIZE * 4], float models[][6])
 {
 	int i;
 
 	i = 0;
 	while (i < MEM_SIZE)
 	{
-		out[i] = 0x000000;
+		out[i * 4 + 0] = 0;
+		out[i * 4 + 1] = 0;
+		out[i * 4 + 2] = 0;
+		out[i * 4 + 3] = models[i][1];
 		i++;
 	}
-	out[1] = 0xFFFFFFFF;
-	out[MEM_SIZE - 10] = 0xFFFFFFFF;
-	out[64 * 12] = 0xFFF00FFF;
-	out[32 + 64 * 64 / 2] = 0xFFF00F0F;
+	out[4 * (64 * 32 + 32)] = 0xFFFF;
+	out[4 * (64 * 32 + 32) + 1] = 0xF;
 }
 
-GLuint light_to_texture(uint32_t l[MEM_SIZE])
+GLuint light_to_texture(float l[MEM_SIZE * 4])
 {
 	GLuint textID;
 
@@ -54,7 +55,7 @@ GLuint light_to_texture(uint32_t l[MEM_SIZE])
 	glGenTextures(1, &(textID));
 	glBindTexture(GL_TEXTURE_2D, (textID));
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA,
-	sqrt(MEM_SIZE), sqrt(MEM_SIZE), 0, GL_BGRA, GL_UNSIGNED_BYTE, l);
+	sqrt(MEM_SIZE), sqrt(MEM_SIZE), 0, GL_BGRA, GL_FLOAT, l);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);

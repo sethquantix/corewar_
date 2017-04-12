@@ -24,7 +24,7 @@ static void		push_uniform(t_gr_vm *cxt)
 {
 	GLuint		loc;
 	GLfloat		mat[16];
-	uint32_t	light[MEM_SIZE];
+	float		light[MEM_SIZE * 4];
 
 	loc = glGetUniformLocation(cxt->program, "textDiffuse");
 	glUniform1i(loc, 0);
@@ -38,7 +38,7 @@ static void		push_uniform(t_gr_vm *cxt)
 	glUniformMatrix4fv(loc, 1, GL_FALSE, mat);
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, cxt->diffuseTexture);
-	load_light(light, light);
+	load_light(light, light, cxt->model);
 	if (cxt->lightText != 0)
 		glDeleteTextures(1, &cxt->lightText);
 	cxt->lightText = light_to_texture(light);

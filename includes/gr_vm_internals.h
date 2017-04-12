@@ -50,8 +50,8 @@ void		cam_rot_right(void *data, t_gr_vm *vm, t_key *key);
 void		cam_rot_left(void *data, t_gr_vm *vm, t_key *key);
 
 GLuint		load_bmp_to_opengl(char *b);
-GLuint		light_to_texture(uint32_t l[MEM_SIZE]);
-void		load_light(uint32_t in[MEM_SIZE], uint32_t out[MEM_SIZE]);
+GLuint		light_to_texture(float l[MEM_SIZE]);
+void		load_light(uint32_t in[MEM_SIZE], float out[4 * MEM_SIZE], float models[][6]);
 
 /*
 **
