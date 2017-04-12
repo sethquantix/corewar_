@@ -5,13 +5,13 @@ static void		stream_transform(t_gr_vm *cxt)
 {
 	int			i;
 	static int e = 0;
-	if (e)
-		return ;
+//	if (e)
+//		return ;
 	e = 1;
 	i = 0;
 	while (i < MEM_SIZE)
 	{
-		cxt->model[i][1] += (((float)rand() / RAND_MAX) - 0.5f) * -10;
+		cxt->model[i][1] += (((float)rand() / RAND_MAX) - 0.5f) * 0.1f;
 		i++;
 	}
 	glBindVertexArray(cxt->vao);
@@ -24,7 +24,7 @@ static void		push_uniform(t_gr_vm *cxt)
 {
 	GLuint		loc;
 	GLfloat		mat[16];
-	float		light[MEM_SIZE * 4];
+	static float		light[MEM_SIZE * 4];
 
 	loc = glGetUniformLocation(cxt->program, "textDiffuse");
 	glUniform1i(loc, 0);

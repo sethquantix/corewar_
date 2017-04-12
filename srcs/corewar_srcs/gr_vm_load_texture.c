@@ -37,14 +37,20 @@ void load_light(uint32_t in[MEM_SIZE], float out[MEM_SIZE * 4], float models[][6
 	i = 0;
 	while (i < MEM_SIZE)
 	{
-		out[i * 4 + 0] = 0;
-		out[i * 4 + 1] = 0;
-		out[i * 4 + 2] = 0;
+	//	out[i * 4 + 0] = 1;
+	//	out[i * 4 + 1] = 1;
+	//	out[i * 4 + 2] = 1;
 		out[i * 4 + 3] = models[i][1];
 		i++;
-	}
-	out[4 * (64 * 32 + 32)] = 0xFFFF;
-	out[4 * (64 * 32 + 32) + 1] = 0xF;
+	}	
+	
+	int e = (rand() % MEM_SIZE) * 4;
+	//e = MEM_SIZE / 2 + 32;
+	//e *= 4;
+	out[e] =  (float)rand() / RAND_MAX;
+	out[e + 1] = (float)rand() / RAND_MAX;
+	out[e + 2] = (float)rand() / RAND_MAX;
+	
 }
 
 GLuint light_to_texture(float l[MEM_SIZE * 4])
