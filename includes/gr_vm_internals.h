@@ -53,6 +53,7 @@ GLuint		load_bmp_to_opengl(char *b);
 GLuint		light_to_texture(float l[MEM_SIZE]);
 void		load_light(uint32_t in[MEM_SIZE], float out[4 * MEM_SIZE], float models[][6], t_gr_vm *cxt);
 void		load_bmp_to_42(char *b, uint32_t *out);
+void		toggle_42(void *data, t_gr_vm *vm, t_key *key);
 
 /*
 **

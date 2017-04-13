@@ -42,6 +42,8 @@ void	set_keys(t_key **keys, int *nkeys)
 	*nkeys += add_key(keys, SDLK_DOWN, cam_rot_back, cam_rot_back);
 	*nkeys += add_key(keys, SDLK_RIGHT, cam_rot_right, cam_rot_right);
 	*nkeys += add_key(keys, SDLK_LEFT, cam_rot_left, cam_rot_left);
+
+	*nkeys += add_key(keys, SDLK_r, 	toggle_42, NULL);
 }
 
 void	gr_vm_init(t_gr_vm *cxt)
@@ -49,10 +51,11 @@ void	gr_vm_init(t_gr_vm *cxt)
 	t_gl_shader shaders[2];
 	SDL_Init(SDL_INIT_VIDEO);
 
-	cxt->arena = SDL_CreateWindow("corewar", WIN_WIDTH / 2, WIN_HEIGHT / 2, WIN_WIDTH,
-		WIN_HEIGHT, SDL_WINDOW_OPENGL | SDL_WINDOW_FULLSCREEN);
-	cxt->UI = SDL_CreateWindow("UI", 0, 0, WIN_WIDTH / 2,
-		WIN_HEIGHT / 2, 0);
+	cxt->arena = SDL_CreateWindow("corewar", WIN_WIDTH / 4, 0, WIN_WIDTH - WIN_WIDTH / 4,
+		WIN_HEIGHT, SDL_WINDOW_OPENGL);
+
+	cxt->UI = SDL_CreateWindow("UI", 0, 0, WIN_WIDTH / 4,
+		WIN_HEIGHT, 0);
 	SDL_GL_SetSwapInterval(1);
 	cxt->run = 1;
 	set_keys(&cxt->keys, &cxt->nkeys);
@@ -77,5 +80,6 @@ void	gr_vm_init(t_gr_vm *cxt)
 	cxt->vao = generate_cube(cxt);
 	cxt->diffuseTexture = load_bmp_to_opengl("texture/coretext.bmp");
 	glEnable(GL_MULTISAMPLE);
+	cxt->anim42 = 0;
 	load_bmp_to_42("texture/42.bmp", cxt->text42);
 }
