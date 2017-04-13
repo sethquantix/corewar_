@@ -77,4 +77,5 @@ void	gr_vm_init(t_gr_vm *cxt)
 	cxt->vao = generate_cube(cxt);
 	cxt->diffuseTexture = load_bmp_to_opengl("texture/coretext.bmp");
 	glEnable(GL_MULTISAMPLE);
+	load_bmp_to_42("texture/42.bmp", cxt->text42);
 }

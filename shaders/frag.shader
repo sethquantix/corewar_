@@ -37,26 +37,31 @@ vec3 deduce_light_pos(int i, int j)
 vec3 compute_diffuse(vec3 pos, vec3 normal, vec3 lightpos, vec3 lightcol)
 {
 	vec3 ret;
+	//c = ;
 	float c = dot(normalize(lightpos - pos), normal);
-	c = 0.5;
-	if (c < 0)
-		c = 0;
+	if (c < 0.4)
+		c = 0.4;
 	ret = lightcol * c;
-	ret /= distance(lightpos, pos) * distance(lightpos, pos)* distance(lightpos, pos) / 100;
+	ret /= distance(lightpos, pos) * distance(lightpos, pos)* distance(lightpos, pos)* distance(lightpos, pos) / 100;
 	return (ret);
 }
 
 vec3 compute_light()
 {
+	float a; float b;
 	vec3 ret = vec3(0, 0, 0);
 	vec3 c =texture(textDiffuse, uv).xyz;
 	for (int i = 0; i < 4; i++)
 		for (int j = 0; j < 4; j++)
 		{
-			if (i != 2 && j != 2)
+			a = 1;
+			b = 1;
+			if (i == 2 && j == 2)
 			{
-				ret += compute_diffuse(pos_color, normal, deduce_light_pos(i - 2, j - 2), get_light_at(i - 2, j - 2).xyz) * c;
+				a = -1;
+				b = 0.01;
 			}
+			ret += compute_diffuse(pos_color, normal * a, deduce_light_pos(i - 2, j - 2), get_light_at(i - 2, j - 2).xyz) * c * b;
 		}
 	return (ret);
 }
@@ -66,6 +71,6 @@ void main(void)
 	vec3 diffuse_color;
 	diffuse_color = texture(textLight, uv).rgb;
 
-	FragColor = vec4((get_light_at(0, 0).xyz) * texture(textDiffuse, uv).xyz + compute_light().xyz, 1);
-//	FragColor = vec4(compute_light().xyz, 1);
+	//FragColor = vec4((get_light_at(0, 0).xyz) * texture(textDiffuse, uv).xyz + compute_light().xyz, 1);
+	FragColor = vec4(compute_light().xyz, 1);
 }

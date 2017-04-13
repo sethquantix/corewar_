@@ -30,6 +30,7 @@ typedef struct	s_gr_vm
 	GLuint			lightText;
 	GLuint			diffuseTexture;
 	GLfloat			model[MEM_SIZE][6];
+	char			text42[4 * 64 * 64];
 	t_mat			camera;
 	void			*buffer;
 	struct s_key	*keys;

@@ -30,23 +30,40 @@ GLuint load_bmp_to_opengl(char *b)
 	return (textID);
 }
 
-void load_light(uint32_t in[MEM_SIZE], float out[MEM_SIZE * 4], float models[][6])
+void load_bmp_to_42(char *b, uint32_t *out)
+{
+	int				fd;
+	unsigned char	header[54];
+	unsigned int	size[3];
+
+	if ((fd = open(b, O_RDONLY)) < 0 ||
+		ft_strcmp(ft_strchr(b, '.'), ".bmp"))
+	exit(0);
+	read(fd, header, 54);
+	size[0] = *(int*)&(header[0x22]);
+	size[1] = *(int*)&(header[0x12]);
+	size[2] = *(int*)&(header[0x16]);
+	read(fd, out, 84);
+	read(fd, out, size[0] * 4);
+}
+
+void load_light(uint32_t in[MEM_SIZE], float out[MEM_SIZE * 4], float models[][6], t_gr_vm *cxt)
 {
 	int i;
 
 	i = 0;
 	while (i < MEM_SIZE)
 	{
-	//	out[i * 4 + 0] = 1;
-	//	out[i * 4 + 1] = 1;
-	//	out[i * 4 + 2] = 1;
 		out[i * 4 + 3] = models[i][1];
+	//	out[i * 4 + 0] = !(float)cxt->text42[i * 3];
+	//	out[i * 4 + 1] = !(float)cxt->text42[i * 3 + 1];
+	//	out[i * 4 + 2] = !(float)cxt->text42[i * 3 + 2];
 		i++;
 	}	
-	
+
 	int e = (rand() % MEM_SIZE) * 4;
-	//e = MEM_SIZE / 2 + 32;
-	//e *= 4;
+//	e *= 4;
+//	e = 64 * 32 * 4 - 4 * 32;
 	out[e] =  (float)rand() / RAND_MAX;
 	out[e + 1] = (float)rand() / RAND_MAX;
 	out[e + 2] = (float)rand() / RAND_MAX;

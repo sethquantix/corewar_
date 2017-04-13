@@ -38,7 +38,7 @@ static void		push_uniform(t_gr_vm *cxt)
 	glUniformMatrix4fv(loc, 1, GL_FALSE, mat);
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, cxt->diffuseTexture);
-	load_light(light, light, cxt->model);
+	load_light(light, light, cxt->model, cxt);
 	if (cxt->lightText != 0)
 		glDeleteTextures(1, &cxt->lightText);
 	cxt->lightText = light_to_texture(light);
