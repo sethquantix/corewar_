@@ -14,7 +14,16 @@
 
 void	i_live(t_proc *proc, uint8_t mem[])
 {
-	(void)proc;
+	static t_ft_arr	c = {0, 0, 0};
+	t_champ			*v;
+
+	if (c.t == 0)
+		c = ft_array(proc->arena->champs, sizeof(t_champ),
+			proc->arena->champ_count);
+	proc->last_live = proc->arena->cycles;
+	if ((proc->arena->verbose_lvl & V_LVL_LIVES) &&  (v = ft_arr_find(c,
+		&proc->params[0], (int (*)(void *, void *))cmp_id)) != NULL)
+		ft_printf("process %d says that %d is alive\n", proc->id, v->num);
 	(void)mem;
 }
 void	i_ld(t_proc *proc, uint8_t mem[])

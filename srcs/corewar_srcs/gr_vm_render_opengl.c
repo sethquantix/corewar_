@@ -11,18 +11,21 @@ static void		stream_transform(t_gr_vm *cxt)
 	i = 0;
 	while (i < MEM_SIZE)
 	{
-		cxt->model[i][1] += (((float)rand() / RAND_MAX) - 0.5f) * 0.1f;
+        int change = (int)(10 * (float)rand() / RAND_MAX);
+		if (change > 8)
+            cxt->scale[i] = 1 + 0 * (float)rand() / RAND_MAX;
+        cxt->model[i][7] += (cxt->scale[i] - cxt->model[i][7]) / (60 * TIME_TRAVEL);
 		i++;
 	}
 	glBindVertexArray(cxt->vao);
 	glBindBuffer(GL_ARRAY_BUFFER, cxt->matVBO);
-	glBufferData(GL_ARRAY_BUFFER, MEM_SIZE * 6 * sizeof(float), cxt->model, GL_DYNAMIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, MEM_SIZE * 9 * sizeof(float), cxt->model, GL_DYNAMIC_DRAW);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
 static void		push_uniform(t_gr_vm *cxt)
 {
-	GLuint		loc;
+	GLint		loc;
 	GLfloat		mat[16];
 	static float		light[MEM_SIZE * 4];
 

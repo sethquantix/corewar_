@@ -46,11 +46,17 @@ vec3 compute_diffuse(vec3 pos, vec3 normal, vec3 lightpos, vec3 lightcol)
 	return (ret);
 }
 
+#define LOW 0.6
+
 vec3 compute_light()
 {
 	float a; float b;
 	vec3 ret = vec3(0, 0, 0);
-	vec3 c =texture(textDiffuse, uv).xyz;
+	vec3 c = texture(textDiffuse, uv).xyz;
+	vec3 d = clamp(c + (1 - LOW), 0, 1);
+	d = vec3(pow(d.x, 100.0), pow(d.y, 100.0), pow(d.z, 100.0));
+	float m = max(max(c.x, c.y), c.z);
+	ret = vec3(m, m, m);
 	for (int i = 0; i < 4; i++)
 		for (int j = 0; j < 4; j++)
 		{
@@ -69,8 +75,9 @@ vec3 compute_light()
 void main(void)
 {
 	vec3 diffuse_color;
-	diffuse_color = texture(textLight, uv).rgb;
 
+//	diffuse_color = texture(textLight, uv).rgb;
+//	FragColor = texture(textDiffuse, uv).rgba;
 	//FragColor = vec4((get_light_at(0, 0).xyz) * texture(textDiffuse, uv).xyz + compute_light().xyz, 1);
 	FragColor = vec4(compute_light().xyz, 1);
 }

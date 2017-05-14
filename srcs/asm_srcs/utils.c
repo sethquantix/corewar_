@@ -22,6 +22,15 @@ void	die(char *s, int exit_code, ...)
 	exit(exit_code);
 }
 
+void	usage(char *path)
+{
+	ft_printf("Usage: %s [-ax] <source.s> ...\n", path);
+	ft_printf("-a: instead of creating a .cor, outputs a stripped and");
+	ft_printf(" annotated version of the code to the standard output.\n");
+	ft_printf("-x: outputs a readable version of a .cor to the standard");
+	ft_printf(" output. Will try to output labels, if possible.\n");
+}
+
 void	find_rule(void *data, t_expr **expr, const char *s[], t_f_rule f[])
 {
 	int			i;

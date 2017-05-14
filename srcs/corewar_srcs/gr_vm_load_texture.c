@@ -47,7 +47,7 @@ void load_bmp_to_42(char *b, uint32_t *out)
 	read(fd, out, size[0] * 4);
 }
 
-void load_light(uint32_t in[MEM_SIZE], float out[MEM_SIZE * 4], float models[][6], t_gr_vm *cxt)
+void load_light(uint32_t in[MEM_SIZE], float out[MEM_SIZE * 4], float models[][9], t_gr_vm *cxt)
 {
 	int i;
 
@@ -60,17 +60,16 @@ void load_light(uint32_t in[MEM_SIZE], float out[MEM_SIZE * 4], float models[][6
 			out[i * 4 + 2] = !(float)cxt->text42[i * 3] * (float)rand() / RAND_MAX;
 			out[i * 4 + 1] = !(float)cxt->text42[i * 3 + 1] * (float)rand() / RAND_MAX;
 			out[i * 4 + 0] = !(float)cxt->text42[i * 3 + 2] * (float)rand() / RAND_MAX;
-
 		}
 		i++;
-	}	
-
+	}
 	if (!cxt->anim42)
 	{
 		int e = (rand() % MEM_SIZE) * 4;
-		out[e] =  (float)rand() / RAND_MAX;
-		out[e + 1] = (float)rand() / RAND_MAX;
-		out[e + 2] = (float)rand() / RAND_MAX;
+		cxt->col[e] =  (float)rand() / RAND_MAX;
+		cxt->col[e + 1] = (float)rand() / RAND_MAX;
+		cxt->col[e + 2] = (float)rand() / RAND_MAX;
+        i = 0;
 	}
 }
 

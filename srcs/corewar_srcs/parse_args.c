@@ -12,6 +12,20 @@
 
 #include "corewar.h"
 
+int			check_set(t_champ *champs, int count, int n)
+{
+	int		i;
+
+	i = 0;
+	while (i < count)
+	{
+		if (champs->set && champs->num == n)
+			return (-1);
+			i++;
+	}
+	return (0);
+}
+
 static char	*join_args(char **av)
 {
 	char	*s;
@@ -51,6 +65,8 @@ t_expr		*parse_opts(char **av)
 	expr = NULL;
 	p = parse_engine("rules/crwr_opts", g_crwr_opts, (char **)list);
 	err = run_parser(p, arg, "FORMAT", &expr);
+	for (t_expr *x = expr; x; x = x->next)
+		ft_printf("%s -> %s\n", x->rule, x->expr);
 	destroy_engine(p);
 	parse_error(err);
 	return (expr);

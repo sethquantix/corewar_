@@ -65,6 +65,7 @@ typedef struct	s_arena
 	int			proc_id;
 	int			ctd;
 	int			last_check;
+	int 		cycles;
 	int			check_cycles;
 	int			opts;
 	int			debug_fd;

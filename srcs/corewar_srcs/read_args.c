@@ -31,7 +31,7 @@ static void	option_d(t_expr **e, t_arena *a)
 
 	*e = (*e)->next;
 	a->opts |= D_OPT;
-	if ((fd = open((*e)->expr)) == -1)
+	if ((fd = open((*e)->expr, O_WRONLY)) == -1)
 		err("Can't open %s for writing\n", (*e)->expr);
 	else
 		a->debug_fd = fd;
@@ -39,12 +39,14 @@ static void	option_d(t_expr **e, t_arena *a)
 
 static void player(t_expr **e, t_arena *a)
 {
-	t_champ	c;
-	int		n;
-	int		set;
+	static int 	id = 0;
+	t_champ		c;
+	int			n;
+	int			set;
 
 	*e = (*e)->next;
 	n = 0;
+	set = 0;
 	if (ft_strcmp((*e)->rule, "NUMBER") == 0)
 	{
 		n = ft_atoi((*e)->expr);
@@ -52,24 +54,28 @@ static void player(t_expr **e, t_arena *a)
 		if (check_set(a->champs, a->champ_count, n))
 			die("Can't set same player id twice\n", EXIT_FAILURE);
 	}
-	c = (t_champ){(*e)->expr, NULL, 0, a->champ_count, n, set};
+	bzero(&c, sizeof(t_champ));
+	c.file_name = ft_strdup((*e)->expr);
+	c.id = --id;
+	c.num = n;
+	c.set = set;
 	ft_pushback((void **)&a->champs, sizeof(t_champ), a->champ_count++, &c);
 }
 
 void	read_args(t_expr *expr, t_arena *a)
 {
-	const char	*rules[] = {"OPTION_G, OPTION_V, OPTION_D, PLAYER", NULL};
-	const void	(*handlers[])(t_expr **, t_arena *) =
+	const char	*rules[] = {"OPTION_G", "OPTION_V", "OPTION_D", "PLAYER", NULL};
+	static void	(*handlers[])(t_expr **, t_arena *) =
 		{option_g, option_v, option_d, player, NULL};
 	int			i;
-	
+
 	while (expr)
 	{
 		i = 0;
 		while (rules[i])
 			if (!ft_strncmp(rules[i], expr->rule, ft_strlen(rules[i])))
 			{
-				handlers[i](&expr, arena);
+				handlers[i](&expr, a);
 				break ;
 			}
 			else

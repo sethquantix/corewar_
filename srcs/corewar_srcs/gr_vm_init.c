@@ -64,6 +64,7 @@ void	gr_vm_init(t_gr_vm *cxt)
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 	cxt->glcontext = SDL_GL_CreateContext(cxt->arena);
+	glewInit();
 	shaders[0].file = ft_strdup("./shaders/vertex.shader");
 	shaders[0].type = GL_VERTEX_SHADER;
 	shaders[1].file = ft_strdup("./shaders/frag.shader");

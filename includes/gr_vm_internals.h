@@ -20,6 +20,8 @@
 # define SDL_POS	SDL_WINDOWPOS_UNDEFINED
 # define SDL_FLAGS	SDL_WINDOW_OPENGL
 
+# define TIME_TRAVEL    0.5f
+
 t_handler	get_handler(int type);
 void		glerror(int i);
 
@@ -51,7 +53,7 @@ void		cam_rot_left(void *data, t_gr_vm *vm, t_key *key);
 
 GLuint		load_bmp_to_opengl(char *b);
 GLuint		light_to_texture(float l[MEM_SIZE]);
-void		load_light(uint32_t in[MEM_SIZE], float out[4 * MEM_SIZE], float models[][6], t_gr_vm *cxt);
+void		load_light(uint32_t in[MEM_SIZE], float out[4 * MEM_SIZE], float models[][9], t_gr_vm *cxt);
 void		load_bmp_to_42(char *b, uint32_t *out);
 void		toggle_42(void *data, t_gr_vm *vm, t_key *key);
 

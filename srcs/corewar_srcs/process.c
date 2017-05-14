@@ -18,15 +18,15 @@ void	(*instructions[])(t_proc *, uint8_t []) = {
 
 int		proc_read_inst(t_proc *p, uint8_t mem[])
 {
-	static int	sizes[] = {0, REG_SIZE, DIR_SIZE, IND_SIZE};
-	uint8_t		op;
-	int			i;
+	static uint8_t	sizes[] = {0, REG_SIZE, DIR_SIZE, IND_SIZE};
+	uint8_t			op;
+	int				i;
 
 	op = mem[p->pc];
 	if (!op || op > 16)
 		return (-1);
 	p->op = op_tab + op - 1;
-	sizes[2] = p->op->dir_size;
+	sizes[2] = (uint8_t)p->op->dir_size;
 	if (p->op->octal)
 		p->oct = mem[mem_mod(p->pc + 1)];
 	i = 0;
@@ -40,11 +40,11 @@ int		proc_read_inst(t_proc *p, uint8_t mem[])
 
 int		proc_read_params(t_proc *p, uint8_t mem[])
 {
-	uint8_t	addr;
+	int		addr;
 	int		i;
 	
 	i = 0;
-	addr = p->pc + 1 + p->op->octal;
+	addr = mem_mod(p->pc + 1 + p->op->octal);
 	while (i < p->op->argc)
 	{
 		if ((PROC_ARG(p->oct, i + 1) & p->op->args[i]) == 0)

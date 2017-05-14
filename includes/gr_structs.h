@@ -29,7 +29,9 @@ typedef struct	s_gr_vm
 	GLuint			vao;
 	GLuint			lightText;
 	GLuint			diffuseTexture;
-	GLfloat			model[MEM_SIZE][6];
+	GLfloat			model[MEM_SIZE][9];
+    float           scale[MEM_SIZE];
+    float           col[MEM_SIZE * 4];
 	int				anim42;
 	char			text42[4 * 64 * 64];
 	t_mat			camera;

@@ -69,6 +69,7 @@ typedef void	(*t_f_rule)(void *, t_expr **);
 t_expr		*parse_opts(char **av);
 t_expr		*parse_asm(t_parser *p, char *file, char **source);
 void		die(char *s, int exit_code, ...);
+void		usage(char *path);
 void		find_rule(void *data, t_expr **expr, const char *s[], t_f_rule f[]);
 void		read_opts(t_env *e, t_expr *expr);
 void		compile(t_env *e);
