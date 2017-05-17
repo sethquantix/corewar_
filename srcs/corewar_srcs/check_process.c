@@ -12,10 +12,10 @@
 
 #include "corewar.h"
 
-static int	kill_proc(void *unused, t_proc *proc)
+static int	proc_should_die(void *unused, t_proc *proc)
 {
 	(void)unused;
-	return (!!proc->die);
+	return (proc->die != 0);
 }
 
 static void	check(t_proc *p, int last)
@@ -36,5 +36,10 @@ void		check_process(t_arena *a)
 		check(p->content, a->last_check);
 		p = p->next;
 	}
-	ft_lst_remove_if(&a->procs, 0, (t_f_cmp)kill_proc, ft_dummy);
+	ft_lst_remove_if(&a->procs, 0, (t_f_cmp)proc_should_die, ft_dummy);
+}
+
+int 		cmp_id(uint32_t	*ref, t_champ *data)
+{
+	return (*ref == data->id);
 }

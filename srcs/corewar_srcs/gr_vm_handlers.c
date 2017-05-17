@@ -45,7 +45,7 @@ void		mouse_button_handler(void *data, t_gr_vm *vm, SDL_Event *e)
 void		key_handler(void *data, t_gr_vm *vm, SDL_Event *e)
 {
 	int		i;
-	
+
 	if (e->key.repeat)
 		return ;
 	i = 0;

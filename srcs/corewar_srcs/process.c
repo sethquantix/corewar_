@@ -18,17 +18,17 @@ void	(*instructions[])(t_proc *, uint8_t []) = {
 
 int		proc_read_inst(t_proc *p, uint8_t mem[])
 {
-	static int	sizes[] = {0, REG_SIZE, DIR_SIZE, IND_SIZE};
-	uint8_t		op;
-	int			i;
+	static uint8_t	sizes[] = {0, REG_SIZE, DIR_SIZE, IND_SIZE};
+	uint8_t			op;
+	int				i;
 
 	op = mem[p->pc];
 	if (!op || op > 16)
 		return (-1);
-	p->op = op_tab + op - 1;
-	sizes[2] = p->op->dir_size;
-	if (p->op->octal)
-		p->oct = mem[mem_mod(p->pc + 1)];
+	p->op = g_tab + op - 1;
+	p->cycles_left = p->op->cycles;
+	sizes[2] = (uint8_t)p->op->dir_size;
+	p->oct = p->op->octal ? mem[mem_mod(p->pc + 1)] : DIR_CODE << 6;
 	i = 0;
 	while (i < p->op->argc)
 	{
@@ -40,16 +40,17 @@ int		proc_read_inst(t_proc *p, uint8_t mem[])
 
 int		proc_read_params(t_proc *p, uint8_t mem[])
 {
-	uint8_t	addr;
+	int		addr;
 	int		i;
 	
 	i = 0;
 	addr = p->pc + 1 + p->op->octal;
 	while (i < p->op->argc)
 	{
+		addr = mem_mod(addr);
 		if ((PROC_ARG(p->oct, i + 1) & p->op->args[i]) == 0)
 			return (-1);
-		read_mem(addr, VAL(p->params + i, p->p_sizes[i]), MOD_MEM, mem);
+		read_mem(addr, VAL(p->params + i, p->p_sizes[i]), mem);
 		addr += p->p_sizes[i++];
 	}
 	return (0);
@@ -72,17 +73,21 @@ int		inst_size(t_proc *p)
 
 void	proc_exec_inst(t_proc *p)
 {
+	int 	err;
+
 	if (!p->op && p->get_inst(p, p->arena->arena))
 	{
 		p->pc++;
 		return ;
 	}
-	if (p->cycles_left && p->cycles_left--)
+	if (p->cycles_left--)
 		return ;
-	if (!p->get_params(p, p->arena->arena))
+	err = p->get_params(p, p->arena->arena);
+	if (err)
 	{
 		p->pc += inst_size(p);
 		return ;
 	}
 	instructions[p->op->opcode](p, p->arena->arena);
+	p->pc += inst_size(p);
 }

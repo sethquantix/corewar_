@@ -20,30 +20,32 @@ int		mem_mod(int addr)
 	return (addr);
 }
 
-int		idx_mod(int addr)
+int		idx_mod(int pc, int addr)
 {
-	return (mem_mod(addr % IDX_MOD));
+	return (mem_mod(pc + (addr - pc) % IDX_MOD));
 }
 
-void	write_mem(int pc, t_val v, int mod, uint8_t mem[])
+void	write_mem(int addr, t_val v, uint8_t mem[])
 {
-	static int	(*f_mod[])(int) = {mem_mod, idx_mod};
 	uint8_t		*t;
+	int			i;
 
 	ft_endian(v.p, v.s);
+	i = 0;
 	t = v.p;
-	while (v.s--)
-		mem[f_mod[mod](pc++)] = *(t++);
+	while (i++ < v.s)
+		mem[mem_mod(addr++)] = *(t++);
 	ft_endian(v.p, v.s);
 }
 
-void	read_mem(int addr, t_val v, int mod, uint8_t mem[])
+void	read_mem(int addr, t_val v, uint8_t mem[])
 {
-	static int	(*f_mod[])(int) = {mem_mod, idx_mod};
 	uint8_t		*t;
+	int			i;
 
 	t = v.p;
-	while (v.s--)
-		*(t++) = mem[f_mod[mod](addr++)];
+	i = 0;
+	while (i++ < v.s)
+		*(t++) = mem[mem_mod(addr++)];
 	ft_endian(v.p, v.s);
 }

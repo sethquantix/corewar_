@@ -19,13 +19,22 @@
 typedef struct	s_gr_vm
 {
 	SDL_Window		*arena;
-	SDL_Surface		*ui;
-	SDL_Surface		*main;
-	SDL_Surface		*screen;
+	SDL_Window		*UI;
 	SDL_GLContext	glcontext;
 	GLuint			glbuffer;
 	GLuint			glcolor;
 	GLuint			gldepth;
+	GLuint			program;
+	GLuint			matVBO;
+	GLuint			vao;
+	GLuint			lightText;
+	GLuint			diffuseTexture;
+	GLfloat			model[MEM_SIZE][9];
+    float           scale[MEM_SIZE];
+    float           col[MEM_SIZE * 4];
+	int				anim42;
+	char			text42[4 * 64 * 64];
+	t_mat			camera;
 	void			*buffer;
 	struct s_key	*keys;
 	int				nkeys;

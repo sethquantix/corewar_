@@ -12,9 +12,9 @@
 
  #include "corewar.h"
 
-int		loop(void *d)
+int		loop(t_arena *a)
 {
-	(void)d;
+	(void)a;
 	return (1);
 }
 
@@ -43,9 +43,24 @@ int		usage(char *s)
 
 void	init(t_arena *arena)
 {
+	int 		num;
+	int 		i;
+
 	arena->load = load_champ;
 	arena->check = check_process;
 	arena->add_proc = (t_f_add)add_proc;
+	i = 0;
+	num = 0;
+	while (i < arena->champ_count)
+	{
+		if (!arena->champs[i].set)
+		{
+			while (check_set(arena->champs, arena->champ_count, num))
+				num++;
+			arena->champs[i].num = num++;
+		}
+		i++;
+	}
 }
 
 void	print_expr(t_expr *expr)
@@ -61,18 +76,24 @@ int		main(int ac, char **av)
 {
 	t_arena		arena;
 	t_expr		*expr;
-	// t_gr_vm		context;
+	t_gr_vm		context;
 
+	ft_bzero(&context, sizeof(t_gr_vm));
 	if (ac == 1)
 		return (usage(av[0]));
 	ft_bzero(&arena, sizeof(t_arena));
-	init(&arena);
 	expr = parse_opts(av + 1);
-	print_expr(expr);
 	read_args(expr, &arena);
+	init(&arena);
 	set_champs(&arena);
-	// gr_vm_init(&context);
-	// gr_vm_run(loop, &arena, &context);
-	// gr_vm_end(&context);
+	if (arena.opts & G_OPT)
+	{
+		gr_vm_init(&context);
+		gr_vm_run((t_vm_loop)loop, &arena, &context);
+		gr_vm_end(&context);
+	}
+	else
+		while (loop(&arena))
+			;
 	return (0);
 }

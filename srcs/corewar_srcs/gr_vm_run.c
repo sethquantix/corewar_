@@ -32,9 +32,8 @@ void		gr_vm_run(t_vm_loop loop, void *data, t_gr_vm *ctx)
 				ctx->keys[i].hold(data, ctx, ctx->keys + i);
 			i++;
 		}
-		SDL_BlitSurface(ctx->main, NULL, ctx->screen, NULL);
-		SDL_BlitSurface(ctx->ui, NULL, ctx->screen, NULL);
-		SDL_UpdateWindowSurface(ctx->arena);
+		render_opengl(ctx, *(t_arena*)data);
+		SDL_UpdateWindowSurface(ctx->UI);
 	}
 }
 

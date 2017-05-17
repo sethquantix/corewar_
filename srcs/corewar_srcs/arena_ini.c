@@ -26,7 +26,7 @@ int		load_champ(t_arena *a, t_champ *c)
 		c->file_name));
 	ft_endian(&c->head.prog_size, 4);
 	ft_endian(&c->head.magic, 4);
-	ft_printf("* Player %d, %s (%d bytes) : %s\n", c->id, c->head.prog_name,
+	ft_printf("* Player %d, %s (%d bytes) : %s\n", c->num, c->head.prog_name,
 		c->head.prog_size, c->head.prog_desc);
 	if (c->head.magic != COREWAR_EXEC_MAGIC)
 		return (err("Error : %s : This does not appear to be a champion.\n",
@@ -38,22 +38,6 @@ int		load_champ(t_arena *a, t_champ *c)
 	close(fd);
 	pc = (c->id - 1) * (MEM_SIZE / a->champ_count);
 	ft_memcpy(a->arena + (p = a->add_proc(a, c, pc))->pc, c->source, len);
-	return (0);
-}
-
-int		check_set(t_champ *champs, int n, int num)
-{
-	int		i;
-
-	i = 0;
-	while (i < n)
-		if (champs->set && champs->num == num)
-			return (1);
-		else
-		{
-			i++;
-			champs++;
-		}
 	return (0);
 }
 

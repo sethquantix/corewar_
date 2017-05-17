@@ -12,6 +12,20 @@
 
 #include "corewar.h"
 
+int			check_set(t_champ *champs, int count, int n)
+{
+	int		i;
+
+	i = 0;
+	while (i < count)
+	{
+		if (champs->set && champs->num == n)
+			return (-1);
+			i++;
+	}
+	return (0);
+}
+
 static char	*join_args(char **av)
 {
 	char	*s;
@@ -42,7 +56,7 @@ t_expr		*parse_opts(char **av)
 {
 	t_expr		*expr;
 	t_parser	*p;
-	const char	*list[] = {"OPTION_D", "OPTION_G", "OPTION_V", "PLAYER",
+	const char	*list[] = {"OPTION_D", "OPTION_G", "OPTION_V", "OPTION_S", "PLAYER",
 		"NUMBER", "VERBOSE", "PATH", 0};
 	char		*arg;
 	char		*err;
@@ -50,7 +64,6 @@ t_expr		*parse_opts(char **av)
 	arg = join_args(av);
 	expr = NULL;
 	p = parse_engine("rules/crwr_opts", g_crwr_opts, (char **)list);
-	ft_printf("parser built\n");
 	err = run_parser(p, arg, "FORMAT", &expr);
 	destroy_engine(p);
 	parse_error(err);

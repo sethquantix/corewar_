@@ -32,4 +32,10 @@
 
 # define VAL(p, s)			(t_val){p, s}
 
+# define V_LVL_LIVES		0x01
+# define V_LVL_CYCLES		0x02
+# define V_LVL_OP			0x04
+# define V_LVL_DEATH		0x08
+# define V_LVL_PC			0x10
+
 #endif

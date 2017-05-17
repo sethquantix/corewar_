@@ -12,11 +12,12 @@
 
 #include "corewar.h"
 
-static void player(t_expr **e, t_arena *a)
+void 	player(t_expr **e, t_arena *a)
 {
-	t_champ	c;
-	int		n;
-	int		set;
+	static int 	id = 0;
+	t_champ		c;
+	int			n;
+	int			set;
 
 	*e = (*e)->next;
 	n = 0;
@@ -29,7 +30,7 @@ static void player(t_expr **e, t_arena *a)
 		if (check_set(a->champs, a->champ_count, n))
 			die("Can't set same player id twice\n", EXIT_FAILURE);
 	}
-	c = (t_champ){(*e)->expr, NULL, empty_head(), a->champ_count + 1, n, set};
+	c = (t_champ){(*e)->expr, NULL, empty_head(), --id, n, set};
 	ft_pushback((void **)&a->champs, sizeof(t_champ), a->champ_count++, &c);
 }
 

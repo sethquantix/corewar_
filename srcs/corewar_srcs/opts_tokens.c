@@ -33,9 +33,12 @@ int		tok_func_verbose(char **s)
 		n = 10 * n + (**s) - '0';
 		(*s)++;
 	}
-	if (!ft_iswhite(**s) || n > 31)
+	if (!ft_iswhite(**s))
+	{
 		*s = p;
-	return (0);
+		return (1);
+	}
+	return (0);{}
 }
 
 int		tok_func_none(char **s)

@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="_corewar"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/cchaumar/Documents/42projects/working/_corewar"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/cchaumar/Documents/42projects/working/_corewar"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/cchaumar/Documents/42projects/working/_corewar"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="asm">
+				<Option output="/Users/cchaumar/Documents/42projects/working/_corewar/asm" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/cchaumar/Documents/42projects/working/_corewar"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/cchaumar/Documents/42projects/working/_corewar/includes"/>
+					<Add directory="/Users/cchaumar/Documents/42projects/working/_corewar/libs/libft"/>
+					<Add directory="/System/Library/Frameworks/OpenGL.framework"/>
+					<Add directory="/Users/cchaumar/.brew/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 asm"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="asm/fast">
+				<Option output="/Users/cchaumar/Documents/42projects/working/_corewar/asm" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/cchaumar/Documents/42projects/working/_corewar"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/cchaumar/Documents/42projects/working/_corewar/includes"/>
+					<Add directory="/Users/cchaumar/Documents/42projects/working/_corewar/libs/libft"/>
+					<Add directory="/System/Library/Frameworks/OpenGL.framework"/>
+					<Add directory="/Users/cchaumar/.brew/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 asm/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="corewar">
+				<Option output="/Users/cchaumar/Documents/42projects/working/_corewar/corewar" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/cchaumar/Documents/42projects/working/_corewar"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/cchaumar/Documents/42projects/working/_corewar/includes"/>
+					<Add directory="/Users/cchaumar/Documents/42projects/working/_corewar/libs/libft"/>
+					<Add directory="/System/Library/Frameworks/OpenGL.framework"/>
+					<Add directory="/Users/cchaumar/.brew/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 corewar"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="corewar/fast">
+				<Option output="/Users/cchaumar/Documents/42projects/working/_corewar/corewar" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/cchaumar/Documents/42projects/working/_corewar"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/cchaumar/Documents/42projects/working/_corewar/includes"/>
+					<Add directory="/Users/cchaumar/Documents/42projects/working/_corewar/libs/libft"/>
+					<Add directory="/System/Library/Frameworks/OpenGL.framework"/>
+					<Add directory="/Users/cchaumar/.brew/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 corewar/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/includes/asm.h">
+			<Option target="asm"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/includes/corewar.h">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/includes/crwr_defines.h">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/includes/crwr_globals.h">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/includes/crwr_structs.h">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/includes/crwr_types.h">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/includes/gr_structs.h">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/includes/gr_types.h">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/includes/gr_vm.h">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/includes/gr_vm_internals.h">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/includes/includes.h">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/includes/op.h">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/asm_srcs/asm.c">
+			<Option target="asm"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/asm_srcs/asm_tokens.c">
+			<Option target="asm"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/asm_srcs/compile.c">
+			<Option target="asm"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/asm_srcs/op.c">
+			<Option target="asm"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/asm_srcs/opt_tokens.c">
+			<Option target="asm"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/asm_srcs/parse_asm.c">
+			<Option target="asm"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/asm_srcs/parse_opts.c">
+			<Option target="asm"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/asm_srcs/print.c">
+			<Option target="asm"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/asm_srcs/read_opts.c">
+			<Option target="asm"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/asm_srcs/utils.c">
+			<Option target="asm"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/asm_srcs/write.c">
+			<Option target="asm"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/arena_ini.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/check_process.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/corewar.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/gr_gl_buffer.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/gr_vm_camera_handling.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/gr_vm_camera_handling_rot.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/gr_vm_handlers.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/gr_vm_init.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/gr_vm_init_cube.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/gr_vm_inputs.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/gr_vm_load_texture.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/gr_vm_matrix.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/gr_vm_render_opengl.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/gr_vm_run.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/ins_basic.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/ins_calc.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/ins_fork.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/ins_index.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/mem.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/op.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/options.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/opts_tokens.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/parse_args.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/process.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/read_args.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/utils.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

@@ -22,6 +22,17 @@ void	die(char *s, int exit_code, ...)
 	exit(exit_code);
 }
 
+int		usage(char *path)
+{
+	ft_printf("Usage: %s [-ax] <source.s> ...\n", path);
+	ft_printf("\t-a : instead of compiling the file, output stripped ");
+	ft_printf("and annotated version of the code to the standard output\n");
+	ft_printf("\t-x : decompile .cor file. Will try to mark labels if ");
+	ft_printf("address parameters are relevant.\n");
+	ft_printf("\tNote : [-a] and [-x] options are mutually exclusive.\n");
+	return (0);
+}
+
 void	find_rule(void *data, t_expr **expr, const char *s[], t_f_rule f[])
 {
 	int			i;

@@ -30,6 +30,8 @@ typedef struct	s_champ
 	int			id;
 	int			num;
 	int			set;
+	int 		nbr_live;
+	int 		last_live;
 }				t_champ;
 
 typedef struct	s_proc
@@ -65,6 +67,7 @@ typedef struct	s_arena
 	int			proc_id;
 	int			ctd;
 	int			last_check;
+	int 		cycles;
 	int			check_cycles;
 	int			dump_cycles;
 	int			opts;
