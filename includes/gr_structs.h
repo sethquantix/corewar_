@@ -16,6 +16,17 @@
 #include "includes.h"
 #include "gr_types.h"
 
+typedef struct	s_cam
+{
+	t_vec4		pos;
+	t_vec4		fw;
+	t_vec4		lt;
+	float 		v;
+	float 		r;
+	float 		phi;
+	float 		the;
+}				t_cam;
+
 typedef struct	s_gr_vm
 {
 	SDL_Window		*arena;
@@ -34,7 +45,7 @@ typedef struct	s_gr_vm
     float           col[MEM_SIZE * 4];
 	int				anim42;
 	char			text42[4 * 64 * 64];
-	t_mat			camera;
+	t_cam			camera;
 	void			*buffer;
 	struct s_key	*keys;
 	int				nkeys;

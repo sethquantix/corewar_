@@ -26,19 +26,18 @@ static void		stream_transform(t_gr_vm *cxt)
 
 static void		push_uniform(t_gr_vm *cxt)
 {
-	GLint		loc;
-	GLfloat		mat[16];
-	static float		light[MEM_SIZE * 4];
+	GLint			loc;
+	GLfloat			mat[16];
+	GLfloat			t[4];
+	static float	light[MEM_SIZE * 4];
 
 	loc = glGetUniformLocation(cxt->program, "textDiffuse");
 	glUniform1i(loc, 0);
 	loc = glGetUniformLocation(cxt->program, "textLight");
 	glUniform1i(loc, 1);
-	loc = glGetUniformLocation(cxt->program, "V");
-	glUniformMatrix4fv(loc, 1, GL_FALSE, cxt->camera.t);
-	loc = glGetUniformLocation(cxt->program, "P");
-	load_projection(mat, 1, 1000, 1.3);
-	glUniformMatrix4fv(loc, 1, GL_FALSE, mat);
+	loc = glGetUniformLocation(cxt->program, "CamPos");
+	ft_memcpy(t, &cxt->camera.pos, 16);
+	glUniform4fv(loc, 4, t);
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, cxt->diffuseTexture);
 	load_light(light, light, cxt->model, cxt);
@@ -47,6 +46,12 @@ static void		push_uniform(t_gr_vm *cxt)
 	cxt->lightText = light_to_texture(light);
 	glActiveTexture(GL_TEXTURE1);
 	glBindTexture(GL_TEXTURE_2D, cxt->lightText);
+	loc = glGetUniformLocation(cxt->program, "P");
+	load_projection(mat, 1, 1000, 1.3);
+//	up = v_cross(cxt->camera.fw, cxt->camera.lt);
+//	gluLookAt(cxt->camera.pos.x, cxt->camera.pos.y, cxt->camera.pos.z,
+//		cxt->camera.fw.x, cxt->camera.fw.y, cxt->camera.fw.z,
+//		up.x, up.y, up.z);
 }
 
 void			render_opengl(t_gr_vm *cxt, t_arena arena)

@@ -37,11 +37,6 @@ void	set_keys(t_key **keys, int *nkeys)
 	*nkeys += add_key(keys, SDLK_s, cam_trans_back, cam_trans_back);
 	*nkeys += add_key(keys, SDLK_d, cam_trans_right, cam_trans_right);
 	*nkeys += add_key(keys, SDLK_a, cam_trans_left, cam_trans_left);
-	*nkeys += add_key(keys, SDLK_UP, cam_rot_forwad, cam_rot_forwad);
-	*nkeys += add_key(keys, SDLK_DOWN, cam_rot_back, cam_rot_back);
-	*nkeys += add_key(keys, SDLK_RIGHT, cam_rot_right, cam_rot_right);
-	*nkeys += add_key(keys, SDLK_LEFT, cam_rot_left, cam_rot_left);
-
 	*nkeys += add_key(keys, SDLK_r, 	toggle_42, NULL);
 }
 
@@ -56,14 +51,27 @@ void	set_sdl_attributes()
 	SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
 }
 
+void 	init_cam(t_cam *cam)
+{
+	cam->pos = vec4(0, 0, 0, 0);
+	cam->fw = vec4(0, 0, 1, 0);
+	cam->lt = vec4(1, 0, 0, 0);
+	cam->phi = 0;
+	cam->the = 0;
+	cam->r = ROT;
+	cam->v = SPEED;
+}
+
 void	gr_vm_init(t_gr_vm *cxt)
 {
 	t_gl_shader shaders[2];
 
 	SDL_Init(SDL_INIT_VIDEO);
 	set_sdl_attributes();
+	SDL_ShowCursor(SDL_DISABLE);
 	cxt->arena = SDL_CreateWindow("corewar", WIN_WIDTH / 4, 0, WIN_WIDTH - WIN_WIDTH / 4,
 		WIN_HEIGHT, SDL_WINDOW_OPENGL);
+	SDL_SetWindowGrab(cxt->arena, SDL_TRUE);
 	cxt->UI = SDL_CreateWindow("UI", 0, 0, WIN_WIDTH / 4,
 		WIN_HEIGHT, 0);
 	SDL_GL_SetSwapInterval(1);
@@ -81,7 +89,7 @@ void	gr_vm_init(t_gr_vm *cxt)
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_MULTISAMPLE);
 	glClearColor(0, 0, 0, 1);
-	mat_ident(&cxt->camera);
+	init_cam(&cxt->camera);
 	cxt->vao = generate_cube(cxt);
 	cxt->diffuseTexture = load_bmp_to_opengl("texture/coretext.bmp");
 	cxt->anim42 = 0;
