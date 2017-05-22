@@ -3,6 +3,8 @@ project(_corewar)
 
 set(CMAKE_CXX_STANDARD 11)
 
+SET(GCC_OPTIONS "-g -fsanitize=address")
+
 include_directories(includes
         libs/libft)
 
@@ -42,6 +44,7 @@ set(CRWR_FILES
     srcs/corewar_srcs/options.c
     srcs/corewar_srcs/parse_args.c
     srcs/corewar_srcs/process.c
+    srcs/corewar_srcs/values.c
     srcs/corewar_srcs/read_args.c
     srcs/corewar_srcs/utils.c)
 
@@ -75,7 +78,8 @@ target_link_libraries(corewar
         sdl2
         glew
         glfw
-        ${OPENGL_LIBRARIES})
+        ${OPENGL_LIBRARIES}
+        ${GCC_OPTIONS})
 
 target_link_libraries(asm
         ft)

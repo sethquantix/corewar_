@@ -12,31 +12,55 @@
 
 #include "corewar.h"
 
-static int	proc_should_die(void *unused, t_proc *proc)
-{
-	(void)unused;
-	return (proc->die != 0);
-}
+//static int	proc_should_die(void *unused, t_proc *proc)
+//{
+//	(void)unused;
+//	if (proc->die)
+//		proc->arena->alive--;
+//	return (proc->die != 0);
+//}
 
-static void	check(t_proc *p, int last)
+static int	check(t_proc *p)
 {
-	if (p->last_live < last)
-		p->die = 1;
+	p->die = p->arena->cycles - p->last_live > p->arena->ctd ? 1 : 0;
+	if (p->die && (p->arena->verbose_lvl & V_LVL_DEATH))
+		ft_printf("Process %d hasn't lived for %d cycles (CTD %d)\n",
+			p->id, p->arena->cycles - p->last_live, p->arena->ctd);
+	if (p->die)
+		p->arena->alive--;
+	return (p->die);
 }
 
 void		check_process(t_arena *a)
 {
 	t_list	*p;
-	int		die;
+	t_list	*living;
+	t_list	*n;
 
-	die = 1;
+	living = NULL;
 	p = a->procs;
 	while (p)
 	{
-		check(p->content, a->last_check);
+		if (check(p->content) == 0)
+		{
+			n = ft_lstnew(NULL, 0);
+			n->content_size = p->content_size;
+			n->content = p->content;
+			ft_lstadd_end(&living, n);
+		}
 		p = p->next;
 	}
-	ft_lst_remove_if(&a->procs, 0, (t_f_cmp)proc_should_die, ft_dummy);
+	ft_lstdel(&a->procs, ft_dummy);
+	a->procs = living;
+	a->last_check = a->cycles;
+	if (++a->check_cycles >= MAX_CHECKS || a->nbr_lives >= NBR_LIVE)
+	{
+		a->ctd -= CYCLE_DELTA;
+		if (a->verbose_lvl & V_LVL_CYCLES)
+			ft_printf("Cycle to die is now %d\n", a->ctd);
+		a->check_cycles = 0;
+	}
+	a->nbr_lives = 0;
 }
 
 int 		cmp_id(uint32_t	*ref, t_champ *data)

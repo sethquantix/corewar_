@@ -38,6 +38,7 @@ t_expr	*parse_asm(t_parser *p, char *file, char **source)
 		return (NULL);
 	}
 	expr = NULL;
-	ret = run_parser(p, *source, "EXPR", &expr);
+	if ((ret = run_parser(p, *source, "EXPR", &expr)) != NULL)
+		ft_dprintf(2, "error parsing %s at %s\n", file, ret);
 	return (expr);
 }

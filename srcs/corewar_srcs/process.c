@@ -12,48 +12,46 @@
 
 #include "corewar.h"
 
-void	(*instructions[])(t_proc *, uint8_t []) = {
-	NULL, i_live, i_ld, i_st, i_add, i_sub, i_and, i_or, i_xor, i_zjmp,
-	i_ldi, i_sti, i_fork, i_lld, i_lldi, i_lfork, i_aff, NULL};
-
 int		proc_read_inst(t_proc *p, uint8_t mem[])
 {
-	static uint8_t	sizes[] = {0, REG_SIZE, DIR_SIZE, IND_SIZE};
 	uint8_t			op;
-	int				i;
 
 	op = mem[p->pc];
 	if (!op || op > 16)
 		return (-1);
 	p->op = g_tab + op - 1;
 	p->cycles_left = p->op->cycles;
-	sizes[2] = (uint8_t)p->op->dir_size;
-	p->oct = p->op->octal ? mem[mem_mod(p->pc + 1)] : DIR_CODE << 6;
-	i = 0;
-	while (i < p->op->argc)
-	{
-		p->p_sizes[i] = sizes[PROC_ARG_T(p->oct, i + 1)];
-		i++;
-	}
 	return (0);
 }
 
 int		proc_read_params(t_proc *p, uint8_t mem[])
 {
-	int		addr;
-	int		i;
-	
+	static uint8_t	sizes[] = {0, REG_NUMBER_SIZE, DIR_SIZE, IND_SIZE};
+	int				addr;
+	int				i;
+	int				err;
+
+	ft_bzero(p->params, sizeof(p->params));
+	sizes[2] = (uint8_t)p->op->dir_size;
+	sizes[2] = sizes[2] ? sizes[2] : 4;
+	if (p->op->octal)
+		read_mem(p->pc + 1, val(&p->oct, 1), mem);
+	else
+		p->oct = DIR_CODE << 6;
 	i = 0;
+	err = 0;
 	addr = p->pc + 1 + p->op->octal;
 	while (i < p->op->argc)
 	{
+		if ((PROC_TYPE((p->p_types[i] = PROC_CODE(p->oct, i))) &
+			p->op->args[i]) == 0)
+			err = -1;
 		addr = mem_mod(addr);
-		if ((PROC_ARG(p->oct, i + 1) & p->op->args[i]) == 0)
-			return (-1);
-		read_mem(addr, VAL(p->params + i, p->p_sizes[i]), mem);
+		p->p_sizes[i] = sizes[p->p_types[i]];
+		read_mem(addr, val(p->params + i, p->p_sizes[i]), mem);
 		addr += p->p_sizes[i++];
 	}
-	return (0);
+	return (err);
 }
 
 int		inst_size(t_proc *p)
@@ -63,31 +61,51 @@ int		inst_size(t_proc *p)
 	int			r;
 
 	i = 0;
-	r = 0;
-	if (!p->oct)
-		return (p->op->dir_size);
+	r = p->op->octal + 1;
+	if (!p->op->octal)
+		return (r + p->op->dir_size);
 	while (i < p->op->argc)
 		r += p->p_sizes[i++];
 	return (r);
 }
 
+void	verb_mem(uint8_t *mem, t_proc *p, int pc, int n)
+{
+	int i;
+
+	ft_printf("ADV %d (0x%04.4x -> 0x%04.4x) ", n, mem_mod(p->pc),
+		mem_mod(p->pc + n));
+	i = 0;
+	while (i < n)
+	{
+		ft_printf("%02.2x ", mem[mem_mod(pc + i)]);
+		i++;
+	}
+	ft_putchar('\n');
+}
+
 void	proc_exec_inst(t_proc *p)
 {
-	int 	err;
+	static void		(*instructions[])(t_proc *) = {
+		NULL, i_live, i_ld, i_st, i_add, i_sub, i_and, i_or, i_xor, i_zjmp,
+		i_ldi, i_sti, i_fork, i_lld, i_lldi, i_lfork, i_aff, NULL};
+	int 			err;
 
 	if (!p->op && p->get_inst(p, p->arena->arena))
 	{
 		p->pc++;
 		return ;
 	}
-	if (p->cycles_left--)
+	if (p->cycles_left && --p->cycles_left)
 		return ;
 	err = p->get_params(p, p->arena->arena);
-	if (err)
-	{
+	if (!err)
+		instructions[p->op->opcode](p);
+	if ((p->op->opcode != 9 || p->carry == 0) &&
+		(p->arena->verbose_lvl & V_LVL_PC))
+		verb_mem(p->arena->arena, p, p->pc, inst_size(p));
+	if (p->op->opcode != 9 || p->carry == 0)
 		p->pc += inst_size(p);
-		return ;
-	}
-	instructions[p->op->opcode](p, p->arena->arena);
-	p->pc += inst_size(p);
+	p->pc = mem_mod(p->pc);
+	p->op = NULL;
 }

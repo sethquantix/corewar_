@@ -79,8 +79,8 @@ int		tok_func_ascii(char **s)
 
 int		tok_func_number(char **s)
 {
-	const char	*valid[3] = {
-		"0123456789", "0123456789ABCDEF", "0123456789abcdef"
+	const char	*valid[2] = {
+		"0123456789", "0123456789abcdef"
 	};
 	char	*p;
 	int		hex;
@@ -88,13 +88,12 @@ int		tok_func_number(char **s)
 
 	p = *s;
 	hex = 0;
-	if ((ft_strncmp(*s, "0x", 2) == 0 || ft_strncmp(*s, "0X", 2) == 0) &&
-		(hex = (*s)[1] == 'x' ? 2 : 1))
+	if ((ft_strncmp(*s, "0x", 2) == 0 || ft_strncmp(*s, "0X", 2) == 0) && (hex = 1))
 		*s += 2;
 	else if (**s == '+' || **s == '-')
 		*s += 1;
 	n = 0;
-	while (**s && ft_strchr(valid[hex], **s))
+	while (**s && ft_strchr(valid[hex], ft_tolower(**s)))
 	{
 		n++;
 		(*s)++;

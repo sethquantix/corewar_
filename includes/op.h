@@ -82,14 +82,14 @@ typedef struct		header_s
 
 typedef struct		s_op
 {
-	char		*name;
-	int			argc;
-	t_arg_type	args[MAX_ARGS_NUMBER];
-	int			opcode;
-	int			cycles;
-	char		*description;
-	int			octal;
-	int			dir_size;
+	char			*name;
+	int				argc;
+	t_arg_type		args[MAX_ARGS_NUMBER];
+	int				opcode;
+	int				cycles;
+	char			*description;
+	int				octal;
+	int				dir_size;
 }					t_op;
 
 #endif

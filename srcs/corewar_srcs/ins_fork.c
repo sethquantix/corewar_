@@ -12,14 +12,29 @@
 
 #include "corewar.h"
 
-void	i_fork(t_proc *proc, uint8_t mem[])
+void	i_fork(t_proc *proc)
 {
-	(void)proc;
-	(void)mem;
+	int 	addr;
+	int 	dest;
+
+	if (get_value(proc, &addr, 0, V_VALUE))
+		return ;
+	dest = idx_mod(proc->pc, addr);
+	if (proc->arena->verbose_lvl & V_LVL_OP)
+		ft_printf("P %4d | fork %d (%d)\n", proc->id,
+			addr, dest);
+	proc->arena->add_proc(proc->arena, proc, dest);
 }
 
-void	i_lfork(t_proc *proc, uint8_t mem[])
+void	i_lfork(t_proc *proc)
 {
-	(void)proc;
-	(void)mem;
+	int 	addr;
+
+	if (get_value(proc, &addr, 0, V_VALUE))
+		return ;
+	if (proc->arena->verbose_lvl & V_LVL_OP)
+		ft_printf("P %4d | lfork %d (%d)\n", proc->id,
+				  addr, mem_mod(addr + proc->pc));
+	addr = mem_mod(addr + proc->pc);
+	proc->arena->add_proc(proc->arena, proc, addr);
 }

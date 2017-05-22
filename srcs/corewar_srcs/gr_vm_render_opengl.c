@@ -48,10 +48,7 @@ static void		push_uniform(t_gr_vm *cxt)
 	glBindTexture(GL_TEXTURE_2D, cxt->lightText);
 	loc = glGetUniformLocation(cxt->program, "P");
 	load_projection(mat, 1, 1000, 1.3);
-//	up = v_cross(cxt->camera.fw, cxt->camera.lt);
-//	gluLookAt(cxt->camera.pos.x, cxt->camera.pos.y, cxt->camera.pos.z,
-//		cxt->camera.fw.x, cxt->camera.fw.y, cxt->camera.fw.z,
-//		up.x, up.y, up.z);
+	glUniformMatrix4fv(loc, 4, GL_FALSE, mat);
 }
 
 void			render_opengl(t_gr_vm *cxt, t_arena arena)

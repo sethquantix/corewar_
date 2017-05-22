@@ -1,5 +1,9 @@
 .name	"12"
 .comment "test"
 
-ld %121212, r2
-st r2, 512
+start:
+	ld	:plop, r2
+	st	r2, :start
+
+plop:
+	live %0xFFFFFFFF

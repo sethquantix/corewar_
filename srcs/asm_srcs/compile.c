@@ -77,6 +77,7 @@ void	fill_param(int type, t_inst *inst, t_expr *expr, int i)
 	static int	size[] = {REG_NUMBER_SIZE, 0, IND_SIZE, 0, IND_SIZE};
 	static int	oct[] = {REG_CODE, DIR_CODE, IND_CODE, DIR_CODE, IND_CODE};
 	char		*s;
+	char 		*p;
 
 	size[1] = inst->op->dir_size;
 	size[3] = inst->op->dir_size;
@@ -84,9 +85,15 @@ void	fill_param(int type, t_inst *inst, t_expr *expr, int i)
 	inst->oct |= inst->op->octal ? oct[type] << (6 - 2 * i) : 0;
 	s = ft_strdup(expr->expr);
 	inst->args[i] = ft_strdup(expr->expr);
+	p = inst->args[i];
+	while (*p)
+	{
+		*p = ft_tolower(*p);
+		p++;
+	}
 	if (type > 2)
 	{
-		inst->label[i] = ft_strsub(s, 2, ft_strlen(s + 2));
+		inst->label[i] = ft_strsub(s, 1 + (type == 3), ft_strlen(s + 1 + (type == 3)));
 		return ;
 	}
 	ft_strtolower(s);
@@ -211,7 +218,8 @@ void	compile(t_env *e)
 	i = 0;
 	while (i < e->n_file)
 	{
-		if ((expr = parse_asm(e->asm_parser, e->files[i], &source))) {
+		if ((expr = parse_asm(e->asm_parser, e->files[i], &source)))
+		{
 			file = read_asm(e, expr, source, e->files[i]);
 			file->print_header(file);
 			print_instructions(file);

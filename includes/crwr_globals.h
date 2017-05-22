@@ -15,8 +15,6 @@
 
 #include "includes.h"
 
-extern void		(*instructions[])(t_proc *, uint8_t []);
-extern t_token	g_crwr_opts[];
-
+extern t_token g_crwr_opts[];
 
 #endif

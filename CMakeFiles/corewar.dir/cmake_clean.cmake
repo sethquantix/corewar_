@@ -23,6 +23,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/corewar.dir/srcs/corewar_srcs/options.c.o"
   "CMakeFiles/corewar.dir/srcs/corewar_srcs/parse_args.c.o"
   "CMakeFiles/corewar.dir/srcs/corewar_srcs/process.c.o"
+  "CMakeFiles/corewar.dir/srcs/corewar_srcs/values.c.o"
   "CMakeFiles/corewar.dir/srcs/corewar_srcs/read_args.c.o"
   "CMakeFiles/corewar.dir/srcs/corewar_srcs/utils.c.o"
   "corewar.pdb"

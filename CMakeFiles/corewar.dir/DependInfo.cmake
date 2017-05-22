@@ -30,6 +30,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/process.c" "/Users/cchaumar/Documents/42projects/working/_corewar/CMakeFiles/corewar.dir/srcs/corewar_srcs/process.c.o"
   "/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/read_args.c" "/Users/cchaumar/Documents/42projects/working/_corewar/CMakeFiles/corewar.dir/srcs/corewar_srcs/read_args.c.o"
   "/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/utils.c" "/Users/cchaumar/Documents/42projects/working/_corewar/CMakeFiles/corewar.dir/srcs/corewar_srcs/utils.c.o"
+  "/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/values.c" "/Users/cchaumar/Documents/42projects/working/_corewar/CMakeFiles/corewar.dir/srcs/corewar_srcs/values.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")
 

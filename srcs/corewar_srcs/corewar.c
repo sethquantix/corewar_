@@ -14,8 +14,27 @@
 
 int		loop(t_arena *a)
 {
-	(void)a;
-	return (1);
+	t_list	*procs;
+
+	a->cycles++;
+	if (a->verbose_lvl & V_LVL_CYCLES)
+		ft_printf("It is now cycle %d\n", a->cycles);
+	procs = a->procs;
+	while (procs)
+	{
+		proc_exec_inst(procs->content);
+		procs = procs->next;
+	}
+	if (a->cycles >= a->last_check + a->ctd)
+		a->check(a);
+	if (a->cycles == a->dump_cycles)
+	{
+		dump(a->arena, DUMP_64);
+		if (a->opts & D_OPT) {
+			return (0);
+		}
+	}
+	return (a->alive != 0);
 }
 
 int		usage(char *s)
@@ -33,8 +52,8 @@ int		usage(char *s)
 	ft_printf("                    - 0  : Show only essentials\n");
 	ft_printf("                    - 1  : Show lives\n");
 	ft_printf("                    - 2  : Show cycles\n");
-	ft_printf("                    - 4  : Show operations (Params are NOT");
-	ft_printf("litteral ...)s\n");
+	ft_printf("                    - 4  : Show operations (Params are not ");
+	ft_printf("litteral ...)\n");
 	ft_printf("                    - 8  : Show deaths\n");
 	ft_printf("                    - 16 : Show PC movements (except zjmp)\n");
 	ft_printf("##############################################\n");
@@ -49,8 +68,9 @@ void	init(t_arena *arena)
 	arena->load = load_champ;
 	arena->check = check_process;
 	arena->add_proc = (t_f_add)add_proc;
+	arena->ctd = CYCLE_TO_DIE;
 	i = 0;
-	num = 0;
+	num = 1;
 	while (i < arena->champ_count)
 	{
 		if (!arena->champs[i].set)
@@ -63,13 +83,30 @@ void	init(t_arena *arena)
 	}
 }
 
-void	print_expr(t_expr *expr)
+//void	print_expr(t_expr *expr)
+//{
+//	while (expr)
+//	{
+//		ft_printf("(%s) %s\n", expr->rule, expr->expr);
+//		expr = expr->next;
+//	}
+//}
+
+void 	winner(t_arena *arena)
 {
-	while (expr)
+	int		i;
+	int 	w;
+
+	i = 0;
+	w = 0;
+	while (i < arena->champ_count)
 	{
-		ft_printf("(%s) %s\n", expr->rule, expr->expr);
-		expr = expr->next;
+		if (arena->champs[i].last_live > arena->champs[w].last_live)
+			w = i;
+		i++;
 	}
+	ft_printf("Contestant %d, \"%s\", has won !\n", arena->champs[w].num,
+		arena->champs[w].head.prog_name);
 }
 
 int		main(int ac, char **av)
@@ -95,5 +132,6 @@ int		main(int ac, char **av)
 	else
 		while (loop(&arena))
 			;
+	winner(&arena);
 	return (0);
 }

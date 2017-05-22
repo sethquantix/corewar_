@@ -36,7 +36,7 @@ int		load_champ(t_arena *a, t_champ *c)
 		return (err("Error : %s : Corrupted source (size doesn't match (%zu))\n",
 		c->file_name, len));
 	close(fd);
-	pc = (c->id - 1) * (MEM_SIZE / a->champ_count);
+	pc = (-c->id - 1) * (MEM_SIZE / a->champ_count);
 	ft_memcpy(a->arena + (p = a->add_proc(a, c, pc))->pc, c->source, len);
 	return (0);
 }
@@ -44,19 +44,44 @@ int		load_champ(t_arena *a, t_champ *c)
 t_proc	*add_proc(t_arena *a, t_champ *c, int pc)
 {
 	t_proc	*proc;
+	t_list	*node;
 	
 	proc = try(sizeof(t_proc));
 	proc->pc = pc;
-	proc->id = a->proc_id++;
-	proc->oct = 0;
-	proc->exec = proc_exec_inst;
+	proc->id = ++a->proc_id;
 	proc->get_inst = proc_read_inst;
 	proc->get_params = proc_read_params;
-	proc->reg[1] = c->num;
+	proc->reg[1] = c->id;
 	proc->arena = a;
 	proc->op = NULL;
-	proc->last_live = 0;
-	ft_lstadd_end(&a->procs, ft_lstnew(&proc, sizeof(t_proc *)));
+	node = ft_lstnew(0, sizeof(t_proc *));
+	node->content = proc;
+	ft_lstadd(&a->procs, node);
+	a->alive++;
+	return (proc);
+}
+
+t_proc	*fork_proc(t_arena *a, t_proc *p, int pc)
+{
+	t_proc	*proc;
+	t_list	*node;
+
+	proc = try(sizeof(t_proc));
+	proc->pc = pc;
+	proc->id = ++a->proc_id;
+	proc->oct = 0;
+	proc->get_inst = proc_read_inst;
+	proc->get_params = proc_read_params;
+	memcpy(proc->reg, p->reg, sizeof(p->reg));
+	proc->arena = a;
+	proc->op = NULL;
+	proc->cycles_left = 0;
+	proc->last_live = p->last_live;
+	proc->carry = p->carry;
+	node = ft_lstnew(0, sizeof(t_proc *));
+	node->content = proc;
+	ft_lstadd(&a->procs, node);
+	a->alive++;
 	return (proc);
 }
 
@@ -73,4 +98,5 @@ void	set_champs(t_arena *a)
 			die("", EXIT_FAILURE);
 		else
 			i++;
+	a->add_proc = (t_f_add)fork_proc;
 }

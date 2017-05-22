@@ -12,6 +12,11 @@
 
 #include "corewar.h"
 
+t_val	val(void *p, uint8_t s)
+{
+	return ((t_val){p, s});
+}
+
 int		mem_mod(int addr)
 {
 	addr %= MEM_SIZE;
@@ -22,7 +27,7 @@ int		mem_mod(int addr)
 
 int		idx_mod(int pc, int addr)
 {
-	return (mem_mod(pc + (addr - pc) % IDX_MOD));
+	return (mem_mod(pc + (addr % IDX_MOD)));
 }
 
 void	write_mem(int addr, t_val v, uint8_t mem[])
@@ -43,6 +48,7 @@ void	read_mem(int addr, t_val v, uint8_t mem[])
 	uint8_t		*t;
 	int			i;
 
+	ft_bzero(v.p, v.s);
 	t = v.p;
 	i = 0;
 	while (i++ < v.s)
