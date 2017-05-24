@@ -58,6 +58,7 @@ void	i_sti(t_proc *proc)
 	addr += off;
 	write_mem(idx_mod(proc->pc, addr), val(&proc->reg[reg], sizeof(int)),
 		proc->arena->arena);
+	set_mem(proc->arena->mem, addr, 4, proc->player);
 }
 
 void	i_lld(t_proc *proc)

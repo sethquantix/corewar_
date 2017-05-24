@@ -12,6 +12,11 @@
 
 #include "corewar.h"
 
+t_val	val(void *p, uint8_t s)
+{
+	return ((t_val){p, s});
+}
+
 int 	wrap_size(int v, int size)
 {
 	if (size == 4)

@@ -61,8 +61,10 @@ void		i_lfork(t_proc *proc);
 t_val		val(void *p, uint8_t s);
 int			mem_mod(int addr);
 int			idx_mod(int pc, int addr);
+void 		winner(t_arena *arena);
 void		write_mem(int addr, t_val v, uint8_t mem[]);
 void		read_mem(int addr, t_val v, uint8_t mem[]);
+void		set_mem(uint32_t *mem, int addr, int size, int player);
 int 		get_value(t_proc *p, int *v, int index, t_type type);
 
 int			err(const char *format, ...);

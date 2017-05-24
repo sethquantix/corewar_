@@ -1,26 +1,22 @@
 #include "corewar.h"
 #include "gr_vm_internals.h"
 
-static void		stream_transform(t_gr_vm *cxt)
+static void		stream_transform(t_gr_vm *cxt, t_arena *a)
 {
 	int			i;
-	static long e = 0;
 
 	i = 0;
-	float t = (float)(e++);
 	while (i < MEM_SIZE)
 	{
-//        int change = (int)(10 * (float)rand() / RAND_MAX);
-//		if (change > 8)
-//            cxt->scale[i] = 1 + 10 * (float)rand() / RAND_MAX;
-		cxt->scale[i] = 5 + 4 * sin(0.05 * (t - (float)i) / M_2_PI);
-//		cxt->model[i][1] = 5 + 4 * sin(0.01 * (t - (float)i) / M_2_PI);
+		cxt->scale[i] = 1 + 8 * (float)a->arena[i] / 255.0;
         cxt->model[i][7] += (cxt->scale[i] - cxt->model[i][7]) / (60 * TIME_TRAVEL);
 		i++;
 	}
 	glBindVertexArray(cxt->vao);
 	glBindBuffer(GL_ARRAY_BUFFER, cxt->matVBO);
 	glBufferData(GL_ARRAY_BUFFER, MEM_SIZE * 9 * sizeof(float), cxt->model, GL_DYNAMIC_DRAW);
+	glBindBuffer(GL_ARRAY_BUFFER, cxt->valVBO);
+	glBufferData(GL_ARRAY_BUFFER, MEM_SIZE * sizeof(uint32_t), a->mem, GL_DYNAMIC_DRAW);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
@@ -28,16 +24,17 @@ static void		push_uniform(t_gr_vm *cxt)
 {
 	GLint			loc;
 	GLfloat			mat[16];
-	GLfloat			t[4];
 	static float	light[MEM_SIZE * 4];
 
 	loc = glGetUniformLocation(cxt->program, "textDiffuse");
 	glUniform1i(loc, 0);
 	loc = glGetUniformLocation(cxt->program, "textLight");
 	glUniform1i(loc, 1);
-	loc = glGetUniformLocation(cxt->program, "CamPos");
-	ft_memcpy(t, &cxt->camera.pos, 16);
-	glUniform4fv(loc, 4, t);
+	loc = glGetUniformLocation(cxt->program, "V");
+	glUniformMatrix4fv(loc, 1, GL_FALSE, cxt->camera.m.t);
+	loc = glGetUniformLocation(cxt->program, "P");
+	load_projection(mat, 1, 1000, 1.3);
+	glUniformMatrix4fv(loc, 1, GL_FALSE, mat);
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, cxt->diffuseTexture);
 	load_light(light, light, cxt->model, cxt);
@@ -46,15 +43,13 @@ static void		push_uniform(t_gr_vm *cxt)
 	cxt->lightText = light_to_texture(light);
 	glActiveTexture(GL_TEXTURE1);
 	glBindTexture(GL_TEXTURE_2D, cxt->lightText);
-	loc = glGetUniformLocation(cxt->program, "P");
-	load_projection(mat, 1, 1000, 1.3);
-	glUniformMatrix4fv(loc, 4, GL_FALSE, mat);
+
 }
 
-void			render_opengl(t_gr_vm *cxt, t_arena arena)
+void			render_opengl(t_gr_vm *cxt, t_arena *arena)
 {
 	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
-	stream_transform(cxt);
+	stream_transform(cxt, arena);
 	glUseProgram(cxt->program);
 	push_uniform(cxt);
 	glDrawArraysInstanced(GL_TRIANGLES, 0, 36, MEM_SIZE);

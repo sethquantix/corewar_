@@ -59,6 +59,7 @@ typedef struct	s_proc
 	int				last_live;
 	int				die;
 	unsigned char	oct;
+	int				player;
 }				t_proc;
 
 typedef struct	s_arena

@@ -61,15 +61,13 @@ void load_light(uint32_t in[MEM_SIZE], float out[MEM_SIZE * 4], float models[][9
 			out[i * 4 + 1] = !(float)cxt->text42[i * 3 + 1] * (float)rand() / RAND_MAX;
 			out[i * 4 + 0] = !(float)cxt->text42[i * 3 + 2] * (float)rand() / RAND_MAX;
 		}
+		else
+		{
+			out[i * 4 + 2] = 0;
+			out[i * 4 + 1] = 0;
+			out[i * 4 + 0] = 0;
+		}
 		i++;
-	}
-	if (!cxt->anim42)
-	{
-		int e = (rand() % MEM_SIZE) * 4;
-		cxt->col[e] =  (float)rand() / RAND_MAX;
-		cxt->col[e + 1] = (float)rand() / RAND_MAX;
-		cxt->col[e + 2] = (float)rand() / RAND_MAX;
-        i = 0;
 	}
 }
 

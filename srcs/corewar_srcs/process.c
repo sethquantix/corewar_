@@ -93,11 +93,14 @@ void	proc_exec_inst(t_proc *p)
 
 	if (!p->op && p->get_inst(p, p->arena->arena))
 	{
-		p->pc++;
+		UNSET_PLAYER(p->arena->mem[p->pc], p->player);
+		p->pc = mem_mod(p->pc + 1);
+		SET_PLAYER(p->arena->mem[p->pc], p->player);
 		return ;
 	}
 	if (p->cycles_left && --p->cycles_left)
 		return ;
+	UNSET_PLAYER(p->arena->mem[p->pc], p->player);
 	err = p->get_params(p, p->arena->arena);
 	if (!err)
 		instructions[p->op->opcode](p);
@@ -108,4 +111,5 @@ void	proc_exec_inst(t_proc *p)
 		p->pc += inst_size(p);
 	p->pc = mem_mod(p->pc);
 	p->op = NULL;
+	SET_PLAYER(p->arena->mem[p->pc], p->player);
 }

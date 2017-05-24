@@ -12,9 +12,28 @@
 
  #include "corewar.h"
 
+void	update_mem(uint32_t	*mem)
+{
+	int			i;
+	uint32_t	o;
+
+	i = 0;
+	while (i < MEM_SIZE)
+	{
+		if (mem[i] & 0xFFFF0000)
+		{
+			o = (mem[i] >> 16) - 1;
+			mem[i] &= 0xFF;
+			mem[i] |= o << 16;
+		}
+		i++;
+	}
+}
+
 int		loop(t_arena *a)
 {
 	t_list	*procs;
+	update_mem(a->mem);
 
 	a->cycles++;
 	if (a->verbose_lvl & V_LVL_CYCLES)
@@ -130,8 +149,10 @@ int		main(int ac, char **av)
 		gr_vm_end(&context);
 	}
 	else
+	{
 		while (loop(&arena))
 			;
-	winner(&arena);
+		winner(&arena);
+	}
 	return (0);
 }

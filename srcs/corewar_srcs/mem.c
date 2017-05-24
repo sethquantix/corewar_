@@ -12,9 +12,18 @@
 
 #include "corewar.h"
 
-t_val	val(void *p, uint8_t s)
+void	set_mem(uint32_t *mem, int addr, int size, int player)
 {
-	return ((t_val){p, s});
+	int 	i;
+
+	i = 0;
+	while (i < size)
+	{
+		mem[mem_mod(i + addr)] &= 0xF;
+		mem[mem_mod(i + addr)] |= (600 << 16);
+		mem[mem_mod(i + addr)] |= (1 << (4 + player));
+		i++;
+	}
 }
 
 int		mem_mod(int addr)

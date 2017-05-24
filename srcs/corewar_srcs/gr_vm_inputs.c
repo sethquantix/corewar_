@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "corewar.h"
+#include "gr_vm_internals.h"
 
 void		quit_press(void *data, t_gr_vm *vm, t_key *key)
 {
@@ -18,3 +19,12 @@ void		quit_press(void *data, t_gr_vm *vm, t_key *key)
 	(void)data;
 	vm->run = 0;
 }
+
+void		speed(void *data, t_gr_vm *vm, t_key *key)
+{
+	(void)data;
+	vm->cpf += key->keycode == SDLK_KP_MINUS ? -CPF_DELTA : CPF_DELTA;
+	vm->cpf = vm->cpf > 100 ? 100 : vm->cpf;
+	vm->cpf = vm->cpf < 0 ? 0 : vm->cpf;
+}
+

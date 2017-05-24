@@ -66,6 +66,7 @@ void	i_st(t_proc *proc)
 	{
 		addr = idx_mod(proc->pc, addr);
 		write_mem(addr, val(&proc->reg[reg], sizeof(int)), proc->arena->arena);
+		set_mem(proc->arena->mem, addr, 4, proc->player);
 	}
 }
 

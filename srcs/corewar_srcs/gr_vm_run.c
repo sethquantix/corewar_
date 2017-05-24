@@ -13,15 +13,35 @@
 #include "corewar.h"
 #include "gr_vm_internals.h"
 
+void		update_name(t_gr_vm *ctx, t_arena *a)
+{
+	const char 	title[] = "corewar ";
+	char 		*t;
+
+	t = ft_strjoinfree(title, ft_itoa(a->cycles), 2);
+	SDL_SetWindowTitle(ctx->arena, t);
+	free(t);
+}
+
 void		gr_vm_run(t_vm_loop loop, void *data, t_gr_vm *ctx)
 {
 	SDL_Event	e;
 	void 		(*handler)(void *, t_gr_vm *, SDL_Event *);
 	int			i;
+	int			c;
 
 	while (ctx->run)
 	{
-		loop(data);
+		c = 0;
+		update_name(ctx, data);
+		while (c++ < ctx->cpf)
+			if (loop(data) == 0)
+				ctx->cpf = -1;
+		if (ctx->cpf == -1)
+		{
+			winner(data);
+			ctx->cpf = -2;
+		}
 		while (SDL_PollEvent(&e))
 			if ((handler = get_handler(e.type)))
 				handler(data, ctx, &e);
@@ -32,7 +52,7 @@ void		gr_vm_run(t_vm_loop loop, void *data, t_gr_vm *ctx)
 				ctx->keys[i].hold(data, ctx, ctx->keys + i);
 			i++;
 		}
-		render_opengl(ctx, *(t_arena*)data);
+		render_opengl(ctx, data);
 		SDL_UpdateWindowSurface(ctx->UI);
 	}
 }

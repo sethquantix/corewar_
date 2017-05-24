@@ -16,15 +16,22 @@
 #include "includes.h"
 #include "gr_types.h"
 
+typedef enum 	e_faces
+{
+	F_DOWN,
+	F_UP,
+	F_LEFT,
+	F_RIGHT,
+	F_FRONT,
+	F_BACK
+}				t_faces;
+
 typedef struct	s_cam
 {
 	t_vec4		pos;
-	t_vec4		fw;
-	t_vec4		lt;
-	float 		v;
-	float 		r;
-	float 		phi;
-	float 		the;
+	t_mat		m;
+	int			x;
+	int			y;
 }				t_cam;
 
 typedef struct	s_gr_vm
@@ -37,6 +44,8 @@ typedef struct	s_gr_vm
 	GLuint			gldepth;
 	GLuint			program;
 	GLuint			matVBO;
+	GLuint			valVBO;
+	GLuint 			faceVBO;
 	GLuint			vao;
 	GLuint			lightText;
 	GLuint			diffuseTexture;
@@ -50,6 +59,7 @@ typedef struct	s_gr_vm
 	struct s_key	*keys;
 	int				nkeys;
 	int				run;
+	int 			cpf;
 }				t_gr_vm;
 
 typedef struct	s_key

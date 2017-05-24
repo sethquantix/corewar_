@@ -14,30 +14,31 @@
 
 int		load_champ(t_arena *a, t_champ *c)
 {
-	int		fd;
-	size_t	len;
-	t_proc	*p;
-	int		pc;
+	int fd;
+	size_t len;
+	t_proc *p;
+	int pc;
 
 	if ((fd = open(c->file_name, O_RDONLY)) == -1)
 		return (-1);
 	if (read(fd, &c->head, sizeof(header_t)) != sizeof(header_t))
 		return (err("Error : %s : File too small to be a champion.\n",
-		c->file_name));
+					c->file_name));
 	ft_endian(&c->head.prog_size, 4);
 	ft_endian(&c->head.magic, 4);
 	ft_printf("* Player %d, %s (%d bytes) : %s\n", c->num, c->head.prog_name,
-		c->head.prog_size, c->head.prog_desc);
+			  c->head.prog_size, c->head.prog_desc);
 	if (c->head.magic != COREWAR_EXEC_MAGIC)
 		return (err("Error : %s : This does not appear to be a champion.\n",
-		c->file_name));
+					c->file_name));
 	c->source = try(c->head.prog_size);
 	if ((len = read(fd, c->source, c->head.prog_size)) != c->head.prog_size)
 		return (err("Error : %s : Corrupted source (size doesn't match (%zu))\n",
-		c->file_name, len));
+					c->file_name, len));
 	close(fd);
 	pc = (-c->id - 1) * (MEM_SIZE / a->champ_count);
 	ft_memcpy(a->arena + (p = a->add_proc(a, c, pc))->pc, c->source, len);
+	set_mem(a->mem, p->pc, len, p->player);
 	return (0);
 }
 
@@ -54,6 +55,7 @@ t_proc	*add_proc(t_arena *a, t_champ *c, int pc)
 	proc->reg[1] = c->id;
 	proc->arena = a;
 	proc->op = NULL;
+	proc->player = -c->id - 1;
 	node = ft_lstnew(0, sizeof(t_proc *));
 	node->content = proc;
 	ft_lstadd(&a->procs, node);
@@ -78,6 +80,7 @@ t_proc	*fork_proc(t_arena *a, t_proc *p, int pc)
 	proc->cycles_left = 0;
 	proc->last_live = p->last_live;
 	proc->carry = p->carry;
+	proc->player = p->player;
 	node = ft_lstnew(0, sizeof(t_proc *));
 	node->content = proc;
 	ft_lstadd(&a->procs, node);

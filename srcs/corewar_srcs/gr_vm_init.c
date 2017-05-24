@@ -37,6 +37,8 @@ void	set_keys(t_key **keys, int *nkeys)
 	*nkeys += add_key(keys, SDLK_s, cam_trans_back, cam_trans_back);
 	*nkeys += add_key(keys, SDLK_d, cam_trans_right, cam_trans_right);
 	*nkeys += add_key(keys, SDLK_a, cam_trans_left, cam_trans_left);
+	*nkeys += add_key(keys, SDLK_KP_PLUS, speed, NULL);
+	*nkeys += add_key(keys, SDLK_KP_MINUS, speed, NULL);
 	*nkeys += add_key(keys, SDLK_r, 	toggle_42, NULL);
 }
 
@@ -49,17 +51,16 @@ void	set_sdl_attributes()
 	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
 	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 32);
 	SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
+	SDL_SetRelativeMouseMode(SDL_TRUE);
 }
 
 void 	init_cam(t_cam *cam)
 {
-	cam->pos = vec4(0, 0, 0, 0);
-	cam->fw = vec4(0, 0, 1, 0);
-	cam->lt = vec4(1, 0, 0, 0);
-	cam->phi = 0;
-	cam->the = 0;
-	cam->r = ROT;
-	cam->v = SPEED;
+	cam->pos = vec4(0, -10, -100, 0);
+	mat_ident(&cam->m);
+	cam->m.r[0].w = cam->pos.x;
+	cam->m.r[1].w = cam->pos.y;
+	cam->m.r[2].w = cam->pos.z;
 }
 
 void	gr_vm_init(t_gr_vm *cxt)
@@ -76,6 +77,7 @@ void	gr_vm_init(t_gr_vm *cxt)
 		WIN_HEIGHT, 0);
 	SDL_GL_SetSwapInterval(1);
 	cxt->run = 1;
+	cxt->cpf = 0;
 	set_keys(&cxt->keys, &cxt->nkeys);
 	cxt->glcontext = SDL_GL_CreateContext(cxt->arena);
 	glewInit();

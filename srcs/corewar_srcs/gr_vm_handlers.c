@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "corewar.h"
+#include "gr_vm_internals.h"
 
 void		quit_handler(void *data, t_gr_vm *vm, SDL_Event *e)
 {
@@ -42,6 +43,12 @@ void		mouse_button_handler(void *data, t_gr_vm *vm, SDL_Event *e)
 	}
 }
 
+void		mouse_move_handler(void *data, t_gr_vm *vm, SDL_Event *e)
+{
+	(void)data;
+	rotate(vm, e->motion.xrel, e->motion.yrel);
+}
+
 void		key_handler(void *data, t_gr_vm *vm, SDL_Event *e)
 {
 	int		i;
@@ -67,7 +74,7 @@ t_handler	get_handler(int type)
 	t_event	events[] = {
 		{SDL_QUIT, quit_handler}, {SDL_MOUSEBUTTONDOWN, mouse_button_handler},
 		{SDL_MOUSEBUTTONUP, mouse_button_handler}, {SDL_KEYDOWN, key_handler},
-		{SDL_KEYUP, key_handler}, {0, 0}};
+		{SDL_KEYUP, key_handler}, {SDL_MOUSEMOTION, mouse_move_handler}, {0, 0}};
 	int		i;
 
 	i = 0;
