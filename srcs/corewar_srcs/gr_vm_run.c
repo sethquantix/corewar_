@@ -36,12 +36,11 @@ void		gr_vm_run(t_vm_loop loop, void *data, t_gr_vm *ctx)
 		update_name(ctx, data);
 		while (c++ < ctx->cpf)
 			if (loop(data) == 0)
+			{
 				ctx->cpf = -1;
-		if (ctx->cpf == -1)
-		{
-			winner(data);
-			ctx->cpf = -2;
-		}
+				winner(data);
+				break ;
+			}
 		while (SDL_PollEvent(&e))
 			if ((handler = get_handler(e.type)))
 				handler(data, ctx, &e);

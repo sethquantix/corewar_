@@ -17,6 +17,7 @@ out vec3    pos_color;
 out vec2    uv;
 out vec3    normal;
 out vec3    scale;
+out vec3    camPos;
 
 flat out uint data;
 flat out int index;
@@ -36,10 +37,11 @@ void main(void)
 	gl_Position.xyz += in_trans;
 	gl_Position.xyz += cam;
 	gl_Position *= inverse(rot);
+	pos_color = gl_Position.xyz;
 	gl_Position *= P;
 	index = gl_InstanceID;
-	pos_color = cam;
 	data = in_data;
 	face = in_face;
 	scale = in_scale;
+	camPos = cam;
 }

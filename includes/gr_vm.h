@@ -15,8 +15,8 @@
 # include "includes.h"
 # include "gr_structs.h"
 # include "gr_types.h"
-# define WIN_WIDTH	1920
-# define WIN_HEIGHT	1080
+# define WIN_WIDTH	2560
+# define WIN_HEIGHT	1440
 
 void	gr_vm_init(t_gr_vm *cxt);
 void	gr_vm_run(t_vm_loop loop, void *data, t_gr_vm *ctx);

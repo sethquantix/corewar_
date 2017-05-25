@@ -100,11 +100,12 @@ void main(void)
 {
     bool    proc = (data & uint(0xF)) != 0;
     int     o = 0;
+    int     p = int(data & uint(0xF0)) >> 4;
     float   s = face == 1 ? 1 : scale.y;
-    float   k = 0.25 + 0.75 * float(data >> 16) / 600.0;
+    float   k = 0.35 + 0.65 * float(data >> 16) / 600.0;
 
     for (int i = 0; i < 4; i++)
-        if ((data & uint(1 << (i + 4))) != 0)
+        if ((p & (1 << i)) != 0)
             o = i + 1;
     vec3    c = proc && face == 1 ? vec3(0.9) : colors[o];
 
@@ -116,7 +117,7 @@ void main(void)
     {
         float   lc = 0;
         float   v = 0.1;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 1; i++) {
             float   dv = v + 0.15 * i;
             float   ku = pow(1 + (.01 / s) - abs(uv.y - (1 - dv / s)), 50 * s);
             float   kd = pow(1 + (.01 / s) - abs(uv.y - (dv / s)), 50 * s);

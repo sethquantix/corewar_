@@ -120,6 +120,8 @@ void 	winner(t_arena *arena)
 	w = 0;
 	while (i < arena->champ_count)
 	{
+		ft_printf("last live %d : %d\n", arena->champs[i].num,
+			arena->champs[i].last_live);
 		if (arena->champs[i].last_live > arena->champs[w].last_live)
 			w = i;
 		i++;

@@ -24,13 +24,15 @@ void	i_live(t_proc *proc)
 		ft_printf("P %4d | live %d\n", proc->id, proc->params[0]);
 	proc->last_live = proc->arena->cycles;
 	proc->arena->nbr_lives++;
-	if ((proc->arena->verbose_lvl & V_LVL_LIVES) && (v = ft_arr_find(c,
-		proc->params, (int (*)(void *, void *))cmp_id)) != NULL)
+	if ((v = ft_arr_find(c, proc->params, (int (*)(void *, void *))cmp_id))
+		!= NULL)
 	{
-		ft_printf("Player %d (%s) is said to be alive\n", v->num, v->head.prog_name);
 		v->nbr_live++;
 		v->last_live = proc->arena->cycles;
 	}
+	if (proc->arena->verbose_lvl & V_LVL_LIVES)
+		ft_printf("Player %d (%s) is said to be alive\n", v->num,
+				  v->head.prog_name);
 }
 
 void	i_ld(t_proc *proc)
