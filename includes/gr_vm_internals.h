@@ -15,12 +15,13 @@
 
 #include "includes.h"
 #include "gr_structs.h"
+#include "crwr_structs.h"
 #include "gr_types.h"
 
 # define SDL_POS	SDL_WINDOWPOS_UNDEFINED
 # define SDL_FLAGS	SDL_WINDOW_OPENGL
 
-# define TIME_TRAVEL    0.1f
+# define TIME_TRAVEL    10.0f
 # define ROT			0.5f
 # define SPEED			1.0f
 # define CPF_DELTA		1
@@ -44,6 +45,8 @@ void		cam_trans_forwad(void *data, t_gr_vm *vm, t_key *key);
 void		cam_trans_back(void *data, t_gr_vm *vm, t_key *key);
 void		cam_trans_right(void *data, t_gr_vm *vm, t_key *key);
 void		cam_trans_left(void *data, t_gr_vm *vm, t_key *key);
+void		cam_trans_up(void *data, t_gr_vm *vm, t_key *key);
+void		cam_trans_down(void *data, t_gr_vm *vm, t_key *key);
 
 void 		speed(void *data, t_gr_vm *vm, t_key *key);
 
@@ -54,5 +57,6 @@ GLuint		light_to_texture(float l[MEM_SIZE]);
 void		load_light(uint32_t in[MEM_SIZE], float out[4 * MEM_SIZE], float models[][9], t_gr_vm *cxt);
 void		load_bmp_to_42(char *b, uint32_t *out);
 void		toggle_42(void *data, t_gr_vm *vm, t_key *key);
+GLuint		gen_texture(const char *font_file);
 
 #endif

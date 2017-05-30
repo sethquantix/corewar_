@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD 11)
 SET(GCC_OPTIONS "-g -fsanitize=address")
 
 include_directories(includes
+		soil2/incs
         libs/libft)
 
 set(CRWR_FILES
@@ -33,6 +34,7 @@ set(CRWR_FILES
     srcs/corewar_srcs/gr_vm_load_texture.c
     srcs/corewar_srcs/gr_vm_matrix.c
     srcs/corewar_srcs/gr_vm_render_opengl.c
+	srcs/corewar_srcs/gr_gen_tex.c
     srcs/corewar_srcs/gr_vm_run.c
     srcs/corewar_srcs/ins_basic.c
     srcs/corewar_srcs/ins_calc.c
@@ -67,6 +69,7 @@ include_directories(${OPENGL_INCLUDE_DIR})
 
 LINK_DIRECTORIES(libs/libft
         libs/glhandler
+		soil2
         $ENV{HOME}/.brew/lib)
 
 add_executable(corewar ${CRWR_FILES})
@@ -76,8 +79,10 @@ target_link_libraries(corewar
         ft
         glhandler
         sdl2
+		sdl2_ttf
         glew
         glfw
+		SOIL2
         ${OPENGL_LIBRARIES}
         ${GCC_OPTIONS})
 

@@ -369,9 +369,33 @@ CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_render_opengl.c.o.provides: CMake
 CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_render_opengl.c.o.provides.build: CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_render_opengl.c.o
 
 
+CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_gen_tex.c.o: CMakeFiles/corewar.dir/flags.make
+CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_gen_tex.c.o: srcs/corewar_srcs/gr_gen_tex.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cchaumar/Documents/42projects/working/_corewar/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_gen_tex.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_gen_tex.c.o   -c /Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/gr_gen_tex.c
+
+CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_gen_tex.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_gen_tex.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/gr_gen_tex.c > CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_gen_tex.c.i
+
+CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_gen_tex.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_gen_tex.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/gr_gen_tex.c -o CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_gen_tex.c.s
+
+CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_gen_tex.c.o.requires:
+
+.PHONY : CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_gen_tex.c.o.requires
+
+CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_gen_tex.c.o.provides: CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_gen_tex.c.o.requires
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_gen_tex.c.o.provides.build
+.PHONY : CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_gen_tex.c.o.provides
+
+CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_gen_tex.c.o.provides.build: CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_gen_tex.c.o
+
+
 CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_run.c.o: CMakeFiles/corewar.dir/flags.make
 CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_run.c.o: srcs/corewar_srcs/gr_vm_run.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cchaumar/Documents/42projects/working/_corewar/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_run.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cchaumar/Documents/42projects/working/_corewar/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_run.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_run.c.o   -c /Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/gr_vm_run.c
 
 CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_run.c.i: cmake_force
@@ -395,7 +419,7 @@ CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_run.c.o.provides.build: CMakeFile
 
 CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_basic.c.o: CMakeFiles/corewar.dir/flags.make
 CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_basic.c.o: srcs/corewar_srcs/ins_basic.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cchaumar/Documents/42projects/working/_corewar/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_basic.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cchaumar/Documents/42projects/working/_corewar/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_basic.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_basic.c.o   -c /Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/ins_basic.c
 
 CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_basic.c.i: cmake_force
@@ -419,7 +443,7 @@ CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_basic.c.o.provides.build: CMakeFile
 
 CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_calc.c.o: CMakeFiles/corewar.dir/flags.make
 CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_calc.c.o: srcs/corewar_srcs/ins_calc.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cchaumar/Documents/42projects/working/_corewar/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_calc.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cchaumar/Documents/42projects/working/_corewar/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_calc.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_calc.c.o   -c /Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/ins_calc.c
 
 CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_calc.c.i: cmake_force
@@ -443,7 +467,7 @@ CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_calc.c.o.provides.build: CMakeFiles
 
 CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_fork.c.o: CMakeFiles/corewar.dir/flags.make
 CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_fork.c.o: srcs/corewar_srcs/ins_fork.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cchaumar/Documents/42projects/working/_corewar/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_fork.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cchaumar/Documents/42projects/working/_corewar/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_fork.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_fork.c.o   -c /Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/ins_fork.c
 
 CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_fork.c.i: cmake_force
@@ -467,7 +491,7 @@ CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_fork.c.o.provides.build: CMakeFiles
 
 CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_index.c.o: CMakeFiles/corewar.dir/flags.make
 CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_index.c.o: srcs/corewar_srcs/ins_index.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cchaumar/Documents/42projects/working/_corewar/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_index.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cchaumar/Documents/42projects/working/_corewar/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_index.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_index.c.o   -c /Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/ins_index.c
 
 CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_index.c.i: cmake_force
@@ -491,7 +515,7 @@ CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_index.c.o.provides.build: CMakeFile
 
 CMakeFiles/corewar.dir/srcs/corewar_srcs/mem.c.o: CMakeFiles/corewar.dir/flags.make
 CMakeFiles/corewar.dir/srcs/corewar_srcs/mem.c.o: srcs/corewar_srcs/mem.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cchaumar/Documents/42projects/working/_corewar/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object CMakeFiles/corewar.dir/srcs/corewar_srcs/mem.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cchaumar/Documents/42projects/working/_corewar/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object CMakeFiles/corewar.dir/srcs/corewar_srcs/mem.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/corewar.dir/srcs/corewar_srcs/mem.c.o   -c /Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/mem.c
 
 CMakeFiles/corewar.dir/srcs/corewar_srcs/mem.c.i: cmake_force
@@ -515,7 +539,7 @@ CMakeFiles/corewar.dir/srcs/corewar_srcs/mem.c.o.provides.build: CMakeFiles/core
 
 CMakeFiles/corewar.dir/srcs/corewar_srcs/op.c.o: CMakeFiles/corewar.dir/flags.make
 CMakeFiles/corewar.dir/srcs/corewar_srcs/op.c.o: srcs/corewar_srcs/op.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cchaumar/Documents/42projects/working/_corewar/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object CMakeFiles/corewar.dir/srcs/corewar_srcs/op.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cchaumar/Documents/42projects/working/_corewar/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building C object CMakeFiles/corewar.dir/srcs/corewar_srcs/op.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/corewar.dir/srcs/corewar_srcs/op.c.o   -c /Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/op.c
 
 CMakeFiles/corewar.dir/srcs/corewar_srcs/op.c.i: cmake_force
@@ -539,7 +563,7 @@ CMakeFiles/corewar.dir/srcs/corewar_srcs/op.c.o.provides.build: CMakeFiles/corew
 
 CMakeFiles/corewar.dir/srcs/corewar_srcs/opts_tokens.c.o: CMakeFiles/corewar.dir/flags.make
 CMakeFiles/corewar.dir/srcs/corewar_srcs/opts_tokens.c.o: srcs/corewar_srcs/opts_tokens.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cchaumar/Documents/42projects/working/_corewar/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building C object CMakeFiles/corewar.dir/srcs/corewar_srcs/opts_tokens.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cchaumar/Documents/42projects/working/_corewar/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building C object CMakeFiles/corewar.dir/srcs/corewar_srcs/opts_tokens.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/corewar.dir/srcs/corewar_srcs/opts_tokens.c.o   -c /Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/opts_tokens.c
 
 CMakeFiles/corewar.dir/srcs/corewar_srcs/opts_tokens.c.i: cmake_force
@@ -563,7 +587,7 @@ CMakeFiles/corewar.dir/srcs/corewar_srcs/opts_tokens.c.o.provides.build: CMakeFi
 
 CMakeFiles/corewar.dir/srcs/corewar_srcs/options.c.o: CMakeFiles/corewar.dir/flags.make
 CMakeFiles/corewar.dir/srcs/corewar_srcs/options.c.o: srcs/corewar_srcs/options.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cchaumar/Documents/42projects/working/_corewar/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building C object CMakeFiles/corewar.dir/srcs/corewar_srcs/options.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cchaumar/Documents/42projects/working/_corewar/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building C object CMakeFiles/corewar.dir/srcs/corewar_srcs/options.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/corewar.dir/srcs/corewar_srcs/options.c.o   -c /Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/options.c
 
 CMakeFiles/corewar.dir/srcs/corewar_srcs/options.c.i: cmake_force
@@ -587,7 +611,7 @@ CMakeFiles/corewar.dir/srcs/corewar_srcs/options.c.o.provides.build: CMakeFiles/
 
 CMakeFiles/corewar.dir/srcs/corewar_srcs/parse_args.c.o: CMakeFiles/corewar.dir/flags.make
 CMakeFiles/corewar.dir/srcs/corewar_srcs/parse_args.c.o: srcs/corewar_srcs/parse_args.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cchaumar/Documents/42projects/working/_corewar/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building C object CMakeFiles/corewar.dir/srcs/corewar_srcs/parse_args.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cchaumar/Documents/42projects/working/_corewar/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building C object CMakeFiles/corewar.dir/srcs/corewar_srcs/parse_args.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/corewar.dir/srcs/corewar_srcs/parse_args.c.o   -c /Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/parse_args.c
 
 CMakeFiles/corewar.dir/srcs/corewar_srcs/parse_args.c.i: cmake_force
@@ -611,7 +635,7 @@ CMakeFiles/corewar.dir/srcs/corewar_srcs/parse_args.c.o.provides.build: CMakeFil
 
 CMakeFiles/corewar.dir/srcs/corewar_srcs/process.c.o: CMakeFiles/corewar.dir/flags.make
 CMakeFiles/corewar.dir/srcs/corewar_srcs/process.c.o: srcs/corewar_srcs/process.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cchaumar/Documents/42projects/working/_corewar/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building C object CMakeFiles/corewar.dir/srcs/corewar_srcs/process.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cchaumar/Documents/42projects/working/_corewar/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building C object CMakeFiles/corewar.dir/srcs/corewar_srcs/process.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/corewar.dir/srcs/corewar_srcs/process.c.o   -c /Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/process.c
 
 CMakeFiles/corewar.dir/srcs/corewar_srcs/process.c.i: cmake_force
@@ -635,7 +659,7 @@ CMakeFiles/corewar.dir/srcs/corewar_srcs/process.c.o.provides.build: CMakeFiles/
 
 CMakeFiles/corewar.dir/srcs/corewar_srcs/values.c.o: CMakeFiles/corewar.dir/flags.make
 CMakeFiles/corewar.dir/srcs/corewar_srcs/values.c.o: srcs/corewar_srcs/values.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cchaumar/Documents/42projects/working/_corewar/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building C object CMakeFiles/corewar.dir/srcs/corewar_srcs/values.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cchaumar/Documents/42projects/working/_corewar/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building C object CMakeFiles/corewar.dir/srcs/corewar_srcs/values.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/corewar.dir/srcs/corewar_srcs/values.c.o   -c /Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/values.c
 
 CMakeFiles/corewar.dir/srcs/corewar_srcs/values.c.i: cmake_force
@@ -659,7 +683,7 @@ CMakeFiles/corewar.dir/srcs/corewar_srcs/values.c.o.provides.build: CMakeFiles/c
 
 CMakeFiles/corewar.dir/srcs/corewar_srcs/read_args.c.o: CMakeFiles/corewar.dir/flags.make
 CMakeFiles/corewar.dir/srcs/corewar_srcs/read_args.c.o: srcs/corewar_srcs/read_args.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cchaumar/Documents/42projects/working/_corewar/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building C object CMakeFiles/corewar.dir/srcs/corewar_srcs/read_args.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cchaumar/Documents/42projects/working/_corewar/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building C object CMakeFiles/corewar.dir/srcs/corewar_srcs/read_args.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/corewar.dir/srcs/corewar_srcs/read_args.c.o   -c /Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/read_args.c
 
 CMakeFiles/corewar.dir/srcs/corewar_srcs/read_args.c.i: cmake_force
@@ -683,7 +707,7 @@ CMakeFiles/corewar.dir/srcs/corewar_srcs/read_args.c.o.provides.build: CMakeFile
 
 CMakeFiles/corewar.dir/srcs/corewar_srcs/utils.c.o: CMakeFiles/corewar.dir/flags.make
 CMakeFiles/corewar.dir/srcs/corewar_srcs/utils.c.o: srcs/corewar_srcs/utils.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cchaumar/Documents/42projects/working/_corewar/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building C object CMakeFiles/corewar.dir/srcs/corewar_srcs/utils.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cchaumar/Documents/42projects/working/_corewar/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building C object CMakeFiles/corewar.dir/srcs/corewar_srcs/utils.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/corewar.dir/srcs/corewar_srcs/utils.c.o   -c /Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/utils.c
 
 CMakeFiles/corewar.dir/srcs/corewar_srcs/utils.c.i: cmake_force
@@ -720,6 +744,7 @@ corewar_OBJECTS = \
 "CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_load_texture.c.o" \
 "CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_matrix.c.o" \
 "CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_render_opengl.c.o" \
+"CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_gen_tex.c.o" \
 "CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_run.c.o" \
 "CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_basic.c.o" \
 "CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_calc.c.o" \
@@ -751,6 +776,7 @@ corewar: CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_inputs.c.o
 corewar: CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_load_texture.c.o
 corewar: CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_matrix.c.o
 corewar: CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_render_opengl.c.o
+corewar: CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_gen_tex.c.o
 corewar: CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_run.c.o
 corewar: CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_basic.c.o
 corewar: CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_calc.c.o
@@ -767,7 +793,7 @@ corewar: CMakeFiles/corewar.dir/srcs/corewar_srcs/read_args.c.o
 corewar: CMakeFiles/corewar.dir/srcs/corewar_srcs/utils.c.o
 corewar: CMakeFiles/corewar.dir/build.make
 corewar: CMakeFiles/corewar.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/cchaumar/Documents/42projects/working/_corewar/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Linking C executable corewar"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/cchaumar/Documents/42projects/working/_corewar/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Linking C executable corewar"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/corewar.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -788,6 +814,7 @@ CMakeFiles/corewar.dir/requires: CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_
 CMakeFiles/corewar.dir/requires: CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_load_texture.c.o.requires
 CMakeFiles/corewar.dir/requires: CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_matrix.c.o.requires
 CMakeFiles/corewar.dir/requires: CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_render_opengl.c.o.requires
+CMakeFiles/corewar.dir/requires: CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_gen_tex.c.o.requires
 CMakeFiles/corewar.dir/requires: CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_run.c.o.requires
 CMakeFiles/corewar.dir/requires: CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_basic.c.o.requires
 CMakeFiles/corewar.dir/requires: CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_calc.c.o.requires

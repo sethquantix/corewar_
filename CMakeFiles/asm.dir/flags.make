@@ -6,5 +6,5 @@ C_FLAGS = -g
 
 C_DEFINES = 
 
-C_INCLUDES = -I/Users/cchaumar/Documents/42projects/working/_corewar/includes -I/Users/cchaumar/Documents/42projects/working/_corewar/libs/libft 
+C_INCLUDES = -I/Users/cchaumar/Documents/42projects/working/_corewar/includes -I/Users/cchaumar/Documents/42projects/working/_corewar/soil2/incs -I/Users/cchaumar/Documents/42projects/working/_corewar/libs/libft 
 

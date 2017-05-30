@@ -514,6 +514,33 @@ srcs/corewar_srcs/corewar.c.s:
 	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/corewar.c.s
 .PHONY : srcs/corewar_srcs/corewar.c.s
 
+srcs/corewar_srcs/gr_gen_tex.o: srcs/corewar_srcs/gr_gen_tex.c.o
+
+.PHONY : srcs/corewar_srcs/gr_gen_tex.o
+
+# target to build an object file
+srcs/corewar_srcs/gr_gen_tex.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_gen_tex.c.o
+.PHONY : srcs/corewar_srcs/gr_gen_tex.c.o
+
+srcs/corewar_srcs/gr_gen_tex.i: srcs/corewar_srcs/gr_gen_tex.c.i
+
+.PHONY : srcs/corewar_srcs/gr_gen_tex.i
+
+# target to preprocess a source file
+srcs/corewar_srcs/gr_gen_tex.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_gen_tex.c.i
+.PHONY : srcs/corewar_srcs/gr_gen_tex.c.i
+
+srcs/corewar_srcs/gr_gen_tex.s: srcs/corewar_srcs/gr_gen_tex.c.s
+
+.PHONY : srcs/corewar_srcs/gr_gen_tex.s
+
+# target to generate assembly for a file
+srcs/corewar_srcs/gr_gen_tex.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_gen_tex.c.s
+.PHONY : srcs/corewar_srcs/gr_gen_tex.c.s
+
 srcs/corewar_srcs/gr_gl_buffer.o: srcs/corewar_srcs/gr_gl_buffer.c.o
 
 .PHONY : srcs/corewar_srcs/gr_gl_buffer.o
@@ -1214,6 +1241,9 @@ help:
 	@echo "... srcs/corewar_srcs/corewar.o"
 	@echo "... srcs/corewar_srcs/corewar.i"
 	@echo "... srcs/corewar_srcs/corewar.s"
+	@echo "... srcs/corewar_srcs/gr_gen_tex.o"
+	@echo "... srcs/corewar_srcs/gr_gen_tex.i"
+	@echo "... srcs/corewar_srcs/gr_gen_tex.s"
 	@echo "... srcs/corewar_srcs/gr_gl_buffer.o"
 	@echo "... srcs/corewar_srcs/gr_gl_buffer.i"
 	@echo "... srcs/corewar_srcs/gr_gl_buffer.s"

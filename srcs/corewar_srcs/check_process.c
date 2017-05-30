@@ -12,14 +12,6 @@
 
 #include "corewar.h"
 
-//static int	proc_should_die(void *unused, t_proc *proc)
-//{
-//	(void)unused;
-//	if (proc->die)
-//		proc->arena->alive--;
-//	return (proc->die != 0);
-//}
-
 static int	check(t_proc *p)
 {
 	p->die = p->arena->cycles - p->last_live > p->arena->ctd ? 1 : 0;
@@ -27,8 +19,24 @@ static int	check(t_proc *p)
 		ft_printf("Process %d hasn't lived for %d cycles (CTD %d)\n",
 			p->id, p->arena->cycles - p->last_live, p->arena->ctd);
 	if (p->die)
+	{
 		p->arena->alive--;
+		UNSET_PLAYER(p->arena->mem[p->pc], p->player);
+	}
 	return (p->die);
+}
+
+static void ctd_update(t_arena *a)
+{
+	a->last_check = a->cycles;
+	if (++a->check_cycles >= MAX_CHECKS || a->nbr_lives >= NBR_LIVE)
+	{
+		a->ctd -= CYCLE_DELTA;
+		if (a->verbose_lvl & V_LVL_CYCLES)
+			ft_printf("Cycle to die is now %d\n", a->ctd);
+		a->check_cycles = 0;
+	}
+	a->nbr_lives = 0;
 }
 
 void		check_process(t_arena *a)
@@ -52,15 +60,7 @@ void		check_process(t_arena *a)
 	}
 	ft_lstdel(&a->procs, ft_dummy);
 	a->procs = living;
-	a->last_check = a->cycles;
-	if (++a->check_cycles >= MAX_CHECKS || a->nbr_lives >= NBR_LIVE)
-	{
-		a->ctd -= CYCLE_DELTA;
-		if (a->verbose_lvl & V_LVL_CYCLES)
-			ft_printf("Cycle to die is now %d\n", a->ctd);
-		a->check_cycles = 0;
-	}
-	a->nbr_lives = 0;
+	ctd_update(a);
 }
 
 int 		cmp_id(uint32_t	*ref, t_champ *data)

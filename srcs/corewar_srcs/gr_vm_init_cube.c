@@ -1,6 +1,5 @@
 #include "corewar.h"
 #include "gr_vm_internals.h"
-#include "../../libs/glhandler/includes/gl_handler.h"
 
 static const float g_cube[] = {
 
@@ -86,9 +85,11 @@ static const int g_faces[] = {
 		F_FRONT
 };
 
-static uint32_t		createVBO_VNT(float *vertices, uint32_t vertex_size, uint32_t vaoId)
+static uint32_t		createVBO_VNT(float *vertices, int *faces,
+	uint32_t vertex_size, uint32_t vaoId)
 {
 	GLuint  vertexBufferID;
+	GLuint  facesBufferID;
 
 	glBindVertexArray(vaoId);
 	glGenBuffers(1, &(vertexBufferID));
@@ -100,19 +101,13 @@ static uint32_t		createVBO_VNT(float *vertices, uint32_t vertex_size, uint32_t v
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (void*)(sizeof(float)*3));
 	glEnableVertexAttribArray(2);
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (void*)(sizeof(float)*6));
-	return (vertexBufferID);
-}
-
-static GLuint 		init_faces(const int *faces)
-{
-	GLuint  facesBufferID;
 
 	glGenBuffers(1, &facesBufferID);
 	glBindBuffer(GL_ARRAY_BUFFER, facesBufferID);
 	glBufferData(GL_ARRAY_BUFFER, 36 * sizeof(int), faces, GL_STATIC_DRAW);
 	glEnableVertexAttribArray(3);
 	glVertexAttribIPointer(3, 1, GL_INT, sizeof(GLint), (void *)0);
-	return (facesBufferID);
+	return (vertexBufferID);
 }
 
 static GLuint		init_instancing()
@@ -157,9 +152,11 @@ static void			init_pos(t_gr_vm *cxt)
 	i = 0;
 	while (i < MEM_SIZE)
 	{
-		cxt->model[i][0] = (float)((i % (int)sqrt(MEM_SIZE) - (sqrt(MEM_SIZE)) / 2) * 2.3);
+		cxt->model[i][0] = (float)((i % (int)sqrt(MEM_SIZE) -
+			(sqrt(MEM_SIZE)) / 2) * 2.3);
 		cxt->model[i][1] = 0;
-		cxt->model[i][2] = (float)((i / (int)sqrt(MEM_SIZE) - (sqrt(MEM_SIZE)) / 2) * 2.3);
+		cxt->model[i][2] = (float)((i / (int)sqrt(MEM_SIZE) -
+			(sqrt(MEM_SIZE)) / 2) * 2.3);
 		cxt->model[i][6] = 1;
 		cxt->model[i][7] = 1;
 		cxt->model[i][8] = 1;
@@ -173,11 +170,11 @@ GLuint				generate_cube(t_gr_vm *cxt)
 	GLuint		vaoid;
 
 	glGenVertexArrays(1, &vaoid);
-	createVBO_VNT(g_cube, sizeof(g_cube) / sizeof(float) / 8, vaoid);
+	createVBO_VNT((float *)g_cube, (int *)g_faces,
+		sizeof(g_cube) / sizeof(float) / 8, vaoid);
 	cxt->vao = vaoid;
 	cxt->matVBO = init_instancing();
 	cxt->valVBO = init_transfer();
-	cxt->faceVBO = init_faces(g_faces);
 	init_pos(cxt);
 	return (vaoid);
 }

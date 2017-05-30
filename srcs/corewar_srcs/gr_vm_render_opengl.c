@@ -8,8 +8,8 @@ static void		stream_transform(t_gr_vm *cxt, t_arena *a)
 	i = 0;
 	while (i < MEM_SIZE)
 	{
-		cxt->scale[i] = 1 + 8 * (float)a->arena[i] / 255.0;
-        cxt->model[i][7] += (cxt->scale[i] - cxt->model[i][7]) / (60 * TIME_TRAVEL);
+		cxt->scale[i] = 1 + 4 * (float)a->arena[i] / 255.0;
+        cxt->model[i][7] += (cxt->scale[i] - cxt->model[i][7]) / TIME_TRAVEL;
 		i++;
 	}
 	glBindVertexArray(cxt->vao);
@@ -22,28 +22,22 @@ static void		stream_transform(t_gr_vm *cxt, t_arena *a)
 
 static void		push_uniform(t_gr_vm *cxt)
 {
+	static int 		time = 0;
 	GLint			loc;
 	GLfloat			mat[16];
 	static float	light[MEM_SIZE * 4];
 
-	loc = glGetUniformLocation(cxt->program, "textDiffuse");
-	glUniform1i(loc, 0);
-	loc = glGetUniformLocation(cxt->program, "textLight");
-	glUniform1i(loc, 1);
+	if (!time)
+		time = SDL_GetTicks();
 	loc = glGetUniformLocation(cxt->program, "V");
 	glUniformMatrix4fv(loc, 1, GL_FALSE, cxt->camera.m.t);
 	loc = glGetUniformLocation(cxt->program, "P");
 	load_projection(mat, 1, 1000, 1.3);
 	glUniformMatrix4fv(loc, 1, GL_FALSE, mat);
-	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, cxt->diffuseTexture);
-	load_light(light, light, cxt->model, cxt);
-	if (cxt->lightText != 0)
-		glDeleteTextures(1, &cxt->lightText);
-	cxt->lightText = light_to_texture(light);
-	glActiveTexture(GL_TEXTURE1);
-	glBindTexture(GL_TEXTURE_2D, cxt->lightText);
-
+	loc = glGetUniformLocation(cxt->program, "textNoise");
+	glUniform1i(loc, cxt->diffuseTexture);
+	loc = glGetUniformLocation(cxt->program, "in_time");
+	glUniform1f(loc, (SDL_GetTicks() - time) / 1000.0f);
 }
 
 void			render_opengl(t_gr_vm *cxt, t_arena *arena)

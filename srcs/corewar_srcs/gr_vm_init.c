@@ -37,6 +37,8 @@ void	set_keys(t_key **keys, int *nkeys)
 	*nkeys += add_key(keys, SDLK_s, cam_trans_back, cam_trans_back);
 	*nkeys += add_key(keys, SDLK_d, cam_trans_right, cam_trans_right);
 	*nkeys += add_key(keys, SDLK_a, cam_trans_left, cam_trans_left);
+	*nkeys += add_key(keys, SDLK_q, cam_trans_down, cam_trans_down);
+	*nkeys += add_key(keys, SDLK_e, cam_trans_up, cam_trans_up);
 	*nkeys += add_key(keys, SDLK_KP_PLUS, speed, NULL);
 	*nkeys += add_key(keys, SDLK_KP_MINUS, speed, NULL);
 	*nkeys += add_key(keys, SDLK_r, 	toggle_42, NULL);
@@ -44,42 +46,23 @@ void	set_keys(t_key **keys, int *nkeys)
 
 void	set_sdl_attributes()
 {
+	SDL_Init(SDL_INIT_VIDEO);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK,
+		SDL_GL_CONTEXT_PROFILE_CORE);
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
 	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 4);
 	SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
 	SDL_SetRelativeMouseMode(SDL_TRUE);
+	SDL_ShowCursor(SDL_DISABLE);
 }
 
-void 	init_cam(t_cam *cam)
-{
-	cam->pos = vec4(0, -10, -100, 0);
-	mat_ident(&cam->m);
-	cam->m.r[0].w = cam->pos.x;
-	cam->m.r[1].w = cam->pos.y;
-	cam->m.r[2].w = cam->pos.z;
-}
-
-void	gr_vm_init(t_gr_vm *cxt)
+void 	init_gl(t_gr_vm *cxt, t_cam *cam)
 {
 	t_gl_shader shaders[2];
 
-	SDL_Init(SDL_INIT_VIDEO);
-	set_sdl_attributes();
-	SDL_ShowCursor(SDL_DISABLE);
-	cxt->arena = SDL_CreateWindow("corewar", WIN_WIDTH / 4, 0, WIN_WIDTH - WIN_WIDTH / 4,
-		WIN_HEIGHT, SDL_WINDOW_OPENGL);
-	SDL_SetWindowGrab(cxt->arena, SDL_TRUE);
-	cxt->UI = SDL_CreateWindow("UI", 0, 0, WIN_WIDTH / 4,
-		WIN_HEIGHT, 0);
-	SDL_GL_SetSwapInterval(1);
-	cxt->run = 1;
-	cxt->cpf = 0;
-	set_keys(&cxt->keys, &cxt->nkeys);
-	cxt->glcontext = SDL_GL_CreateContext(cxt->arena);
 	glewInit();
 	shaders[0].file = ft_strdup("./shaders/vertex.shader");
 	shaders[0].type = GL_VERTEX_SHADER;
@@ -90,10 +73,48 @@ void	gr_vm_init(t_gr_vm *cxt)
 	free(shaders[1].file);
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_MULTISAMPLE);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glClearColor(0, 0, 0, 1);
-	init_cam(&cxt->camera);
+	cam->pos = vec4(0, -10, -100, 0);
+	mat_ident(&cam->m);
+	cam->m.r[0].w = cam->pos.x;
+	cam->m.r[1].w = cam->pos.y;
+	cam->m.r[2].w = cam->pos.z;
+	cam->x = 0;
+	cam->y = 0;
+}
+
+void	load_noise(t_gr_vm *cxt)
+{
+	glActiveTexture(GL_TEXTURE1);
+	cxt->diffuseTexture = SOIL_load_OGL_texture("assets/med_noise.png",
+		SOIL_LOAD_AUTO, SOIL_CREATE_NEW_ID, SOIL_FLAG_INVERT_Y |
+		SOIL_FLAG_TEXTURE_REPEATS | SOIL_FLAG_MIPMAPS |
+		SOIL_FLAG_COMPRESS_TO_DXT);
+	if (cxt->diffuseTexture == -1)
+		ft_dprintf(2, "failed to load texture\n");
+	glBindTexture(GL_TEXTURE_2D, cxt->diffuseTexture);
+	ft_printf("binded %d\n", cxt->diffuseTexture);
+}
+
+void	gr_vm_init(t_gr_vm *cxt)
+{
+	set_sdl_attributes();
+//	gen_texture("assets/Prototype.ttf");
+
+	cxt->arena = SDL_CreateWindow("corewar", WIN_WIDTH / 4, 0,
+		WIN_WIDTH - WIN_WIDTH / 4, WIN_HEIGHT, SDL_WINDOW_OPENGL);
+	SDL_SetWindowGrab(cxt->arena, SDL_TRUE);
+	cxt->UI = SDL_CreateWindow("UI", 0, 0, WIN_WIDTH / 4,
+		WIN_HEIGHT, 0);
+	SDL_GL_SetSwapInterval(1);
+	cxt->run = 1;
+	cxt->cpf = 0;
+	set_keys(&cxt->keys, &cxt->nkeys);
+	cxt->glcontext = SDL_GL_CreateContext(cxt->arena);
+	init_gl(cxt, &cxt->camera);
+	load_noise(cxt);
 	cxt->vao = generate_cube(cxt);
-	cxt->diffuseTexture = load_bmp_to_opengl("texture/coretext.bmp");
 	cxt->anim42 = 0;
-	load_bmp_to_42("texture/42.bmp", cxt->text42);
 }

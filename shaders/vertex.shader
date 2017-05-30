@@ -9,7 +9,6 @@ layout(location = 5) in vec3    in_rot;
 layout(location = 6) in vec3    in_scale;
 layout(location = 7) in uint    in_data;
 
-
 uniform mat4    P;
 uniform mat4    V;
 

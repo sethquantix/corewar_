@@ -12,10 +12,12 @@
 
 #ifndef INCLUDES_H
 # define INCLUDES_H
-#define GL3_PROTOTYPES 1
+
 # include <GL/glew.h>
-# include "../libs/libft/libft.h"
-# include "SDL2/SDL.h"
+# include <SDL2/SDL_ttf.h>
+# include <SDL2/SDL.h>
+# include <SOIL2.h>
+# include "libft.h"
 # include "op.h"
 
 #endif

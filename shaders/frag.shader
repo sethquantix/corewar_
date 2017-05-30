@@ -10,127 +10,93 @@ flat in uint data;
 flat in int index;
 flat in int face;
 
-uniform sampler2D	textDiffuse;
-uniform sampler2D	textLight;
+uniform sampler2D	textNoise;
+uniform float       in_time;
+
+float   time = index + in_time;
 
 layout(location = 0) out vec4 FragColor;
 
-
-vec4 get_light_at(int x, int y)
-{
-	float a;
-	float b;
-	vec4 ret;
-	a = (1.0f / 64.0f) * (x + index % 64);
-	b = (1.0f / 64.0f) * (y + index / 64);
-	ret =(texture(textLight, vec2(a, b))).xyzw;
-	return (ret);
-}
-
-vec3 deduce_light_pos(int i, int j)
-{
-	vec3 ret;
-
-	ret.x = ((i + index % 64 - 32)) * 2.3;
-	ret.z = ((j + index / 64 - 32)) * 2.3;
-	ret.y = get_light_at(i, j).w;
-	return (ret);
-}
-
-vec3 compute_diffuse(vec3 pos, vec3 normal, vec3 lightpos, vec3 lightcol)
-{
-	vec3 ret;
-	//c = ;
-	float c = dot(normalize(lightpos - pos), normal);
-	if (c < 0.4)
-		c = 0.4;
-	ret = lightcol * c;
-	ret /= distance(lightpos, pos) * distance(lightpos, pos)* distance(lightpos, pos)* distance(lightpos, pos) / 100;
-	return (ret);
-}
-
-#define LOW 0.6
-
-vec3 compute_light(int o)
-{
-    float a; float b;
-
-	vec3 c = texture(textDiffuse, uv).xyz;
-	vec3 ret = c;
-
-	for (int i = 0; i < 4; i++)
-		for (int j = 0; j < 4; j++)
-		{
-			a = 1;
-			b = 1;
-			if (i == 2 && j == 2)
-			{
-				a = -1;
-				b = 0.01;
-			}
-			ret += compute_diffuse(pos_color, normal * a, deduce_light_pos(i - 2, j - 2), get_light_at(i - 2, j - 2).xyz) * c * b;
-		}
-	return (ret);
-}
-
-const float     int_h[] = float[](
-    0.5,
-    0.7,
-    0.0,
-    0.8,
-    0.3
-);
-
-const float     int_v[] = float[](
-    0.4,
-    0.6,
-    0.3,
-    0.2
-);
-
 const vec3  colors[] = vec3[](
     vec3(0.3, 0.3, 0.3),
+    vec3(0.8, 0.28, 0.15),
+    vec3(0.86, 0.13, 0.97),
     vec3(0.2, 0.15, 0.8),
-    vec3(0.7, 0.3, 0.1),
-    vec3(0.3, 0.9, 0.2),
-    vec3(0.8, 0.2, 0.1)
+    vec3(0.3, 0.9, 0.2)
 );
+
+#define tau 6.2831853
+
+mat2 makem2(in float theta){float c = cos(theta);float s = sin(theta);return mat2(c,-s,s,c);}
+float noise( in vec2 x ){return texture(textNoise, x*.01).x;}
+
+float fbm(in vec2 p)
+{
+	float z=2.;
+	float rz = 0.;
+	vec2 bp = p;
+	for (float i= 1.;i < 6.;i++)
+	{
+		rz+= abs((noise(p)-0.5)*2.)/z;
+		z = z*2.;
+		p = p*2.;
+	}
+	return rz;
+}
+
+float dualfbm(in vec2 p)
+{
+    //get two rotated fbm calls and displace the domain
+	vec2 p2 = p*.7;
+	vec2 basis = vec2(fbm(p2-time*1.6),fbm(p2+time*1.7));
+	basis = (basis-.5)*.2;
+	p += basis;
+
+	//coloring
+	return fbm(p*makem2(time*0.2));
+}
+
+float circ(vec2 p)
+{
+	float r = length(p);
+	r = log(sqrt(r));
+	return abs(mod(r*4.,tau)-3.14)*3.+.2;
+
+}
+
+void mainImage(vec3 col, out vec4 fragColor, in vec2 uv )
+{
+	//setup system
+	vec2 p = uv - 0.5;
+
+	p *= 4.;
+    float rz = dualfbm(p);
+
+	//rings
+	p /= exp(mod(time,3.14159));
+	rz *= pow(abs((0.1-circ(p))),.9);
+
+	//final color
+	col /= rz;
+	col = pow(abs(col),vec3(.99));
+	fragColor = vec4(col,1.);
+}
 
 void main(void)
 {
     bool    proc = (data & uint(0xF)) != 0;
-    int     o = 0;
     int     p = int(data & uint(0xF0)) >> 4;
     float   s = face == 1 ? 1 : scale.y;
     float   k = 0.35 + 0.65 * float(data >> 16) / 600.0;
-
+    int     o = 0;
     for (int i = 0; i < 4; i++)
         if ((p & (1 << i)) != 0)
             o = i + 1;
     vec3    c = proc && face == 1 ? vec3(0.9) : colors[o];
 
-    if (face == 1 && !proc)
-        c = vec3(0.3, 0.3, 0.3);
-    if (face == 0)
-        FragColor = vec4(0, 0, 0, 1);
+    if (face != 0)
+        c *= k;
     else
-    {
-        float   lc = 0;
-        float   v = 0.1;
-        for (int i = 0; i < 1; i++) {
-            float   dv = v + 0.15 * i;
-            float   ku = pow(1 + (.01 / s) - abs(uv.y - (1 - dv / s)), 50 * s);
-            float   kd = pow(1 + (.01 / s) - abs(uv.y - (dv / s)), 50 * s);
-            float   kr = pow(1.01 - abs(uv.x - (1 - dv)), 50);
-            float   kl = pow(1.01 - abs(uv.x - dv), 50);
-            float   lv = max(ku, kd);
-            float   lh = max(kr, kl);
-            float   r = kr * (uv.y > 1 - ((dv + 0.08) / s) || uv.y < (dv + 0.08) / s ? 0 : 1);
-            float   l = kl * (uv.y > 1 - ((dv + 0.08) / s) || uv.y < (dv + 0.08) / s ? 0 : 1);
-            float   u = ku * (uv.x > (1 - dv + 0.02) || uv.x < (dv - 0.02) ? 0 : 1);
-            float   d = kd * (uv.x > (1 - dv + 0.02) || uv.x < (dv - 0.02) ? 0 : 1);
-            lc = max(max(max(r, l), max(u, d)), lc);
-        }
-        FragColor = vec4(lc * c * (face == 1 ? 1 : k), 1);
-    }
+        c = vec3(0);
+    mainImage(c, FragColor, uv * (face == 1 ? vec2(1) : scale.xy));
 }

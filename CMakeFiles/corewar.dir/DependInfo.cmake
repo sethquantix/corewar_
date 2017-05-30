@@ -7,6 +7,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/arena_ini.c" "/Users/cchaumar/Documents/42projects/working/_corewar/CMakeFiles/corewar.dir/srcs/corewar_srcs/arena_ini.c.o"
   "/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/check_process.c" "/Users/cchaumar/Documents/42projects/working/_corewar/CMakeFiles/corewar.dir/srcs/corewar_srcs/check_process.c.o"
   "/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/corewar.c" "/Users/cchaumar/Documents/42projects/working/_corewar/CMakeFiles/corewar.dir/srcs/corewar_srcs/corewar.c.o"
+  "/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/gr_gen_tex.c" "/Users/cchaumar/Documents/42projects/working/_corewar/CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_gen_tex.c.o"
   "/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/gr_gl_buffer.c" "/Users/cchaumar/Documents/42projects/working/_corewar/CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_gl_buffer.c.o"
   "/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/gr_vm_camera_handling.c" "/Users/cchaumar/Documents/42projects/working/_corewar/CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_camera_handling.c.o"
   "/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/gr_vm_camera_handling_rot.c" "/Users/cchaumar/Documents/42projects/working/_corewar/CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_camera_handling_rot.c.o"
@@ -37,6 +38,7 @@ set(CMAKE_C_COMPILER_ID "AppleClang")
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
   "includes"
+  "soil2/incs"
   "libs/libft"
   "/System/Library/Frameworks/OpenGL.framework"
   )

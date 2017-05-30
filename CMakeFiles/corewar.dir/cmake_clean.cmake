@@ -12,6 +12,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_load_texture.c.o"
   "CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_matrix.c.o"
   "CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_render_opengl.c.o"
+  "CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_gen_tex.c.o"
   "CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_run.c.o"
   "CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_basic.c.o"
   "CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_calc.c.o"

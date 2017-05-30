@@ -30,7 +30,7 @@ void	i_live(t_proc *proc)
 		v->nbr_live++;
 		v->last_live = proc->arena->cycles;
 	}
-	if (proc->arena->verbose_lvl & V_LVL_LIVES)
+	if ((proc->arena->verbose_lvl & V_LVL_LIVES) && v)
 		ft_printf("Player %d (%s) is said to be alive\n", v->num,
 				  v->head.prog_name);
 }
