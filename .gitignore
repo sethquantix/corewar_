@@ -4,3 +4,6 @@ libs
 asm
 corewar
 .DS_Store
+CMakeCache.txt
+CMakeFiles
+cmake-build-debug
