@@ -51,6 +51,7 @@ void		gr_vm_run(t_vm_loop loop, void *data, t_gr_vm *ctx)
 				ctx->keys[i].hold(data, ctx, ctx->keys + i);
 			i++;
 		}
+		SDL_GL_MakeCurrent(ctx->arena, ctx->arena_context);
 		render_opengl(ctx, data);
 		SDL_UpdateWindowSurface(ctx->UI);
 	}
@@ -59,6 +60,6 @@ void		gr_vm_run(t_vm_loop loop, void *data, t_gr_vm *ctx)
 void		gr_vm_end(t_gr_vm *ctx)
 {
 	SDL_DestroyWindow(ctx->arena);
-	SDL_GL_DeleteContext(ctx->glcontext);
+	SDL_GL_DeleteContext(ctx->arena_context);
 	SDL_Quit();
 }

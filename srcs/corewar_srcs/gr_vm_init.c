@@ -98,23 +98,22 @@ void	load_noise(t_gr_vm *cxt)
 	ft_printf("binded %d\n", cxt->diffuseTexture);
 }
 
-void	gr_vm_init(t_gr_vm *cxt)
+void	gr_vm_init(t_gr_vm *cxt, t_arena *arena)
 {
 	set_sdl_attributes();
-//	gen_texture("assets/Prototype.ttf");
-
+    cxt->UI = SDL_CreateWindow("UI", 0, 0, WIN_WIDTH / 4, WIN_HEIGHT, 0);
 	cxt->arena = SDL_CreateWindow("corewar", WIN_WIDTH / 4, 0,
 		WIN_WIDTH - WIN_WIDTH / 4, WIN_HEIGHT, SDL_WINDOW_OPENGL);
 	SDL_SetWindowGrab(cxt->arena, SDL_TRUE);
-	cxt->UI = SDL_CreateWindow("UI", 0, 0, WIN_WIDTH / 4,
-		WIN_HEIGHT, 0);
+    cxt->arena_context = SDL_GL_CreateContext(cxt->arena);
+    SDL_SetWindowGrab(cxt->UI, SDL_FALSE);
 	SDL_GL_SetSwapInterval(1);
 	cxt->run = 1;
 	cxt->cpf = 0;
 	set_keys(&cxt->keys, &cxt->nkeys);
-	cxt->glcontext = SDL_GL_CreateContext(cxt->arena);
 	init_gl(cxt, &cxt->camera);
 	load_noise(cxt);
 	cxt->vao = generate_cube(cxt);
 	cxt->anim42 = 0;
+    set_ui(cxt, arena);
 }
