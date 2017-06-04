@@ -39,6 +39,8 @@ void	set_keys(t_key **keys, int *nkeys)
 	*nkeys += add_key(keys, SDLK_a, cam_trans_left, cam_trans_left);
 	*nkeys += add_key(keys, SDLK_q, cam_trans_down, cam_trans_down);
 	*nkeys += add_key(keys, SDLK_e, cam_trans_up, cam_trans_up);
+	*nkeys += add_key(keys, SDLK_SLASH, toggle_mem, NULL);
+	*nkeys += add_key(keys, SDLK_r, toggle_rot, NULL);
 	*nkeys += add_key(keys, SDLK_KP_PLUS, speed, NULL);
 	*nkeys += add_key(keys, SDLK_KP_MINUS, speed, NULL);
 	*nkeys += add_key(keys, SDLK_r, 	toggle_42, NULL);
@@ -52,8 +54,8 @@ void	set_sdl_attributes()
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK,
 		SDL_GL_CONTEXT_PROFILE_CORE);
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
-	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 4);
+	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 4);
+	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 32);
 	SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
 	SDL_SetRelativeMouseMode(SDL_TRUE);
 	SDL_ShowCursor(SDL_DISABLE);
@@ -62,15 +64,23 @@ void	set_sdl_attributes()
 void 	init_gl(t_gr_vm *cxt, t_cam *cam)
 {
 	t_gl_shader shaders[2];
+	t_gl_shader	shaders_box[2];
 
 	glewInit();
 	shaders[0].file = ft_strdup("./shaders/vertex.shader");
 	shaders[0].type = GL_VERTEX_SHADER;
 	shaders[1].file = ft_strdup("./shaders/frag.shader");
 	shaders[1].type = GL_FRAGMENT_SHADER;
+	shaders_box[0].file = ft_strdup("./shaders/vertex_box.shader");
+	shaders_box[0].type = GL_VERTEX_SHADER;
+	shaders_box[1].file = ft_strdup("./shaders/frag_box.shader");
+	shaders_box[1].type = GL_FRAGMENT_SHADER;
 	cxt->program = create_program(2, shaders);
+	cxt->program_box = create_program(2, shaders_box);
 	free(shaders[0].file);
 	free(shaders[1].file);
+	free(shaders_box[0].file);
+	free(shaders_box[1].file);
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_MULTISAMPLE);
 	glEnable(GL_BLEND);
@@ -83,26 +93,26 @@ void 	init_gl(t_gr_vm *cxt, t_cam *cam)
 	cam->m.r[2].w = cam->pos.z;
 	cam->x = 0;
 	cam->y = 0;
+	cxt->pixie = vec4(1.15, 0.4, 1.15, 0);
+	cxt->pv = vec4(0, 0, 0, 0);
 }
 
 void	load_noise(t_gr_vm *cxt)
 {
 	glActiveTexture(GL_TEXTURE1);
-	cxt->diffuseTexture = SOIL_load_OGL_texture("assets/med_noise.png",
+	cxt->diffuseTexture = SOIL_load_OGL_texture("assets/noise.png",
 		SOIL_LOAD_AUTO, SOIL_CREATE_NEW_ID, SOIL_FLAG_INVERT_Y |
 		SOIL_FLAG_TEXTURE_REPEATS | SOIL_FLAG_MIPMAPS |
 		SOIL_FLAG_COMPRESS_TO_DXT);
 	if (cxt->diffuseTexture == -1)
-		ft_dprintf(2, "failed to load texture\n");
+		die(EXIT_FAILURE, "failed to load texture\n");
 	glBindTexture(GL_TEXTURE_2D, cxt->diffuseTexture);
-	ft_printf("binded %d\n", cxt->diffuseTexture);
 }
 
 void	gr_vm_init(t_gr_vm *cxt)
 {
 	set_sdl_attributes();
-//	gen_texture("assets/Prototype.ttf");
-
+	srand(time(NULL));
 	cxt->arena = SDL_CreateWindow("corewar", WIN_WIDTH / 4, 0,
 		WIN_WIDTH - WIN_WIDTH / 4, WIN_HEIGHT, SDL_WINDOW_OPENGL);
 	SDL_SetWindowGrab(cxt->arena, SDL_TRUE);
@@ -115,6 +125,7 @@ void	gr_vm_init(t_gr_vm *cxt)
 	cxt->glcontext = SDL_GL_CreateContext(cxt->arena);
 	init_gl(cxt, &cxt->camera);
 	load_noise(cxt);
+	cxt->glyphs = gen_texture("assets/Prototype.ttf");
 	cxt->vao = generate_cube(cxt);
 	cxt->anim42 = 0;
 }

@@ -2,91 +2,90 @@
 #include "gr_vm_internals.h"
 
 static const float g_cube[] = {
+	-0.5, 0, 0.5, 0, -1, 0, 0, 1, // LBB
+	0.5, 0, 0.5, 0, -1, 0, 1, 1, // RBB
+	0.5, 0, -0.5, 0, -1, 0, 1, 0, // RBF
+	0.5, 0, -0.5, 0, -1, 0, 1, 0, // RBF
+	-0.5, 0, -0.5, 0, -1, 0, 0, 0, // LBF
+	-0.5, 0, 0.5, 0, -1, 0, 0, 1, // LBB
 
-	-0.5, 0, 0.5, 0, -1, 0, 0, 1,
-	0.5, 0, 0.5, 0, -1, 0, 1, 1,
-	0.5, 0, -0.5, 0, -1, 0, 1, 0,
-	0.5, 0, -0.5, 0, -1, 0, 1, 0,
-	-0.5, 0, -0.5, 0, -1, 0, 0, 0,
-	-0.5, 0, 0.5, 0, -1, 0, 0, 1,
+	-0.5, 1, 0.5, 0, 1, 0, 0, 1, // LUB
+	0.5, 1, 0.5, 0, 1, 0, 1, 1, // RUB
+	0.5, 1, -0.5, 0, 1, 0, 1, 0, // RUF
+	0.5, 1, -0.5, 0, 1, 0, 1, 0, // RUF
+	-0.5, 1, -0.5, 0, 1, 0, 0, 0, // LUF
+	-0.5, 1, 0.5, 0, 1, 0, 0, 1, // LUB
 
-	-0.5, 1, 0.5, 0, 1, 0, 0, 1,
-	0.5, 1, 0.5, 0, 1, 0, 1, 1,
-	0.5, 1, -0.5, 0, 1, 0, 1, 0,
-	0.5, 1, -0.5, 0, 1, 0, 1, 0,
-	-0.5, 1, -0.5, 0, 1, 0, 0, 0,
-	-0.5, 1, 0.5, 0, 1, 0, 0, 1,
+	-0.5, 0, 0.5, -1, 0, 0, 0, 1, // LBB
+	-0.5, 0, -0.5, -1, 0, 0, 1, 1, // LBF
+	-0.5, 1, -0.5, -1, 0, 0, 1, 0, // LUF
+	-0.5, 1, -0.5, -1, 0, 0, 1, 0, // LUF
+	-0.5, 1, 0.5, -1, 0, 0, 0, 0, // LUB
+	-0.5, 0, 0.5, -1, 0, 0, 0, 1, // LBB
 
-	-0.5, 0, 0.5, -1, 0, 0, 0, 1,
-	-0.5, 0, -0.5, -1, 0, 0, 1, 1,
-	-0.5, 1, -0.5, -1, 0, 0, 1, 0,
-	-0.5, 1, -0.5, -1, 0, 0, 1, 0,
-	-0.5, 1, 0.5, -1, 0, 0, 0, 0,
-	-0.5, 0, 0.5, -1, 0, 0, 0, 1,
+	0.5, 0, 0.5, 1, 0, 0, 0, 1, // RBB
+	0.5, 0, -0.5, 1, 0, 0, 1, 1, // RBF
+	0.5, 1, -0.5, 1, 0, 0, 1, 0, // RUF
+	0.5, 1, -0.5, 1, 0, 0, 1, 0, // RUF
+	0.5, 1, 0.5, 1, 0, 0, 0, 0, // RUB
+	0.5, 0, 0.5, 1, 0, 0, 0, 1, // RBB
 
-	0.5, 0, 0.5, 1, 0, 0, 0, 1,
-	0.5, 0, -0.5, 1, 0, 0, 1, 1,
-	0.5, 1, -0.5, 1, 0, 0, 1, 0,
-	0.5, 1, -0.5, 1, 0, 0, 1, 0,
-	0.5, 1, 0.5, 1, 0, 0, 0, 0,
-	0.5, 0, 0.5, 1, 0, 0, 0, 1,
+	0.5, 0, -0.5, 0, 0, -1, 0, 1, // RBF
+	-0.5, 0, -0.5, 0, 0, -1, 1, 1, // LBF
+	-0.5, 1, -0.5, 0, 0, -1, 1, 0, // LUF
+	-0.5, 1, -0.5, 0, 0, -1, 1, 0, // LUF
+	0.5, 1, -0.5, 0, 0, -1, 0, 0, // RUF
+	0.5, 0, -0.5, 0, 0, -1, 0, 1, // RBF
 
-	0.5, 0, -0.5, 0, 0, -1, 0, 1,
-	-0.5, 0, -0.5, 0, 0, -1, 1, 1,
-	-0.5, 1, -0.5, 0, 0, -1, 1, 0,
-	-0.5, 1, -0.5, 0, 0, -1, 1, 0,
-	0.5, 1, -0.5, 0, 0, -1, 0, 0,
-	0.5, 0, -0.5, 0, 0, -1, 0, 1,
-
-	0.5, 0, 0.5, 0, 0, 1, 0, 1,
-	-0.5, 0, 0.5, 0, 0, 1, 1, 1,
-	-0.5, 1, 0.5, 0, 0, 1, 1, 0,
-	-0.5, 1, 0.5, 0, 0, 1, 1, 0,
-	0.5, 1, 0.5, 0, 0, 1, 0, 0,
-	0.5, 0, 0.5, 0, 0, 1, 0, 1
+	0.5, 0, 0.5, 0, 0, 1, 0, 1, // RBB
+	-0.5, 0, 0.5, 0, 0, 1, 1, 1, // LBB
+	-0.5, 1, 0.5, 0, 0, 1, 1, 0, // LUB
+	-0.5, 1, 0.5, 0, 0, 1, 1, 0, // LUB
+	0.5, 1, 0.5, 0, 0, 1, 0, 0, // RUB
+	0.5, 0, 0.5, 0, 0, 1, 0, 1 // RBB
 };
 
 static const int g_faces[] = {
-		F_DOWN,
-		F_DOWN,
-		F_DOWN,
-		F_DOWN,
-		F_DOWN,
-		F_DOWN,
-		F_UP,
-		F_UP,
-		F_UP,
-		F_UP,
-		F_UP,
-		F_UP,
-		F_LEFT,
-		F_LEFT,
-		F_LEFT,
-		F_LEFT,
-		F_LEFT,
-		F_LEFT,
-		F_RIGHT,
-		F_RIGHT,
-		F_RIGHT,
-		F_RIGHT,
-		F_RIGHT,
-		F_RIGHT,
-		F_BACK,
-		F_BACK,
-		F_BACK,
-		F_BACK,
-		F_BACK,
-		F_BACK,
-		F_FRONT,
-		F_FRONT,
-		F_FRONT,
-		F_FRONT,
-		F_FRONT,
-		F_FRONT
+	F_DOWN,
+	F_DOWN,
+	F_DOWN,
+	F_DOWN,
+	F_DOWN,
+	F_DOWN,
+	F_UP,
+	F_UP,
+	F_UP,
+	F_UP,
+	F_UP,
+	F_UP,
+	F_LEFT,
+	F_LEFT,
+	F_LEFT,
+	F_LEFT,
+	F_LEFT,
+	F_LEFT,
+	F_RIGHT,
+	F_RIGHT,
+	F_RIGHT,
+	F_RIGHT,
+	F_RIGHT,
+	F_RIGHT,
+	F_BACK,
+	F_BACK,
+	F_BACK,
+	F_BACK,
+	F_BACK,
+	F_BACK,
+	F_FRONT,
+	F_FRONT,
+	F_FRONT,
+	F_FRONT,
+	F_FRONT,
+	F_FRONT
 };
 
 static uint32_t		createVBO_VNT(float *vertices, int *faces,
-	uint32_t vertex_size, uint32_t vaoId)
+	uint32_t vertex_size, GLuint vaoId)
 {
 	GLuint  vertexBufferID;
 	GLuint  facesBufferID;
@@ -145,6 +144,19 @@ static GLuint 		init_transfer()
 	return (transferVBO);
 }
 
+static GLuint 		init_values()
+{
+	GLuint	valVBO;
+
+	glGenBuffers(1, &valVBO);
+	glBindBuffer(GL_ARRAY_BUFFER, valVBO);
+	glEnableVertexAttribArray(8);
+	glVertexAttribIPointer(8, 1, GL_UNSIGNED_INT, sizeof(GLuint), (void *)(0));
+	glVertexAttribDivisor(8, 1);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	return (valVBO);
+}
+
 static void			init_pos(t_gr_vm *cxt)
 {
 	uint i;
@@ -167,14 +179,19 @@ static void			init_pos(t_gr_vm *cxt)
 
 GLuint				generate_cube(t_gr_vm *cxt)
 {
-	GLuint		vaoid;
+	GLuint		vao;
 
-	glGenVertexArrays(1, &vaoid);
+	glGenVertexArrays(1, &vao);
 	createVBO_VNT((float *)g_cube, (int *)g_faces,
-		sizeof(g_cube) / sizeof(float) / 8, vaoid);
-	cxt->vao = vaoid;
+		sizeof(g_cube) / sizeof(float) / 8, vao);
+	cxt->vao = vao;
 	cxt->matVBO = init_instancing();
 	cxt->valVBO = init_transfer();
+	cxt->arenaVBO = init_values();
 	init_pos(cxt);
-	return (vaoid);
+	glGenVertexArrays(1, &cxt->vao_box);
+	createVBO_VNT((float *)g_cube, (int *)g_faces,
+		sizeof(g_cube) / sizeof(float) / 8, cxt->vao_box);
+	ft_printf("box : %d\n", cxt->vao_box);
+	return (vao);
 }

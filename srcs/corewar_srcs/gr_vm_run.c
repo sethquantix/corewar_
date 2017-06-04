@@ -30,6 +30,8 @@ void		gr_vm_run(t_vm_loop loop, void *data, t_gr_vm *ctx)
 	int			i;
 	int			c;
 
+	while (SDL_PollEvent(&e))
+		;
 	while (ctx->run)
 	{
 		c = 0;

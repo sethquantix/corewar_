@@ -16,6 +16,7 @@
 # include <GL/glew.h>
 # include <SDL2/SDL_ttf.h>
 # include <SDL2/SDL.h>
+# include <time.h>
 # include <SOIL2.h>
 # include "libft.h"
 # include "op.h"

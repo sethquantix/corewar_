@@ -68,7 +68,7 @@ void		set_mem(uint32_t *mem, int addr, int size, int player);
 int 		get_value(t_proc *p, int *v, int index, t_type type);
 
 int			err(const char *format, ...);
-void		die(const char *format, int exit_status, ...);
+void		die(int exit_status, const char *format, ...);
 void		dump(uint8_t mem[], int mod);
 
 extern t_op g_tab[17];

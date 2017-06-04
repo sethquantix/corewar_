@@ -36,19 +36,33 @@ static void	gen_glyphs(const char *font_name, SDL_Surface ***buff)
 	TTF_Quit();
 }
 
-static void	assemble(SDL_Surface **buff, int l, int r, uint32_t *tex)
+static void	fill(int pad, SDL_Surface *buff, uint32_t *tex)
 {
-	int 	w;
-	int 	h;
+	int	w;
+	int h;
 
 	h = 0;
-	while (h < buff[l]->h)
+	while (h < buff->h)
 	{
 		w = 0;
-		while (w < buff[l]->w)
+		while (w < buff->w)
 		{
+			tex[(6 + h) * 64 + pad + w] =
+				((int *)buff->pixels)[h * buff->w + w];
+			w++;
 		}
+		h++;
 	}
+}
+
+static void	assemble(SDL_Surface **buff, int l, int r, uint32_t *tex)
+{
+	int		pad;
+
+	pad = (64 - (buff[l]->w + buff[r]->w + 5)) / 2;
+	fill(pad, buff[l], tex);
+	pad += buff[l]->w + 5;
+	fill(pad, buff[r], tex);
 }
 
 static void	clear_surfaces(SDL_Surface **buff)
@@ -68,7 +82,8 @@ GLuint		gen_texture(const char *font_file)
 	uint32_t 	tex[64 * 64];
 	int 		i;
 
-	/*glGenTextures(1, &tex_array);
+	glActiveTexture(GL_TEXTURE2);
+	glGenTextures(1, &tex_array);
 	glBindTexture(GL_TEXTURE_2D_ARRAY, tex_array);
 	glTexParameteri(GL_TEXTURE_2D_ARRAY,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D_ARRAY,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
@@ -77,13 +92,13 @@ GLuint		gen_texture(const char *font_file)
 	glTexStorage3D(GL_TEXTURE_2D_ARRAY, 1, GL_RGBA8, 64, 64, 256);
 	gen_glyphs(font_file, &buff);
 	i = 0;
-	while (i < 0xff)
+	while (i <= 0xff)
 	{
 		ft_bzero(tex, 64 * 64 * sizeof(int));
-		assemble(buff, i >> 8, i & 0xF, tex);
+		assemble(buff, i >> 4, i & 0xF, tex);
 		glTexSubImage3D(GL_TEXTURE_2D_ARRAY, 0, 0, 0, i++,
 			64, 64, 1, GL_RGBA, GL_UNSIGNED_BYTE, tex);
 	}
-	clear_surfaces(buff);*/
+	clear_surfaces(buff);
 	return (tex_array);
 }

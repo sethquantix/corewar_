@@ -28,7 +28,7 @@ void 	player(t_expr **e, t_arena *a)
 		n = ft_atoi((*e)->expr);
 		set = 1;
 		if (check_set(a->champs, a->champ_count, n))
-			die("Can't set same player id twice\n", EXIT_FAILURE);
+			die(EXIT_FAILURE, "Can't set same player id %d twice\n", n);
 	}
 	c = (t_champ){(*e)->expr, NULL, empty_head(), --id, n, set};
 	ft_pushback((void **)&a->champs, sizeof(t_champ), a->champ_count++, &c);
@@ -54,7 +54,7 @@ void	read_args(t_expr *expr, t_arena *a)
 			else
 				i++;
 		if (!rules[i])
-			die("Error : Bad options\n", EXIT_FAILURE);
+			die(EXIT_FAILURE, "Error : Bad options\n");
 		expr = expr->next;
 	}
 }

@@ -3,7 +3,7 @@ project(_corewar)
 
 set(CMAKE_CXX_STANDARD 11)
 
-SET(GCC_OPTIONS "-g -fsanitize=address -v")
+SET(GCC_OPTIONS "-g -fsanitize=address")
 
 include_directories(includes
 		soil2/incs

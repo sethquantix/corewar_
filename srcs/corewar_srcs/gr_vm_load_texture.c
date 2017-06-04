@@ -70,19 +70,3 @@ void load_light(uint32_t in[MEM_SIZE], float out[MEM_SIZE * 4], float models[][9
 		i++;
 	}
 }
-
-GLuint light_to_texture(float l[MEM_SIZE * 4])
-{
-	GLuint textID;
-
-	glActiveTexture(GL_TEXTURE1);
-	glGenTextures(1, &(textID));
-	glBindTexture(GL_TEXTURE_2D, (textID));
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA,
-	sqrt(MEM_SIZE), sqrt(MEM_SIZE), 0, GL_BGRA, GL_FLOAT, l);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	return (textID);
-}

@@ -97,8 +97,8 @@ void	set_champs(t_arena *a)
 	ft_printf("Introducing contestants :\n");
 	c = a->champs;
 	while (i < a->champ_count)
-		if (a->load(a, c++))
-			die("", EXIT_FAILURE);
+		if (a->load(a, c + i))
+			die(EXIT_FAILURE, "Error loading champion %s\n", c[i].source);
 		else
 			i++;
 	a->add_proc = (t_f_add)fork_proc;

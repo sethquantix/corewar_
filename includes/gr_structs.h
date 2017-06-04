@@ -43,23 +43,28 @@ typedef struct	s_gr_vm
 	GLuint			glcolor;
 	GLuint			gldepth;
 	GLuint			program;
+	GLuint			program_box;
 	GLuint			matVBO;
 	GLuint			valVBO;
-	GLuint 			faceVBO;
+	GLuint 			arenaVBO;
 	GLuint			vao;
-	GLuint			lightText;
+	GLuint			vao_box;
+	GLuint 			glyphs;
 	GLuint			diffuseTexture;
 	GLfloat			model[MEM_SIZE][9];
     float           scale[MEM_SIZE];
-    float           col[MEM_SIZE * 4];
+	int 			values[MEM_SIZE];
 	int				anim42;
 	char			text42[4 * 64 * 64];
 	t_cam			camera;
+	int 			opts;
 	void			*buffer;
 	struct s_key	*keys;
 	int				nkeys;
 	int				run;
 	int 			cpf;
+	t_vec4			pixie;
+	t_vec4			pv;
 }				t_gr_vm;
 
 typedef struct	s_key

@@ -21,6 +21,7 @@
 # define SDL_POS	SDL_WINDOWPOS_UNDEFINED
 # define SDL_FLAGS	SDL_WINDOW_OPENGL
 
+# define ROTATING		2
 # define TIME_TRAVEL    10.0f
 # define ROT			0.5f
 # define SPEED			1.0f
@@ -49,7 +50,8 @@ void		cam_trans_up(void *data, t_gr_vm *vm, t_key *key);
 void		cam_trans_down(void *data, t_gr_vm *vm, t_key *key);
 
 void 		speed(void *data, t_gr_vm *vm, t_key *key);
-
+void		toggle_mem(void *data, t_gr_vm *vm, t_key *key);
+void 		toggle_rot(void *data, t_gr_vm *vm, t_key *key);
 void		rotate(t_gr_vm *vm, int relx, int rely);
 
 GLuint		load_bmp_to_opengl(char *b);

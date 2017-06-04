@@ -26,15 +26,17 @@ int		err(const char *format, ...)
 
 	va_start(va, format);
 	ft_vadprintf(2, format, va);
+	va_end(va);
 	return (-1);
 }
 
-void	die(const char *format, int exit_status, ...)
+void	die(int exit_status, const char *format, ...)
 {
 	va_list	va;
 
-	va_start(va, exit_status);
+	va_start(va, format);
 	ft_vadprintf(2, format, va);
+	va_end(va);
 	exit(exit_status);
 } 
 

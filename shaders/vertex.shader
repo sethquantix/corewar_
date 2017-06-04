@@ -8,9 +8,11 @@ layout(location = 4) in vec3    in_trans;
 layout(location = 5) in vec3    in_rot;
 layout(location = 6) in vec3    in_scale;
 layout(location = 7) in uint    in_data;
+layout(location = 8) in uint    in_val;
 
 uniform mat4    P;
 uniform mat4    V;
+uniform float   time;
 
 out vec3    pos_color;
 out vec2    uv;
@@ -19,6 +21,7 @@ out vec3    scale;
 out vec3    camPos;
 
 flat out uint data;
+flat out uint val;
 flat out int index;
 flat out int face;
 
@@ -26,21 +29,37 @@ void main(void)
 {
     vec3 cam = vec3(V[0].w, V[1].w, V[2].w);
     mat4 rot = V;
-    rot[0].w = 0;
+	mat4    yrot;
+
+	rot[0].w = 0;
     rot[1].w = 0;
     rot[2].w = 0;
 	uv = in_uv;
-	gl_Position = vec4(in_Position.x, in_Position.y, in_Position.z, 1.0);
+	gl_Position = vec4(in_Position, 1.0);
 	normal = (vec4(in_Normal.xyz, 0)).xyz;
 	gl_Position.xyz *= in_scale;
-	gl_Position.xyz += in_trans;
+	yrot[0] = vec4(0);
+	yrot[1] = vec4(0);
+	yrot[2] = vec4(0);
+	yrot[3] = vec4(0);
+	yrot[0].x = 1;
+	yrot[1].y = 1;
+	yrot[2].z = 1;
+	yrot[3].w = 1;
+	yrot[0].x = cos(0.5 * time);
+	yrot[2].z = cos(0.5 * time);
+	yrot[2].x = -sin(0.5 * time);
+	yrot[0].z = sin(0.5 * time);
+	gl_Position.xyz += in_trans;// * (1 + 0.5 * sin(time));
+	gl_Position *= yrot;
+	pos_color = gl_Position.xyz;
 	gl_Position.xyz += cam;
 	gl_Position *= inverse(rot);
-	pos_color = gl_Position.xyz;
 	gl_Position *= P;
 	index = gl_InstanceID;
 	data = in_data;
 	face = in_face;
 	scale = in_scale;
-	camPos = cam;
+	camPos = -cam;
+	val = in_val;
 }
