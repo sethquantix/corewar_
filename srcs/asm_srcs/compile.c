@@ -213,7 +213,6 @@ void	compile(t_env *e)
 	char	*source;
 	t_file	*file;
 
-	expr = NULL;
 	e->asm_parser = parse_engine(ASM_RULES, g_asm_tokens, (char **)g_list);
 	i = 0;
 	while (i < e->n_file)
@@ -225,6 +224,8 @@ void	compile(t_env *e)
 			print_instructions(file);
 			parser_clear_expr(&expr);
 		};
+		free(source);
 		i++;
 	}
+	destroy_engine(e->asm_parser);
 }

@@ -23,6 +23,10 @@
 
 # define INST(x)	((t_inst *)(x->content))
 
+#define COLOR_RED	"\033[;1;31m"
+#define COLOR_GREEN	"\033[;1;32m"
+#define COLOR_END	"\033[0m"
+
 # define ERR_POS	"Champion name or comment not at the top of the file\n"
 # define ERR_LEN	"Champion name or comment too long\n"
 extern t_token	g_asm_opts[];

@@ -211,12 +211,12 @@ void mainImage(vec3 col, out vec4 fragColor, in vec2 uv, bool m)
 {
 	//setup system
 	vec2 p = uv - 0.5;
-	p *= 4.;
-    float rz = mix(dualfbm(p), flow(p), 0.9);
+	p *= 2.;
+    float rz = mix(dualfbm(p), flow(p + 1), 0.9);
     vec3 c1 = brain(p * 0.5, col);
 
 	//rings
-	p /= m ? exp(mod(dtime,3.14159)) : 100;
+	p /= m ? exp(mod(dtime,3.14159)) : 80;
 	rz *= pow(abs((0.1-circ(p))),.9);
 
 	//final color
@@ -281,7 +281,7 @@ void main(void)
     bool    proc = (data & uint(0xF)) != 0;
     int     p = int(data & uint(0xF0)) >> 4;
     float   s = face == 1 ? 1 : scale.y;
-    float   k = 0.25 + 0.75 * float(data >> 16) / 600.0;
+    float   k = 0.45 + 0.55 * float(data >> 16) / 600.0;
     int     o = 0;
     for (int i = 0; i < 4; i++)
         if ((p & (1 << i)) != 0)
