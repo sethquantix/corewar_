@@ -146,7 +146,7 @@ int		main(int ac, char **av)
 	set_champs(&arena);
 	if (arena.opts & G_OPT)
 	{
-		gr_vm_init(&context);
+		gr_vm_init(&context, &arena);
 		gr_vm_run((t_vm_loop)loop, &arena, &context);
 		gr_vm_end(&context);
 	}

@@ -74,6 +74,7 @@ char 	*get_err(t_parser *p, char *ret, int *c)
 		free(t);
 		return (err("Unexpected expression %s", expr->rule));
 	}
+	free(t);
 	return (err("Unexpected symbol \"%.1s\"", ret));
 }
 

@@ -7,7 +7,8 @@ SET(GCC_OPTIONS "-g -fsanitize=address")
 
 include_directories(includes
 		soil2/incs
-        libs/libft)
+        libs/libft
+		$ENV{HOME}/.brew/include)
 
 set(CRWR_FILES
     includes/corewar.h
@@ -29,6 +30,7 @@ set(CRWR_FILES
     srcs/corewar_srcs/gr_vm_camera_handling_rot.c
     srcs/corewar_srcs/gr_vm_handlers.c
     srcs/corewar_srcs/gr_vm_init.c
+	srcs/corewar_srcs/gr_vm_ui.c
     srcs/corewar_srcs/gr_vm_init_cube.c
     srcs/corewar_srcs/gr_vm_inputs.c
     srcs/corewar_srcs/gr_vm_load_texture.c
@@ -82,7 +84,6 @@ target_link_libraries(corewar
         sdl2
 		sdl2_ttf
         glew
-        glfw
 		SOIL2
         ${OPENGL_LIBRARIES}
         ${GCC_OPTIONS})

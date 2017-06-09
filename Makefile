@@ -838,6 +838,33 @@ srcs/corewar_srcs/gr_vm_run.c.s:
 	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_run.c.s
 .PHONY : srcs/corewar_srcs/gr_vm_run.c.s
 
+srcs/corewar_srcs/gr_vm_ui.o: srcs/corewar_srcs/gr_vm_ui.c.o
+
+.PHONY : srcs/corewar_srcs/gr_vm_ui.o
+
+# target to build an object file
+srcs/corewar_srcs/gr_vm_ui.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_ui.c.o
+.PHONY : srcs/corewar_srcs/gr_vm_ui.c.o
+
+srcs/corewar_srcs/gr_vm_ui.i: srcs/corewar_srcs/gr_vm_ui.c.i
+
+.PHONY : srcs/corewar_srcs/gr_vm_ui.i
+
+# target to preprocess a source file
+srcs/corewar_srcs/gr_vm_ui.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_ui.c.i
+.PHONY : srcs/corewar_srcs/gr_vm_ui.c.i
+
+srcs/corewar_srcs/gr_vm_ui.s: srcs/corewar_srcs/gr_vm_ui.c.s
+
+.PHONY : srcs/corewar_srcs/gr_vm_ui.s
+
+# target to generate assembly for a file
+srcs/corewar_srcs/gr_vm_ui.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_ui.c.s
+.PHONY : srcs/corewar_srcs/gr_vm_ui.c.s
+
 srcs/corewar_srcs/ins_basic.o: srcs/corewar_srcs/ins_basic.c.o
 
 .PHONY : srcs/corewar_srcs/ins_basic.o
@@ -1277,6 +1304,9 @@ help:
 	@echo "... srcs/corewar_srcs/gr_vm_run.o"
 	@echo "... srcs/corewar_srcs/gr_vm_run.i"
 	@echo "... srcs/corewar_srcs/gr_vm_run.s"
+	@echo "... srcs/corewar_srcs/gr_vm_ui.o"
+	@echo "... srcs/corewar_srcs/gr_vm_ui.i"
+	@echo "... srcs/corewar_srcs/gr_vm_ui.s"
 	@echo "... srcs/corewar_srcs/ins_basic.o"
 	@echo "... srcs/corewar_srcs/ins_basic.i"
 	@echo "... srcs/corewar_srcs/ins_basic.s"

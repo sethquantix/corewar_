@@ -11,30 +11,30 @@
 				<Option working_dir="/Users/cchaumar/Documents/42projects/working/_corewar"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
 				<Option working_dir="/Users/cchaumar/Documents/42projects/working/_corewar"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
 				<Option working_dir="/Users/cchaumar/Documents/42projects/working/_corewar"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="asm">
@@ -47,21 +47,14 @@
 					<Add directory="/Users/cchaumar/Documents/42projects/working/_corewar/includes"/>
 					<Add directory="/Users/cchaumar/Documents/42projects/working/_corewar/soil2/incs"/>
 					<Add directory="/Users/cchaumar/Documents/42projects/working/_corewar/libs/libft"/>
-					<Add directory="/System/Library/Frameworks/OpenGL.framework"/>
 					<Add directory="/Users/cchaumar/.brew/include"/>
-					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
-					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
-					<Add directory="/usr/include"/>
-					<Add directory="/System/Library/Frameworks"/>
-					<Add directory="/Library/Frameworks"/>
+					<Add directory="/System/Library/Frameworks/OpenGL.framework"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 asm"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 asm"/>
+					<CompileFile command="/usr/bin/make -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="asm/fast">
@@ -74,21 +67,14 @@
 					<Add directory="/Users/cchaumar/Documents/42projects/working/_corewar/includes"/>
 					<Add directory="/Users/cchaumar/Documents/42projects/working/_corewar/soil2/incs"/>
 					<Add directory="/Users/cchaumar/Documents/42projects/working/_corewar/libs/libft"/>
-					<Add directory="/System/Library/Frameworks/OpenGL.framework"/>
 					<Add directory="/Users/cchaumar/.brew/include"/>
-					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
-					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
-					<Add directory="/usr/include"/>
-					<Add directory="/System/Library/Frameworks"/>
-					<Add directory="/Library/Frameworks"/>
+					<Add directory="/System/Library/Frameworks/OpenGL.framework"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 asm/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 asm/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="corewar">
@@ -101,21 +87,14 @@
 					<Add directory="/Users/cchaumar/Documents/42projects/working/_corewar/includes"/>
 					<Add directory="/Users/cchaumar/Documents/42projects/working/_corewar/soil2/incs"/>
 					<Add directory="/Users/cchaumar/Documents/42projects/working/_corewar/libs/libft"/>
-					<Add directory="/System/Library/Frameworks/OpenGL.framework"/>
 					<Add directory="/Users/cchaumar/.brew/include"/>
-					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
-					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
-					<Add directory="/usr/include"/>
-					<Add directory="/System/Library/Frameworks"/>
-					<Add directory="/Library/Frameworks"/>
+					<Add directory="/System/Library/Frameworks/OpenGL.framework"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 corewar"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 corewar"/>
+					<CompileFile command="/usr/bin/make -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="corewar/fast">
@@ -128,21 +107,14 @@
 					<Add directory="/Users/cchaumar/Documents/42projects/working/_corewar/includes"/>
 					<Add directory="/Users/cchaumar/Documents/42projects/working/_corewar/soil2/incs"/>
 					<Add directory="/Users/cchaumar/Documents/42projects/working/_corewar/libs/libft"/>
-					<Add directory="/System/Library/Frameworks/OpenGL.framework"/>
 					<Add directory="/Users/cchaumar/.brew/include"/>
-					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
-					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
-					<Add directory="/usr/include"/>
-					<Add directory="/System/Library/Frameworks"/>
-					<Add directory="/Library/Frameworks"/>
+					<Add directory="/System/Library/Frameworks/OpenGL.framework"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 corewar/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 corewar/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/Users/cchaumar/Documents/42projects/working/_corewar/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
@@ -258,6 +230,9 @@
 			<Option target="corewar"/>
 		</Unit>
 		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/gr_vm_run.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/gr_vm_ui.c">
 			<Option target="corewar"/>
 		</Unit>
 		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/ins_basic.c">

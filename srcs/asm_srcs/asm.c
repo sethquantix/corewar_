@@ -12,10 +12,13 @@
 
 #include "asm.h"
 
+void	*memory;
+
 int	main(int ac, char **av)
 {
 	t_expr	*expr;
 	t_env	e;
+	int 	i;
 
 	if (ac == 1)
 	return (usage(av[0]));
@@ -25,6 +28,11 @@ int	main(int ac, char **av)
 	parser_clear_expr(&expr);
 	if ((e.opts & OPT_X) == 0)
 		compile(&e);
+	i = 0;
+	while (i < e.n_file)
+		free(e.files[i++]);
 	free(e.files);
+	while (1)
+		;
 	return (0);
 }

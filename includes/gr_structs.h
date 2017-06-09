@@ -16,6 +16,10 @@
 #include "includes.h"
 #include "gr_types.h"
 
+#define CENTER_NONE 0
+#define CENTER_X    1
+#define CENTER_Y    2
+
 typedef enum 	e_faces
 {
 	F_DOWN,
@@ -26,6 +30,15 @@ typedef enum 	e_faces
 	F_BACK
 }				t_faces;
 
+typedef enum    e_styles
+{
+    WHITE_SMALL,
+    BLUE_SMALL,
+    BLUE_BIG,
+    BLUE_BIG_CENTERED,
+    WHITE_ITALIC_MEDIUM
+}               t_styles;
+
 typedef struct	s_cam
 {
 	t_vec4		pos;
@@ -34,11 +47,27 @@ typedef struct	s_cam
 	int			y;
 }				t_cam;
 
+typedef struct s_style
+{
+    int         centered;
+    SDL_Color   c;
+    TTF_Font    *font;
+}               t_style;
+
+typedef struct  s_text_p
+{
+    SDL_Rect    pos;
+    t_style     *styles;
+    int         style;
+    int         nstyle;
+}               t_text_p;
+
 typedef struct	s_gr_vm
 {
 	SDL_Window		*arena;
 	SDL_Window		*UI;
-	SDL_GLContext	glcontext;
+    SDL_Surface     *ui_screen;
+	SDL_GLContext	arena_context;
 	GLuint			glbuffer;
 	GLuint			glcolor;
 	GLuint			gldepth;

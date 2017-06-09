@@ -23,8 +23,8 @@
 
 # define ROTATING		2
 # define TIME_TRAVEL    10.0f
-# define ROT			0.5f
-# define SPEED			1.0f
+# define ROT			0.2f
+# define SPEED			0.5f
 # define CPF_DELTA		1
 
 t_handler	get_handler(int type);
@@ -60,5 +60,6 @@ void		load_light(uint32_t in[MEM_SIZE], float out[4 * MEM_SIZE], float models[][
 void		load_bmp_to_42(char *b, uint32_t *out);
 void		toggle_42(void *data, t_gr_vm *vm, t_key *key);
 GLuint		gen_texture(const char *font_file);
+void        set_ui(t_gr_vm *cxt, t_arena *arena);
 
 #endif
