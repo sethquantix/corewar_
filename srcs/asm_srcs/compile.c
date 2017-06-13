@@ -15,7 +15,7 @@
 const char	*g_list[] = {"LIVE_NAME", "LD_NAME", "ST_NAME", "ADD_NAME",
 	"SUB_NAME", "AND_NAME", "OR_NAME", "XOR_NAME", "ZJMP_NAME", "FORK_NAME",
 	"LDI_NAME", "STI_NAME", "LLD_NAME", "LLDI_NAME", "LFORK_NAME",
-	"AFF_NAME",	"INSTRUCTION", "LABEL_TAG", "NAME_CMD_STRING",
+	"AFF_NAME",	"INSTRUCTION", "LABEL", "NAME_CMD_STRING",
 	"COMMENT_CMD_STRING", "DIRECT", "DIRECT_LABEL", "INDIRECT",
 	"INDIRECT_LABEL", "REG", "STRING", 0
 };
@@ -38,7 +38,7 @@ t_inst	*new_inst(char *name, int type, int addr)
 	t_inst	*inst;
 
 	inst = try(sizeof(t_inst));
-	inst->name = name;
+	inst->name = ft_strdup(name);
 	inst->type = type;
 	inst->addr = addr;
 	inst->op = type == INS ? op_for_name(name) : NULL;
@@ -67,6 +67,7 @@ void	read_label(t_file *f, t_expr **expr)
 			name, l, c);
 	}
 	inst = new_inst(name, LBL, f->addr);
+	free(name);
 	node = ft_lstnew(NULL, 0);
 	node->content = inst;
 	ft_lstadd_end(&f->inst, node);
@@ -213,6 +214,7 @@ void	compile(t_env *e)
 	char	*source;
 	t_file	*file;
 
+	source = NULL;
 	e->asm_parser = parse_engine(ASM_RULES, g_asm_tokens, (char **)g_list);
 	i = 0;
 	while (i < e->n_file)
@@ -223,6 +225,7 @@ void	compile(t_env *e)
 			file->print_header(file);
 			print_instructions(file);
 			parser_clear_expr(&expr);
+			free(file);
 		};
 		free(source);
 		i++;

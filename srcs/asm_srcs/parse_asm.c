@@ -14,16 +14,28 @@
 
 char	*getfile(char *file)
 {
-	int		fd;
-	char	*line;
-	char	*source;
+	int			fd;
+	int 		len;
+	char		*line;
+	char		*source;
+	struct stat	stat_;
 
-	if ((fd = open(file, O_RDONLY)) == -1)
+	len = 0;
+	stat(file, &stat_);
+	if (stat_.st_size < sizeof(header_t) || (fd = open(file, O_RDONLY)) == -1)
 		return (NULL);
 	source = NULL;
 	line = NULL;
 	while (get_next_line(fd, &line) > 0)
+	{
+		len += ft_strlen(line);
 		source = ft_strjoinfree(source, ft_strjoinfree(line, "\n", 1), 3);
+		if (len > sizeof(header_t) + CHAMP_MAX_SIZE + 1)
+		{
+			free(source);
+			return ((void *)-1);
+		}
+	}
 	free(line);
 	return (source);
 }
@@ -66,13 +78,17 @@ char 	*get_err(t_parser *p, char *ret, int *c)
 	if (tok->pos == ret)
 	{
 		*c += ((t_tok *)ft_lstend(stack)->content)->pos - ret;
+		ft_lstdel(&stack, ft_del);
 		return (err("Invalid argument"));
 	}
+	ft_lstdel(&stack, ft_del);
 	t = parser_getl(ret);
 	if ((e = run_parser(p, t, "EXPR", &expr)) == NULL)
 	{
+		e = err("Unexpected token %s : \"%s\"", expr->rule, expr->expr);
+		parser_clear_expr(&expr);
 		free(t);
-		return (err("Unexpected expression %s", expr->rule));
+		return (e);
 	}
 	free(t);
 	return (err("Unexpected symbol \"%.1s\"", ret));
@@ -103,15 +119,18 @@ t_expr	*parse_asm(t_parser *p, char *file, char **source)
 	char		*ret;
 	int			err;
 
-	if ((*source = getfile(file)) == NULL)
+	if ((*source = getfile(file)) == NULL || *source == (void *)-1)
 	{
-		ft_printf("Can't read file %s\n", file);
+		ft_dprintf(2, *source ? "File %s is too heavy for a corewar champion\n" :
+			"Can't read file %s\n", file);
+		if (*source)
+			*source = 0;
 		return (NULL);
 	}
 	err = 0;
 	expr = NULL;
 	s = *source;
-	while (s && (ret = run_parser(p, s, "EXPR", &expr)) != NULL)
+	while (err < 20 && s && (ret = run_parser(p, s, "EXPR", &expr)) != NULL)
 	{
 		err++;
 		compile_error(p, file, *source, ret);
@@ -120,6 +139,11 @@ t_expr	*parse_asm(t_parser *p, char *file, char **source)
 		s = ft_strchr(ret, '\n');
 	}
 	if (err)
-		ft_printf("Failed to compile %s : %d errors\n", file, err);
+	{
+		parser_clear_expr(&expr);
+		ft_printf("Failed to compile %s : ", file);
+		err >= 20 ? ft_printf("Too many errors ! (stopped at 20)\n\n") :
+			ft_printf("%d errors\n\n", err);
+	}
 	return (err ? NULL : expr);
 }

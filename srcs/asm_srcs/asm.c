@@ -12,8 +12,6 @@
 
 #include "asm.h"
 
-void	*memory;
-
 int	main(int ac, char **av)
 {
 	t_expr	*expr;
@@ -32,7 +30,5 @@ int	main(int ac, char **av)
 	while (i < e.n_file)
 		free(e.files[i++]);
 	free(e.files);
-	while (1)
-		;
 	return (0);
 }

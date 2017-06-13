@@ -12,12 +12,14 @@
 
 #ifndef ASM_H
 # define ASM_H
+# include <sys/stat.h>
 # include "libft.h"
 # include "op.h"
 
 # define ASM_RULES	"rules/asm_parse"
 # define OPT_A		0x1
 # define OPT_X		0x2
+# define OPT_C		0x4
 # define INS		1
 # define LBL		2
 

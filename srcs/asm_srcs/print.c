@@ -129,6 +129,22 @@ void	write_inst(t_inst *inst, t_file *file)
 	}
 }
 
+void	del_inst(t_inst *inst, size_t size)
+{
+	int 	i;
+
+	i = 0;
+	ft_memdel((void **)&inst->name);
+	while (i < 4)
+	{
+		ft_memdel((void **)&inst->label[i]);
+		ft_memdel((void **)&inst->args[i]);
+		i++;
+	}
+	ft_bzero(inst, size);
+	ft_memdel((void **)&inst);
+}
+
 void	print_instructions(t_file *file)
 {
 	t_list	*inst;
@@ -140,6 +156,7 @@ void	print_instructions(t_file *file)
 		file->print_inst(INST(inst), file);
 		inst = inst->next;
 	}
+	ft_lstdel(&file->inst, (void (*)(void *, size_t))del_inst);
 	if (file->fd)
 		close(file->fd);
 }
