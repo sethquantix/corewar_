@@ -12,11 +12,11 @@
 
 #include "asm.h"
 
-void	die(char *s, int exit_code, ...)
+void	die(int exit_code, char *s, ...)
 {
 	va_list		args;
 
-	va_start(args, exit_code);
+	va_start(args, s);
 	ft_vaprintf(s, args);
 	va_end(args);
 	exit(exit_code);

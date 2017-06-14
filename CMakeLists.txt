@@ -8,6 +8,7 @@ SET(GCC_OPTIONS "-g")
 include_directories(includes
 		soil2/incs
         libs/libft
+		libs/glhandler/includes
 		$ENV{HOME}/.brew/include)
 
 set(CRWR_FILES
@@ -36,20 +37,23 @@ set(CRWR_FILES
     srcs/corewar_srcs/gr_vm_load_texture.c
     srcs/corewar_srcs/gr_vm_matrix.c
     srcs/corewar_srcs/gr_vm_render_opengl.c
+	srcs/corewar_srcs/gr_vm_styles.c
 	srcs/corewar_srcs/gr_gen_tex.c
-    srcs/corewar_srcs/gr_vm_run.c
-    srcs/corewar_srcs/ins_basic.c
-    srcs/corewar_srcs/ins_calc.c
-    srcs/corewar_srcs/ins_fork.c
-    srcs/corewar_srcs/ins_index.c
-    srcs/corewar_srcs/mem.c
-    srcs/corewar_srcs/op.c
-    srcs/corewar_srcs/opts_tokens.c
-    srcs/corewar_srcs/options.c
-    srcs/corewar_srcs/parse_args.c
-    srcs/corewar_srcs/process.c
-    srcs/corewar_srcs/values.c
-    srcs/corewar_srcs/read_args.c
+	srcs/corewar_srcs/gr_vm_keys.c
+	srcs/corewar_srcs/gr_vm_gl.c
+	srcs/corewar_srcs/gr_vm_run.c
+	srcs/corewar_srcs/ins_basic.c
+	srcs/corewar_srcs/ins_calc.c
+	srcs/corewar_srcs/ins_fork.c
+	srcs/corewar_srcs/ins_index.c
+	srcs/corewar_srcs/mem.c
+	srcs/corewar_srcs/op.c
+	srcs/corewar_srcs/opts_tokens.c
+	srcs/corewar_srcs/options.c
+	srcs/corewar_srcs/parse_args.c
+	srcs/corewar_srcs/process.c
+	srcs/corewar_srcs/values.c
+	srcs/corewar_srcs/read_args.c
     srcs/corewar_srcs/utils.c)
 
 set(ASM_FILES
@@ -64,7 +68,6 @@ set(ASM_FILES
     srcs/asm_srcs/print.c
     srcs/asm_srcs/read_opts.c
     srcs/asm_srcs/utils.c
-#	srcs/asm_srcs/parser.c
     srcs/asm_srcs/write.c)
 
 find_package(OpenGL REQUIRED)

@@ -13,12 +13,9 @@
 #ifndef GR_STRUCTS_H
 # define GR_STRUCTS_H
 
-#include "includes.h"
-#include "gr_types.h"
-
-#define CENTER_NONE 0
-#define CENTER_X    1
-#define CENTER_Y    2
+# include "includes.h"
+# include "gr_types.h"
+# include "styles.h"
 
 typedef enum 	e_faces
 {
@@ -30,15 +27,6 @@ typedef enum 	e_faces
 	F_BACK
 }				t_faces;
 
-typedef enum    e_styles
-{
-    WHITE_SMALL,
-    BLUE_SMALL,
-    BLUE_BIG,
-    BLUE_BIG_CENTERED,
-    WHITE_ITALIC_MEDIUM
-}               t_styles;
-
 typedef struct	s_cam
 {
 	t_vec4		pos;
@@ -47,9 +35,14 @@ typedef struct	s_cam
 	int			y;
 }				t_cam;
 
+typedef struct 	s_pos
+{
+	SDL_Rect	p;
+	SDL_Color	c;
+}				t_pos;
+
 typedef struct s_style
 {
-    int         centered;
     SDL_Color   c;
     TTF_Font    *font;
 }               t_style;
@@ -66,20 +59,23 @@ typedef struct	s_gr_vm
 {
 	SDL_Window		*arena;
 	SDL_Window		*UI;
-    SDL_Surface     *ui_screen;
+    SDL_Surface     *screen;
 	SDL_GLContext	arena_context;
 	GLuint			glbuffer;
 	GLuint			glcolor;
 	GLuint			gldepth;
 	GLuint			program;
 	GLuint			program_box;
+	GLuint			program_board;
 	GLuint			matVBO;
 	GLuint			valVBO;
 	GLuint 			arenaVBO;
 	GLuint			vao;
 	GLuint			vao_box;
+	GLuint 			vao_board;
 	GLuint 			glyphs;
 	GLuint			diffuseTexture;
+	GLuint 			board;
 	GLfloat			model[MEM_SIZE][9];
     float           scale[MEM_SIZE];
 	int 			values[MEM_SIZE];
@@ -92,8 +88,10 @@ typedef struct	s_gr_vm
 	int				nkeys;
 	int				run;
 	int 			cpf;
+	int				time;
 	t_vec4			pixie;
 	t_vec4			pv;
+	t_text_p		sst;
 }				t_gr_vm;
 
 typedef struct	s_key

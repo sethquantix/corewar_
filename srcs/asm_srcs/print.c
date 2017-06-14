@@ -13,17 +13,18 @@
 #include "asm.h"
 
 
-int		addr_label(char *label, t_list *inst)
+int		addr_label(const char *file, char *label, t_list *inst)
 {
 	t_list	*ret;
 
 	ret = ft_lstfind(inst, label, (int (*)(void *, void *))cmp_label);
 	if (!ret)
-		die("Error : Unknown label %s\n", EXIT_FAILURE, label);
+		die(EXIT_FAILURE, "Compiling %s : %sFailure%s!\
+			\nUnknown label %s\n", file, COLOR_RED, COLOR_END, label);
 	return (INST(ret)->addr);
 }
 
-void 	get_labels(t_list *inst)
+void 	get_labels(const char *file, t_list *inst)
 {
 	int		i;
 	t_list	*start;
@@ -42,7 +43,8 @@ void 	get_labels(t_list *inst)
 		while (i < in->op->argc)
 		{
 			if (in->label[i])
-				in->params[i] = addr_label(in->label[i], start) - in->addr;
+				in->params[i] = addr_label(file, in->label[i], start) -
+					in->addr;
 			i++;
 		}
 		inst = inst->next;
@@ -149,7 +151,8 @@ void	print_instructions(t_file *file)
 {
 	t_list	*inst;
 
-	get_labels(file->inst);
+	get_labels(file->name, file->inst);
+	file->print_header(file);
 	inst = file->inst;
 	while (inst)
 	{
@@ -179,7 +182,8 @@ void	write_file_header(t_file *file)
 	o = output_file(file->name);
 	ft_printf("Writing output to %s\n", o);
 	if ((file->fd = open(o, O_WRONLY | O_CREAT | O_TRUNC, 0777)) == -1)
-		die("Error : Can't open %s for writing\n", EXIT_FAILURE, o);
+		die(EXIT_FAILURE, "Compilation of %s %sfailed%s !\
+			\nCan't open %s for writing\n", o);
 	free(o);
 	write(file->fd, &file->head, sizeof(header_t));
 }

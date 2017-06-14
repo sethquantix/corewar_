@@ -16,7 +16,6 @@
 # include "crwr_structs.h"
 # include "crwr_globals.h"
 
-
 t_expr		*parse_opts(char **av);
 
 void		option_o(t_expr **e, t_arena *a);

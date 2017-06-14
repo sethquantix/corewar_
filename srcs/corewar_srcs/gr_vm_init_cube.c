@@ -45,6 +45,15 @@ static const float g_cube[] = {
 	0.5, 0, 0.5, 0, 0, 1, 0, 1 // RBB
 };
 
+static float g_board[] = {
+	-71.3, 12, -128, 0, 1,
+	-71.3, 0, -128, 0, 0,
+	71.3, 0, -128, 1, 0,
+	71.3, 0, -128, 1, 0,
+	71.3, 12, -128, 1, 1,
+	-71.3, 12, -128, 0, 1
+};
+
 static const int g_faces[] = {
 	F_DOWN,
 	F_DOWN,
@@ -177,6 +186,33 @@ static void			init_pos(t_gr_vm *cxt)
 	}
 }
 
+static void			gen_board(t_gr_vm *cxt)
+{
+	GLuint 	vbo;
+	int		i;
+	float 	h;
+
+	h = (g_board[10] - g_board[0]) / (float)WIN_WIDTH * (float)WIN_HEIGHT;
+	i = 0;
+	while (i < 6)
+	{
+		if (g_board[5 * i + 1] == 0)
+			g_board[5 * i + 1] = 12 + h;
+		i++;
+	}
+	glGenVertexArrays(1, &cxt->vao_board);
+	glBindVertexArray(cxt->vao_board);
+	glGenBuffers(1, &vbo);
+	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+	glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(float) * 5, &g_board[0], GL_STATIC_DRAW);
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 5, (void*)0);
+	glEnableVertexAttribArray(1);
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 5, (void*)(sizeof(float)*3));
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindVertexArray(0);
+}
+
 GLuint				generate_cube(t_gr_vm *cxt)
 {
 	GLuint		vao;
@@ -193,5 +229,6 @@ GLuint				generate_cube(t_gr_vm *cxt)
 	createVBO_VNT((float *)g_cube, (int *)g_faces,
 		sizeof(g_cube) / sizeof(float) / 8, cxt->vao_box);
 	ft_printf("box : %d\n", cxt->vao_box);
+	gen_board(cxt);
 	return (vao);
 }

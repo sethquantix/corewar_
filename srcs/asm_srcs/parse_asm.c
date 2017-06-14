@@ -22,7 +22,7 @@ char	*getfile(char *file)
 
 	len = 0;
 	stat(file, &stat_);
-	if (stat_.st_size < sizeof(header_t) || (fd = open(file, O_RDONLY)) == -1)
+	if (stat_.st_size < 4 || (fd = open(file, O_RDONLY)) == -1)
 		return (NULL);
 	source = NULL;
 	line = NULL;
@@ -141,7 +141,7 @@ t_expr	*parse_asm(t_parser *p, char *file, char **source)
 	if (err)
 	{
 		parser_clear_expr(&expr);
-		ft_printf("Failed to compile %s : ", file);
+		ft_printf("compiling %s : %sFAILURE !%s\n", file, COLOR_RED, COLOR_END);
 		err >= 20 ? ft_printf("Too many errors ! (stopped at 20)\n\n") :
 			ft_printf("%d errors\n\n", err);
 	}

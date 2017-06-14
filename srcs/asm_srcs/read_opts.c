@@ -18,7 +18,7 @@ static void	read_debug(t_env *e, t_expr **expr)
 
 	*expr = (*expr)->next;
 	if ((fd = open((*expr)->expr, O_WRONLY)) == -1)
-		die("error : couldn't open %s for writing\n", EXIT_FAILURE,
+		die(EXIT_FAILURE, "error : couldn't open %s for writing\n",
 			(*expr)->expr);
 	if (e->debug)
 		close(e->debug);
@@ -29,7 +29,7 @@ static void	set_opt(t_env *e, t_expr **expr)
 {
 	e->opts |= ft_strcmp((*expr)->rule, "OPTION_A") == 0 ? OPT_A : OPT_X;
 	if ((e->opts & OPT_A) && (e->opts & OPT_X))
-		die("error : unsupported combination of options\n", EXIT_FAILURE);
+		die(EXIT_FAILURE, "error : unsupported combination of options\n");
 }
 
 static void read_path(t_env *e, t_expr **expr)

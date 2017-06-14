@@ -63,8 +63,9 @@ void	read_label(t_file *f, t_expr **expr)
 	if (ft_lstfind(f->inst, name, (int (*)(void *, void *))cmp_label))
 	{
 		parser_get_pos((*expr)->pos, f->source, &l, &c);
-		die("error : duplicate label %s at [%d : %d]\n", EXIT_FAILURE,
-			name, l, c);
+		die(EXIT_FAILURE, "Compiling %s : %sFAILED%s!\
+			\nduplicate label %s at [%d : %d]\n", f->name, COLOR_RED,
+			COLOR_END, name, l, c);
 	}
 	inst = new_inst(name, LBL, f->addr);
 	free(name);
@@ -167,9 +168,9 @@ void 	get_error(int error)
 	if (error == 0)
 		return ;
 	if (error == -1)
-		die(ERR_POS, EXIT_FAILURE);
+		die(EXIT_FAILURE, ERR_POS);
 	if (error == -2)
-		die(ERR_LEN, EXIT_FAILURE);
+		die(EXIT_FAILURE, ERR_LEN);
 }
 
 int	get_cmd(t_expr **expr, int max_size, char *dest, char *cmd)
@@ -187,15 +188,15 @@ int	get_cmd(t_expr **expr, int max_size, char *dest, char *cmd)
 t_file	*read_asm(t_env *e, t_expr *expr, char *source, char *file_name)
 {
 	t_file		*file;
-	const char	*s[] = {"LABEL_TAG", "INSTRUCTION", 0};
+	const char	*s[] = {"LABEL", "INSTRUCTION", 0};
 	static void	(*f[])(t_file *, t_expr **) = {read_label, read_instruction, 0};
 
 	file = try(sizeof(t_file));
 	file->head.magic = ft_endian_int(COREWAR_EXEC_MAGIC);
 	file->source = source;
-	file->name = e->opts & OPT_A ? 0 : file_name;
-	file->print_header = file->name ? write_file_header : print_file_header;
-	file->print_inst = file->name ? write_inst : print_inst;
+	file->name = file_name;
+	file->print_header = e->opts & OPT_A ? print_file_header : write_file_header;
+	file->print_inst = e->opts & OPT_A ? print_inst : write_inst;
 	get_error(get_cmd(&expr, PROG_NAME_LENGTH, file->head.prog_name, "NAME_CMD_STRING"));
 	get_error(get_cmd(&expr, COMMENT_LENGTH, file->head.prog_desc, "COMMENT_CMD_STRING"));
 	while (expr)
@@ -222,7 +223,9 @@ void	compile(t_env *e)
 		if ((expr = parse_asm(e->asm_parser, e->files[i], &source)))
 		{
 			file = read_asm(e, expr, source, e->files[i]);
-			file->print_header(file);
+			if ((e->opts & OPT_A) == 0)
+				ft_printf("Compiling %s : %sSUCCESS !%s\n", file->name,
+					  COLOR_GREEN, COLOR_END);
 			print_instructions(file);
 			parser_clear_expr(&expr);
 			free(file);

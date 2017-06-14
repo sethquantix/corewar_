@@ -64,4 +64,5 @@ void		gr_vm_end(t_gr_vm *ctx)
 	SDL_DestroyWindow(ctx->arena);
 	SDL_GL_DeleteContext(ctx->arena_context);
 	SDL_Quit();
+	TTF_Quit();
 }

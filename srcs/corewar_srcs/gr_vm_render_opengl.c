@@ -52,15 +52,12 @@ void			pixie(t_gr_vm *cxt)
 		if (rand() % 2)
 			d = rand() % 4;
 		dest = v_add(dest, v_mult_k(dir[d], 2.3));
-		printf("%f %f %f\n", dest.x, dest.y, dest.z);
 	}
 	move_pix(cxt, dest);
-	printf("%f %f %f\n", cxt->pixie.x, cxt->pixie.y, cxt->pixie.z);
 }
 
 static void		push_uniform(t_gr_vm *cxt)
 {
-	static int 		time = 0;
 	static int 		ltime = 0;
 	static int		rtime = 0;
 	GLint			loc;
@@ -69,9 +66,7 @@ static void		push_uniform(t_gr_vm *cxt)
 	glBindVertexArray(cxt->vao);
  	if (!rtime)
 		rtime = SDL_GetTicks();
-	if (!time)
-		time = rtime;
-	ltime += cxt->opts & ROTATING ? SDL_GetTicks() - rtime : 0;
+	ltime += cxt->opts & OPT_ROTATION ? SDL_GetTicks() - rtime : 0;
 	rtime = SDL_GetTicks();
 	loc = glGetUniformLocation(cxt->program, "V");
 	glUniformMatrix4fv(loc, 1, GL_FALSE, cxt->camera.m.t);
@@ -83,7 +78,7 @@ static void		push_uniform(t_gr_vm *cxt)
 	loc = glGetUniformLocation(cxt->program, "font");
 	glUniform1i(loc, cxt->glyphs);
 	loc = glGetUniformLocation(cxt->program, "in_time");
-	glUniform1f(loc, (SDL_GetTicks() - time) / 1000.0f);
+	glUniform1f(loc, (SDL_GetTicks() - cxt->time) / 1000.0f);
 	loc = glGetUniformLocation(cxt->program, "time");
 	glUniform1f(loc, ltime / 1000.0f);
 	loc = glGetUniformLocation(cxt->program, "opts");
@@ -107,8 +102,31 @@ static void		push_box_uni(t_gr_vm *cxt)
 	glUniform3f(loc, cxt->pixie.x, cxt->pixie.y, cxt->pixie.z);
 }
 
+static void		push_board_uni(t_gr_vm *cxt)
+{
+	GLint			loc;
+	GLfloat			mat[16];
+
+	loc = glGetUniformLocation(cxt->program_board, "V");
+	glUniformMatrix4fv(loc, 1, GL_FALSE, cxt->camera.m.t);
+	loc = glGetUniformLocation(cxt->program, "res");
+	glUniform2f(loc, (float)WIN_WIDTH, (float)WIN_HEIGHT);
+	loc = glGetUniformLocation(cxt->program_board, "P");
+	load_projection(mat, 1, 10000, 1.3);
+	glUniformMatrix4fv(loc, 1, GL_FALSE, mat);
+	loc = glGetUniformLocation(cxt->program_board, "board");
+	glUniform1i(loc, cxt->board);
+	loc = glGetUniformLocation(cxt->program_board, "texNoise");
+	glUniform1i(loc, cxt->diffuseTexture);
+	loc = glGetUniformLocation(cxt->program_board, "_time");
+	glUniform1f(loc, (SDL_GetTicks() - cxt->time) / 1000.0f);
+}
+
 void			render_opengl(t_gr_vm *cxt, t_arena *arena)
 {
+	draw_ui(cxt, arena);
+	if (!cxt->time)
+		cxt->time = SDL_GetTicks();
 	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 	stream_transform(cxt, arena);
 	glUseProgram(cxt->program);
@@ -118,6 +136,10 @@ void			render_opengl(t_gr_vm *cxt, t_arena *arena)
 	glUseProgram(cxt->program_box);
 	push_box_uni(cxt);
 	glDrawArrays(GL_TRIANGLES, 0, 36);
+	glBindVertexArray(cxt->vao_board);
+	glUseProgram(cxt->program_board);
+	push_board_uni(cxt);
+	glDrawArrays(GL_TRIANGLES, 0, 6);
 	glBindVertexArray(0);
 	SDL_GL_SwapWindow(cxt->arena);
 }

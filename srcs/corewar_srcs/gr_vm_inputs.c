@@ -28,16 +28,19 @@ void		speed(void *data, t_gr_vm *vm, t_key *key)
 	vm->cpf = vm->cpf < 0 ? 0 : vm->cpf;
 }
 
-void		toggle_mem(void *data, t_gr_vm *vm, t_key *key)
+void		toggle_opt(void *data, t_gr_vm *vm, t_key *key)
 {
-	(void)data;
-	(void)key;
-	vm->opts ^= 1;
-}
+	const int 	opts[] = { SDLK_SLASH, SDLK_r, SDLK_BACKSLASH };
+	int 		i;
 
-void 		toggle_rot(void *data, t_gr_vm *vm, t_key *key)
-{
 	(void)data;
-	(void)key;
-	vm->opts ^= ROTATING;
+	i = 0;
+	while (i < 3)
+	{
+		if (opts[i] == key->keycode)
+			break ;
+		else
+			i++;
+	}
+	vm->opts ^= (i != 3) * (1 << i);
 }

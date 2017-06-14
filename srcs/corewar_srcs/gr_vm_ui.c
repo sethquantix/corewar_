@@ -11,72 +11,94 @@
 /* ************************************************************************** */
 
 #include "corewar.h"
+#include "gr_vm_internals.h"
 
-void print_text(t_text_p *params, t_styles style, SDL_Surface *dst, const char *text, ...)
+SDL_Surface	*print_text(t_text_p *sst, t_styles style, const char *text, ...)
 {
     t_style     st;
     va_list     va;
     char        *s;
-    SDL_Surface *surface;
-    SDL_Rect    p;
 
     va_start(va, text);
     ft_vasprintf(&s, text, va);
     va_end(va);
-    st = params->styles[style];
-    p = params->pos;
-    surface = TTF_RenderText_Solid(st.font, s, st.c);
-    p.w = surface->w;
-    p.h = surface->h;
-    if (st.centered & CENTER_X)
-        p.x += (dst->w - surface->w) / 2;
-    if (st.centered & CENTER_Y)
-        p.y += (dst->h - surface->h) / 2;
-    SDL_BlitSurface(surface, NULL, dst, &p);
-    params->pos.h = p.h;
-    params->pos.w = p.w;
-    SDL_FreeSurface(surface);
+    st = sst->styles[style];
+    return (TTF_RenderText_Shaded(st.font, s, st.c, (SDL_Color){0, 0, 0,0}));
 }
 
-void    create_styles(t_style *styles)
+static void	gl_board(t_gr_vm *cxt, SDL_Surface *board)
 {
-    t_style style;
-
-    style.centered = CENTER_NONE;
-    style.font = TTF_OpenFont("assets/Prototype.ttf", 12);
-    style.c = (SDL_Color){255, 255, 255};
-    styles[WHITE_SMALL] = style;
-    style.c = (SDL_Color){0, 0, 255};
-    styles[BLUE_SMALL] = style;
-    style.font = TTF_OpenFont("assets/Prototype.ttf", 42);
-    styles[BLUE_BIG] = style;
-    style.centered = CENTER_X;
-    styles[BLUE_BIG_CENTERED] = style;
+	glActiveTexture(GL_TEXTURE3);
+	glBindTexture(GL_TEXTURE_2D, cxt->board);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA,
+		board->w, board->h, 0, GL_RGBA, GL_UNSIGNED_BYTE, board->pixels);
 }
 
-void set_ui(t_gr_vm *cxt, t_arena *arena)
+static SDL_Rect		draw_text(SDL_Surface *dst, SDL_Surface *s,
+	SDL_Rect pos, int al)
 {
-    TTF_Font    *font;
-    SDL_Surface *title;
-    SDL_Surface *cycle;
-    SDL_Surface *procs;
-    SDL_Surface *player1;
-    SDL_Surface *player2;
-    SDL_Surface *last_live;
-    SDL_Surface *champ_name;
-    SDL_Rect    pos;
-    t_text_p    params;
+	pos.w = s->w;
+	pos.h = s->h;
+	if (al & X_LEFT)
+		pos.x = X_MARGIN * BOARD_WIDTH;
+	if (al & X_RIGHT)
+		pos.x = BOARD_WIDTH - X_MARGIN * BOARD_WIDTH - pos.w;
+	if (al & X_CENTER)
+		pos.x = (BOARD_WIDTH - pos.w) / 2;
+	if (al & Y_TOP)
+		pos.y = Y_MARGIN * BOARD_HEIGHT;
+	if (al & Y_BOT)
+		pos.y = BOARD_HEIGHT - Y_MARGIN * BOARD_HEIGHT - pos.h;
+	if (al & Y_CENTER)
+		pos.y = (BOARD_HEIGHT - pos.h) / 2;
+	SDL_BlitSurface(s, NULL, dst, &pos);
+	free(s);
+	return (pos);
+}
 
-    ft_bzero(&params, sizeof(t_text_p));
-    params.styles = try(sizeof(t_style) * 12);
-    if (TTF_Init() == -1)
-        exit(EXIT_FAILURE);
-    create_styles(params.styles);
-    cxt->ui_screen = SDL_GetWindowSurface(cxt->UI);
-    ft_bzero(cxt->ui_screen->pixels, 4 * cxt->ui_screen->w * cxt->ui_screen->h);
-    params.pos = (SDL_Rect){0, 20, 0, 0};
-    print_text(&params, BLUE_BIG_CENTERED, cxt->ui_screen, "COREWAR");
-    params.pos.y += params.pos.h * 2;
-    print_text(&params, WHITE_SMALL, cxt->ui_screen, "PLAYER 1");
-    TTF_Quit();
+void print_players(t_text_p *sst, SDL_Surface *board, SDL_Rect *pos, t_arena *arena)
+{
+	int				i;
+	SDL_Surface		*s;
+
+	i = 0;
+	while (i < arena->champ_count)
+	{
+		s = print_text(sst, P_1MEDIUM + i, "Player %d : ", arena->champs[i].num);
+		*pos = draw_text(board, s, *pos, X_LEFT);
+		pos->x += pos->w;
+		s = print_text(sst, WHITE_SMALL, "%.20s%s", arena->champs[i].head.prog_name,
+			ft_strlen(arena->champs[i].head.prog_name) > 20 ? "..." : "");
+		*pos = draw_text(board, s, *pos, 0);
+		pos->y += 1.1 * pos->h;
+		i++;
+	}
+}
+
+void 	draw_base(t_gr_vm *cxt, t_arena *arena, SDL_Rect *pos, SDL_Surface *s)
+{
+	static int		start = 0;
+	static SDL_Rect	rect = (SDL_Rect){0, 0, 0, 0};
+
+	if (start)
+		*pos = rect;
+	s = print_text(&cxt->sst, WHITE_HUGE, "COREWAR");
+	rect = draw_text(cxt->screen, s, rect, X_CENTER | Y_TOP);
+	rect.y += 1.3 * rect.h;
+	print_players(&cxt->sst, cxt->screen, &rect, arena);
+	*pos = rect;
+	start = 1;
+}
+
+void draw_ui(t_gr_vm *cxt, t_arena *arena)
+{
+	static int 	start = 0;
+    SDL_Surface *s;
+	SDL_Rect	pos;
+
+	pos = (SDL_Rect){0, 0, 0, 0};
+	if (!start)
+		draw_base(cxt, arena, &pos, s);
+	gl_board(cxt, cxt->screen);
+	start = 1;
 }

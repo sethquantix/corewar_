@@ -35,7 +35,7 @@ void		parse_error(char *err)
 	err = ft_strdup(*t);
 	ft_deltab(t);
 	if (*err == '-')
-		die("error parsing %s : unsupported option\n", EXIT_FAILURE, err);
+		die(EXIT_FAILURE, "error parsing %s : unsupported option\n", err);
 }
 
 t_expr		*parse_opts(char **av)

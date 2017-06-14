@@ -4,6 +4,10 @@
 #define FUDGE       0.8
 #define EPS         0.01
 
+# define OPT_VALUES		0x1
+# define OPT_ROTATION	0x2
+# define OPT_LOWRES		0x4
+
 in vec3 			pos_color;
 in vec3				camPos;
 in vec2 			uv;
@@ -27,7 +31,7 @@ const float COL = 60;
 const float R1 = 0.001;
 
 float   time = in_time;
-float   dtime = index + in_time;
+float   dtime = index + 0.4 * in_time;
 //float   time = index + in_time;
 
 layout(location = 0) out vec4 FragColor;
@@ -36,7 +40,7 @@ const vec3  colors[] = vec3[](
     vec3(0.3, 0.3, 0.3),
     vec3(0.8, 0.28, 0.15),
     vec3(0.86, 0.13, 0.97),
-    vec3(0.2, 0.15, 0.8),
+    vec3(0.3, 0.25, 0.8),
     vec3(0.3, 0.9, 0.2)
 );
 
@@ -209,21 +213,29 @@ float circ(vec2 p)
 
 void mainImage(vec3 col, out vec4 fragColor, in vec2 uv, bool m)
 {
+    vec3    c = col;
+
 	//setup system
 	vec2 p = uv - 0.5;
+	vec2 cp = 2 * (uv - (face == 1 ? vec2(0.5) : scale.xy / 2));
+	vec2 op = 2 * p;
 	p *= 2.;
-    float rz = mix(dualfbm(p), flow(p + 1), 0.9);
-    vec3 c1 = brain(p * 0.5, col);
+    float rz = 0;
+    rz = (opts & OPT_LOWRES) != 0 ? dualfbm(p) : mix(dualfbm(p), flow(p + 1), 0.9);
 
-	//rings
 	p /= m ? exp(mod(dtime,3.14159)) : 80;
-	rz *= pow(abs((0.1-circ(p))),.9);
-
-	//final color
-	col /= rz;
+	cp /= m ? exp(mod(dtime,3.14159)) : 80;
+    rz *= pow(abs((0.1-circ(cp))),.9);
+	col /= clamp(rz, 0.3, 1000);
 	col = pow(abs(col),vec3(.99));
-	float f = 0.4f * exp(-0.05 * length(camPos - pos_color));
-	fragColor = vec4(mix(col, c1, f), 1.0);
+    if ((opts & OPT_LOWRES) == 0)
+    {
+        vec3 c1 = brain(op * 0.5, c);
+	    float f = 0.4f * exp(-0.05 * length(camPos - pos_color));
+	    fragColor = vec4(mix(col, c1, f), 1.0);
+    }
+    else
+        fragColor = vec4(col, 1.0);
 }
 
 vec2   de(vec3 p)
@@ -292,11 +304,14 @@ void main(void)
         c *= k;
         mainImage(c, FragColor, uv * (face == 1 ? vec2(1) : scale.xy), o != 0);
         vec4 glyph = vec4(texture(font, vec3(uv, val)).xyzw);
-        if (face == 1 && (opts & 1) != 0)
+        if (face == 1 && (opts & OPT_VALUES) != 0)
             FragColor = vec4(mix(glyph.xyz, vec3(0), 1 - glyph.w), 1.0);
-        vec3 ro = camPos;
-        vec3 rd = normalize(pos_color - camPos);
-        FragColor.xyz += march(ro, rd);
+        if ((opts & OPT_VALUES) == 0)
+        {
+            vec3 ro = camPos;
+            vec3 rd = normalize(pos_color - camPos);
+            FragColor.xyz += march(ro, rd);
+        }
     }
     else
     {

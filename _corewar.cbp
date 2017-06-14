@@ -47,6 +47,7 @@
 					<Add directory="/Users/cchaumar/Documents/42projects/working/_corewar/includes"/>
 					<Add directory="/Users/cchaumar/Documents/42projects/working/_corewar/soil2/incs"/>
 					<Add directory="/Users/cchaumar/Documents/42projects/working/_corewar/libs/libft"/>
+					<Add directory="/Users/cchaumar/Documents/42projects/working/_corewar/libs/glhandler/includes"/>
 					<Add directory="/Users/cchaumar/.brew/include"/>
 					<Add directory="/System/Library/Frameworks/OpenGL.framework"/>
 				</Compiler>
@@ -67,6 +68,7 @@
 					<Add directory="/Users/cchaumar/Documents/42projects/working/_corewar/includes"/>
 					<Add directory="/Users/cchaumar/Documents/42projects/working/_corewar/soil2/incs"/>
 					<Add directory="/Users/cchaumar/Documents/42projects/working/_corewar/libs/libft"/>
+					<Add directory="/Users/cchaumar/Documents/42projects/working/_corewar/libs/glhandler/includes"/>
 					<Add directory="/Users/cchaumar/.brew/include"/>
 					<Add directory="/System/Library/Frameworks/OpenGL.framework"/>
 				</Compiler>
@@ -87,6 +89,7 @@
 					<Add directory="/Users/cchaumar/Documents/42projects/working/_corewar/includes"/>
 					<Add directory="/Users/cchaumar/Documents/42projects/working/_corewar/soil2/incs"/>
 					<Add directory="/Users/cchaumar/Documents/42projects/working/_corewar/libs/libft"/>
+					<Add directory="/Users/cchaumar/Documents/42projects/working/_corewar/libs/glhandler/includes"/>
 					<Add directory="/Users/cchaumar/.brew/include"/>
 					<Add directory="/System/Library/Frameworks/OpenGL.framework"/>
 				</Compiler>
@@ -107,6 +110,7 @@
 					<Add directory="/Users/cchaumar/Documents/42projects/working/_corewar/includes"/>
 					<Add directory="/Users/cchaumar/Documents/42projects/working/_corewar/soil2/incs"/>
 					<Add directory="/Users/cchaumar/Documents/42projects/working/_corewar/libs/libft"/>
+					<Add directory="/Users/cchaumar/Documents/42projects/working/_corewar/libs/glhandler/includes"/>
 					<Add directory="/Users/cchaumar/.brew/include"/>
 					<Add directory="/System/Library/Frameworks/OpenGL.framework"/>
 				</Compiler>
@@ -208,6 +212,9 @@
 		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/gr_vm_camera_handling_rot.c">
 			<Option target="corewar"/>
 		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/gr_vm_gl.c">
+			<Option target="corewar"/>
+		</Unit>
 		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/gr_vm_handlers.c">
 			<Option target="corewar"/>
 		</Unit>
@@ -220,6 +227,9 @@
 		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/gr_vm_inputs.c">
 			<Option target="corewar"/>
 		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/gr_vm_keys.c">
+			<Option target="corewar"/>
+		</Unit>
 		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/gr_vm_load_texture.c">
 			<Option target="corewar"/>
 		</Unit>
@@ -230,6 +240,9 @@
 			<Option target="corewar"/>
 		</Unit>
 		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/gr_vm_run.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/gr_vm_styles.c">
 			<Option target="corewar"/>
 		</Unit>
 		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/gr_vm_ui.c">
