@@ -64,10 +64,10 @@ void print_players(t_text_p *sst, SDL_Surface *board, SDL_Rect *pos, t_arena *ar
 	i = 0;
 	while (i < arena->champ_count)
 	{
-		s = print_text(sst, P_1MEDIUM + i, "Player %d : ", arena->champs[i].num);
+		s = print_text(sst, WHITE_MEDIUM, "P%d : ", arena->champs[i].num);
 		*pos = draw_text(board, s, *pos, X_LEFT);
 		pos->x += pos->w;
-		s = print_text(sst, WHITE_SMALL, "%.20s%s", arena->champs[i].head.prog_name,
+		s = print_text(sst, P_1MEDIUM + i, "%.20s%s", arena->champs[i].head.prog_name,
 			ft_strlen(arena->champs[i].head.prog_name) > 20 ? "..." : "");
 		*pos = draw_text(board, s, *pos, 0);
 		pos->y += 1.1 * pos->h;
@@ -85,9 +85,29 @@ void 	draw_base(t_gr_vm *cxt, t_arena *arena, SDL_Rect *pos, SDL_Surface *s)
 	s = print_text(&cxt->sst, WHITE_HUGE, "COREWAR");
 	rect = draw_text(cxt->screen, s, rect, X_CENTER | Y_TOP);
 	rect.y += 1.3 * rect.h;
+	*pos = rect;
 	print_players(&cxt->sst, cxt->screen, &rect, arena);
+
 	*pos = rect;
 	start = 1;
+}
+
+void draw_info(int start, t_gr_vm *cxt, t_arena *arena, SDL_Surface *s)
+{
+	SDL_Rect	pos;
+
+	pos.x = 0.56 * BOARD_WIDTH;
+	pos.y = 0.24 * BOARD_HEIGHT;
+	s = print_text(&cxt->sst, GREY_MEDIUM, "CYCLES_TO_DIE : %-4d", arena->ctd);
+	pos = draw_text(cxt->screen, s, pos, 0);
+	if (start)
+		return ;
+	pos.y += 1.7 * pos.h;
+	s = print_text(&cxt->sst, GREY_MEDIUM, "NBR_LIVES     : %d", NBR_LIVE);
+	pos = draw_text(cxt->screen, s, pos, 0);
+	pos.y += 1.7 * pos.h;
+	s = print_text(&cxt->sst, GREY_MEDIUM, "CYCLES_DELTA  : %d", CYCLE_DELTA);
+	pos = draw_text(cxt->screen, s, pos, 0);
 }
 
 void draw_ui(t_gr_vm *cxt, t_arena *arena)
@@ -99,6 +119,7 @@ void draw_ui(t_gr_vm *cxt, t_arena *arena)
 	pos = (SDL_Rect){0, 0, 0, 0};
 	if (!start)
 		draw_base(cxt, arena, &pos, s);
+	draw_info(start, cxt, arena, s);
 	gl_board(cxt, cxt->screen);
 	start = 1;
 }

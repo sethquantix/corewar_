@@ -56,8 +56,8 @@ t_expr		*parse_opts(char **av)
 {
 	t_expr		*expr;
 	t_parser	*p;
-	const char	*list[] = {"OPTION_D", "OPTION_G", "OPTION_V", "OPTION_S", "PLAYER",
-		"NUMBER", "VERBOSE", "PATH", 0};
+	const char	*list[] = {"OPTION_D", "OPTION_G", "OPTION_V", "OPTION_S",
+		"OPTION_A", "PLAYER", "NUMBER", "VERBOSE", "PATH", 0};
 	char		*arg;
 	char		*err;
 

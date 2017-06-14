@@ -50,6 +50,7 @@ set(CRWR_FILES
 	srcs/corewar_srcs/op.c
 	srcs/corewar_srcs/opts_tokens.c
 	srcs/corewar_srcs/options.c
+	srcs/corewar_srcs/options2.c
 	srcs/corewar_srcs/parse_args.c
 	srcs/corewar_srcs/process.c
 	srcs/corewar_srcs/values.c

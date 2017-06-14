@@ -23,6 +23,7 @@
 # define D_OPT				0x04
 # define O_OPT				0x08
 # define S_OPT				0x10
+# define A_OPT				0x20
 
 # define DUMP_OUT			0x20
 # define DUMP_64			0x40

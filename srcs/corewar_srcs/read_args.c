@@ -37,9 +37,10 @@ void 	player(t_expr **e, t_arena *a)
 void	read_args(t_expr *expr, t_arena *a)
 {
 	const char	*rules[] = {"OPTION_G", "OPTION_V", "OPTION_D", "OPTION_O",
-		"OPTION_S", "PLAYER", NULL};
+		"OPTION_A", "OPTION_S", "PLAYER", NULL};
 	static void	(*handlers[])(t_expr **, t_arena *) =
-		{option_g, option_v, option_d, option_o, option_s, player, NULL};
+		{option_g, option_v, option_d, option_o, option_a, option_s,
+		 player, NULL};
 	int			i;
 
 	while (expr)

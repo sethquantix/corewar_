@@ -72,6 +72,7 @@ t_token	g_crwr_opts[] = {
 	{"OPT_G", 0, "-g", TOKEN_TYPE_EXP},
 	{"OPT_GRAPHIC", 0, "--graphic", TOKEN_TYPE_EXP},
 	{"OPT_N", 0, "-n", TOKEN_TYPE_EXP},
+	{"OPT_A", 0, "-a", TOKEN_TYPE_EXP},
 	{"OPT_O", 0, "-o", TOKEN_TYPE_EXP},
 	{"OPT_V", 0, "-v", TOKEN_TYPE_EXP},
 	{"OPT_VERBOSE", 0, "--verbose", TOKEN_TYPE_EXP},

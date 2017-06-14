@@ -74,7 +74,20 @@ void	i_st(t_proc *proc)
 
 void	i_aff(t_proc *proc)
 {
-	(void)proc;
+	int 	v;
+	char 	t[5];
+
+	if (get_value(proc, &v, 0, V_VALUE))
+		return ;
+	t[4] = 0;
+	ft_memcpy(t, &v, 4);
+	if (proc->arena->opts & A_OPT)
+	{
+		if (proc->arena->aff)
+			proc->arena->aff = ft_strjoinfree(proc->arena->aff, t, 1);
+		else
+			proc->arena->aff = ft_strdup(t);
+	}
 }
 
 void	i_zjmp(t_proc *proc)

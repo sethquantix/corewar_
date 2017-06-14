@@ -71,6 +71,7 @@ typedef struct	s_arena
 	t_f_load	load;
 	t_f_add		add_proc;
 	t_f_filter	check;
+	char 		*aff;
 	int			champ_count;
 	int			proc_id;
 	int			ctd;

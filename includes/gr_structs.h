@@ -61,9 +61,6 @@ typedef struct	s_gr_vm
 	SDL_Window		*UI;
     SDL_Surface     *screen;
 	SDL_GLContext	arena_context;
-	GLuint			glbuffer;
-	GLuint			glcolor;
-	GLuint			gldepth;
 	GLuint			program;
 	GLuint			program_box;
 	GLuint			program_board;
@@ -83,7 +80,6 @@ typedef struct	s_gr_vm
 	char			text42[4 * 64 * 64];
 	t_cam			camera;
 	int 			opts;
-	void			*buffer;
 	struct s_key	*keys;
 	int				nkeys;
 	int				run;

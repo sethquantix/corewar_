@@ -12,8 +12,24 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d03a427-4362-4e96-8f0e-4f3853e0da78" name="Default" comment="">
+    <list default="true" id="5d03a427-4362-4e96-8f0e-4f3853e0da78" name="Default" comment="OK that's nice">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/corewar" afterPath="$PROJECT_DIR$/corewar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeCache.txt" afterPath="$PROJECT_DIR$/CMakeCache.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Makefile" afterPath="$PROJECT_DIR$/Makefile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_corewar.cbp" afterPath="$PROJECT_DIR$/_corewar.cbp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/corewar.h" afterPath="$PROJECT_DIR$/includes/corewar.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/crwr_defines.h" afterPath="$PROJECT_DIR$/includes/crwr_defines.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/crwr_structs.h" afterPath="$PROJECT_DIR$/includes/crwr_structs.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/gr_structs.h" afterPath="$PROJECT_DIR$/includes/gr_structs.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rules/crwr_opts" afterPath="$PROJECT_DIR$/rules/crwr_opts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/srcs/corewar_srcs/corewar.c" afterPath="$PROJECT_DIR$/srcs/corewar_srcs/corewar.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/srcs/corewar_srcs/gr_vm_ui.c" afterPath="$PROJECT_DIR$/srcs/corewar_srcs/gr_vm_ui.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/srcs/corewar_srcs/ins_basic.c" afterPath="$PROJECT_DIR$/srcs/corewar_srcs/ins_basic.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/srcs/corewar_srcs/opts_tokens.c" afterPath="$PROJECT_DIR$/srcs/corewar_srcs/opts_tokens.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/srcs/corewar_srcs/parse_args.c" afterPath="$PROJECT_DIR$/srcs/corewar_srcs/parse_args.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/srcs/corewar_srcs/read_args.c" afterPath="$PROJECT_DIR$/srcs/corewar_srcs/read_args.c" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <ignored path="$PROJECT_DIR$/CMakeFiles/" />
@@ -35,73 +51,21 @@
     <splitter split-orientation="horizontal" split-proportion="0.3674877">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="gr_vm_init.c" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/gr_vm_init.c">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1140">
-                  <caret line="76" column="4" lean-forward="true" selection-start-line="76" selection-start-column="4" selection-end-line="76" selection-end-column="4" />
-                  <folding>
-                    <element signature="e#892#912#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="frag.shader" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/shaders/frag.shader">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="630">
-                  <caret line="42" column="17" lean-forward="false" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="17" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="gr_vm_run.c" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/gr_vm_run.c">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="825">
-                  <caret line="56" column="14" lean-forward="true" selection-start-line="56" selection-start-column="14" selection-end-line="56" selection-end-column="14" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file leaf-file-name="frag_board.shader" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/shaders/frag_board.shader">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1110">
-                  <caret line="74" column="36" lean-forward="false" selection-start-line="74" selection-start-column="36" selection-end-line="74" selection-end-column="36" />
+                <state relative-caret-position="1125">
+                  <caret line="75" column="18" lean-forward="false" selection-start-line="75" selection-start-column="18" selection-end-line="75" selection-end-column="18" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="gr_vm_render_opengl.c" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/gr_vm_render_opengl.c">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="956">
-                  <caret line="126" column="10" lean-forward="false" selection-start-line="126" selection-start-column="10" selection-end-line="126" selection-end-column="10" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="gr_vm_ui.c" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/gr_vm_ui.c">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="745">
-                  <caret line="68" column="25" lean-forward="true" selection-start-line="68" selection-start-column="25" selection-end-line="68" selection-end-column="25" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="corewar.c" pinned="false" current-in-tab="false">
+          <file leaf-file-name="corewar.c" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/corewar.c">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1091">
-                  <caret line="150" column="16" lean-forward="false" selection-start-line="150" selection-start-column="16" selection-end-line="150" selection-end-column="16" />
+                <state relative-caret-position="1210">
+                  <caret line="148" column="33" lean-forward="false" selection-start-line="148" selection-start-column="33" selection-end-line="148" selection-end-column="33" />
                   <folding />
                 </state>
               </provider>
@@ -110,8 +74,28 @@
           <file leaf-file-name="ins_basic.c" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/ins_basic.c">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                <state relative-caret-position="1075">
+                  <caret line="85" column="8" lean-forward="false" selection-start-line="85" selection-start-column="8" selection-end-line="85" selection-end-column="8" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="test.s" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/test.s">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="60">
+                  <caret line="4" column="18" lean-forward="false" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="parse_args.c" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/parse_args.c">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1005">
+                  <caret line="67" column="22" lean-forward="false" selection-start-line="67" selection-start-column="22" selection-end-line="67" selection-end-column="22" />
                   <folding />
                 </state>
               </provider>
@@ -130,8 +114,8 @@
           <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="180">
-                  <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+                <state relative-caret-position="780">
+                  <caret line="52" column="32" lean-forward="false" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="32" />
                   <folding />
                 </state>
               </provider>
@@ -143,14 +127,12 @@
         <splitter split-orientation="horizontal" split-proportion="0.50565815">
           <split-first>
             <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-              <file leaf-file-name="asm.h" pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/includes/asm.h">
+              <file leaf-file-name="opts_tokens.c" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/opts_tokens.c">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="940">
-                      <caret line="76" column="39" lean-forward="false" selection-start-line="76" selection-start-column="39" selection-end-line="76" selection-end-column="39" />
-                      <folding>
-                        <element signature="e#921#943#0" expanded="true" />
-                      </folding>
+                    <state relative-caret-position="1270">
+                      <caret line="88" column="0" lean-forward="false" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+                      <folding />
                     </state>
                   </provider>
                 </entry>
@@ -165,36 +147,13 @@
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="op.h" pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/includes/op.h">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="600">
-                      <caret line="40" column="46" lean-forward="false" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="46" />
-                      <folding />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="libft.h" pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/libs/libft/libft.h">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="540">
-                      <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-                      <folding>
-                        <element signature="e#925#968#0" expanded="true" />
-                        <element signature="e#1542#1642#0" expanded="true" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
               <file leaf-file-name="gr_vm_init.c" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/gr_vm_init.c">
                   <provider selected="true" editor-type-id="text-editor">
                     <state relative-caret-position="435">
                       <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
                       <folding>
-                        <element signature="e#892#912#0" expanded="true" />
+                        <element signature="e#892#912#0" expanded="false" />
                       </folding>
                     </state>
                   </provider>
@@ -203,8 +162,18 @@
               <file leaf-file-name="corewar.h" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/includes/corewar.h">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="210">
-                      <caret line="14" column="14" lean-forward="false" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+                    <state relative-caret-position="225">
+                      <caret line="15" column="17" lean-forward="false" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
+                      <folding />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="crwr_structs.h" pinned="false" current-in-tab="true">
+                <entry file="file://$PROJECT_DIR$/includes/crwr_structs.h">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="1030">
+                      <caret line="73" column="20" lean-forward="false" selection-start-line="73" selection-start-column="20" selection-end-line="73" selection-end-column="20" />
                       <folding />
                     </state>
                   </provider>
@@ -213,14 +182,34 @@
               <file leaf-file-name="crwr_defines.h" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/includes/crwr_defines.h">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="0">
-                      <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                    <state relative-caret-position="375">
+                      <caret line="25" column="32" lean-forward="false" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
                       <folding />
                     </state>
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="gr_vm.h" pinned="false" current-in-tab="true">
+              <file leaf-file-name="asm_parse" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/rules/asm_parse">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="510">
+                      <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+                      <folding />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="crwr_opts" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/rules/crwr_opts">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="75">
+                      <caret line="5" column="18" lean-forward="false" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+                      <folding />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="gr_vm.h" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/includes/gr_vm.h">
                   <provider selected="true" editor-type-id="text-editor">
                     <state relative-caret-position="210">
@@ -249,18 +238,18 @@
               <file leaf-file-name="asm_tokens.c" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/srcs/asm_srcs/asm_tokens.c">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="15">
+                    <state relative-caret-position="180">
                       <caret line="12" column="1" lean-forward="false" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
                       <folding />
                     </state>
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="gr_vm_styles.c" pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/gr_vm_styles.c">
+              <file leaf-file-name="gr_vm_ui.c" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/gr_vm_ui.c">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="705">
-                      <caret line="47" column="43" lean-forward="false" selection-start-line="47" selection-start-column="43" selection-end-line="47" selection-end-column="43" />
+                    <state relative-caret-position="760">
+                      <caret line="69" column="27" lean-forward="false" selection-start-line="69" selection-start-column="27" selection-end-line="69" selection-end-column="27" />
                       <folding />
                     </state>
                   </provider>
@@ -282,7 +271,7 @@
                     <state relative-caret-position="825">
                       <caret line="69" column="29" lean-forward="false" selection-start-line="69" selection-start-column="29" selection-end-line="69" selection-end-column="29" />
                       <folding>
-                        <element signature="e#892#912#0" expanded="true" />
+                        <element signature="e#892#912#0" expanded="false" />
                       </folding>
                     </state>
                   </provider>
@@ -298,11 +287,11 @@
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="gr_structs.h" pinned="false" current-in-tab="false">
+              <file leaf-file-name="gr_structs.h" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/includes/gr_structs.h">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="1155">
-                      <caret line="77" column="26" lean-forward="true" selection-start-line="77" selection-start-column="26" selection-end-line="77" selection-end-column="26" />
+                    <state relative-caret-position="641">
+                      <caret line="69" column="0" lean-forward="false" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
                       <folding>
                         <element signature="e#936#958#0" expanded="true" />
                       </folding>
@@ -310,11 +299,11 @@
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="styles.h" pinned="false" current-in-tab="true">
+              <file leaf-file-name="styles.h" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/includes/styles.h">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="480">
-                      <caret line="32" column="17" lean-forward="false" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
+                    <state relative-caret-position="510">
+                      <caret line="34" column="6" lean-forward="false" selection-start-line="34" selection-start-column="6" selection-end-line="34" selection-end-column="6" />
                       <folding />
                     </state>
                   </provider>
@@ -388,15 +377,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/srcs/corewar_srcs/gr_vm_load_texture.c" />
-        <option value="$PROJECT_DIR$/srcs/corewar_srcs/gr_gen_tex.c" />
-        <option value="$PROJECT_DIR$/srcs/corewar_srcs/gr_vm_camera_handling_rot.c" />
-        <option value="$PROJECT_DIR$/srcs/corewar_srcs/utils.c" />
-        <option value="$PROJECT_DIR$/srcs/corewar_srcs/arena_ini.c" />
-        <option value="$PROJECT_DIR$/srcs/corewar_srcs/read_args.c" />
-        <option value="$PROJECT_DIR$/tests/namoi.s" />
-        <option value="$PROJECT_DIR$/shaders/vertex.shader" />
-        <option value="$PROJECT_DIR$/libs/glhandler/srcs/gl_objects.c" />
         <option value="$PROJECT_DIR$/shaders/vertex_box.shader" />
         <option value="$PROJECT_DIR$/shaders/frag_box.shader" />
         <option value="$PROJECT_DIR$/libs/libft/parser/srcs/utils.c" />
@@ -404,7 +384,6 @@
         <option value="$PROJECT_DIR$/libs/libft/parser/includes/parser.h" />
         <option value="$PROJECT_DIR$/libs/libft/parser/includes/ft_parser.h" />
         <option value="$PROJECT_DIR$/libs/libft/parser/srcs/engine_run.c" />
-        <option value="$PROJECT_DIR$/srcs/corewar_srcs/parse_args.c" />
         <option value="$PROJECT_DIR$/libs/libft/parser/srcs/build_engine.c" />
         <option value="$PROJECT_DIR$/libs/libft/parser/srcs/run_paths.c" />
         <option value="$PROJECT_DIR$/srcs/asm_srcs/parser.c" />
@@ -414,7 +393,6 @@
         <option value="$PROJECT_DIR$/libs/libft/parser/srcs/parser_destroy.c" />
         <option value="$PROJECT_DIR$/srcs/asm_srcs/asm.c" />
         <option value="$PROJECT_DIR$/srcs/corewar_srcs/gr_vm_inputs.c" />
-        <option value="$PROJECT_DIR$/includes/corewar.h" />
         <option value="$PROJECT_DIR$/shaders/vertex_board.shader" />
         <option value="$PROJECT_DIR$/srcs/corewar_srcs/gr_vm_init_cube.c" />
         <option value="$PROJECT_DIR$/includes/asm.h" />
@@ -428,17 +406,28 @@
         <option value="$PROJECT_DIR$/srcs/corewar_srcs/gr_vm_run.c" />
         <option value="$PROJECT_DIR$/srcs/corewar_srcs/gr_vm_render_opengl.c" />
         <option value="$PROJECT_DIR$/srcs/corewar_srcs/gr_vm_keys.c" />
-        <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/includes/includes.h" />
         <option value="$PROJECT_DIR$/srcs/corewar_srcs/gr_vm_gl.c" />
         <option value="$PROJECT_DIR$/includes/gr_vm_internals.h" />
-        <option value="$PROJECT_DIR$/includes/gr_structs.h" />
         <option value="$PROJECT_DIR$/srcs/corewar_srcs/gr_vm_init.c" />
-        <option value="$PROJECT_DIR$/srcs/corewar_srcs/gr_vm_styles.c" />
-        <option value="$PROJECT_DIR$/shaders/frag.shader" />
-        <option value="$PROJECT_DIR$/shaders/frag_board.shader" />
         <option value="$PROJECT_DIR$/includes/styles.h" />
+        <option value="$PROJECT_DIR$/srcs/corewar_srcs/gr_vm_styles.c" />
+        <option value="$PROJECT_DIR$/shaders/frag_board.shader" />
         <option value="$PROJECT_DIR$/srcs/corewar_srcs/gr_vm_ui.c" />
+        <option value="$PROJECT_DIR$/shaders/frag.shader" />
+        <option value="$PROJECT_DIR$/includes/crwr_defines.h" />
+        <option value="$PROJECT_DIR$/srcs/corewar_srcs/opts_tokens.c" />
+        <option value="$PROJECT_DIR$/srcs/corewar_srcs/parse_args.c" />
+        <option value="$PROJECT_DIR$/srcs/corewar_srcs/options2.c" />
+        <option value="$PROJECT_DIR$/includes/corewar.h" />
+        <option value="$PROJECT_DIR$/srcs/corewar_srcs/read_args.c" />
+        <option value="$PROJECT_DIR$/rules/crwr_opts" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/includes/crwr_structs.h" />
+        <option value="$PROJECT_DIR$/includes/gr_structs.h" />
+        <option value="$PROJECT_DIR$/srcs/corewar_srcs/ins_basic.c" />
+        <option value="$PROJECT_DIR$/test.s" />
+        <option value="$PROJECT_DIR$/srcs/corewar_srcs/corewar.c" />
       </list>
     </option>
   </component>
@@ -560,148 +549,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="rules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_corewar" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_corewar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_corewar" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_corewar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libft" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_corewar" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_corewar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libft" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="parser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_corewar" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_corewar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libft" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="parser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="srcs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_corewar" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_corewar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="glhandler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_corewar" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_corewar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="glhandler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="srcs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_corewar" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_corewar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="glhandler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="includes" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1015,7 +862,7 @@
       <workItem from="1497236628053" duration="10608000" />
       <workItem from="1497319278089" duration="7031000" />
       <workItem from="1497333509177" duration="8435000" />
-      <workItem from="1497408163538" duration="5859000" />
+      <workItem from="1497408163538" duration="9419000" />
     </task>
     <task id="LOCAL-00001" summary="OK that's nice">
       <created>1497419793419</created>
@@ -1024,11 +871,18 @@
       <option name="project" value="LOCAL" />
       <updated>1497419793419</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="OK that's nice">
+      <created>1497419818805</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1497419818805</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="212569000" />
+    <option name="totallyTimeSpent" value="216129000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1041,14 +895,15 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="2560" height="1440" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1938046" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329927" sideWeight="0.49704608" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32919708" sideWeight="0.48286727" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919708" sideWeight="0.48286727" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21678832" sideWeight="0.49389523" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32846716" sideWeight="0.5154885" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919708" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329927" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24970461" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19927007" sideWeight="0.47341472" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27737227" sideWeight="0.48129186" order="3" side_tool="false" content_ui="tabs" />
@@ -1089,6 +944,51 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="processedProjectFiles" value="true" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection>
+                  <UserGroup>
+                    <option name="users">
+                      <list>
+                        <option value="Clement CHAUMARAT" />
+                      </list>
+                    </option>
+                  </UserGroup>
+                </collection>
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
@@ -1109,66 +1009,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/libs/libft/parser/srcs/run_paths.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1301">
-          <caret line="152" column="13" lean-forward="false" selection-start-line="152" selection-start-column="13" selection-end-line="152" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libs/libft/parser/srcs/parser.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libs/libft/generics/srcs/ft_memdel.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libs/libft/parser/srcs/parser_destroy.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="33" column="37" lean-forward="true" selection-start-line="33" selection-start-column="37" selection-end-line="33" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libs/libft/parser/includes/ft_parser.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1110">
-          <caret line="78" column="16" lean-forward="false" selection-start-line="78" selection-start-column="16" selection-end-line="78" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rules/asm_parse">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/parse_args.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
-          <caret line="68" column="21" lean-forward="false" selection-start-line="68" selection-start-column="21" selection-end-line="68" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/gr_vm_matrix.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#20#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/shaders/vertex_box.shader">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -1266,22 +1106,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/includes/crwr_defines.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/opts_tokens.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/op.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
@@ -1356,7 +1180,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/srcs/asm_srcs/asm_tokens.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
+        <state relative-caret-position="180">
           <caret line="12" column="1" lean-forward="false" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
           <folding />
         </state>
@@ -1372,20 +1196,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/includes/corewar.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="14" lean-forward="false" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/includes/includes.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding>
-            <element signature="e#932#953#0" expanded="true" />
+            <element signature="e#932#953#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1416,10 +1232,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/gr_vm_styles.c">
+    <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/gr_vm_render_opengl.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="705">
-          <caret line="47" column="43" lean-forward="false" selection-start-line="47" selection-start-column="43" selection-end-line="47" selection-end-column="43" />
+        <state relative-caret-position="760">
+          <caret line="112" column="58" lean-forward="true" selection-start-line="112" selection-start-column="58" selection-end-line="112" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/styles.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="34" column="6" lean-forward="false" selection-start-line="34" selection-start-column="6" selection-end-line="34" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/gr_vm_init.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding>
+            <element signature="e#892#912#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shaders/frag.shader">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="569">
+          <caret line="219" column="63" lean-forward="false" selection-start-line="219" selection-start-column="63" selection-end-line="219" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/gr_vm_ui.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="760">
+          <caret line="69" column="27" lean-forward="false" selection-start-line="69" selection-start-column="27" selection-end-line="69" selection-end-column="27" />
           <folding />
         </state>
       </provider>
@@ -1432,36 +1282,108 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/shaders/frag_board.shader">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1110">
-          <caret line="74" column="36" lean-forward="false" selection-start-line="74" selection-start-column="36" selection-end-line="74" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/shaders/frag.shader">
+    <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/gr_vm_styles.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="630">
-          <caret line="42" column="17" lean-forward="false" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="17" />
+          <caret line="42" column="11" lean-forward="false" selection-start-line="42" selection-start-column="11" selection-end-line="42" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/gr_vm_init.c">
+    <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/opts_tokens.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1140">
-          <caret line="76" column="4" lean-forward="true" selection-start-line="76" selection-start-column="4" selection-end-line="76" selection-end-column="4" />
+        <state relative-caret-position="1270">
+          <caret line="88" column="0" lean-forward="false" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/read_args.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="645">
+          <caret line="43" column="18" lean-forward="true" selection-start-line="43" selection-start-column="18" selection-end-line="43" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/crwr_defines.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="32" lean-forward="false" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/corewar.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="17" lean-forward="false" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/crwr_structs.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1030">
+          <caret line="73" column="20" lean-forward="false" selection-start-line="73" selection-start-column="20" selection-end-line="73" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rules/asm_parse">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rules/crwr_opts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="18" lean-forward="false" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/options.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/options2.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="21" lean-forward="false" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/gr_structs.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="641">
+          <caret line="69" column="0" lean-forward="false" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
           <folding>
-            <element signature="e#892#912#0" expanded="true" />
+            <element signature="e#936#958#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shaders/frag_board.shader">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1125">
+          <caret line="75" column="18" lean-forward="false" selection-start-line="75" selection-start-column="18" selection-end-line="75" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        <state relative-caret-position="780">
+          <caret line="52" column="32" lean-forward="false" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="32" />
           <folding />
         </state>
       </provider>
@@ -1474,52 +1396,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/parse_args.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1005">
+          <caret line="67" column="22" lean-forward="false" selection-start-line="67" selection-start-column="22" selection-end-line="67" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.s">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="18" lean-forward="false" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/ins_basic.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="1075">
+          <caret line="85" column="8" lean-forward="false" selection-start-line="85" selection-start-column="8" selection-end-line="85" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/corewar.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1091">
-          <caret line="150" column="16" lean-forward="false" selection-start-line="150" selection-start-column="16" selection-end-line="150" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/gr_vm_render_opengl.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="956">
-          <caret line="126" column="10" lean-forward="false" selection-start-line="126" selection-start-column="10" selection-end-line="126" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/gr_structs.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1155">
-          <caret line="77" column="26" lean-forward="true" selection-start-line="77" selection-start-column="26" selection-end-line="77" selection-end-column="26" />
-          <folding>
-            <element signature="e#936#958#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/styles.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="17" lean-forward="false" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/gr_vm_ui.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="745">
-          <caret line="68" column="25" lean-forward="true" selection-start-line="68" selection-start-column="25" selection-end-line="68" selection-end-column="25" />
+        <state relative-caret-position="1210">
+          <caret line="148" column="33" lean-forward="false" selection-start-line="148" selection-start-column="33" selection-end-line="148" selection-end-column="33" />
           <folding />
         </state>
       </provider>

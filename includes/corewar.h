@@ -18,6 +18,7 @@
 
 t_expr		*parse_opts(char **av);
 
+void		option_a(t_expr **e, t_arena *a);
 void		option_o(t_expr **e, t_arena *a);
 void		option_g(t_expr **e, t_arena *a);
 void		option_v(t_expr **e, t_arena *a);

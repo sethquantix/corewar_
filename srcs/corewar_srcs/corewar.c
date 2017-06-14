@@ -102,15 +102,6 @@ void	init(t_arena *arena)
 	}
 }
 
-//void	print_expr(t_expr *expr)
-//{
-//	while (expr)
-//	{
-//		ft_printf("(%s) %s\n", expr->rule, expr->expr);
-//		expr = expr->next;
-//	}
-//}
-
 void 	winner(t_arena *arena)
 {
 	int		i;
@@ -154,6 +145,8 @@ int		main(int ac, char **av)
 	{
 		while (loop(&arena))
 			;
+		if (arena.opts & A_OPT)
+			ft_printf("aff buffer: %s\n", arena.aff);
 		winner(&arena);
 	}
 	return (0);

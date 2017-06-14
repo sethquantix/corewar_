@@ -269,6 +269,9 @@
 		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/options.c">
 			<Option target="corewar"/>
 		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/options2.c">
+			<Option target="corewar"/>
+		</Unit>
 		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/opts_tokens.c">
 			<Option target="corewar"/>
 		</Unit>
