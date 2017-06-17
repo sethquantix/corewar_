@@ -3,7 +3,7 @@ project(_corewar)
 
 set(CMAKE_CXX_STANDARD 11)
 
-SET(GCC_OPTIONS "-g")
+set (CMAKE_C_FLAGS "-g -fsanitize=address")
 
 include_directories(includes
 		soil2/incs
@@ -89,8 +89,7 @@ target_link_libraries(corewar
 		sdl2_ttf
         glew
 		SOIL2
-        ${OPENGL_LIBRARIES}
-        ${GCC_OPTIONS})
+        ${OPENGL_LIBRARIES})
 
 target_link_libraries(asm
-        ft)
+		ft)

@@ -12,6 +12,13 @@
 
 #include "asm.h"
 
+t_env	*env(void)
+{
+	static t_env	e;
+
+	return (&e);
+}
+
 void	die(int exit_code, char *s, ...)
 {
 	va_list		args;

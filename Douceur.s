@@ -35,7 +35,7 @@ wall:
 	st	r9, -35
 	st	r9, -47
 	st	r9, -59
-	st	r90, -83
+	st	r9, -83
 	st	r9, -95
 	st	r9, -119
 	st	r9, -131

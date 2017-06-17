@@ -83,6 +83,7 @@ void	fill_param(int type, t_inst *inst, t_expr *expr, int i)
 
 	size[1] = inst->op->dir_size;
 	size[3] = inst->op->dir_size;
+	inst->p_type[i] = type;
 	inst->p_size[i] = size[type];
 	inst->oct |= inst->op->octal ? oct[type] << (6 - 2 * i) : 0;
 	s = ft_strdup(expr->expr);
@@ -224,7 +225,7 @@ void	compile(t_env *e)
 		{
 			file = read_asm(e, expr, source, e->files[i]);
 			if ((e->opts & OPT_A) == 0)
-				ft_printf("Compiling %s : %sSUCCESS !%s\n", file->name,
+				ft_printf("Compiling %s : %sSuccess%s\n", file->name,
 					  COLOR_GREEN, COLOR_END);
 			print_instructions(file);
 			parser_clear_expr(&expr);

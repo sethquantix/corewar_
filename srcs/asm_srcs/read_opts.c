@@ -27,7 +27,20 @@ static void	read_debug(t_env *e, t_expr **expr)
 
 static void	set_opt(t_env *e, t_expr **expr)
 {
-	e->opts |= ft_strcmp((*expr)->rule, "OPTION_A") == 0 ? OPT_A : OPT_X;
+	const char	*options[] = {
+		"OPTION_A", "OPTION_X", "OPTION_C"
+	};
+	int			i;
+
+	i = 0;
+	while (i < 3)
+		if (ft_strcmp((*expr)->rule, options[i]) == 0)
+			break ;
+		else
+			++i;
+	if (i == 3)
+		die(EXIT_FAILURE, "error : bad option\n");
+	e->opts |= 1 << i;
 	if ((e->opts & OPT_A) && (e->opts & OPT_X))
 		die(EXIT_FAILURE, "error : unsupported combination of options\n");
 }
@@ -42,9 +55,10 @@ static void read_path(t_env *e, t_expr **expr)
 
 void	read_opts(t_env *e, t_expr *expr)
 {
-	const char	*s[] = {"PATH", "OPTION_A", "OPTION_X", "OPTION_D", 0};
+	const char	*s[] = {"PATH", "OPTION_A", "OPTION_X", "OPTION_C",
+		"OPTION_D", 0};
 	static void	(*f[])(t_env *, t_expr **) = {read_path, set_opt,
-		set_opt, read_debug, 0};
+		set_opt, set_opt, read_debug, 0};
 
 	while (expr)
 	{
