@@ -98,6 +98,7 @@ void	proc_exec_inst(t_proc *p)
 		SET_PLAYER(p->arena->mem[p->pc], p->player);
 		return ;
 	}
+	SET_PLAYER(p->arena->mem[p->pc], p->player);
 	if (p->cycles_left && --p->cycles_left)
 		return ;
 	UNSET_PLAYER(p->arena->mem[p->pc], p->player);

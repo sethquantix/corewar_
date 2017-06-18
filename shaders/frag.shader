@@ -1,5 +1,6 @@
 #version 400
 
+#define M_PI        3.1415926535897932384626433832795
 #define MAX_DIST    1000
 #define FUDGE       0.8
 #define EPS         0.01
@@ -211,13 +212,13 @@ float circ(vec2 p)
 	return abs(mod(r*4.,tau)-3.14)*3.+.2;
 }
 
-void mainImage(vec3 col, out vec4 fragColor, in vec2 uv, bool m)
+void mainImage(vec3 col, out vec4 fragColor, in vec2 uv_, bool m)
 {
     vec3    c = col;
 
 	//setup system
-	vec2 p = uv - 0.5;
-	vec2 cp = 2 * (uv - (face == 1 ? vec2(0.5) : scale.xy / 2));
+	vec2 p = uv_ - 0.5;
+	vec2 cp = 2 * (uv_ - (face == 1 ? vec2(0.5) : scale.xy / 2));
 	vec2 op = 2 * p;
 	p *= 2.;
     float rz = 0;
@@ -288,6 +289,25 @@ vec3    march(vec3 ro, vec3 rd)
     return hit ? blackbody(cl * COL) : vec3(0);
 }
 
+vec4 glyphColor(vec3 col, in vec2 _uv, float t)
+{
+	vec2 p = _uv * 2. - 1.;
+//	p.x *= res.x/res.y;
+	vec2 bp = p;
+	p += 5.;
+	p *= 0.6;
+	float rb = fbm(p*.5+t*.17)*.1;
+	rb = sqrt(rb);
+	p *= makem2(rb*.2+atan(p.y,p.x)*1.);
+
+	//coloring
+	float rz = fbm(p*.9-t*.7);
+	rz *= dot(bp*5.,bp)+.5;
+	rz *= sin(p.x*.5+t*4.)*1.5;
+	col /= (.1-rz);
+	return vec4(sqrt(abs(col)),1.0);
+}
+
 void main(void)
 {
     bool    proc = (data & uint(0xF)) != 0;
@@ -295,17 +315,35 @@ void main(void)
     float   s = face == 1 ? 1 : scale.y;
     float   k = 0.45 + 0.55 * float(data >> 16) / 600.0;
     int     o = 0;
+    vec2    uv_ = uv;
+
     for (int i = 0; i < 4; i++)
         if ((p & (1 << i)) != 0)
             o = i + 1;
     vec3    c = proc && face == 1 ? vec3(0.9) : colors[o];
 
     if (face != 0) {
-        c *= k;
-        mainImage(c, FragColor, uv * (face == 1 ? vec2(1) : scale.xy), o != 0);
-        vec4 glyph = vec4(texture(font, vec3(uv, val)).xyzw);
-        if (face == 1 && (opts & OPT_VALUES) != 0)
+        c *= proc ? 1.0 : k;
+//        c *= proc ? 2.0 : 0.4 * k;
+        uv_.y -= proc && face != 1 ? 9 : 0;
+        uv_.y *= s;
+        if (!proc || face == 1 || uv.y >= 100 / (scale.y + 10))
+            mainImage(c, FragColor, uv_, o != 0);
+        else
+        {
+            vec3    c1 = vec3(1);
+            float   k = 1 - uv.y / 10;
+//            float   f = exp(-2 * (0.5 - abs(uv.x - 0.5)));
+//            float   k = exp(-(9 - uv.y) * 10) * f;
+            FragColor = vec4(c1, mix(0.6, 0.0, k));
+        }
+        if (face == 1 && (opts & OPT_VALUES) != 0 && (val != 0 || o != 0))
+        {
+            vec4 glyph = vec4(texture(font, vec3(uv, val)).xyzw);
+            if (length(glyph.xyz) > 0.05)
+                glyph.xyz = glyphColor(colors[o], uv, 0.1 * time).xyz;
             FragColor = vec4(mix(glyph.xyz, vec3(0), 1 - glyph.w), 1.0);
+        }
         if ((opts & OPT_VALUES) == 0)
         {
             vec3 ro = camPos;
