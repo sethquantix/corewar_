@@ -31,14 +31,31 @@ void			write_ops(t_deco *all)
 	while (tmp)
 	{
 		op = op_tab[tmp->opcode - 1];
-		ft_dprintf(all->fd, "%-15s", op.name);
+		if (tmp->lbl != -1)
+		{
+			tmp->addr != 0 ? ft_dprintf(all->fd, "\n") : 0;
+			ft_dprintf(all->fd, "label%d:\n", tmp->lbl);
+		}
+		ft_dprintf(all->fd, "%s%-15s",all->lbl ? "        " : "", op.name);
 		i = 0;
 		while (i < op.argc)
 		{
-			if (tmp->param_type[i] != IND_CODE)
-				ft_dprintf(all->fd, " %s%d",tmp->param_type[i] == REG_CODE ? "r" : "%", tmp->param_value[i]);
+			if (tmp->param_type[i] == DIR_CODE)
+			{
+				if (tmp->param_lbl[i] != -1)
+					ft_dprintf(all->fd, " %s:label%d", "%", tmp->param_lbl[i]);
+				else
+					ft_dprintf(all->fd, " %s%d", "%", tmp->param_value[i]);
+			}
+			else if (tmp->param_type[i] == IND_CODE)
+			{
+				if (tmp->param_lbl[i] != -1)
+					ft_dprintf(all->fd, " :label%d", tmp->param_lbl[i]);
+				else
+					ft_dprintf(all->fd, " %d", tmp->param_value[i]);
+			}
 			else
-				ft_dprintf(all->fd, " %d", tmp->param_value[i]);
+				ft_dprintf(all->fd, " r%d", tmp->param_value[i]);
 			i++;
 			(i < op.argc) ? ft_dprintf(all->fd, ",") : 0;
 		}
@@ -47,6 +64,66 @@ void			write_ops(t_deco *all)
 	}
 }
 
+static int	add_lbl(void)
+{
+	static int lbl = 0;
+
+	return (lbl++);
+}
+
+int			check_lbl(t_dec_op *lst, t_dec_op *current, int i, t_deco *all)
+{
+	while (lst)
+	{
+		if (current->addr + current->param_value[i] == lst->addr)
+		{
+			if (lst->lbl == -1)
+				lst->lbl = add_lbl();
+			all->lbl = 1;
+			return (lst->lbl);
+		}
+		lst = lst->next;
+	}
+	return (-1);
+}
+
+void		set_check_lbl(t_deco *all)
+{
+	t_dec_op	*tmp;
+	t_op		op;
+	int			i;
+	int			lbl;
+
+	tmp = all->lst;
+	while (tmp)
+	{
+		tmp->scope = all->end->addr - tmp->addr;
+		tmp = tmp->next;
+	}
+	tmp = all->lst;
+	while (tmp)
+	{
+		op = op_tab[tmp->opcode];
+		i = 0;
+		while (i < op.argc)
+		{
+			tmp->param_lbl[i] = -1;
+			if (tmp->param_type[i] == DIR_CODE || tmp->param_type[i] == IND_CODE)
+			{
+				if (!tmp->param_value[i] || (
+					tmp->param_value[i] + tmp->addr < 0 ||
+					tmp->param_value[i] + tmp->addr >= all->head.prog_size))
+				{
+					i++;
+					continue ;
+				}
+				tmp->param_lbl[i] = check_lbl(all->lst, tmp, i, all);
+			}
+			i++;
+		}
+		tmp = tmp->next;
+	}
+}
 
 void		print_file(char *src, t_deco *all)
 {
@@ -64,7 +141,7 @@ void		print_file(char *src, t_deco *all)
 	if (all->fd == -1)
 		die(EXIT_FAILURE, "Cannot open/create file");
 	write_head(all);
-//	set_check_lbl(all);
+	set_check_lbl(all);
 	write_ops(all);
 	close(all->fd);		
 //	del_all_op(all->lst);
@@ -144,6 +221,7 @@ void			add_deco_op(t_deco *all, t_dec_op *node)
 {
 	t_dec_op	*tmp;
 
+	node->lbl = -1;
 	if (all && !all->lst)
 		all->lst = node;
 	else if (all)
@@ -153,6 +231,7 @@ void			add_deco_op(t_deco *all, t_dec_op *node)
 			tmp = tmp->next;
 		tmp->next = node;
 	}
+	all->end = node;
 }
 
 int			check_op(char *file, t_deco *all, int iter)
@@ -172,7 +251,7 @@ int			check_op(char *file, t_deco *all, int iter)
 	op = op_tab[node->opcode - 1];
 	ret = op.octal ? 2 : 1;
 	ret == 2 ? node->octal = 1 : 0;
-	node->addr = iter + 1;
+	node->addr = iter;
 	add_deco_op(all, node);
 	if (ret == 2 && file[1])
 		ret += set_param_with_octal(&file[1], node);

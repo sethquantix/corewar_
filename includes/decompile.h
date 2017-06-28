@@ -24,6 +24,9 @@ typedef struct 	s_dec_op
 	char			opcode;
 	char 			octal;
 	int				addr;
+	int				scope;
+	int				lbl;
+	int				param_lbl[MAX_ARGS_NUMBER];
 	int				param_size[MAX_ARGS_NUMBER];
 	int				param_type[MAX_ARGS_NUMBER];
 	int				param_value[MAX_ARGS_NUMBER];
@@ -34,7 +37,9 @@ typedef struct 	s_deco
 {
 	header_t	head;
 	int			fd;
+	int			lbl;
 	t_dec_op	*lst;
+	t_dec_op	*end;
 }				t_deco;
 
 #endif
