@@ -11,124 +11,12 @@
 /* ************************************************************************** */
 
 #include "asm.h"
-#include <sys/stat.h>
 #include "decompile.h"
 
-void		write_head(t_deco *all)
+static void		print_file(char *src, t_deco *all)
 {
-	ft_dprintf(all->fd, ".name%11s%s%s\n","\"", all->head.prog_name, "\"");
-	ft_dprintf(all->fd, ".comment%8s%s%s\n\n","\"", all->head.prog_desc, "\"");
-}
-
-
-void			write_ops(t_deco *all)
-{
-	t_dec_op	*tmp;
-	t_op		op;
-	int			i;
-
-	tmp = all->lst;
-	while (tmp)
-	{
-		op = op_tab[tmp->opcode - 1];
-		if (tmp->lbl != -1)
-		{
-			tmp->addr != 0 ? ft_dprintf(all->fd, "\n") : 0;
-			ft_dprintf(all->fd, "label%d:\n", tmp->lbl);
-		}
-		ft_dprintf(all->fd, "%s%-15s",all->lbl ? "        " : "", op.name);
-		i = 0;
-		while (i < op.argc)
-		{
-			if (tmp->param_type[i] == DIR_CODE)
-			{
-				if (tmp->param_lbl[i] != -1)
-					ft_dprintf(all->fd, " %s:label%d", "%", tmp->param_lbl[i]);
-				else
-					ft_dprintf(all->fd, " %s%d", "%", tmp->param_value[i]);
-			}
-			else if (tmp->param_type[i] == IND_CODE)
-			{
-				if (tmp->param_lbl[i] != -1)
-					ft_dprintf(all->fd, " :label%d", tmp->param_lbl[i]);
-				else
-					ft_dprintf(all->fd, " %d", tmp->param_value[i]);
-			}
-			else
-				ft_dprintf(all->fd, " r%d", tmp->param_value[i]);
-			i++;
-			(i < op.argc) ? ft_dprintf(all->fd, ",") : 0;
-		}
-		ft_dprintf(all->fd, "\n");
-		tmp = tmp->next;
-	}
-}
-
-static int	add_lbl(void)
-{
-	static int lbl = 0;
-
-	return (lbl++);
-}
-
-int			check_lbl(t_dec_op *lst, t_dec_op *current, int i, t_deco *all)
-{
-	while (lst)
-	{
-		if (current->addr + current->param_value[i] == lst->addr)
-		{
-			if (lst->lbl == -1)
-				lst->lbl = add_lbl();
-			all->lbl = 1;
-			return (lst->lbl);
-		}
-		lst = lst->next;
-	}
-	return (-1);
-}
-
-void		set_check_lbl(t_deco *all)
-{
-	t_dec_op	*tmp;
-	t_op		op;
-	int			i;
-	int			lbl;
-
-	tmp = all->lst;
-	while (tmp)
-	{
-		tmp->scope = all->end->addr - tmp->addr;
-		tmp = tmp->next;
-	}
-	tmp = all->lst;
-	while (tmp)
-	{
-		op = op_tab[tmp->opcode];
-		i = 0;
-		while (i < op.argc)
-		{
-			tmp->param_lbl[i] = -1;
-			if (tmp->param_type[i] == DIR_CODE || tmp->param_type[i] == IND_CODE)
-			{
-				if (!tmp->param_value[i] || (
-					tmp->param_value[i] + tmp->addr < 0 ||
-					tmp->param_value[i] + tmp->addr >= all->head.prog_size))
-				{
-					i++;
-					continue ;
-				}
-				tmp->param_lbl[i] = check_lbl(all->lst, tmp, i, all);
-			}
-			i++;
-		}
-		tmp = tmp->next;
-	}
-}
-
-void		print_file(char *src, t_deco *all)
-{
-	char	*path;
-	char	*chr;
+	char		*path;
+	char		*chr;
 
 	path = ft_strnew(ft_strlen(src));
 	chr = ft_strchr(src, '.');
@@ -143,172 +31,18 @@ void		print_file(char *src, t_deco *all)
 	write_head(all);
 	set_check_lbl(all);
 	write_ops(all);
-	close(all->fd);		
-//	del_all_op(all->lst);
+	close(all->fd);
+	del_all_op(all->lst);
 }
 
-void		set_value(unsigned char *file, t_dec_op *node, int i, int size)
-{
-	int		j;
-	short	s;
-	unsigned int conv;
-
-	j = 0;
-	if (size == 4)
-	{
-		conv = (file[0] << 24) | (file[1] << 16) | (file[2] << 8) | file[3];
-		node->param_value[i] = conv;
-	}
-	else if (size == 2)
-	{
-		s = (file[0] << 8) | file[1];	
-		node->param_value[i] = s;
-	}
-	else
-		node->param_value[i] = file[0];
-}
-
-int			set_param_no_octal(char *file, t_dec_op *node)
-{
-	t_op	op;
-	int		iter;
-
-	op = op_tab[node->opcode - 1];
-	iter = 0;
-	if (op.argc)
-	{
-		if (op.args[0] & T_REG)
-		{
-			node->param_size[0] = REG_SIZE;
-			node->param_type[0] = REG_CODE;
-			set_value((unsigned char *)file, node, 0, REG_SIZE);
-			iter = REG_SIZE;
-		}
-		else
-		{
-			node->param_size[0] = op.dir_size;
-			node->param_type[0] = DIR_CODE;
-			set_value((unsigned char *)file, node, 0, op.dir_size);
-			iter = op.dir_size;
-		}
-	}
-	return (iter);
-}
-
-int			set_param_with_octal(char *file, t_dec_op *node)
-{
-	static int	sizes[] = {0, REG_NUMBER_SIZE, DIR_SIZE, IND_SIZE};
-	t_op		op;
-	int			i;
-	int			iter;
-
-	op = op_tab[node->opcode - 1];
-	sizes[2] = op.dir_size;
-	iter = 1;
-	i = 0;
-	while (i < op.argc)
-	{
-		if ((PROC_TYPE((node->param_type[i] = PROC_CODE(file[0], i))) & op.args[i]) == 0)
-			die(EXIT_FAILURE, "Error with encoding octet or param");
-		node->param_size[i] = sizes[node->param_type[i]];
-		set_value((unsigned char *)&file[iter], node, i, node->param_size[i]);
-		iter += node->param_size[i++];
-	}
-	return (iter - 1);
-}
-
-void			add_deco_op(t_deco *all, t_dec_op *node)
-{
-	t_dec_op	*tmp;
-
-	node->lbl = -1;
-	if (all && !all->lst)
-		all->lst = node;
-	else if (all)
-	{
-		tmp = all->lst;
-		while (tmp->next)
-			tmp = tmp->next;
-		tmp->next = node;
-	}
-	all->end = node;
-}
-
-int			check_op(char *file, t_deco *all, int iter)
-{
-	t_dec_op	*node;
-	t_op		op;
-	int			ret;
-	int			i;
-
-	if (!file)
-		die(EXIT_FAILURE, "Unknown");
-	if (file[0] < 1 || file[0] > 16)
-		die(EXIT_FAILURE, "Invalid, operation");
-	if (!(node = (t_dec_op *)ft_memalloc(sizeof(t_dec_op))))
-		die(EXIT_FAILURE, "Malloc failed");
-	node->opcode = file[0];
-	op = op_tab[node->opcode - 1];
-	ret = op.octal ? 2 : 1;
-	ret == 2 ? node->octal = 1 : 0;
-	node->addr = iter;
-	add_deco_op(all, node);
-	if (ret == 2 && file[1])
-		ret += set_param_with_octal(&file[1], node);
-	else if (ret == 1)
-		ret += set_param_no_octal(&file[1], node);
-	return (ret);
-}
-
-static	int	err_param(char *src)
-{
-	int			fd;
-	header_t	*head;
-	char		*chr;
-
-	if ((fd = open(src, O_RDONLY)) == -1)
-	{
-		ft_dprintf(STDERR_FILENO, "Unable to read file %s\n", src);
-		return (fd);
-	}
-	if (!(chr = ft_strchr(src, '.')) || ft_strcmp(chr, ".cor"))
-	{
-		close(fd);
-		ft_dprintf(STDERR_FILENO, "File must be a .cor \n");
-		return (-1);
-	}
-	return (fd);
-}
-
-static int	invalid_header(header_t *head)
-{
-	if (!head)
-	{
-		ft_dprintf(STDERR_FILENO, "Failed to read header \n");
-		return (1);
-	}
-	ft_endian(&head->magic, 4);
-	ft_endian(&head->prog_size, 4);
-	if (head->magic != COREWAR_EXEC_MAGIC)
-	{
-		ft_dprintf(STDERR_FILENO ,"Bad magic number\n");
-		return (1);
-	}
-	return (0);
-}
-
-void		decompile(char *src)
+void			decompile(char *src)
 {
 	t_deco		all;
-	struct stat sts;
 	size_t		iter;
 	char		file[CHAMP_MAX_SIZE + 1];
 
-
 	ft_bzero((void *)&all, sizeof(t_deco));
 	if ((all.fd = err_param(src)) == -1)
-		return ;
-	if (stat(src, &sts) == -1)
 		return ;
 	if (read(all.fd, &all.head, sizeof(header_t)) == -1)
 		die(EXIT_FAILURE, "Read failed");
@@ -321,4 +55,5 @@ void		decompile(char *src)
 	while (file[iter])
 		iter += check_op(&file[iter], &all, iter);
 	print_file(src, &all);
+	ft_bzero((void **)&all, sizeof(t_deco));
 }

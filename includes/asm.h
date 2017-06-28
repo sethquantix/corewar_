@@ -104,6 +104,5 @@ int			tok_func_number(char **s);
 int			tok_func_reg_nbr(char **s);
 
 void		print_expr(t_expr *expr);
-void		decompile(char *src);
 
 #endif

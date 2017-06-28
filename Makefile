@@ -217,6 +217,60 @@ srcs/asm_srcs/compile.c.s:
 	$(MAKE) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/srcs/asm_srcs/compile.c.s
 .PHONY : srcs/asm_srcs/compile.c.s
 
+srcs/asm_srcs/decompile/dec_err_check.o: srcs/asm_srcs/decompile/dec_err_check.c.o
+
+.PHONY : srcs/asm_srcs/decompile/dec_err_check.o
+
+# target to build an object file
+srcs/asm_srcs/decompile/dec_err_check.c.o:
+	$(MAKE) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/srcs/asm_srcs/decompile/dec_err_check.c.o
+.PHONY : srcs/asm_srcs/decompile/dec_err_check.c.o
+
+srcs/asm_srcs/decompile/dec_err_check.i: srcs/asm_srcs/decompile/dec_err_check.c.i
+
+.PHONY : srcs/asm_srcs/decompile/dec_err_check.i
+
+# target to preprocess a source file
+srcs/asm_srcs/decompile/dec_err_check.c.i:
+	$(MAKE) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/srcs/asm_srcs/decompile/dec_err_check.c.i
+.PHONY : srcs/asm_srcs/decompile/dec_err_check.c.i
+
+srcs/asm_srcs/decompile/dec_err_check.s: srcs/asm_srcs/decompile/dec_err_check.c.s
+
+.PHONY : srcs/asm_srcs/decompile/dec_err_check.s
+
+# target to generate assembly for a file
+srcs/asm_srcs/decompile/dec_err_check.c.s:
+	$(MAKE) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/srcs/asm_srcs/decompile/dec_err_check.c.s
+.PHONY : srcs/asm_srcs/decompile/dec_err_check.c.s
+
+srcs/asm_srcs/decompile/dec_lst_op.o: srcs/asm_srcs/decompile/dec_lst_op.c.o
+
+.PHONY : srcs/asm_srcs/decompile/dec_lst_op.o
+
+# target to build an object file
+srcs/asm_srcs/decompile/dec_lst_op.c.o:
+	$(MAKE) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/srcs/asm_srcs/decompile/dec_lst_op.c.o
+.PHONY : srcs/asm_srcs/decompile/dec_lst_op.c.o
+
+srcs/asm_srcs/decompile/dec_lst_op.i: srcs/asm_srcs/decompile/dec_lst_op.c.i
+
+.PHONY : srcs/asm_srcs/decompile/dec_lst_op.i
+
+# target to preprocess a source file
+srcs/asm_srcs/decompile/dec_lst_op.c.i:
+	$(MAKE) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/srcs/asm_srcs/decompile/dec_lst_op.c.i
+.PHONY : srcs/asm_srcs/decompile/dec_lst_op.c.i
+
+srcs/asm_srcs/decompile/dec_lst_op.s: srcs/asm_srcs/decompile/dec_lst_op.c.s
+
+.PHONY : srcs/asm_srcs/decompile/dec_lst_op.s
+
+# target to generate assembly for a file
+srcs/asm_srcs/decompile/dec_lst_op.c.s:
+	$(MAKE) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/srcs/asm_srcs/decompile/dec_lst_op.c.s
+.PHONY : srcs/asm_srcs/decompile/dec_lst_op.c.s
+
 srcs/asm_srcs/decompile/decompile.o: srcs/asm_srcs/decompile/decompile.c.o
 
 .PHONY : srcs/asm_srcs/decompile/decompile.o
@@ -243,6 +297,141 @@ srcs/asm_srcs/decompile/decompile.s: srcs/asm_srcs/decompile/decompile.c.s
 srcs/asm_srcs/decompile/decompile.c.s:
 	$(MAKE) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/srcs/asm_srcs/decompile/decompile.c.s
 .PHONY : srcs/asm_srcs/decompile/decompile.c.s
+
+srcs/asm_srcs/decompile/set_check_labels.o: srcs/asm_srcs/decompile/set_check_labels.c.o
+
+.PHONY : srcs/asm_srcs/decompile/set_check_labels.o
+
+# target to build an object file
+srcs/asm_srcs/decompile/set_check_labels.c.o:
+	$(MAKE) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/srcs/asm_srcs/decompile/set_check_labels.c.o
+.PHONY : srcs/asm_srcs/decompile/set_check_labels.c.o
+
+srcs/asm_srcs/decompile/set_check_labels.i: srcs/asm_srcs/decompile/set_check_labels.c.i
+
+.PHONY : srcs/asm_srcs/decompile/set_check_labels.i
+
+# target to preprocess a source file
+srcs/asm_srcs/decompile/set_check_labels.c.i:
+	$(MAKE) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/srcs/asm_srcs/decompile/set_check_labels.c.i
+.PHONY : srcs/asm_srcs/decompile/set_check_labels.c.i
+
+srcs/asm_srcs/decompile/set_check_labels.s: srcs/asm_srcs/decompile/set_check_labels.c.s
+
+.PHONY : srcs/asm_srcs/decompile/set_check_labels.s
+
+# target to generate assembly for a file
+srcs/asm_srcs/decompile/set_check_labels.c.s:
+	$(MAKE) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/srcs/asm_srcs/decompile/set_check_labels.c.s
+.PHONY : srcs/asm_srcs/decompile/set_check_labels.c.s
+
+srcs/asm_srcs/decompile/set_op.o: srcs/asm_srcs/decompile/set_op.c.o
+
+.PHONY : srcs/asm_srcs/decompile/set_op.o
+
+# target to build an object file
+srcs/asm_srcs/decompile/set_op.c.o:
+	$(MAKE) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/srcs/asm_srcs/decompile/set_op.c.o
+.PHONY : srcs/asm_srcs/decompile/set_op.c.o
+
+srcs/asm_srcs/decompile/set_op.i: srcs/asm_srcs/decompile/set_op.c.i
+
+.PHONY : srcs/asm_srcs/decompile/set_op.i
+
+# target to preprocess a source file
+srcs/asm_srcs/decompile/set_op.c.i:
+	$(MAKE) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/srcs/asm_srcs/decompile/set_op.c.i
+.PHONY : srcs/asm_srcs/decompile/set_op.c.i
+
+srcs/asm_srcs/decompile/set_op.s: srcs/asm_srcs/decompile/set_op.c.s
+
+.PHONY : srcs/asm_srcs/decompile/set_op.s
+
+# target to generate assembly for a file
+srcs/asm_srcs/decompile/set_op.c.s:
+	$(MAKE) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/srcs/asm_srcs/decompile/set_op.c.s
+.PHONY : srcs/asm_srcs/decompile/set_op.c.s
+
+srcs/asm_srcs/decompile/set_params.o: srcs/asm_srcs/decompile/set_params.c.o
+
+.PHONY : srcs/asm_srcs/decompile/set_params.o
+
+# target to build an object file
+srcs/asm_srcs/decompile/set_params.c.o:
+	$(MAKE) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/srcs/asm_srcs/decompile/set_params.c.o
+.PHONY : srcs/asm_srcs/decompile/set_params.c.o
+
+srcs/asm_srcs/decompile/set_params.i: srcs/asm_srcs/decompile/set_params.c.i
+
+.PHONY : srcs/asm_srcs/decompile/set_params.i
+
+# target to preprocess a source file
+srcs/asm_srcs/decompile/set_params.c.i:
+	$(MAKE) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/srcs/asm_srcs/decompile/set_params.c.i
+.PHONY : srcs/asm_srcs/decompile/set_params.c.i
+
+srcs/asm_srcs/decompile/set_params.s: srcs/asm_srcs/decompile/set_params.c.s
+
+.PHONY : srcs/asm_srcs/decompile/set_params.s
+
+# target to generate assembly for a file
+srcs/asm_srcs/decompile/set_params.c.s:
+	$(MAKE) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/srcs/asm_srcs/decompile/set_params.c.s
+.PHONY : srcs/asm_srcs/decompile/set_params.c.s
+
+srcs/asm_srcs/decompile/write_head.o: srcs/asm_srcs/decompile/write_head.c.o
+
+.PHONY : srcs/asm_srcs/decompile/write_head.o
+
+# target to build an object file
+srcs/asm_srcs/decompile/write_head.c.o:
+	$(MAKE) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/srcs/asm_srcs/decompile/write_head.c.o
+.PHONY : srcs/asm_srcs/decompile/write_head.c.o
+
+srcs/asm_srcs/decompile/write_head.i: srcs/asm_srcs/decompile/write_head.c.i
+
+.PHONY : srcs/asm_srcs/decompile/write_head.i
+
+# target to preprocess a source file
+srcs/asm_srcs/decompile/write_head.c.i:
+	$(MAKE) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/srcs/asm_srcs/decompile/write_head.c.i
+.PHONY : srcs/asm_srcs/decompile/write_head.c.i
+
+srcs/asm_srcs/decompile/write_head.s: srcs/asm_srcs/decompile/write_head.c.s
+
+.PHONY : srcs/asm_srcs/decompile/write_head.s
+
+# target to generate assembly for a file
+srcs/asm_srcs/decompile/write_head.c.s:
+	$(MAKE) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/srcs/asm_srcs/decompile/write_head.c.s
+.PHONY : srcs/asm_srcs/decompile/write_head.c.s
+
+srcs/asm_srcs/decompile/write_ops.o: srcs/asm_srcs/decompile/write_ops.c.o
+
+.PHONY : srcs/asm_srcs/decompile/write_ops.o
+
+# target to build an object file
+srcs/asm_srcs/decompile/write_ops.c.o:
+	$(MAKE) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/srcs/asm_srcs/decompile/write_ops.c.o
+.PHONY : srcs/asm_srcs/decompile/write_ops.c.o
+
+srcs/asm_srcs/decompile/write_ops.i: srcs/asm_srcs/decompile/write_ops.c.i
+
+.PHONY : srcs/asm_srcs/decompile/write_ops.i
+
+# target to preprocess a source file
+srcs/asm_srcs/decompile/write_ops.c.i:
+	$(MAKE) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/srcs/asm_srcs/decompile/write_ops.c.i
+.PHONY : srcs/asm_srcs/decompile/write_ops.c.i
+
+srcs/asm_srcs/decompile/write_ops.s: srcs/asm_srcs/decompile/write_ops.c.s
+
+.PHONY : srcs/asm_srcs/decompile/write_ops.s
+
+# target to generate assembly for a file
+srcs/asm_srcs/decompile/write_ops.c.s:
+	$(MAKE) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/srcs/asm_srcs/decompile/write_ops.c.s
+.PHONY : srcs/asm_srcs/decompile/write_ops.c.s
 
 srcs/asm_srcs/op.o: srcs/asm_srcs/op.c.o
 
@@ -1370,9 +1559,30 @@ help:
 	@echo "... srcs/asm_srcs/compile.o"
 	@echo "... srcs/asm_srcs/compile.i"
 	@echo "... srcs/asm_srcs/compile.s"
+	@echo "... srcs/asm_srcs/decompile/dec_err_check.o"
+	@echo "... srcs/asm_srcs/decompile/dec_err_check.i"
+	@echo "... srcs/asm_srcs/decompile/dec_err_check.s"
+	@echo "... srcs/asm_srcs/decompile/dec_lst_op.o"
+	@echo "... srcs/asm_srcs/decompile/dec_lst_op.i"
+	@echo "... srcs/asm_srcs/decompile/dec_lst_op.s"
 	@echo "... srcs/asm_srcs/decompile/decompile.o"
 	@echo "... srcs/asm_srcs/decompile/decompile.i"
 	@echo "... srcs/asm_srcs/decompile/decompile.s"
+	@echo "... srcs/asm_srcs/decompile/set_check_labels.o"
+	@echo "... srcs/asm_srcs/decompile/set_check_labels.i"
+	@echo "... srcs/asm_srcs/decompile/set_check_labels.s"
+	@echo "... srcs/asm_srcs/decompile/set_op.o"
+	@echo "... srcs/asm_srcs/decompile/set_op.i"
+	@echo "... srcs/asm_srcs/decompile/set_op.s"
+	@echo "... srcs/asm_srcs/decompile/set_params.o"
+	@echo "... srcs/asm_srcs/decompile/set_params.i"
+	@echo "... srcs/asm_srcs/decompile/set_params.s"
+	@echo "... srcs/asm_srcs/decompile/write_head.o"
+	@echo "... srcs/asm_srcs/decompile/write_head.i"
+	@echo "... srcs/asm_srcs/decompile/write_head.s"
+	@echo "... srcs/asm_srcs/decompile/write_ops.o"
+	@echo "... srcs/asm_srcs/decompile/write_ops.i"
+	@echo "... srcs/asm_srcs/decompile/write_ops.s"
 	@echo "... srcs/asm_srcs/op.o"
 	@echo "... srcs/asm_srcs/op.i"
 	@echo "... srcs/asm_srcs/op.s"
