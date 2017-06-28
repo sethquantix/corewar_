@@ -26,11 +26,14 @@
 # define INST(x)	((t_inst *)(x->content))
 
 #define COLOR_RED	"\033[;1;31m"
+#define COLOR_WARN	"\033[38;5;214m"
 #define COLOR_GREEN	"\033[;1;32m"
 #define COLOR_ADDR	"\033[38;5;46m"
 #define COLOR_SIZE	"\033[38;5;34m"
 #define COLOR_LBL	"\033[38;5;9m"
 #define COLOR_END	"\033[0m"
+
+#define OPEN_FLAGS	O_WRONLY | O_CREAT | O_TRUNC
 
 # define ERR_POS	"Champion name or comment not at the top of the file\n"
 # define ERR_LEN	"Champion name or comment too long\n"
@@ -101,5 +104,6 @@ int			tok_func_number(char **s);
 int			tok_func_reg_nbr(char **s);
 
 void		print_expr(t_expr *expr);
+void		decompile(char *src);
 
 #endif

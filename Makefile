@@ -217,6 +217,33 @@ srcs/asm_srcs/compile.c.s:
 	$(MAKE) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/srcs/asm_srcs/compile.c.s
 .PHONY : srcs/asm_srcs/compile.c.s
 
+srcs/asm_srcs/decompile/decompile.o: srcs/asm_srcs/decompile/decompile.c.o
+
+.PHONY : srcs/asm_srcs/decompile/decompile.o
+
+# target to build an object file
+srcs/asm_srcs/decompile/decompile.c.o:
+	$(MAKE) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/srcs/asm_srcs/decompile/decompile.c.o
+.PHONY : srcs/asm_srcs/decompile/decompile.c.o
+
+srcs/asm_srcs/decompile/decompile.i: srcs/asm_srcs/decompile/decompile.c.i
+
+.PHONY : srcs/asm_srcs/decompile/decompile.i
+
+# target to preprocess a source file
+srcs/asm_srcs/decompile/decompile.c.i:
+	$(MAKE) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/srcs/asm_srcs/decompile/decompile.c.i
+.PHONY : srcs/asm_srcs/decompile/decompile.c.i
+
+srcs/asm_srcs/decompile/decompile.s: srcs/asm_srcs/decompile/decompile.c.s
+
+.PHONY : srcs/asm_srcs/decompile/decompile.s
+
+# target to generate assembly for a file
+srcs/asm_srcs/decompile/decompile.c.s:
+	$(MAKE) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/srcs/asm_srcs/decompile/decompile.c.s
+.PHONY : srcs/asm_srcs/decompile/decompile.c.s
+
 srcs/asm_srcs/op.o: srcs/asm_srcs/op.c.o
 
 .PHONY : srcs/asm_srcs/op.o
@@ -1343,6 +1370,9 @@ help:
 	@echo "... srcs/asm_srcs/compile.o"
 	@echo "... srcs/asm_srcs/compile.i"
 	@echo "... srcs/asm_srcs/compile.s"
+	@echo "... srcs/asm_srcs/decompile/decompile.o"
+	@echo "... srcs/asm_srcs/decompile/decompile.i"
+	@echo "... srcs/asm_srcs/decompile/decompile.s"
 	@echo "... srcs/asm_srcs/op.o"
 	@echo "... srcs/asm_srcs/op.i"
 	@echo "... srcs/asm_srcs/op.s"

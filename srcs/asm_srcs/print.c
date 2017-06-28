@@ -248,16 +248,35 @@ char	*output_file(char *path)
 	return (ft_strjoinfree(t, ".cor", 1));
 }
 
+char	*local(char **path)
+{
+	char	*p;
+
+	p = ft_strrchr(*path, '/');
+	p = p ? p + 1 : *path;
+	p = ft_strsub(*path, p - *path, ft_strlen(p));
+	free(*path);
+	return (*path = p);
+}
+
 void	write_file_header(t_file *file)
 {
 	char			*o;
 
 	file->head.prog_size = ft_endian_int(file->addr);
 	o = output_file(file->name);
+	if ((file->fd = open(o, OPEN_FLAGS, 0644)) == -1)
+	{
+		if ((file->fd = open(local(&o), OPEN_FLAGS, 0644)) == -1)
+			die(EXIT_FAILURE,
+				"%sFailure%s : Can't open %s for writing\n",
+				COLOR_RED, COLOR_END, o);
+		ft_printf("%sWarning%s : Could not write to inital directory",
+			COLOR_WARN, COLOR_END);
+		ft_printf(", output to working directory instead\n");
+	}
+
 	ft_printf("Writing output to %s\n", o);
-	if ((file->fd = open(o, O_WRONLY | O_CREAT | O_TRUNC, 0777)) == -1)
-		die(EXIT_FAILURE, "Compilation of %s %sfailed%s !\
-			\nCan't open %s for writing\n", o);
 	free(o);
 	write(file->fd, &file->head, sizeof(header_t));
 }

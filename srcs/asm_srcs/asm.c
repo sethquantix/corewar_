@@ -27,6 +27,8 @@ int	main(int ac, char **av)
 	parser_clear_expr(&expr);
 	if ((e->opts & OPT_X) == 0)
 		compile(e);
+	else if (ac == 3)
+		decompile(av[2]);
 	i = 0;
 	while (i < e->n_file)
 		free(e->files[i++]);

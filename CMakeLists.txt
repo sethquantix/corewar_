@@ -69,7 +69,8 @@ set(ASM_FILES
     srcs/asm_srcs/print.c
     srcs/asm_srcs/read_opts.c
     srcs/asm_srcs/utils.c
-    srcs/asm_srcs/write.c)
+    srcs/asm_srcs/write.c
+    srcs/asm_srcs/decompile/decompile.c)
 
 find_package(OpenGL REQUIRED)
 include_directories(${OPENGL_INCLUDE_DIR})
