@@ -892,6 +892,33 @@ srcs/corewar_srcs/gr_vm_run.c.s:
 	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_run.c.s
 .PHONY : srcs/corewar_srcs/gr_vm_run.c.s
 
+srcs/corewar_srcs/gr_vm_selector.o: srcs/corewar_srcs/gr_vm_selector.c.o
+
+.PHONY : srcs/corewar_srcs/gr_vm_selector.o
+
+# target to build an object file
+srcs/corewar_srcs/gr_vm_selector.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_selector.c.o
+.PHONY : srcs/corewar_srcs/gr_vm_selector.c.o
+
+srcs/corewar_srcs/gr_vm_selector.i: srcs/corewar_srcs/gr_vm_selector.c.i
+
+.PHONY : srcs/corewar_srcs/gr_vm_selector.i
+
+# target to preprocess a source file
+srcs/corewar_srcs/gr_vm_selector.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_selector.c.i
+.PHONY : srcs/corewar_srcs/gr_vm_selector.c.i
+
+srcs/corewar_srcs/gr_vm_selector.s: srcs/corewar_srcs/gr_vm_selector.c.s
+
+.PHONY : srcs/corewar_srcs/gr_vm_selector.s
+
+# target to generate assembly for a file
+srcs/corewar_srcs/gr_vm_selector.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_selector.c.s
+.PHONY : srcs/corewar_srcs/gr_vm_selector.c.s
+
 srcs/corewar_srcs/gr_vm_styles.o: srcs/corewar_srcs/gr_vm_styles.c.o
 
 .PHONY : srcs/corewar_srcs/gr_vm_styles.o
@@ -945,6 +972,33 @@ srcs/corewar_srcs/gr_vm_ui.s: srcs/corewar_srcs/gr_vm_ui.c.s
 srcs/corewar_srcs/gr_vm_ui.c.s:
 	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_ui.c.s
 .PHONY : srcs/corewar_srcs/gr_vm_ui.c.s
+
+srcs/corewar_srcs/gr_vm_ui_utils.o: srcs/corewar_srcs/gr_vm_ui_utils.c.o
+
+.PHONY : srcs/corewar_srcs/gr_vm_ui_utils.o
+
+# target to build an object file
+srcs/corewar_srcs/gr_vm_ui_utils.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_ui_utils.c.o
+.PHONY : srcs/corewar_srcs/gr_vm_ui_utils.c.o
+
+srcs/corewar_srcs/gr_vm_ui_utils.i: srcs/corewar_srcs/gr_vm_ui_utils.c.i
+
+.PHONY : srcs/corewar_srcs/gr_vm_ui_utils.i
+
+# target to preprocess a source file
+srcs/corewar_srcs/gr_vm_ui_utils.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_ui_utils.c.i
+.PHONY : srcs/corewar_srcs/gr_vm_ui_utils.c.i
+
+srcs/corewar_srcs/gr_vm_ui_utils.s: srcs/corewar_srcs/gr_vm_ui_utils.c.s
+
+.PHONY : srcs/corewar_srcs/gr_vm_ui_utils.s
+
+# target to generate assembly for a file
+srcs/corewar_srcs/gr_vm_ui_utils.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_ui_utils.c.s
+.PHONY : srcs/corewar_srcs/gr_vm_ui_utils.c.s
 
 srcs/corewar_srcs/ins_basic.o: srcs/corewar_srcs/ins_basic.c.o
 
@@ -1418,12 +1472,18 @@ help:
 	@echo "... srcs/corewar_srcs/gr_vm_run.o"
 	@echo "... srcs/corewar_srcs/gr_vm_run.i"
 	@echo "... srcs/corewar_srcs/gr_vm_run.s"
+	@echo "... srcs/corewar_srcs/gr_vm_selector.o"
+	@echo "... srcs/corewar_srcs/gr_vm_selector.i"
+	@echo "... srcs/corewar_srcs/gr_vm_selector.s"
 	@echo "... srcs/corewar_srcs/gr_vm_styles.o"
 	@echo "... srcs/corewar_srcs/gr_vm_styles.i"
 	@echo "... srcs/corewar_srcs/gr_vm_styles.s"
 	@echo "... srcs/corewar_srcs/gr_vm_ui.o"
 	@echo "... srcs/corewar_srcs/gr_vm_ui.i"
 	@echo "... srcs/corewar_srcs/gr_vm_ui.s"
+	@echo "... srcs/corewar_srcs/gr_vm_ui_utils.o"
+	@echo "... srcs/corewar_srcs/gr_vm_ui_utils.i"
+	@echo "... srcs/corewar_srcs/gr_vm_ui_utils.s"
 	@echo "... srcs/corewar_srcs/ins_basic.o"
 	@echo "... srcs/corewar_srcs/ins_basic.i"
 	@echo "... srcs/corewar_srcs/ins_basic.s"

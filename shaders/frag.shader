@@ -311,9 +311,10 @@ vec4 glyphColor(vec3 col, in vec2 _uv, float t)
 void main(void)
 {
     bool    proc = (data & uint(0xF)) != 0;
+    bool    halo = (data & uint(0x100)) != 0;
     int     p = int(data & uint(0xF0)) >> 4;
     float   s = face == 1 ? 1 : scale.y;
-    float   k = 0.45 + 0.55 * float(data >> 16) / 600.0;
+    float   k = 0.45 + 0.55 * float(data >> 16) / 512.0;
     int     o = 0;
     vec2    uv_ = uv;
 
@@ -324,10 +325,9 @@ void main(void)
 
     if (face != 0) {
         c *= proc ? 1.0 : k;
-//        c *= proc ? 2.0 : 0.4 * k;
-        uv_.y -= proc && face != 1 ? 9 : 0;
+        uv_.y -= halo && face != 1 ? 9 : 0;
         uv_.y *= s;
-        if (!proc || face == 1 || uv.y >= 100 / (scale.y + 10))
+        if (!halo || face == 1 || uv.y >= 100 / (scale.y + 10))
             mainImage(c, FragColor, uv_, o != 0);
         else
         {

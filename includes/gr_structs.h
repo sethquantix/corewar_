@@ -17,6 +17,14 @@
 # include "gr_types.h"
 # include "styles.h"
 
+# define PROC_ALL		-1
+# define PROC_NONE		-2
+
+# define PLAYER_NONE	-1
+
+# define SELECT_PLAYER	0
+# define SELECT_PROC	1
+
 typedef enum 	e_faces
 {
 	F_DOWN,
@@ -55,6 +63,15 @@ typedef struct  s_text_p
     int         nstyle;
 }               t_text_p;
 
+typedef struct 	s_cursor
+{
+	int			player;
+	int 		proc;
+	int 		pos;
+	t_vec4		player_box;
+	t_vec4		proc_box;
+}				t_cursor;
+
 typedef struct	s_gr_vm
 {
 	SDL_Window		*arena;
@@ -81,6 +98,7 @@ typedef struct	s_gr_vm
 	t_cam			camera;
 	int 			opts;
 	struct s_key	*keys;
+	t_cursor		cursor;
 	int				nkeys;
 	int				run;
 	int 			cps;

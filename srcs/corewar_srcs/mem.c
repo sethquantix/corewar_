@@ -20,8 +20,7 @@ void	set_mem(uint32_t *mem, int addr, int size, int player)
 	while (i < size)
 	{
 		mem[mem_mod(i + addr)] &= 0xF;
-		mem[mem_mod(i + addr)] |= (600 << 16);
-		mem[mem_mod(i + addr)] |= (1 << (4 + player));
+		mem[mem_mod(i + addr)] |= (511 << 16) | (1 << (4 + player));
 		i++;
 	}
 }

@@ -32,8 +32,10 @@ set(CRWR_FILES
     srcs/corewar_srcs/gr_vm_handlers.c
     srcs/corewar_srcs/gr_vm_init.c
 	srcs/corewar_srcs/gr_vm_ui.c
+	srcs/corewar_srcs/gr_vm_ui_utils.c
     srcs/corewar_srcs/gr_vm_init_cube.c
     srcs/corewar_srcs/gr_vm_inputs.c
+	srcs/corewar_srcs/gr_vm_selector.c
     srcs/corewar_srcs/gr_vm_load_texture.c
     srcs/corewar_srcs/gr_vm_matrix.c
     srcs/corewar_srcs/gr_vm_render_opengl.c

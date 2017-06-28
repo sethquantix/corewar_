@@ -28,7 +28,7 @@ flat out float  index;
 
 void main(void)
 {
-    bool    proc = (in_data & uint(0xF)) != 0;
+    bool    halo = (in_data & uint(0x100)) != 0;
     vec3 cam = vec3(V[0].w, V[1].w, V[2].w);
     mat4 rot = V;
 	mat4    yrot;
@@ -40,8 +40,8 @@ void main(void)
 	gl_Position = vec4(in_Position, 1.0);
 	normal = (vec4(in_Normal.xyz, 0)).xyz;
 	gl_Position.y *= in_scale.y;
-	gl_Position.y += proc && in_face > 1 && gl_Position.y > 0.1 ? 10.0 : 0;
-	uv.y *= proc && in_face != 1 ? 10.0 : 1.0;
+	gl_Position.y += halo && in_face > 1 && gl_Position.y > 0.1 ? 10.0 : 0;
+	uv.y *= halo && in_face != 1 ? 10.0 : 1.0;
 	yrot[0] = vec4(0);
 	yrot[1] = vec4(0);
 	yrot[2] = vec4(0);

@@ -1,5 +1,8 @@
 #version 400
 
+#define PLAYER  0
+#define PROC    1
+
 in vec3     pos;
 in vec2 	uv;
 
@@ -7,6 +10,9 @@ uniform sampler2D	    board;
 uniform sampler2D	    texNoise;
 uniform vec2            res;
 uniform float           _time;
+uniform int             cursor_pos;
+uniform vec4            player_box_pos;
+uniform vec4            proc_box_pos;
 
 float       time = _time * 0.1;
 const vec3  center = vec3(0, 36, -128);
@@ -62,6 +68,12 @@ vec4 mainImage(vec3 col, in vec2 _uv, float t)
 	return vec4(sqrt(abs(col)),1.0);
 }
 
+bool    inside(vec2 uv, vec4 box)
+{
+    return (uv.x >= box.x && uv.x <= box.x + box.z &&
+        uv.y >= box.y && uv.y <= box.y + box.w);
+}
+
 void    main(void)
 {
     vec2    p = abs(uv - 0.5);
@@ -73,6 +85,11 @@ void    main(void)
     ct = mainImage(FragColor.xyz, uv, time);
     if (uv.y < 0.2 || uv.x < 0.5)
         FragColor *= ct;
+    if ((cursor_pos == PLAYER && inside(uv, player_box_pos)) ||
+        (cursor_pos == PROC && inside(uv, proc_box_pos)))
+        FragColor = 1 - FragColor;
+    if (length(FragColor.xyz) < 0.05)
+        FragColor.w = 0;
 //    if (uv.y > 0.55 && uv.y < 0.555)
 //        FragColor = vec4(blackbody(length(pos - center) * 100), 1.0);
 //    if (uv.x > 0.4985 && uv.x < 0.5015 && uv.y < 0.50 && uv.y > 0.24)

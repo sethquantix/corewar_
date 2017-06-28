@@ -242,10 +242,16 @@
 		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/gr_vm_run.c">
 			<Option target="corewar"/>
 		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/gr_vm_selector.c">
+			<Option target="corewar"/>
+		</Unit>
 		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/gr_vm_styles.c">
 			<Option target="corewar"/>
 		</Unit>
 		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/gr_vm_ui.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/gr_vm_ui_utils.c">
 			<Option target="corewar"/>
 		</Unit>
 		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/ins_basic.c">
