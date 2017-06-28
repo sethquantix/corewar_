@@ -125,14 +125,11 @@ static GLuint		init_instancing()
 	glGenBuffers(1, &instanceVBO);
 	glBindBuffer(GL_ARRAY_BUFFER, instanceVBO);
 	glEnableVertexAttribArray(4);
-
 	glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(GLfloat), (GLvoid*)0);
 	glVertexAttribDivisor(4, 1);
-
 	glEnableVertexAttribArray(5);
 	glVertexAttribPointer(5, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(GLfloat), (void*)(sizeof(GLfloat)*3));
 	glVertexAttribDivisor(5, 1);
-
 	glEnableVertexAttribArray(6);
 	glVertexAttribPointer(6, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(GLfloat), (void*)(sizeof(GLfloat)*6));
 	glVertexAttribDivisor(6, 1);

@@ -24,6 +24,7 @@
 # define OPT_VALUES		0x1
 # define OPT_ROTATION	0x2
 # define OPT_LOWRES		0x4
+# define OPT_PROC_HIGH	0x8
 
 # define TIME_TRAVEL    10.0f
 # define ROT			0.2f

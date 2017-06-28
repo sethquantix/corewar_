@@ -45,8 +45,7 @@ int		load_champ(t_arena *a, t_champ *c)
 t_proc	*add_proc(t_arena *a, t_champ *c, int pc)
 {
 	t_proc	*proc;
-	t_list	*node;
-	
+
 	proc = try(sizeof(t_proc));
 	proc->pc = pc;
 	proc->id = ++a->proc_id;
@@ -56,17 +55,16 @@ t_proc	*add_proc(t_arena *a, t_champ *c, int pc)
 	proc->arena = a;
 	proc->op = NULL;
 	proc->player = -c->id - 1;
-	node = ft_lstnew(0, sizeof(t_proc *));
-	node->content = proc;
-	ft_lstadd(&a->procs, node);
+	ft_pushback((void **)&a->procs, sizeof(t_proc *), a->proc_count++, &proc);
 	a->alive++;
 	return (proc);
 }
 
 t_proc	*fork_proc(t_arena *a, t_proc *p, int pc)
 {
+	static int 	tt = 0;
+	static int 	n = 0;
 	t_proc	*proc;
-	t_list	*node;
 
 	proc = try(sizeof(t_proc));
 	proc->pc = pc;
@@ -81,9 +79,11 @@ t_proc	*fork_proc(t_arena *a, t_proc *p, int pc)
 	proc->last_live = p->last_live;
 	proc->carry = p->carry;
 	proc->player = p->player;
-	node = ft_lstnew(0, sizeof(t_proc *));
-	node->content = proc;
-	ft_lstadd(&a->procs, node);
+	int t = SDL_GetTicks();
+	ft_pushback((void **)&a->procs, sizeof(t_proc *), a->proc_count++, &proc);
+	tt += SDL_GetTicks() - t;
+	++n;
+	printf("average time : %f | %d\n", (float)tt / (float)n, n);
 	a->alive++;
 	return (proc);
 }

@@ -60,8 +60,6 @@ void	gr_vm_init(t_gr_vm *cxt, t_arena *arena)
 		exit(EXIT_FAILURE);
 	srand(time(NULL));
 	cxt->run = 1;
-	cxt->cpf = 0;
-	cxt->anim42 = 0;
 	set_sdl_attributes();
 	cxt->arena = SDL_CreateWindow("corewar", 0, 0,
 		WIN_WIDTH, WIN_HEIGHT, SDL_WINDOW_OPENGL);

@@ -40,7 +40,7 @@ void		set_keys(t_key **keys, int *nkeys)
 	*nkeys += add_key(keys, SDLK_BACKSLASH, toggle_opt, NULL);
 	*nkeys += add_key(keys, SDLK_SLASH, toggle_opt, NULL);
 	*nkeys += add_key(keys, SDLK_r, toggle_opt, NULL);
-	*nkeys += add_key(keys, SDLK_KP_PLUS, speed, NULL);
-	*nkeys += add_key(keys, SDLK_KP_MINUS, speed, NULL);
+	*nkeys += add_key(keys, SDLK_KP_PLUS, speed, speed);
+	*nkeys += add_key(keys, SDLK_KP_MINUS, speed, speed);
 	*nkeys += add_key(keys, SDLK_r, toggle_42, NULL);
 }

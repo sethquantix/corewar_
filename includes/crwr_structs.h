@@ -57,15 +57,15 @@ typedef struct	s_proc
 	int				pc;
 	int				carry;
 	int				last_live;
-	int				die;
 	unsigned char	oct;
 	int				player;
+	int				dead;
 }				t_proc;
 
 typedef struct	s_arena
 {
 	t_champ		*champs;
-	t_list		*procs;
+	t_proc		**procs;
 	uint8_t		arena[MEM_SIZE];
 	uint32_t	mem[MEM_SIZE];
 	t_f_load	load;
@@ -73,6 +73,7 @@ typedef struct	s_arena
 	t_f_filter	check;
 	char 		*aff;
 	int			champ_count;
+	int 		proc_count;
 	int			proc_id;
 	int			ctd;
 	int			last_check;

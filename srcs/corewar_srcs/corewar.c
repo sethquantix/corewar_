@@ -32,18 +32,18 @@ void	update_mem(uint32_t	*mem)
 
 int		loop(t_arena *a)
 {
-	t_list	*procs;
-	update_mem(a->mem);
+	int 		i;
 
+	i = a->proc_count - 1;
+	update_mem(a->mem);
 	a->cycles++;
 	if (a->verbose_lvl & V_LVL_CYCLES)
 		ft_printf("It is now cycle %d\n", a->cycles);
-	procs = a->procs;
-	while (procs)
-	{
-		proc_exec_inst(procs->content);
-		procs = procs->next;
-	}
+	while (i >= 0)
+		if (!a->procs[i]->dead)
+			proc_exec_inst(a->procs[i--]);
+		else
+			--i;
 	if (a->cycles >= a->last_check + a->ctd)
 		a->check(a);
 	if (a->cycles == a->dump_cycles)

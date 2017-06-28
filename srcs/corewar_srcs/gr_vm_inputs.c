@@ -23,9 +23,11 @@ void		quit_press(void *data, t_gr_vm *vm, t_key *key)
 void		speed(void *data, t_gr_vm *vm, t_key *key)
 {
 	(void)data;
-	vm->cpf += key->keycode == SDLK_KP_MINUS ? -CPF_DELTA : CPF_DELTA;
-	vm->cpf = vm->cpf > 100 ? 100 : vm->cpf;
-	vm->cpf = vm->cpf < 0 ? 0 : vm->cpf;
+	if (vm->cps < 0)
+		return ;
+	vm->cps += key->keycode == SDLK_KP_MINUS ? -1 : 1;
+	vm->cps = vm->cps > 500 ? 500 : vm->cps;
+	vm->cps = vm->cps < 0 ? 0 : vm->cps;
 }
 
 void		toggle_opt(void *data, t_gr_vm *vm, t_key *key)
