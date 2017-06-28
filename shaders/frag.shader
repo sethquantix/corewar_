@@ -15,10 +15,10 @@ in vec2 			uv;
 in vec3 			normal;
 in vec3             scale;
 
-flat in uint data;
-flat in uint val;
-flat in int index;
-flat in int face;
+flat in uint    data;
+flat in uint    val;
+flat in int     face;
+flat in float   index;
 
 uniform float           in_time;
 uniform sampler2D	    textNoise;

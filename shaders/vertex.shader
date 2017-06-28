@@ -20,10 +20,11 @@ out vec3    normal;
 out vec3    scale;
 out vec3    camPos;
 
-flat out uint data;
-flat out uint val;
-flat out int index;
-flat out int face;
+
+flat out uint   data;
+flat out uint   val;
+flat out int    face;
+flat out float  index;
 
 void main(void)
 {

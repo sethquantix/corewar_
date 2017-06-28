@@ -15,10 +15,11 @@
 
 void		update_name(t_gr_vm *ctx, t_arena *a)
 {
-	const char 	title[] = "corewar ";
 	char 		*t;
 
-	t = ft_strjoinfree(title, ft_itoa(a->cycles), 2);
+	t = NULL;
+	ft_sprintf(&t, "corewar : %d cycles  -  %d cycles / s",
+		a->cycles, ctx->cps);
 	SDL_SetWindowTitle(ctx->arena, t);
 	free(t);
 }
@@ -26,23 +27,25 @@ void		update_name(t_gr_vm *ctx, t_arena *a)
 void		gr_vm_run(t_vm_loop loop, void *data, t_gr_vm *ctx)
 {
 	SDL_Event	e;
+	int			ticks;
 	void 		(*handler)(void *, t_gr_vm *, SDL_Event *);
 	int			i;
-	int			c;
 
+	ticks = SDL_GetTicks();
 	while (SDL_PollEvent(&e))
 		;
 	while (ctx->run)
 	{
-		c = 0;
 		update_name(ctx, data);
-		while (c++ < ctx->cpf)
+		while (ctx->cps > 0 && SDL_GetTicks() - ticks > (1000.0 / (float)ctx->cps))
 			if (loop(data) == 0)
 			{
-				ctx->cpf = -1;
+				ctx->cps = -1;
 				winner(data);
 				break ;
 			}
+			else
+				ticks += 1000 / (float)ctx->cps;
 		while (SDL_PollEvent(&e))
 			if ((handler = get_handler(e.type)))
 				handler(data, ctx, &e);

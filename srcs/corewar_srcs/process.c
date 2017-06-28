@@ -91,6 +91,8 @@ void	proc_exec_inst(t_proc *p)
 		i_ldi, i_sti, i_fork, i_lld, i_lldi, i_lfork, i_aff, NULL};
 	int 			err;
 
+	if (p->dead)
+		return ;
 	if (!p->op && p->get_inst(p, p->arena->arena))
 	{
 		UNSET_PLAYER(p->arena->mem[p->pc], p->player);

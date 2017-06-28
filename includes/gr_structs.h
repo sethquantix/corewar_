@@ -83,7 +83,7 @@ typedef struct	s_gr_vm
 	struct s_key	*keys;
 	int				nkeys;
 	int				run;
-	int 			cpf;
+	int 			cps;
 	int				time;
 	t_vec4			pixie;
 	t_vec4			pv;
