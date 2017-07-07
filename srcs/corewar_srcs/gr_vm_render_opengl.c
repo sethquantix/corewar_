@@ -16,8 +16,9 @@ static void		set_procs(t_gr_vm *cxt, t_arena *a)
 
 static void		stream_transform(t_gr_vm *cxt, t_arena *a)
 {
-	int			i;
-	t_proc		*p;
+	static uint32_t		values[MEM_SIZE];
+	int					i;
+	t_proc				*p;
 
 	p = NULL;
 	if (cxt->cursor.proc >= 0)
@@ -28,6 +29,7 @@ static void		stream_transform(t_gr_vm *cxt, t_arena *a)
 		a->mem[i] &= 0xFFFF00FF;
 		if (p && p->pc == i)
 			a->mem[i] |= 0x100;
+		values[i] = a->arena[i];
 		cxt->scale[i] = 1 + 4 * (float)a->arena[i] / 255.0;
 		cxt->model[i][7] += (cxt->scale[i] - cxt->model[i][7]) / TIME_TRAVEL;
 		i++;
@@ -40,46 +42,13 @@ static void		stream_transform(t_gr_vm *cxt, t_arena *a)
 	glBindBuffer(GL_ARRAY_BUFFER, cxt->valVBO);
 	glBufferData(GL_ARRAY_BUFFER, MEM_SIZE * sizeof(uint32_t), a->mem, GL_DYNAMIC_DRAW);
 	glBindBuffer(GL_ARRAY_BUFFER, cxt->arenaVBO);
-	glBufferData(GL_ARRAY_BUFFER, MEM_SIZE * sizeof(uint32_t), cxt->values, GL_DYNAMIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, MEM_SIZE * sizeof(uint32_t), values, GL_DYNAMIC_DRAW);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
 void		uniformVec4(GLuint location, t_vec4 v)
 {
 	glUniform4f(location, v.x, v.y, v.z, v.w);
-}
-
-void		move_pix(t_gr_vm *cxt, t_vec4 dest)
-{
-	t_vec4	k;
-	float 	r1;
-	float 	r2;
-
-	k.x = fabs(fmod(cxt->pixie.x, 2.3)) - 0.5;
-	k.y = 0;
-	k.z = fabs(fmod(cxt->pixie.z, 2.3)) - 0.5;
-	v_norm(k);
-	r1 = (float)rand() / (float)RAND_MAX;
-	r2 = (float)rand() / (float)RAND_MAX;
-	cxt->pv = v_add(cxt->pv, v_mult_k(v_add(
-		v_mult_k(k, r1), v_mult_k(v_sub(dest, cxt->pixie), r2)), 0.01));
-	cxt->pixie = v_add(cxt->pixie, v_mult_k(cxt->pv, 0.01));
-}
-
-void			pixie(t_gr_vm *cxt)
-{
-	static t_vec4	dest = {1.15, 0.5, 1.15};
-	const t_vec4	dir[] = { {-1, 0, 0, 0}, {1, 0, 0, 0},
-							  {0, 0, -1, 0}, {0, 0, 1, 0}};
-	static int 		d = 0;
-
-	if ((rand() % 100) > 90)
-	{
-		if (rand() % 2)
-			d = rand() % 4;
-		dest = v_add(dest, v_mult_k(dir[d], 2.3));
-	}
-	move_pix(cxt, dest);
 }
 
 static void		push_mats(GLuint program, t_gr_vm *cxt)
@@ -116,18 +85,6 @@ static void		push_uniform(t_gr_vm *cxt)
 	glUniform1f(loc, ltime / 1000.0f);
 	loc = glGetUniformLocation(cxt->program, "opts");
 	glUniform1i(loc, cxt->opts);
-	pixie(cxt);
-	loc = glGetUniformLocation(cxt->program, "L1");
-	glUniform3f(loc, cxt->pixie.x, cxt->pixie.y, cxt->pixie.z);
-}
-
-static void		push_box_uni(t_gr_vm *cxt)
-{
-	GLint			loc;
-
-	push_mats(cxt->program_box, cxt);
-	loc = glGetUniformLocation(cxt->program_box, "L1");
-	glUniform3f(loc, cxt->pixie.x, cxt->pixie.y, cxt->pixie.z);
 }
 
 static void		push_board_uni(t_gr_vm *cxt)
@@ -149,6 +106,8 @@ static void		push_board_uni(t_gr_vm *cxt)
 	uniformVec4(loc, cxt->cursor.player_box);
 	loc = glGetUniformLocation(cxt->program_board, "proc_box_pos");
 	uniformVec4(loc, cxt->cursor.proc_box);
+	loc = glGetUniformLocation(cxt->program_board, "proc_reg_pos");
+	uniformVec4(loc, cxt->cursor.reg_box);
 }
 
 void			render_opengl(t_gr_vm *cxt, t_arena *arena)
@@ -157,10 +116,6 @@ void			render_opengl(t_gr_vm *cxt, t_arena *arena)
 	if (!cxt->time)
 		cxt->time = SDL_GetTicks();
 	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
-	glBindVertexArray(cxt->vao_box);
-	glUseProgram(cxt->program_box);
-	push_box_uni(cxt);
-	glDrawArrays(GL_TRIANGLES, 0, 36);
 	glBindVertexArray(cxt->vao);
 	stream_transform(cxt, arena);
 	glUseProgram(cxt->program);

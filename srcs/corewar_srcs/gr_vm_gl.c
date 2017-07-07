@@ -30,15 +30,13 @@ static GLint 	build_program(const char *vs, const char *fs)
 void 			init_gl(t_gr_vm *cxt, t_cam *cam)
 {
 	const char 	*shaders[][2] = {
-			"./shaders/vertex.shader", "./shaders/frag.shader",
-			"./shaders/vertex_box.shader", "./shaders/frag_box.shader",
-			"./shaders/vertex_board.shader", "./shaders/frag_board.shader"
+			{"./shaders/vertex.shader", "./shaders/frag.shader"},
+			{"./shaders/vertex_board.shader", "./shaders/frag_board.shader"}
 	};
 
 	glewInit();
 	cxt->program = build_program(shaders[0][0], shaders[0][1]);
-	cxt->program_box = build_program(shaders[1][0], shaders[1][1]);
-	cxt->program_board = build_program(shaders[2][0], shaders[2][1]);
+	cxt->program_board = build_program(shaders[1][0], shaders[1][1]);
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_MULTISAMPLE);
 	glEnable(GL_BLEND);
@@ -51,6 +49,4 @@ void 			init_gl(t_gr_vm *cxt, t_cam *cam)
 	cam->m.r[2].w = cam->pos.z;
 	cam->x = 0;
 	cam->y = 0;
-	cxt->pixie = vec4(1.15, 0.4, 1.15, 0);
-	cxt->pv = vec4(0, 0, 0, 0);
 }

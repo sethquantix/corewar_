@@ -24,6 +24,7 @@
 
 # define SELECT_PLAYER	0
 # define SELECT_PROC	1
+# define SELECT_REG		2
 
 typedef enum 	e_faces
 {
@@ -68,8 +69,10 @@ typedef struct 	s_cursor
 	int			player;
 	int 		proc;
 	int 		pos;
+	int			reg;
 	t_vec4		player_box;
 	t_vec4		proc_box;
+	t_vec4		reg_box;
 }				t_cursor;
 
 typedef struct	s_gr_vm
@@ -79,13 +82,11 @@ typedef struct	s_gr_vm
     SDL_Surface     *screen;
 	SDL_GLContext	arena_context;
 	GLuint			program;
-	GLuint			program_box;
 	GLuint			program_board;
 	GLuint			matVBO;
 	GLuint			valVBO;
 	GLuint 			arenaVBO;
 	GLuint			vao;
-	GLuint			vao_box;
 	GLuint 			vao_board;
 	GLuint 			glyphs;
 	GLuint			diffuseTexture;
@@ -103,8 +104,6 @@ typedef struct	s_gr_vm
 	int				run;
 	int 			cps;
 	int				time;
-	t_vec4			pixie;
-	t_vec4			pv;
 	t_text_p		sst;
 }				t_gr_vm;
 

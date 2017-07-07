@@ -18,7 +18,6 @@
 #include "crwr_structs.h"
 #include "gr_types.h"
 
-# define SDL_POS	SDL_WINDOWPOS_UNDEFINED
 # define SDL_FLAGS	SDL_WINDOW_OPENGL
 
 # define OPT_VALUES		0x1
@@ -38,9 +37,6 @@ void		quit_press(void *data, t_gr_vm *vm, t_key *key);
 
 void		render_opengl(t_gr_vm *cxt, t_arena *arena);
 GLuint		generate_cube(t_gr_vm *c);
-GLuint		createGLBuffer(int w, int h, GLuint *color, GLuint *depth);
-void		renderGLBuffer(GLuint buffer, GLuint color, int w, int h);
-void		readColor(GLuint buffer, int w, int h, void *p);
 
 void		load_projection(float *out, float near, float far, float aspect);
 void		load_identity(float *m);
@@ -57,10 +53,6 @@ void		toggle_opt(void *data, t_gr_vm *vm, t_key *key);
 void		rotate(t_gr_vm *vm, int relx, int rely);
 void		select_proc(void *data, t_gr_vm *vm, t_key *key);
 
-GLuint		load_bmp_to_opengl(char *b);
-GLuint		light_to_texture(float l[MEM_SIZE]);
-void		load_light(uint32_t in[MEM_SIZE], float out[4 * MEM_SIZE], float models[][9], t_gr_vm *cxt);
-void		load_bmp_to_42(char *b, uint32_t *out);
 void		toggle_42(void *data, t_gr_vm *vm, t_key *key);
 GLuint		gen_texture(const char *font_file);
 void		init_text_p(t_text_p *sst);

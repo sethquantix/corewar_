@@ -13,52 +13,41 @@
 #include "corewar.h"
 #include "gr_vm_internals.h"
 
-void	draw_registers(t_gr_vm *cxt, SDL_Surface *s, t_proc *p, SDL_Rect *pos)
-{
-	int		j;
-	int		i;
-	int		delta;
-
-	j = 0;
-	i = 0;
-	pos->y += pos->h * 1.5;
-	printf("%f\n", (float)pos->y / (float)BOARD_HEIGHT);
-	delta = BOARD_WIDTH / 8;
-	while (j < 2)
-	{
-		i = 0;
-		while (i < 8)
-		{
-			pos->x = i * delta;
-			if (p)
-				s = print_text(&cxt->sst, WHITE_SMALL, "0x%08x",
-					p->reg[8 * j + i + 1]);
-			else
-				s = print_text(&cxt->sst, WHITE_SMALL, "          ");
-			*pos = draw_text(cxt->screen, s, *pos, 0);
-			i++;
-		}
-		j++;
-		pos->y += pos->h * 1.1;
-	}
-}
-
 void	info_proc(t_gr_vm *cxt, SDL_Surface *s, t_proc *proc, SDL_Rect pos)
 {
-	pos.x += 1.5 * pos.w;
-	s = print_text(&cxt->sst, WHITE_MEDIUM, "%s",
-		proc->dead ? "Dead " : "Alive");
+	char 	*v;
+
+	v = NULL;
+	ft_sprintf(&v, "%3d = 0x%08x", cxt->cursor.reg, proc->reg[cxt->cursor.reg]);
+	s = print_text(&cxt->sst, WHITE_MEDIUM, " %s", v);
+	pos = draw_text(cxt->screen, s, pos, X_RIGHT);
+	s = print_text(&cxt->sst, WHITE_MEDIUM, "Reg ");
+	pos.x -= s->w;
 	pos = draw_text(cxt->screen, s, pos, 0);
-	pos.y += 1.2 * pos.h;
-	draw_registers(cxt, s, proc, &pos);
+	cxt->cursor.reg_box = box(pos);
+	s = print_text(&cxt->sst, WHITE_MEDIUM, "(%s) | ",
+				   proc->dead ? "Dead " : "Alive");
+	pos.x -= s->w;
+	pos = draw_text(cxt->screen, s, pos, 0);
+	free(v);
+	pos.y += pos.h * 1.5;
+	s = print_text(&cxt->sst, WHITE_MEDIUM, "Carry : %d  |  PC : 0x%03x",
+		proc->carry, proc->pc);
+	pos = draw_text(cxt->screen, s, pos, X_LEFT);
+	pos.x += pos.w;
+	s = print_text(&cxt->sst, WHITE_MEDIUM, "    Status : %-9s", proc->op ?
+		"Executing" : "Waiting");
+	pos = draw_text(cxt->screen, s, pos, 0);
 }
 
 void	clean(t_gr_vm *cxt, SDL_Surface *s, SDL_Rect pos)
 {
 	pos.x += 1.5 * pos.w;
-	s = print_text(&cxt->sst, WHITE_MEDIUM, "     ");
+	s = print_text(&cxt->sst, WHITE_MEDIUM, "%30s", "");
 	pos = draw_text(cxt->screen, s, pos, 0);
-	draw_registers(cxt, s, NULL, &pos);
+	pos.y += 1.1 * pos.h;
+	ft_bzero(cxt->screen->pixels + 4 * pos.y * BOARD_WIDTH,
+		BOARD_WIDTH * (BOARD_HEIGHT - pos.y) * 4);
 }
 
 void	draw_proc(t_gr_vm *cxt, t_arena *arena, SDL_Surface *s)
@@ -66,8 +55,8 @@ void	draw_proc(t_gr_vm *cxt, t_arena *arena, SDL_Surface *s)
 	const char 	*proc[] = {0, "All", "None"};
 	SDL_Rect	pos;
 	char 		*p;
+	static int	cleaned = 1;
 
-	pos.x = 0;
 	pos.y = 0.55 * BOARD_HEIGHT;
 	p = cxt->cursor.player == PLAYER_NONE ? ft_strdup("NONE") :
 		ft_itoa(arena->champs[cxt->cursor.player].num);
@@ -79,14 +68,20 @@ void	draw_proc(t_gr_vm *cxt, t_arena *arena, SDL_Surface *s)
 	pos.x += 1.1 * pos.w;
 	p = cxt->cursor.proc >= 0 ? ft_itoa(cxt->cursor.proc) :
 		ft_strdup(proc[-cxt->cursor.proc]);
-	s = print_text(&cxt->sst, WHITE_MEDIUM, "Process : %-5s", p);
+	s = print_text(&cxt->sst, WHITE_MEDIUM, "Process : %-4s", p);
 	free(p);
 	pos = draw_text(cxt->screen, s, pos, 0);
 	cxt->cursor.proc_box = box(pos);
 	if (cxt->cursor.proc >= 0)
+	{
+		cleaned = 0;
 		info_proc(cxt, s, arena->procs[cxt->cursor.proc], pos);
-	else
+	}
+	else if (!cleaned)
+	{
 		clean(cxt, s, pos);
+		cleaned = 1;
+	}
 }
 
 void	draw_info(int start, t_gr_vm *cxt, t_arena *arena, SDL_Surface *s)

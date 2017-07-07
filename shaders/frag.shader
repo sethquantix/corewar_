@@ -87,9 +87,9 @@ float flow(in vec2 p)
 	float z=2.;
 	float rz = 0.;
 	vec2 bp = p;
-	for (float i= 1.;i < 7.;i++ )
+	for (float i= 1.;i < 7.; i++)
 	{
-		bp += time*1.5;
+		bp += time * 1.5;
 		vec2 gr = vec2(grid(p*3.-time*2.),grid(p*3.+4.-time*2.))*0.4;
 		gr = normalize(gr)*0.4;
 		gr *= makem2((p.x+p.y)*.3+time*10.);
@@ -100,9 +100,9 @@ float flow(in vec2 p)
 		p = mix(bp,p,.5);
 		z *= 1.7;
 		p *= 2.5;
-		p*=m2;
+		p *= m2;
 		bp *= 2.5;
-		bp*=m2;
+		bp *= m2;
 	}
 	return rz;
 }
@@ -323,7 +323,9 @@ void main(void)
             o = i + 1;
     vec3    c = proc && face == 1 ? vec3(0.9) : colors[o];
 
-    if (face != 0) {
+    FragColor = vec4(vec3(0.0), 1);
+    if (face != 0)
+    {
         c *= proc ? 1.0 : k;
         uv_.y -= halo && face != 1 ? 9 : 0;
         uv_.y *= s;
@@ -333,13 +335,11 @@ void main(void)
         {
             vec3    c1 = vec3(1);
             float   k = 1 - uv.y / 10;
-//            float   f = exp(-2 * (0.5 - abs(uv.x - 0.5)));
-//            float   k = exp(-(9 - uv.y) * 10) * f;
             FragColor = vec4(c1, mix(0.6, 0.0, k));
         }
         if (face == 1 && (opts & OPT_VALUES) != 0 && (val != 0 || o != 0))
         {
-            vec4 glyph = vec4(texture(font, vec3(uv, val)).xyzw);
+            vec4 glyph = texture(font, vec3(uv, val));
             if (length(glyph.xyz) > 0.05)
                 glyph.xyz = glyphColor(colors[o], uv, 0.1 * time).xyz;
             FragColor = vec4(mix(glyph.xyz, vec3(0), 1 - glyph.w), 1.0);
@@ -350,9 +350,5 @@ void main(void)
             vec3 rd = normalize(pos_color - camPos);
             FragColor.xyz += march(ro, rd);
         }
-    }
-    else
-    {
-        FragColor = vec4(vec3(0.0), 1);
     }
 }

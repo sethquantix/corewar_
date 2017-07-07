@@ -222,10 +222,6 @@ GLuint				generate_cube(t_gr_vm *cxt)
 	cxt->valVBO = init_transfer();
 	cxt->arenaVBO = init_values();
 	init_pos(cxt);
-	glGenVertexArrays(1, &cxt->vao_box);
-	createVBO_VNT((float *)g_cube, (int *)g_faces,
-		sizeof(g_cube) / sizeof(float) / 8, cxt->vao_box);
-	ft_printf("box : %d\n", cxt->vao_box);
 	gen_board(cxt);
 	return (vao);
 }

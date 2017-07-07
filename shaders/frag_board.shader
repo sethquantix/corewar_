@@ -2,6 +2,7 @@
 
 #define PLAYER  0
 #define PROC    1
+#define REG     2
 
 in vec3     pos;
 in vec2 	uv;
@@ -13,6 +14,7 @@ uniform float           _time;
 uniform int             cursor_pos;
 uniform vec4            player_box_pos;
 uniform vec4            proc_box_pos;
+uniform vec4            proc_reg_pos;
 
 float       time = _time * 0.1;
 const vec3  center = vec3(0, 36, -128);
@@ -83,13 +85,12 @@ void    main(void)
 
     FragColor = vec4(c, clamp(10 * length(c), 0, 1));
     ct = mainImage(FragColor.xyz, uv, time);
-    if (uv.y < 0.2 || uv.x < 0.5)
+    if (uv.y < 0.2 || (uv.x < 0.5 && uv.y < 0.55))
         FragColor *= ct;
     if ((cursor_pos == PLAYER && inside(uv, player_box_pos)) ||
-        (cursor_pos == PROC && inside(uv, proc_box_pos)))
+        (cursor_pos == PROC && inside(uv, proc_box_pos)) ||
+        (cursor_pos == REG && inside(uv, proc_reg_pos)))
         FragColor = 1 - FragColor;
-    if (length(FragColor.xyz) < 0.05)
-        FragColor.w = 0;
 //    if (uv.y > 0.55 && uv.y < 0.555)
 //        FragColor = vec4(blackbody(length(pos - center) * 100), 1.0);
 //    if (uv.x > 0.4985 && uv.x < 0.5015 && uv.y < 0.50 && uv.y > 0.24)

@@ -62,7 +62,7 @@ void	gr_vm_init(t_gr_vm *cxt, t_arena *arena)
 	cxt->run = 1;
 	set_sdl_attributes();
 	cxt->arena = SDL_CreateWindow("corewar", 0, 0,
-		WIN_WIDTH, WIN_HEIGHT, SDL_WINDOW_OPENGL);
+		WIN_WIDTH, WIN_HEIGHT, SDL_FLAGS);
 	SDL_SetWindowGrab(cxt->arena, SDL_TRUE);
 	cxt->arena_context = SDL_GL_CreateContext(cxt->arena);
 	SDL_GL_SetSwapInterval(1);
@@ -72,7 +72,7 @@ void	gr_vm_init(t_gr_vm *cxt, t_arena *arena)
 	init_text_p(&cxt->sst);
 	cxt->screen = SDL_CreateRGBSurface(0, BOARD_WIDTH, BOARD_HEIGHT, 32,
 		0, 0, 0, 0);
-	cxt->cursor = (t_cursor){ PLAYER_NONE, PROC_NONE, SELECT_PLAYER};
+	cxt->cursor = (t_cursor){ PLAYER_NONE, PROC_NONE, SELECT_PLAYER, 1};
 	cxt->glyphs = gen_texture("assets/Prototype.ttf");
 	cxt->vao = generate_cube(cxt);
 	cxt->board = gen_board_tex();

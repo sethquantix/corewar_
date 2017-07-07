@@ -43,13 +43,13 @@ SDL_Rect	draw_text(SDL_Surface *dst, SDL_Surface *s, SDL_Rect pos, int al)
 	if (al & X_LEFT)
 		pos.x = X_MARGIN * BOARD_WIDTH;
 	if (al & X_RIGHT)
-		pos.x = BOARD_WIDTH - X_MARGIN * BOARD_WIDTH - pos.w;
+		pos.x = BOARD_WIDTH - X_MARGIN * (float)BOARD_WIDTH - pos.w;
 	if (al & X_CENTER)
 		pos.x = (BOARD_WIDTH - pos.w) / 2;
 	if (al & Y_TOP)
 		pos.y = Y_MARGIN * BOARD_HEIGHT;
 	if (al & Y_BOT)
-		pos.y = BOARD_HEIGHT - Y_MARGIN * BOARD_HEIGHT - pos.h;
+		pos.y = BOARD_HEIGHT - Y_MARGIN * (float)BOARD_HEIGHT - pos.h;
 	if (al & Y_CENTER)
 		pos.y = (BOARD_HEIGHT - pos.h) / 2;
 	SDL_BlitSurface(s, NULL, dst, &pos);
@@ -69,8 +69,9 @@ static void	print_players(t_text_p *sst, SDL_Surface *board, SDL_Rect *pos,
 		s = print_text(sst, WHITE_MEDIUM, "P%d : ", arena->champs[i].num);
 		*pos = draw_text(board, s, *pos, X_LEFT);
 		pos->x += pos->w;
-		s = print_text(sst, P_1MEDIUM + i, "%.20s%s", arena->champs[i].head.prog_name,
-					   ft_strlen(arena->champs[i].head.prog_name) > 20 ? "..." : "");
+		s = print_text(sst, P_1MEDIUM + i, "%.20s%s",
+			arena->champs[i].head.prog_name,
+			ft_strlen(arena->champs[i].head.prog_name) > 20 ? "..." : "");
 		*pos = draw_text(board, s, *pos, 0);
 		pos->y += 1.1 * pos->h;
 		i++;
@@ -89,7 +90,6 @@ void 	draw_base(t_gr_vm *cxt, t_arena *arena, SDL_Rect *pos, SDL_Surface *s)
 	rect.y += 1.3 * rect.h;
 	*pos = rect;
 	print_players(&cxt->sst, cxt->screen, &rect, arena);
-
 	*pos = rect;
 	start = 1;
 }
