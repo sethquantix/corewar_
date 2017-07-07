@@ -34,7 +34,7 @@
 # define V_LVL_DEATH		0x08
 # define V_LVL_PC			0x10
 
-# define UNSET_PLAYER(x, p)	(x &= (0xFFFFFF & ~(1 << p)))
+# define UNSET_PLAYER(x, p)	(x &= (0xFFFFFFFF & ~(1 << p)))
 # define SET_PLAYER(x, p)	(x |= (1 << p))
 
 #endif

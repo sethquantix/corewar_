@@ -13,86 +13,83 @@
 #include "corewar.h"
 #include "gr_vm_internals.h"
 
-SDL_Surface	*print_text(t_text_p *sst, t_styles style, const char *text, ...)
+void	draw_registers(t_gr_vm *cxt, SDL_Surface *s, t_proc *p, SDL_Rect *pos)
 {
-    t_style     st;
-    va_list     va;
-    char        *s;
+	int		j;
+	int		i;
+	int		delta;
 
-    va_start(va, text);
-    ft_vasprintf(&s, text, va);
-    va_end(va);
-    st = sst->styles[style];
-    return (TTF_RenderText_Shaded(st.font, s, st.c, (SDL_Color){0, 0, 0,0}));
-}
-
-static void	gl_board(t_gr_vm *cxt, SDL_Surface *board)
-{
-	glActiveTexture(GL_TEXTURE3);
-	glBindTexture(GL_TEXTURE_2D, cxt->board);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA,
-		board->w, board->h, 0, GL_RGBA, GL_UNSIGNED_BYTE, board->pixels);
-}
-
-static SDL_Rect		draw_text(SDL_Surface *dst, SDL_Surface *s,
-	SDL_Rect pos, int al)
-{
-	pos.w = s->w;
-	pos.h = s->h;
-	if (al & X_LEFT)
-		pos.x = X_MARGIN * BOARD_WIDTH;
-	if (al & X_RIGHT)
-		pos.x = BOARD_WIDTH - X_MARGIN * BOARD_WIDTH - pos.w;
-	if (al & X_CENTER)
-		pos.x = (BOARD_WIDTH - pos.w) / 2;
-	if (al & Y_TOP)
-		pos.y = Y_MARGIN * BOARD_HEIGHT;
-	if (al & Y_BOT)
-		pos.y = BOARD_HEIGHT - Y_MARGIN * BOARD_HEIGHT - pos.h;
-	if (al & Y_CENTER)
-		pos.y = (BOARD_HEIGHT - pos.h) / 2;
-	SDL_BlitSurface(s, NULL, dst, &pos);
-	free(s);
-	return (pos);
-}
-
-void print_players(t_text_p *sst, SDL_Surface *board, SDL_Rect *pos, t_arena *arena)
-{
-	int				i;
-	SDL_Surface		*s;
-
+	j = 0;
 	i = 0;
-	while (i < arena->champ_count)
+	pos->y += pos->h * 1.5;
+	printf("%f\n", (float)pos->y / (float)BOARD_HEIGHT);
+	delta = BOARD_WIDTH / 8;
+	while (j < 2)
 	{
-		s = print_text(sst, WHITE_MEDIUM, "P%d : ", arena->champs[i].num);
-		*pos = draw_text(board, s, *pos, X_LEFT);
-		pos->x += pos->w;
-		s = print_text(sst, P_1MEDIUM + i, "%.20s%s", arena->champs[i].head.prog_name,
-			ft_strlen(arena->champs[i].head.prog_name) > 20 ? "..." : "");
-		*pos = draw_text(board, s, *pos, 0);
-		pos->y += 1.1 * pos->h;
-		i++;
+		i = 0;
+		while (i < 8)
+		{
+			pos->x = i * delta;
+			if (p)
+				s = print_text(&cxt->sst, WHITE_SMALL, "0x%08x",
+					p->reg[8 * j + i + 1]);
+			else
+				s = print_text(&cxt->sst, WHITE_SMALL, "          ");
+			*pos = draw_text(cxt->screen, s, *pos, 0);
+			i++;
+		}
+		j++;
+		pos->y += pos->h * 1.1;
 	}
 }
 
-void 	draw_base(t_gr_vm *cxt, t_arena *arena, SDL_Rect *pos, SDL_Surface *s)
+void	info_proc(t_gr_vm *cxt, SDL_Surface *s, t_proc *proc, SDL_Rect pos)
 {
-	static int		start = 0;
-	static SDL_Rect	rect = (SDL_Rect){0, 0, 0, 0};
-
-	if (start)
-		*pos = rect;
-	s = print_text(&cxt->sst, WHITE_HUGE, "COREWAR");
-	rect = draw_text(cxt->screen, s, rect, X_CENTER | Y_TOP);
-	rect.y += 1.3 * rect.h;
-	*pos = rect;
-	print_players(&cxt->sst, cxt->screen, &rect, arena);
-
-	*pos = rect;
-	start = 1;
+	pos.x += 1.5 * pos.w;
+	s = print_text(&cxt->sst, WHITE_MEDIUM, "%s",
+		proc->dead ? "Dead " : "Alive");
+	pos = draw_text(cxt->screen, s, pos, 0);
+	pos.y += 1.2 * pos.h;
+	draw_registers(cxt, s, proc, &pos);
 }
 
-void draw_info(int start, t_gr_vm *cxt, t_arena *arena, SDL_Surface *s)
+void	clean(t_gr_vm *cxt, SDL_Surface *s, SDL_Rect pos)
+{
+	pos.x += 1.5 * pos.w;
+	s = print_text(&cxt->sst, WHITE_MEDIUM, "     ");
+	pos = draw_text(cxt->screen, s, pos, 0);
+	draw_registers(cxt, s, NULL, &pos);
+}
+
+void	draw_proc(t_gr_vm *cxt, t_arena *arena, SDL_Surface *s)
+{
+	const char 	*proc[] = {0, "All", "None"};
+	SDL_Rect	pos;
+	char 		*p;
+
+	pos.x = 0;
+	pos.y = 0.55 * BOARD_HEIGHT;
+	p = cxt->cursor.player == PLAYER_NONE ? ft_strdup("NONE") :
+		ft_itoa(arena->champs[cxt->cursor.player].num);
+	free(p);
+	s = print_text(&cxt->sst, WHITE_MEDIUM, "Player : %-5s", p);
+	pos = draw_text(cxt->screen, s, pos, X_LEFT);
+	cxt->cursor.player_box = box(pos);
+	pos.y = 0.55 * BOARD_HEIGHT;
+	pos.x += 1.1 * pos.w;
+	p = cxt->cursor.proc >= 0 ? ft_itoa(cxt->cursor.proc) :
+		ft_strdup(proc[-cxt->cursor.proc]);
+	s = print_text(&cxt->sst, WHITE_MEDIUM, "Process : %-5s", p);
+	free(p);
+	pos = draw_text(cxt->screen, s, pos, 0);
+	cxt->cursor.proc_box = box(pos);
+	if (cxt->cursor.proc >= 0)
+		info_proc(cxt, s, arena->procs[cxt->cursor.proc], pos);
+	else
+		clean(cxt, s, pos);
+}
+
+void	draw_info(int start, t_gr_vm *cxt, t_arena *arena, SDL_Surface *s)
 {
 	SDL_Rect	pos;
 
@@ -120,6 +117,10 @@ void draw_ui(t_gr_vm *cxt, t_arena *arena)
 	if (!start)
 		draw_base(cxt, arena, &pos, s);
 	draw_info(start, cxt, arena, s);
-	gl_board(cxt, cxt->screen);
+	draw_proc(cxt, arena, s);
+	glActiveTexture(GL_TEXTURE3);
+	glBindTexture(GL_TEXTURE_2D, cxt->board);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, cxt->screen->w, cxt->screen->h, 0,
+		GL_RGBA, GL_UNSIGNED_BYTE, cxt->screen->pixels);
 	start = 1;
 }

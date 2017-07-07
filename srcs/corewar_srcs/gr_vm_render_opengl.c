@@ -1,17 +1,39 @@
 #include "corewar.h"
 #include "gr_vm_internals.h"
 
+static void		set_procs(t_gr_vm *cxt, t_arena *a)
+{
+	int 	i;
+
+	i = 0;
+	while (i < a->proc_count)
+	{
+		if (a->procs[i]->player == -a->champs[cxt->cursor.player].id - 1)
+			a->mem[a->procs[i]->pc] |= 0x100;
+		i++;
+	}
+}
+
 static void		stream_transform(t_gr_vm *cxt, t_arena *a)
 {
 	int			i;
+	t_proc		*p;
 
+	p = NULL;
+	if (cxt->cursor.proc >= 0)
+		p = a->procs[cxt->cursor.proc];
 	i = 0;
 	while (i < MEM_SIZE)
 	{
+		a->mem[i] &= 0xFFFF00FF;
+		if (p && p->pc == i)
+			a->mem[i] |= 0x100;
 		cxt->scale[i] = 1 + 4 * (float)a->arena[i] / 255.0;
 		cxt->model[i][7] += (cxt->scale[i] - cxt->model[i][7]) / TIME_TRAVEL;
 		i++;
 	}
+	if (cxt->cursor.proc == PROC_ALL && cxt->cursor.player >= 0)
+		set_procs(cxt, a);
 	glBindVertexArray(cxt->vao);
 	glBindBuffer(GL_ARRAY_BUFFER, cxt->matVBO);
 	glBufferData(GL_ARRAY_BUFFER, MEM_SIZE * 9 * sizeof(float), cxt->model, GL_DYNAMIC_DRAW);
@@ -20,6 +42,11 @@ static void		stream_transform(t_gr_vm *cxt, t_arena *a)
 	glBindBuffer(GL_ARRAY_BUFFER, cxt->arenaVBO);
 	glBufferData(GL_ARRAY_BUFFER, MEM_SIZE * sizeof(uint32_t), cxt->values, GL_DYNAMIC_DRAW);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
+}
+
+void		uniformVec4(GLuint location, t_vec4 v)
+{
+	glUniform4f(location, v.x, v.y, v.z, v.w);
 }
 
 void		move_pix(t_gr_vm *cxt, t_vec4 dest)
@@ -116,6 +143,12 @@ static void		push_board_uni(t_gr_vm *cxt)
 	glUniform1i(loc, cxt->diffuseTexture);
 	loc = glGetUniformLocation(cxt->program_board, "_time");
 	glUniform1f(loc, (SDL_GetTicks() - cxt->time) / 1000.0f);
+	loc = glGetUniformLocation(cxt->program_board, "cursor_pos");
+	glUniform1i(loc, cxt->cursor.pos);
+	loc = glGetUniformLocation(cxt->program_board, "player_box_pos");
+	uniformVec4(loc, cxt->cursor.player_box);
+	loc = glGetUniformLocation(cxt->program_board, "proc_box_pos");
+	uniformVec4(loc, cxt->cursor.proc_box);
 }
 
 void			render_opengl(t_gr_vm *cxt, t_arena *arena)
@@ -128,14 +161,15 @@ void			render_opengl(t_gr_vm *cxt, t_arena *arena)
 	glUseProgram(cxt->program_box);
 	push_box_uni(cxt);
 	glDrawArrays(GL_TRIANGLES, 0, 36);
-	glBindVertexArray(cxt->vao_board);
-	glUseProgram(cxt->program_board);
-	push_board_uni(cxt);
-	glDrawArrays(GL_TRIANGLES, 0, 6);
+	glBindVertexArray(cxt->vao);
 	stream_transform(cxt, arena);
 	glUseProgram(cxt->program);
 	push_uniform(cxt);
 	glDrawArraysInstanced(GL_TRIANGLES, 0, 36, MEM_SIZE);
+	glBindVertexArray(cxt->vao_board);
+	glUseProgram(cxt->program_board);
+	push_board_uni(cxt);
+	glDrawArrays(GL_TRIANGLES, 0, 6);
 	glBindVertexArray(0);
 	SDL_GL_SwapWindow(cxt->arena);
 }

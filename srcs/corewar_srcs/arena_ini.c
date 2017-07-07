@@ -39,6 +39,7 @@ int		load_champ(t_arena *a, t_champ *c)
 	pc = (-c->id - 1) * (MEM_SIZE / a->champ_count);
 	ft_memcpy(a->arena + (p = a->add_proc(a, c, pc))->pc, c->source, len);
 	set_mem(a->mem, p->pc, len, p->player);
+	SET_PLAYER(a->mem[p->pc], p->player);
 	return (0);
 }
 
@@ -62,8 +63,6 @@ t_proc	*add_proc(t_arena *a, t_champ *c, int pc)
 
 t_proc	*fork_proc(t_arena *a, t_proc *p, int pc)
 {
-	static int 	tt = 0;
-	static int 	n = 0;
 	t_proc	*proc;
 
 	proc = try(sizeof(t_proc));
@@ -79,11 +78,7 @@ t_proc	*fork_proc(t_arena *a, t_proc *p, int pc)
 	proc->last_live = p->last_live;
 	proc->carry = p->carry;
 	proc->player = p->player;
-	int t = SDL_GetTicks();
 	ft_pushback((void **)&a->procs, sizeof(t_proc *), a->proc_count++, &proc);
-	tt += SDL_GetTicks() - t;
-	++n;
-	printf("average time : %f | %d\n", (float)tt / (float)n, n);
 	a->alive++;
 	return (proc);
 }

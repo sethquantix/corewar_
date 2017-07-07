@@ -17,11 +17,11 @@
 # define Y_MARGIN		0.01
 
 # define BOARD_HEIGHT	1800
-# define BOARD_WIDTH	2560
+# define BOARD_WIDTH	3000
 
 typedef enum 	e_fontsize
 {
-	SF_SMALL = 40,
+	SF_SMALL = 60,
 	SF_MEDIUM = 80,
 	SF_LARGE = 160,
 	SF_HUGE = 320

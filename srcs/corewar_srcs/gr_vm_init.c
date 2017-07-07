@@ -16,8 +16,8 @@
 void	set_sdl_attributes()
 {
 	SDL_Init(SDL_INIT_VIDEO);
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK,
 		SDL_GL_CONTEXT_PROFILE_CORE);
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
@@ -72,6 +72,7 @@ void	gr_vm_init(t_gr_vm *cxt, t_arena *arena)
 	init_text_p(&cxt->sst);
 	cxt->screen = SDL_CreateRGBSurface(0, BOARD_WIDTH, BOARD_HEIGHT, 32,
 		0, 0, 0, 0);
+	cxt->cursor = (t_cursor){ PLAYER_NONE, PROC_NONE, SELECT_PLAYER};
 	cxt->glyphs = gen_texture("assets/Prototype.ttf");
 	cxt->vao = generate_cube(cxt);
 	cxt->board = gen_board_tex();

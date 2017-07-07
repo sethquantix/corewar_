@@ -34,6 +34,7 @@ void		gr_vm_run(t_vm_loop loop, void *data, t_gr_vm *ctx)
 	ticks = SDL_GetTicks();
 	while (SDL_PollEvent(&e))
 		;
+	SDL_GL_MakeCurrent(ctx->arena, ctx->arena_context);
 	while (ctx->run)
 	{
 		update_name(ctx, data);
@@ -56,7 +57,6 @@ void		gr_vm_run(t_vm_loop loop, void *data, t_gr_vm *ctx)
 				ctx->keys[i].hold(data, ctx, ctx->keys + i);
 			i++;
 		}
-		SDL_GL_MakeCurrent(ctx->arena, ctx->arena_context);
 		render_opengl(ctx, data);
 		SDL_UpdateWindowSurface(ctx->UI);
 	}
