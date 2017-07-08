@@ -3,7 +3,7 @@ project(_corewar)
 
 set(CMAKE_CXX_STANDARD 11)
 
-SET(GCC_OPTIONS "-g")
+set (CMAKE_C_FLAGS "-g -fsanitize=address")
 
 include_directories(includes
 		soil2/incs
@@ -11,7 +11,7 @@ include_directories(includes
 		libs/glhandler/includes
 		$ENV{HOME}/.brew/include)
 
-set(CRWR_FILES
+set(CRWR_INC
     includes/corewar.h
     includes/crwr_defines.h
     includes/crwr_globals.h
@@ -23,6 +23,10 @@ set(CRWR_FILES
     includes/gr_vm_internals.h
     includes/includes.h
     includes/op.h
+<<<<<<< HEAD
+)
+set(ASM_INC
+=======
     srcs/corewar_srcs/arena_ini.c
     srcs/corewar_srcs/check_process.c
     srcs/corewar_srcs/corewar.c
@@ -60,18 +64,12 @@ set(CRWR_FILES
     srcs/corewar_srcs/utils.c)
 
 set(ASM_FILES
+>>>>>>> ce058ee8519fe4774c6a193dbe46ddf088d6bc37
     includes/asm.h
-    srcs/asm_srcs/asm.c
-    srcs/asm_srcs/asm_tokens.c
-    srcs/asm_srcs/compile.c
-    srcs/asm_srcs/op.c
-    srcs/asm_srcs/opt_tokens.c
-    srcs/asm_srcs/parse_asm.c
-    srcs/asm_srcs/parse_opts.c
-    srcs/asm_srcs/print.c
-    srcs/asm_srcs/read_opts.c
-    srcs/asm_srcs/utils.c
-    srcs/asm_srcs/write.c)
+)
+
+file(GLOB_RECURSE CRWR_SRCS srcs/corewar_srcs/*.c)
+file(GLOB_RECURSE ASM_SRCS srcs/asm_srcs/*.c)
 
 find_package(OpenGL REQUIRED)
 include_directories(${OPENGL_INCLUDE_DIR})
@@ -81,8 +79,8 @@ LINK_DIRECTORIES(libs/libft
 		soil2
         $ENV{HOME}/.brew/lib)
 
-add_executable(corewar ${CRWR_FILES})
-add_executable(asm ${ASM_FILES})
+add_executable(corewar ${CRWR_INC} ${CRWR_SRCS})
+add_executable(asm ${ASM_INC} ${ASM_SRCS})
 
 target_link_libraries(corewar
         ft
@@ -91,8 +89,7 @@ target_link_libraries(corewar
 		sdl2_ttf
         glew
 		SOIL2
-        ${OPENGL_LIBRARIES}
-        ${GCC_OPTIONS})
+        ${OPENGL_LIBRARIES})
 
 target_link_libraries(asm
-        ft)
+		ft)

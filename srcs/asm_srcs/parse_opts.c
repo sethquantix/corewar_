@@ -42,7 +42,8 @@ t_expr		*parse_opts(char **av)
 {
 	t_expr		*expr;
 	t_parser	*p;
-	const char	*list[] = {"PATH", "OPTION_A", "OPTION_X", "OPTION_D", 0};
+	const char	*list[] = {"PATH", "OPTION_A", "OPTION_X", "OPTION_D",
+		"OPTION_C", 0};
 	char		*arg;
 	char		*err;
 

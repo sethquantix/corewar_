@@ -29,12 +29,8 @@ char	*getfile(char *file)
 	while (get_next_line(fd, &line) > 0)
 	{
 		len += ft_strlen(line);
+		ft_printf("read %d (%s)\n", len, line);
 		source = ft_strjoinfree(source, ft_strjoinfree(line, "\n", 1), 3);
-		if (len > sizeof(header_t) + CHAMP_MAX_SIZE + 1)
-		{
-			free(source);
-			return ((void *)-1);
-		}
 	}
 	free(line);
 	return (source);

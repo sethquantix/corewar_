@@ -12,19 +12,60 @@
 
 #include "asm.h"
 
-
-int		addr_label(const char *file, char *label, t_list *inst)
+static char		*get_color_(int nb, char type)
 {
-	t_list	*ret;
+	char		*ret;
+	static int	first[18] = {0, 0, 0, 1, 2, 1, 1, 2, 2, 0, 0, 0, 1, 2, 1, 1, 2, 2};
+	static int	scd[18] = {0, 1, 2, 0, 0, 1, 2, 1, 2, 0, 1, 2, 0, 0, 1, 2, 1, 2};
+	char		*ato;
+	int			ito;
+
+	if (nb == 0 || nb > 18)
+		return (NULL);
+	ret = ft_strnew(15);
+	ft_strcat(ret, "\033[38;5;");
+	ito = 16;
+	if (type == 'r')
+	{
+		ito += nb <= 9 ? 36 * 4 : 36 * 5;
+		ito += 6 * first[nb];
+		ito += scd[nb];
+	}
+	else
+	{
+		if (type == 'g')
+			ito += nb <= 9 ? 6 * 4 : 6 * 5;
+		else
+			ito += nb <= 9 ? 4 : 5;
+		ito += 36 * first[nb];
+		ito += type == 'g' ? scd[nb] : 6 * scd[nb];
+	}
+	ft_strcat(ret, ato = ft_itoa(ito));
+	ft_strcat(ret, "m");
+	ft_memdel((void **)&ato);
+	return (ret);
+}
+
+t_inst	*addr_label(t_file *file, char *label, t_list *inst)
+{
+	static int		color = 1;
+	t_list			*ret;
 
 	ret = ft_lstfind(inst, label, (int (*)(void *, void *))cmp_label);
 	if (!ret)
-		die(EXIT_FAILURE, "Compiling %s : %sFailure%s!\
-			\nUnknown label %s\n", file, COLOR_RED, COLOR_END, label);
-	return (INST(ret)->addr);
+	{
+		file->err_label = ft_strdup(label);
+		return (NULL);
+	}
+	if (!INST(ret)->color)
+	{
+		color = (color % 16) + 1;
+		INST(ret)->color = get_color_(color, 'b');
+	}
+	return (INST(ret));
 }
 
-void 	get_labels(const char *file, t_list *inst)
+int 	get_labels(t_file *file, t_list *inst)
 {
 	int		i;
 	t_list	*start;
@@ -42,13 +83,17 @@ void 	get_labels(const char *file, t_list *inst)
 		}
 		while (i < in->op->argc)
 		{
+			in->labels[i] = NULL;
+			if (in->label[i] && (in->labels[i] = addr_label(file,
+				in->label[i], start)) == NULL)
+				return (-1);
 			if (in->label[i])
-				in->params[i] = addr_label(file, in->label[i], start) -
-					in->addr;
+				in->params[i] = in->labels[i]->addr - in->addr;
 			i++;
 		}
 		inst = inst->next;
 	}
+	return (0);
 }
 
 void	hex_print(int v, int size)
@@ -86,22 +131,44 @@ void	print_params(t_inst *inst, int type)
 	ft_putchar('\n');
 }
 
+void	print_colored(const char *format, char *color, char *data)
+{
+	if (env()->opts & OPT_C)
+		ft_printf(format, color, data, COLOR_END);
+	else
+		ft_printf(format, "", data, "");
+}
+
 void 	print_inst(t_inst *inst, t_file *file)
 {
 	int		i;
+	char	*col;
 
 	(void)file;
-	ft_printf("%-5d", inst->addr);
-	ft_printf((inst->type == LBL ? "      :" : "(%-3d) :"), inst->size);
+	col = ft_itoa(inst->addr);
+	print_colored("%s%-5s%s",COLOR_ADDR, col);
+	free(col);
+	col = ft_itoa(inst->size);
+	print_colored((inst->type == LBL ? "      :" : "(%s%-3s%s) :"),COLOR_SIZE, col);
+	free(col);
 	if (inst->type == LBL)
 	{
-		ft_printf("    %s:\n", inst->name);
+		if (!inst->color)
+			addr_label(file, inst->name, file->inst);
+		print_colored("    %s%s%s:\n",inst->color, inst->name);
 		return ;
 	}
-	ft_printf("        %-10s", inst->name);
+	col = get_color_(inst->op->opcode, 'r');
+	print_colored("        %s%-10s%s",col, inst->name);
+	ft_memdel((void **)&col);
 	i = 0;
 	while (i < inst->op->argc)
-		ft_printf("%-18s", inst->args[i++]);
+	{
+		col = inst->p_type[i] > 2 ? ft_strdup(inst->labels[i]->color) :
+			get_color_(inst->p_type[i] + 1, 'g');
+		print_colored("%s%-18s%s", col, inst->args[i++]);
+		ft_memdel((void **)&col);
+	}
 	ft_putchar('\n');
 	print_params(inst, 0);
 	print_params(inst, 1);
@@ -151,7 +218,14 @@ void	print_instructions(t_file *file)
 {
 	t_list	*inst;
 
-	get_labels(file->name, file->inst);
+	file->err_label = NULL;
+	if (get_labels(file, file->inst) == -1)
+	{
+		ft_printf("Compiling %s : %sFailure%s\
+			\nUnknown label %s\n", file->name, COLOR_RED, COLOR_END,
+			file->err_label);
+		return ;
+	}
 	file->print_header(file);
 	inst = file->inst;
 	while (inst)
@@ -174,16 +248,35 @@ char	*output_file(char *path)
 	return (ft_strjoinfree(t, ".cor", 1));
 }
 
+char	*local(char **path)
+{
+	char	*p;
+
+	p = ft_strrchr(*path, '/');
+	p = p ? p + 1 : *path;
+	p = ft_strsub(*path, p - *path, ft_strlen(p));
+	free(*path);
+	return (*path = p);
+}
+
 void	write_file_header(t_file *file)
 {
 	char			*o;
 
 	file->head.prog_size = ft_endian_int(file->addr);
 	o = output_file(file->name);
+	if ((file->fd = open(o, OPEN_FLAGS, 0644)) == -1)
+	{
+		if ((file->fd = open(local(&o), OPEN_FLAGS, 0644)) == -1)
+			die(EXIT_FAILURE,
+				"%sFailure%s : Can't open %s for writing\n",
+				COLOR_RED, COLOR_END, o);
+		ft_printf("%sWarning%s : Could not write to inital directory",
+			COLOR_WARN, COLOR_END);
+		ft_printf(", output to working directory instead\n");
+	}
+
 	ft_printf("Writing output to %s\n", o);
-	if ((file->fd = open(o, O_WRONLY | O_CREAT | O_TRUNC, 0777)) == -1)
-		die(EXIT_FAILURE, "Compilation of %s %sfailed%s !\
-			\nCan't open %s for writing\n", o);
 	free(o);
 	write(file->fd, &file->head, sizeof(header_t));
 }

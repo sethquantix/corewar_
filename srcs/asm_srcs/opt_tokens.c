@@ -33,6 +33,7 @@ t_token	g_asm_opts[] = {
 	{"OPT_A", 0, "-a", TOKEN_TYPE_EXP},
 	{"OPT_X", 0, "-x", TOKEN_TYPE_EXP},
 	{"OPT_D", 0, "-d", TOKEN_TYPE_EXP},
+	{"OPT_C", 0, "-c", TOKEN_TYPE_EXP},
 	{"NONE", tok_func_none, 0, TOKEN_TYPE_FNC},
 	{0, 0, 0, 0}
 };

@@ -26,8 +26,14 @@
 # define INST(x)	((t_inst *)(x->content))
 
 #define COLOR_RED	"\033[;1;31m"
+#define COLOR_WARN	"\033[38;5;214m"
 #define COLOR_GREEN	"\033[;1;32m"
+#define COLOR_ADDR	"\033[38;5;46m"
+#define COLOR_SIZE	"\033[38;5;34m"
+#define COLOR_LBL	"\033[38;5;9m"
 #define COLOR_END	"\033[0m"
+
+#define OPEN_FLAGS	O_WRONLY | O_CREAT | O_TRUNC
 
 # define ERR_POS	"Champion name or comment not at the top of the file\n"
 # define ERR_LEN	"Champion name or comment too long\n"
@@ -52,8 +58,11 @@ typedef struct	s_inst
 	int				addr;
 	int				size;
 	int				oct;
+	char			*color;
 	unsigned int	params[4];
+	int				p_type[4];
 	int				p_size[4];
+	struct s_inst	*labels[4];
 	char			*label[4];
 	char			*args[4];
 }				t_inst;
@@ -64,6 +73,7 @@ typedef struct	s_file
 	t_list		*inst;
 	char		*source;
 	int			addr;
+	char		*err_label;
 	void		(*print_header)(struct s_file *);
 	void		(*print_inst)(t_inst *, struct s_file *);
 	char		*name;
@@ -72,6 +82,7 @@ typedef struct	s_file
 
 typedef void	(*t_f_rule)(void *, t_expr **);
 
+t_env		*env(void);
 t_expr		*parse_opts(char **av);
 t_expr		*parse_asm(t_parser *p, char *file, char **source);
 void		die(int exit_code, char *s, ...);

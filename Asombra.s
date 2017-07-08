@@ -63,61 +63,60 @@ zjmp %:start2
 
 start1:
 zjmp %3
-st r10, r11, r12
-st r7, r8, r12
-live %0
-st r10, r11, r12
-st r7, r8, r12
-live %0
-st r10, r11, r12
-st r7, r8, r12
-live %0
-st r10, r11, r12
-st r7, r8, r12
-live %0
-st r10, r11, r12
-st r7, r8, r12
-live %0
-st r10, r11, r12
-st r7, r8, r12
-live %0
-st r10, r11, r12
-st r7, r8, r12
-live %0
-st r10, r11, r12
-st r7, r8, r12
-live %0
-st r10, r11, r12
-st r7, r8, r12
-live %0
-st r10, r11live:
-st i r 7, r8, r12
-live %0
-st r 10, r11, r12
-sti r7 , r 8, r12
-live %0
-sti r10, r1 1 , r12
-sti r7, r 8, r12
-live %0
-broken:
-sti r10, r 11, r12
-st i r7, r8, r12
-live %0
-sti r10, r11, r12
-sti r7, r8, r12
-live % 0
 sti r10, r11, r12
 sti r7, r8, r12
 live %0
-st i r10, r11, r12
-st i r7, r8, r12
+sti r10, r11, r12
+sti r7, r8, r12
 live %0
-st r10, r11, r12
-st r7, r8, r12
+sti r10, r11, r12
+sti r7, r8, r12
+live %0
+sti r10, r11, r12
+sti r7, r8, r12
+live %0
+sti r10, r11, r12
+sti r7, r8, r12
+live %0
+sti r10, r11, r12
+sti r7, r8, r12
+live %0
+sti r10, r11, r12
+sti r7, r8, r12
+live %0
+sti r10, r11, r12
+sti r7, r8, r12
+live %0
+sti r10, r11, r12
+sti r7, r8, r12
+live %0
+sti r10, r11, r12
+sti r7, r8, r12
+live %0
+sti r10, r11, r12
+sti r7, r8, r12
+live %0
+sti r10, r11, r12
+sti r7, r8, r12
+live %0
+sti r10, r11, r12
+sti r7, r8, r12
+live %0
+sti r10, r11, r12
+sti r7, r8, r12
+live %0
+sti r10, r11, r12
+sti r7, r8, r12
+live %0
+sti r10, r11, r12
+sti r7, r8, r12
+live %0
+sti r10, r11, r12
+sti r7, r8, r12
 live %0
 start2:
-st r10, r11, r12
-st r7, r8, r12
+sti r10, r11, r12
+sti r7, r8, r12
 live %0
 
 assaut2:
