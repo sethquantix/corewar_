@@ -167,6 +167,30 @@
 		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/asm_srcs/compile.c">
 			<Option target="asm"/>
 		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/asm_srcs/decompile/dec_err_check.c">
+			<Option target="asm"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/asm_srcs/decompile/dec_lst_op.c">
+			<Option target="asm"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/asm_srcs/decompile/decompile.c">
+			<Option target="asm"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/asm_srcs/decompile/set_check_labels.c">
+			<Option target="asm"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/asm_srcs/decompile/set_op.c">
+			<Option target="asm"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/asm_srcs/decompile/set_params.c">
+			<Option target="asm"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/asm_srcs/decompile/write_head.c">
+			<Option target="asm"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/asm_srcs/decompile/write_ops.c">
+			<Option target="asm"/>
+		</Unit>
 		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/asm_srcs/op.c">
 			<Option target="asm"/>
 		</Unit>

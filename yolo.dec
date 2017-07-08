@@ -1,4 +1,0 @@
-.name          "phoque"
-.comment       "phoquephoque"
-
-ld              %0, r2

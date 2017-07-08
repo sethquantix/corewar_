@@ -6,7 +6,7 @@
 /*   By: lnagy <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 16:07:25 by lnagy             #+#    #+#             */
-/*   Updated: 2017/06/01 16:07:26 by lnagy            ###   ########.fr       */
+/*   Updated: 2017/07/08 10:43:54 by cchaumar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ void	draw_proc(t_gr_vm *cxt, t_arena *arena, SDL_Surface *s)
 	pos.y = 0.55 * BOARD_HEIGHT;
 	p = cxt->cursor.player == PLAYER_NONE ? ft_strdup("NONE") :
 		ft_itoa(arena->champs[cxt->cursor.player].num);
-	free(p);
 	s = print_text(&cxt->sst, WHITE_MEDIUM, "Player : %-5s", p);
+	free(p);
 	pos = draw_text(cxt->screen, s, pos, X_LEFT);
 	cxt->cursor.player_box = box(pos);
 	pos.y = 0.55 * BOARD_HEIGHT;
