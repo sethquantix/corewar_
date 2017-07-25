@@ -6,7 +6,7 @@
 /*   By: cchaumar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 04:44:35 by cchaumar          #+#    #+#             */
-/*   Updated: 2017/01/29 04:44:36 by cchaumar         ###   ########.fr       */
+/*   Updated: 2017/07/25 11:12:30 by cchaumar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ void	i_st(t_proc *proc)
 
 void	i_aff(t_proc *proc)
 {
-	int 	v;
-	char 	t[5];
+	unsigned int 	v;
+	char			t[5];
 
 	if (get_value(proc, &v, 0, V_VALUE))
 		return ;
