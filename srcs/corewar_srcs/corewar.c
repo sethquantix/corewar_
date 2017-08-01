@@ -6,7 +6,7 @@
 /*   By: lnagy <lnagy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/05 16:38:41 by lnagy             #+#    #+#             */
-/*   Updated: 2017/07/25 11:15:04 by cchaumar         ###   ########.fr       */
+/*   Updated: 2017/08/01 04:04:27 by cchaumar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,11 @@ int		loop(t_arena *a)
 		a->check(a);
 	if (a->dump_cycles && a->cycles % a->dump_cycles == 0)
 	{
-		dump(a->arena, DUMP_64);
-		if (a->opts & D_OPT) {
+		if (!(a->opts & S_OPT) && !a->cycles)
 			return (0);
-		}
+		dump(a->arena, DUMP_64);
+		if (a->opts & D_OPT)
+			return (0);
 	}
 	return (a->alive != 0);
 }

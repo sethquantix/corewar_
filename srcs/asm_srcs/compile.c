@@ -6,7 +6,7 @@
 /*   By: lnagy <lnagy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/11 17:07:48 by lnagy             #+#    #+#             */
-/*   Updated: 2017/03/11 17:07:50 by lnagy            ###   ########.fr       */
+/*   Updated: 2017/08/01 03:35:25 by cchaumar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,7 +230,7 @@ void	compile(t_env *e)
 			print_instructions(file);
 			parser_clear_expr(&expr);
 			free(file);
-		};
+		}
 		free(source);
 		i++;
 	}

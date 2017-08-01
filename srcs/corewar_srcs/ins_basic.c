@@ -6,7 +6,7 @@
 /*   By: cchaumar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 04:44:35 by cchaumar          #+#    #+#             */
-/*   Updated: 2017/07/25 11:12:30 by cchaumar         ###   ########.fr       */
+/*   Updated: 2017/08/01 04:03:20 by cchaumar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	i_ld(t_proc *proc)
 	if (get_value(proc, &reg, 1, V_REFERENCE))
 		return ;
 	if (proc->arena->verbose_lvl & V_LVL_OP)
-		ft_printf("P %4d | ld %d r%d\n", proc->id, value, reg);
+		ft_printf("P %4d | ld %x r%d\n", proc->id, value, reg);
 	proc->reg[reg] = value;
 	proc->carry = value == 0;
 }
@@ -74,8 +74,8 @@ void	i_st(t_proc *proc)
 
 void	i_aff(t_proc *proc)
 {
-	unsigned int 	v;
-	char			t[5];
+	int		v;
+	char	t[5];
 
 	if (get_value(proc, &v, 0, V_VALUE))
 		return ;

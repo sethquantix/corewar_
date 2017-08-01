@@ -39,10 +39,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /sgoinfre/goinfre/Perso/cchaumar/Cellar/cmake/3.9.0/bin/cmake
+CMAKE_COMMAND = /sgoinfre/goinfre/Perso/cchaumar/.brew/Cellar/cmake/3.9.0/bin/cmake
 
 # The command to remove a file.
-RM = /sgoinfre/goinfre/Perso/cchaumar/Cellar/cmake/3.9.0/bin/cmake -E remove -f
+RM = /sgoinfre/goinfre/Perso/cchaumar/.brew/Cellar/cmake/3.9.0/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /Users/cchaumar/Documents/42projects/working/_corewar
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/sgoinfre/goinfre/Perso/cchaumar/Cellar/cmake/3.9.0/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/sgoinfre/goinfre/Perso/cchaumar/.brew/Cellar/cmake/3.9.0/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -756,33 +756,6 @@ srcs/corewar_srcs/gr_gen_tex.s: srcs/corewar_srcs/gr_gen_tex.c.s
 srcs/corewar_srcs/gr_gen_tex.c.s:
 	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_gen_tex.c.s
 .PHONY : srcs/corewar_srcs/gr_gen_tex.c.s
-
-srcs/corewar_srcs/gr_gl_buffer.o: srcs/corewar_srcs/gr_gl_buffer.c.o
-
-.PHONY : srcs/corewar_srcs/gr_gl_buffer.o
-
-# target to build an object file
-srcs/corewar_srcs/gr_gl_buffer.c.o:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_gl_buffer.c.o
-.PHONY : srcs/corewar_srcs/gr_gl_buffer.c.o
-
-srcs/corewar_srcs/gr_gl_buffer.i: srcs/corewar_srcs/gr_gl_buffer.c.i
-
-.PHONY : srcs/corewar_srcs/gr_gl_buffer.i
-
-# target to preprocess a source file
-srcs/corewar_srcs/gr_gl_buffer.c.i:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_gl_buffer.c.i
-.PHONY : srcs/corewar_srcs/gr_gl_buffer.c.i
-
-srcs/corewar_srcs/gr_gl_buffer.s: srcs/corewar_srcs/gr_gl_buffer.c.s
-
-.PHONY : srcs/corewar_srcs/gr_gl_buffer.s
-
-# target to generate assembly for a file
-srcs/corewar_srcs/gr_gl_buffer.c.s:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_gl_buffer.c.s
-.PHONY : srcs/corewar_srcs/gr_gl_buffer.c.s
 
 srcs/corewar_srcs/gr_vm_camera_handling.o: srcs/corewar_srcs/gr_vm_camera_handling.c.o
 
@@ -1673,9 +1646,6 @@ help:
 	@echo "... srcs/corewar_srcs/gr_gen_tex.o"
 	@echo "... srcs/corewar_srcs/gr_gen_tex.i"
 	@echo "... srcs/corewar_srcs/gr_gen_tex.s"
-	@echo "... srcs/corewar_srcs/gr_gl_buffer.o"
-	@echo "... srcs/corewar_srcs/gr_gl_buffer.i"
-	@echo "... srcs/corewar_srcs/gr_gl_buffer.s"
 	@echo "... srcs/corewar_srcs/gr_vm_camera_handling.o"
 	@echo "... srcs/corewar_srcs/gr_vm_camera_handling.i"
 	@echo "... srcs/corewar_srcs/gr_vm_camera_handling.s"
