@@ -15,11 +15,8 @@
 
 void	info_proc(t_gr_vm *cxt, SDL_Surface *s, t_proc *proc, SDL_Rect pos)
 {
-	char 	*v;
-
-	v = NULL;
-	ft_sprintf(&v, "%3d = 0x%08x", cxt->cursor.reg, proc->reg[cxt->cursor.reg]);
-	s = print_text(&cxt->sst, WHITE_MEDIUM, " %s", v);
+	s = print_text(&cxt->sst, WHITE_MEDIUM, "%3d = 0x%08x", cxt->cursor.reg,
+		proc->reg[cxt->cursor.reg]);
 	pos = draw_text(cxt->screen, s, pos, X_RIGHT);
 	s = print_text(&cxt->sst, WHITE_MEDIUM, "Reg ");
 	pos.x -= s->w;
@@ -29,7 +26,6 @@ void	info_proc(t_gr_vm *cxt, SDL_Surface *s, t_proc *proc, SDL_Rect pos)
 				   proc->dead ? "Dead " : "Alive");
 	pos.x -= s->w;
 	pos = draw_text(cxt->screen, s, pos, 0);
-	free(v);
 	pos.y += pos.h * 1.5;
 	s = print_text(&cxt->sst, WHITE_MEDIUM, "Carry : %d  |  PC : 0x%03x",
 		proc->carry, proc->pc);
@@ -37,13 +33,13 @@ void	info_proc(t_gr_vm *cxt, SDL_Surface *s, t_proc *proc, SDL_Rect pos)
 	pos.x += pos.w;
 	s = print_text(&cxt->sst, WHITE_MEDIUM, "    Status : %-9s", proc->op ?
 		"Executing" : "Waiting");
-	pos = draw_text(cxt->screen, s, pos, 0);
+	draw_text(cxt->screen, s, pos, 0);
 }
 
 void	clean(t_gr_vm *cxt, SDL_Surface *s, SDL_Rect pos)
 {
-	pos.x += 1.5 * pos.w;
-	s = print_text(&cxt->sst, WHITE_MEDIUM, "%30s", "");
+	pos.x += 1 * pos.w;
+	s = print_text(&cxt->sst, WHITE_MEDIUM, "%40s", " ");
 	pos = draw_text(cxt->screen, s, pos, 0);
 	pos.y += 1.1 * pos.h;
 	ft_bzero(cxt->screen->pixels + 4 * pos.y * BOARD_WIDTH,
@@ -109,6 +105,7 @@ void draw_ui(t_gr_vm *cxt, t_arena *arena)
 	SDL_Rect	pos;
 
 	pos = (SDL_Rect){0, 0, 0, 0};
+	s = NULL;
 	if (!start)
 		draw_base(cxt, arena, &pos, s);
 	draw_info(start, cxt, arena, s);

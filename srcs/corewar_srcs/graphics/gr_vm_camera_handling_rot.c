@@ -1,11 +1,6 @@
 #include "corewar.h"
 #include "gr_vm_internals.h"
 
-void		toggle_42(void *data, t_gr_vm *vm, t_key *key)
-{
-	vm->anim42 = !vm->anim42;
-}
-
 void		rotate(t_gr_vm *vm, int relx, int rely)
 {
 	t_mat	x;
@@ -43,6 +38,8 @@ void		cam_trans_down(void *data, t_gr_vm *vm, t_key *key)
 	vm->camera.m.r[0].w -= tr.x;
 	vm->camera.m.r[1].w -= tr.y;
 	vm->camera.m.r[2].w -= tr.z;
+	(void)data;
+	(void)key;
 }
 
 void		cam_trans_up(void *data, t_gr_vm *vm, t_key *key)
@@ -58,4 +55,6 @@ void		cam_trans_up(void *data, t_gr_vm *vm, t_key *key)
 	vm->camera.m.r[0].w -= tr.x;
 	vm->camera.m.r[1].w -= tr.y;
 	vm->camera.m.r[2].w -= tr.z;
+	(void)data;
+	(void)key;
 }

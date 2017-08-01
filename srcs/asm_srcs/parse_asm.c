@@ -88,9 +88,15 @@ void	*compile_error(t_parser *p, char *file, char *source, char *ret)
 	s = parser_getl(ret - c + 1);
 	err = get_err(p, ret, &c);
 	ft_dprintf(2, "%s:%d:%d: %serror:%s %s\n", file, l, c, COLOR_RED, COLOR_END, err);
-	ft_dprintf(2, "\t%s\n", s);
-	ft_dprintf(2, "\t%s%.*s%s\n", COLOR_GREEN, c, "^", COLOR_END);
 	free(err);
+	err = s;
+	while (ft_iswhite(*err))
+	{
+		c--;
+		err++;
+	}
+	ft_dprintf(2, "\t%s\n", err);
+	ft_dprintf(2, "\t%s%.*s%s\n", COLOR_GREEN, c, "^", COLOR_END);
 	free(s);
 	return (NULL);
 }

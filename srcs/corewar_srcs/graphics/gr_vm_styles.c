@@ -17,11 +17,6 @@ void	add_style(t_text_p *sst, t_style style)
 	ft_pushback((void **)&sst->styles, sizeof(t_style), sst->nstyle++, &style);
 }
 
-static SDL_Color	color(int r, int g, int b, int a)
-{
-	return ((SDL_Color){r, g, b, a});
-}
-
 static t_style		style(SDL_Color c, const char *font, int size)
 {
 	TTF_Font	*f;

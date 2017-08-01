@@ -80,29 +80,6 @@ int		usage(char *s)
 	return (0);
 }
 
-void	init(t_arena *arena)
-{
-	int 		num;
-	int 		i;
-
-	arena->load = load_champ;
-	arena->check = check_process;
-	arena->add_proc = (t_f_add)add_proc;
-	arena->ctd = CYCLE_TO_DIE;
-	i = 0;
-	num = 1;
-	while (i < arena->champ_count)
-	{
-		if (!arena->champs[i].set)
-		{
-			while (check_set(arena->champs, arena->champ_count, num))
-				num++;
-			arena->champs[i].num = num++;
-		}
-		i++;
-	}
-}
-
 void 	winner(t_arena *arena)
 {
 	int		i;
@@ -118,8 +95,8 @@ void 	winner(t_arena *arena)
 			w = i;
 		i++;
 	}
-	ft_printf("Contestant %d, \"%s\", has won !\n", arena->champs[w].num,
-		arena->champs[w].head.prog_name);
+	ft_printf("\n%sContestant %d, \"%s\", has won !\n%s", acol(3, 2, 5),
+		arena->champs[w].num, arena->champs[w].head.prog_name, COLOR_END);
 }
 
 int		main(int ac, char **av)
@@ -135,10 +112,12 @@ int		main(int ac, char **av)
 	expr = parse_opts(av + 1);
 	read_args(expr, &arena);
 	init(&arena);
-	set_champs(&arena);
+	arena.add_proc = (t_f_add)fork_proc;
+	ft_printf("\n\n%s********** BEGIN ! *************%s\n\n",
+		acol(1, 1, 4), COLOR_END);
 	if (arena.opts & G_OPT)
 	{
-		gr_vm_init(&context, &arena);
+		gr_vm_init(&context);
 		gr_vm_run((t_vm_loop)loop, &arena, &context);
 		gr_vm_end(&context);
 	}

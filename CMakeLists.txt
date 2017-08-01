@@ -3,13 +3,13 @@ project(_corewar)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set (CMAKE_C_FLAGS "-g -fsanitize=address")
+set(CMAKE_C_FLAGS "-Wall -Wextra -g -fsanitize=address")
 
 include_directories(
 	includes
 	includes/asm
 	includes/corewar
-	includes/corewar/graphics
+c	includes/corewar/graphics
 	includes/corewar/internals
 	lib/soil2/incs
 	lib/libft
@@ -44,9 +44,9 @@ include_directories(${OPENGL_INCLUDE_DIR})
 
 LINK_DIRECTORIES(
 		lib/libft
-        lib/glhandler
+		lib/glhandler
 		lib/soil2
-        $ENV{HOME}/.brew/lib)
+		$ENV{HOME}/.brew/lib)
 
 add_executable(corewar ${CRWR_INC} ${CRWR_SRCS})
 add_executable(asm ${ASM_INC} ${ASM_SRCS})

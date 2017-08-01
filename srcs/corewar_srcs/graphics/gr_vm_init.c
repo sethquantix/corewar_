@@ -31,11 +31,12 @@ void	set_sdl_attributes()
 void	load_noise(t_gr_vm *cxt)
 {
 	glActiveTexture(GL_TEXTURE1);
-	cxt->diffuseTexture = SOIL_load_OGL_texture("assets/noise.png",
+	cxt->diffuseTexture = SOIL_load_OGL_texture(
+		"assets/img/noise.png",
 		SOIL_LOAD_AUTO, SOIL_CREATE_NEW_ID, SOIL_FLAG_INVERT_Y |
 		SOIL_FLAG_TEXTURE_REPEATS | SOIL_FLAG_MIPMAPS |
 		SOIL_FLAG_COMPRESS_TO_DXT);
-	if (cxt->diffuseTexture == -1)
+	if (!cxt->diffuseTexture)
 		die(EXIT_FAILURE, "failed to load texture\n");
 	glBindTexture(GL_TEXTURE_2D, cxt->diffuseTexture);
 }
@@ -54,7 +55,7 @@ GLuint	gen_board_tex(void)
 	return (id);
 }
 
-void	gr_vm_init(t_gr_vm *cxt, t_arena *arena)
+void	gr_vm_init(t_gr_vm *cxt)
 {
 	if (TTF_Init() == -1)
 		exit(EXIT_FAILURE);
@@ -73,7 +74,7 @@ void	gr_vm_init(t_gr_vm *cxt, t_arena *arena)
 	cxt->screen = SDL_CreateRGBSurface(0, BOARD_WIDTH, BOARD_HEIGHT, 32,
 		0, 0, 0, 0);
 	cxt->cursor = (t_cursor){ PLAYER_NONE, PROC_NONE, SELECT_PLAYER, 1};
-	cxt->glyphs = gen_texture("assets/Prototype.ttf");
+	cxt->glyphs = gen_texture("assets/fonts/Prototype.ttf");
 	cxt->vao = generate_cube(cxt);
 	cxt->board = gen_board_tex();
 }

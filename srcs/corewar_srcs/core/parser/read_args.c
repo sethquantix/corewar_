@@ -12,43 +12,82 @@
 
 #include "corewar.h"
 
+int		load_source(t_champ *c)
+{
+	int		fd;
+
+	if ((fd = open(c->file_name, O_RDONLY)) == -1)
+		return (err(ERR, "[%s] : Error (ERR_OPEN_FILE)\n", c->file_name));
+	if (read(fd, &c->head, sizeof(header_t)) != sizeof(header_t))
+		return (err(ERR, "[%s] : Error (ERR_TOO_SMALL)\n", c->file_name));
+	ft_endian(&c->head.prog_size, 4);
+	ft_endian(&c->head.magic, 4);
+	if (c->head.magic != COREWAR_EXEC_MAGIC)
+		return (err(ERR, "[%s] : Error (ERR_BAD_MAGIC)\n", c->file_name));
+	c->source = try(c->head.prog_size);
+	if (read(fd, c->source, c->head.prog_size) != c->head.prog_size)
+		return (err(ERR, "[%s] : Error (ERR_CORRUPT_SIZE)\n", c->file_name));
+	close(fd);
+	return (0);
+}
+
+static t_champ	new_champion(char *name, char *number, t_arena *a)
+{
+	static int		id = 0;
+	t_champ			c;
+	int				ret;
+
+	ft_bzero(&c, sizeof(t_champ));
+	c.head = empty_head();
+	c.file_name = name;
+	if (load_source(&c))
+	{
+		ft_memdel((void **)&c.source);
+		return (c);
+	}
+	if (number)
+	{
+		if (check_set(a->champs, a->champ_count,
+			(ret = ft_atoi(number))))
+			err(WARN, "[%s] : Duplicate player number\n", c.file_name);
+		else
+		{
+			c.set = 1;
+			c.num = ret;
+		}
+	}
+	c.id = --id;
+	return (c);
+}
+
 void 	player(t_expr **e, t_arena *a)
 {
-	static int 	id = 0;
 	t_champ		c;
-	int			n;
-	int			set;
-	int			fd;
+	char 		*file;
+	char 		*number;
 
 	*e = (*e)->next;
-	n = 0;
-	set = 0;
-	if (ft_strcmp((*e)->rule, "NUMBER") == 0)
-	{
+	number = ft_strcmp((*e)->rule, "NUMBER") == 0 ? (*e)->expr : NULL;
+	if (number)
 		*e = (*e)->next;
-		n = ft_atoi((*e)->expr);
-		if ((set = 1) && check_set(a->champs, a->champ_count, n))
-			die(EXIT_FAILURE, "Can't set same player id %d twice\n", n);
-	}
-	if ((fd = open((*e)->expr, O_RDONLY) == -1))
-	{
-		ft_printf("%s[%s]: Can't open file%s\n",
-			acol(5, 0, 0), (*e)->expr, COLOR_END);
+	file = (*e)->expr;
+	c = new_champion(file, number, a);
+	if (c.source == NULL)
 		return ;
-	}
-	else
-		close(fd);
-	c = (t_champ){(*e)->expr, NULL, empty_head(), --id, n, set};
+	if (!a->champ_count)
+		ft_printf("\n%sLoading contestants :\n\n%s", acol(3, 4, 0), COLOR_END);
 	ft_pushback((void **)&a->champs, sizeof(t_champ), a->champ_count++, &c);
+	ft_printf("\t%s%s, packing %d bytes%s\n", acol(1, 5, 1), c.head.prog_name,
+		c.head.prog_size, COLOR_END);
 }
 
 void	read_args(t_expr *expr, t_arena *a)
 {
 	const char	*rules[] = {"OPTION_G", "OPTION_V", "OPTION_D", "OPTION_O",
-		"OPTION_A", "OPTION_S", "PLAYER", NULL};
+							  "OPTION_A", "OPTION_S", "PLAYER", NULL};
 	static void	(*handlers[])(t_expr **, t_arena *) =
-		{option_g, option_v, option_d, option_o, option_a, option_s,
-		 player, NULL};
+			{option_g, option_v, option_d, option_o, option_a, option_s,
+			 player, NULL};
 	int			i;
 
 	while (expr)

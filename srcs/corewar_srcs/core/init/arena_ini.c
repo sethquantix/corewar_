@@ -12,37 +12,6 @@
 
 #include "corewar.h"
 
-int		load_champ(t_arena *a, t_champ *c)
-{
-	int fd;
-	size_t len;
-	t_proc *p;
-	int pc;
-
-	if ((fd = open(c->file_name, O_RDONLY)) == -1)
-		return (-1);
-	if (read(fd, &c->head, sizeof(header_t)) != sizeof(header_t))
-		return (err("Error : %s : File too small to be a champion.\n",
-					c->file_name));
-	ft_endian(&c->head.prog_size, 4);
-	ft_endian(&c->head.magic, 4);
-	ft_printf("* Player %d, %s (%d bytes) : %s\n", c->num, c->head.prog_name,
-			  c->head.prog_size, c->head.prog_desc);
-	if (c->head.magic != COREWAR_EXEC_MAGIC)
-		return (err("Error : %s : This does not appear to be a champion.\n",
-					c->file_name));
-	c->source = try(c->head.prog_size);
-	if ((len = read(fd, c->source, c->head.prog_size)) != c->head.prog_size)
-		return (err("Error : %s : Corrupted source (size doesn't match (%zu))\n",
-					c->file_name, len));
-	close(fd);
-	pc = (-c->id - 1) * (MEM_SIZE / a->champ_count);
-	ft_memcpy(a->arena + (p = a->add_proc(a, c, pc))->pc, c->source, len);
-	set_mem(a->mem, p->pc, len, p->player);
-	SET_PLAYER(a->mem[p->pc], p->player);
-	return (0);
-}
-
 t_proc	*add_proc(t_arena *a, t_champ *c, int pc)
 {
 	t_proc	*proc;
@@ -52,7 +21,7 @@ t_proc	*add_proc(t_arena *a, t_champ *c, int pc)
 	proc->id = ++a->proc_id;
 	proc->get_inst = proc_read_inst;
 	proc->get_params = proc_read_params;
-	proc->reg[1] = c->id;
+	proc->reg[1] = (uint32_t)c->id;
 	proc->arena = a;
 	proc->op = NULL;
 	proc->player = -c->id - 1;
@@ -83,18 +52,39 @@ t_proc	*fork_proc(t_arena *a, t_proc *p, int pc)
 	return (proc);
 }
 
-void	set_champs(t_arena *a)
+void	load_code(t_arena *a, t_champ *c)
 {
-	int		i;
-	t_champ	*c;
-	
+	int		pc;
+	t_proc	*p;
+
+	pc = (-c->id - 1) * (MEM_SIZE / a->champ_count);
+	p = add_proc(a, c, pc);
+	ft_memcpy(a->arena + p->pc, c->source, c->head.prog_size);
+	set_mem(a->mem, p->pc, c->head.prog_size, p->player);
+	SET_PLAYER(a->mem[p->pc], p->player);
+}
+
+void	init(t_arena *arena)
+{
+	int 		num;
+	int 		i;
+
+	arena->check = check_process;
+	arena->add_proc = (t_f_add)add_proc;
+	arena->ctd = CYCLE_TO_DIE;
 	i = 0;
-	ft_printf("Introducing contestants :\n");
-	c = a->champs;
-	while (i < a->champ_count)
-		if (a->load(a, c + i))
-			die(EXIT_FAILURE, "Error loading champion %s\n", c[i].source);
-		else
-			i++;
-	a->add_proc = (t_f_add)fork_proc;
+	num = 1;
+	while (i < arena->champ_count)
+	{
+		if (!arena->champs[i].set)
+		{
+			while (check_set(arena->champs, arena->champ_count, num)) {
+				ft_printf("%s => %d\n", arena->champs[i].head.prog_name, num);
+				num++;
+			}
+			arena->champs[i].num = num++;
+		}
+		load_code(arena, arena->champs + i);
+		i++;
+	}
 }

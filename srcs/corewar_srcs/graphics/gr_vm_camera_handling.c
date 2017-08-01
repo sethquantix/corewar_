@@ -26,6 +26,8 @@ void		cam_trans_forwad(void *data, t_gr_vm *vm, t_key *key)
 	vm->camera.m.r[0].w -= tr.x;
 	vm->camera.m.r[1].w -= tr.y;
 	vm->camera.m.r[2].w -= tr.z;
+	(void)data;
+	(void)key;
 }
 
 void		cam_trans_back(void *data, t_gr_vm *vm, t_key *key)
@@ -41,6 +43,8 @@ void		cam_trans_back(void *data, t_gr_vm *vm, t_key *key)
 	vm->camera.m.r[0].w -= tr.x;
 	vm->camera.m.r[1].w -= tr.y;
 	vm->camera.m.r[2].w -= tr.z;
+	(void)data;
+	(void)key;
 }
 
 void		cam_trans_right(void *data, t_gr_vm *vm, t_key *key)
@@ -56,6 +60,8 @@ void		cam_trans_right(void *data, t_gr_vm *vm, t_key *key)
 	vm->camera.m.r[0].w -= tr.x;
 	vm->camera.m.r[1].w -= tr.y;
 	vm->camera.m.r[2].w -= tr.z;
+	(void)data;
+	(void)key;
 }
 
 void		cam_trans_left(void *data, t_gr_vm *vm, t_key *key)
@@ -71,4 +77,6 @@ void		cam_trans_left(void *data, t_gr_vm *vm, t_key *key)
 	vm->camera.m.r[0].w -= tr.x;
 	vm->camera.m.r[1].w -= tr.y;
 	vm->camera.m.r[2].w -= tr.z;
+	(void)data;
+	(void)key;
 }

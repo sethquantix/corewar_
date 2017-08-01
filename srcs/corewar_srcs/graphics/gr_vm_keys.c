@@ -42,7 +42,6 @@ void		set_keys(t_key **keys, int *nkeys)
 	*nkeys += add_key(keys, SDLK_r, toggle_opt, NULL);
 	*nkeys += add_key(keys, SDLK_KP_PLUS, speed, speed);
 	*nkeys += add_key(keys, SDLK_KP_MINUS, speed, speed);
-	*nkeys += add_key(keys, SDLK_r, toggle_42, NULL);
 	*nkeys += add_key(keys, SDLK_LEFT, select_proc, select_proc);
 	*nkeys += add_key(keys, SDLK_RIGHT, select_proc, select_proc);
 	*nkeys += add_key(keys, SDLK_UP, select_proc, select_proc);

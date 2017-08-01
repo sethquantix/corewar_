@@ -50,7 +50,7 @@ void		check_process(t_arena *a)
 	a->nbr_lives = 0;
 }
 
-int 		cmp_id(uint32_t	*ref, t_champ *data)
+int 		cmp_id(int *ref, t_champ *data)
 {
 	return (*ref == data->id);
 }

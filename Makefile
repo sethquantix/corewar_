@@ -69,8 +69,8 @@ rebuild_cache/fast: rebuild_cache
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/sgoinfre/goinfre/Perso/cchaumar/Cellar/cmake/3.8.2/bin/ccmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/sgoinfre/goinfre/Perso/cchaumar/.brew/Cellar/cmake/3.9.0/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -1297,33 +1297,6 @@ srcs/corewar_srcs/graphics/gr_vm_keys.c.s:
 	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_keys.c.s
 .PHONY : srcs/corewar_srcs/graphics/gr_vm_keys.c.s
 
-srcs/corewar_srcs/graphics/gr_vm_load_texture.o: srcs/corewar_srcs/graphics/gr_vm_load_texture.c.o
-
-.PHONY : srcs/corewar_srcs/graphics/gr_vm_load_texture.o
-
-# target to build an object file
-srcs/corewar_srcs/graphics/gr_vm_load_texture.c.o:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_load_texture.c.o
-.PHONY : srcs/corewar_srcs/graphics/gr_vm_load_texture.c.o
-
-srcs/corewar_srcs/graphics/gr_vm_load_texture.i: srcs/corewar_srcs/graphics/gr_vm_load_texture.c.i
-
-.PHONY : srcs/corewar_srcs/graphics/gr_vm_load_texture.i
-
-# target to preprocess a source file
-srcs/corewar_srcs/graphics/gr_vm_load_texture.c.i:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_load_texture.c.i
-.PHONY : srcs/corewar_srcs/graphics/gr_vm_load_texture.c.i
-
-srcs/corewar_srcs/graphics/gr_vm_load_texture.s: srcs/corewar_srcs/graphics/gr_vm_load_texture.c.s
-
-.PHONY : srcs/corewar_srcs/graphics/gr_vm_load_texture.s
-
-# target to generate assembly for a file
-srcs/corewar_srcs/graphics/gr_vm_load_texture.c.s:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_load_texture.c.s
-.PHONY : srcs/corewar_srcs/graphics/gr_vm_load_texture.c.s
-
 srcs/corewar_srcs/graphics/gr_vm_matrix.o: srcs/corewar_srcs/graphics/gr_vm_matrix.c.o
 
 .PHONY : srcs/corewar_srcs/graphics/gr_vm_matrix.o
@@ -1706,9 +1679,6 @@ help:
 	@echo "... srcs/corewar_srcs/graphics/gr_vm_keys.o"
 	@echo "... srcs/corewar_srcs/graphics/gr_vm_keys.i"
 	@echo "... srcs/corewar_srcs/graphics/gr_vm_keys.s"
-	@echo "... srcs/corewar_srcs/graphics/gr_vm_load_texture.o"
-	@echo "... srcs/corewar_srcs/graphics/gr_vm_load_texture.i"
-	@echo "... srcs/corewar_srcs/graphics/gr_vm_load_texture.s"
 	@echo "... srcs/corewar_srcs/graphics/gr_vm_matrix.o"
 	@echo "... srcs/corewar_srcs/graphics/gr_vm_matrix.i"
 	@echo "... srcs/corewar_srcs/graphics/gr_vm_matrix.s"
