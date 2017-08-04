@@ -48,7 +48,7 @@ t_token		g_asm_tokens[] = {
 	{0, 0, 0, 0}
 };
 
-int		tok_func_string(char **s)
+int			tok_func_string(char **s)
 {
 	char	*p;
 
@@ -67,7 +67,7 @@ int		tok_func_string(char **s)
 	return (1);
 }
 
-int		tok_func_ascii(char **s)
+int			tok_func_ascii(char **s)
 {
 	char	*p;
 
@@ -77,18 +77,19 @@ int		tok_func_ascii(char **s)
 	return (p == *s ? 1 : 0);
 }
 
-int		tok_func_number(char **s)
+int			tok_func_number(char **s)
 {
 	const char	*valid[2] = {
 		"0123456789", "0123456789abcdef"
 	};
-	char	*p;
-	int		hex;
-	int		n;
+	char		*p;
+	int			hex;
+	int			n;
 
 	p = *s;
 	hex = 0;
-	if ((ft_strncmp(*s, "0x", 2) == 0 || ft_strncmp(*s, "0X", 2) == 0) && (hex = 1))
+	if ((ft_strncmp(*s, "0x", 2) == 0 ||
+		ft_strncmp(*s, "0X", 2) == 0) && (hex = 1))
 		*s += 2;
 	else if (**s == '+' || **s == '-')
 		*s += 1;
@@ -103,7 +104,7 @@ int		tok_func_number(char **s)
 	return (n ? 0 : 1);
 }
 
-int		tok_func_reg_nbr(char **s)
+int			tok_func_reg_nbr(char **s)
 {
 	char	*p;
 	char	*t;

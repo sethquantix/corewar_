@@ -13,7 +13,7 @@
 #include "corewar.h"
 #include "gr_vm_internals.h"
 
-void	set_sdl_attributes()
+void	set_sdl_attributes(void)
 {
 	SDL_Init(SDL_INIT_VIDEO);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
@@ -43,7 +43,7 @@ void	load_noise(t_gr_vm *cxt)
 
 GLuint	gen_board_tex(void)
 {
-	GLuint 	id;
+	GLuint	id;
 
 	glActiveTexture(GL_TEXTURE3);
 	glGenTextures(1, &id);

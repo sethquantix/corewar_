@@ -23,7 +23,7 @@ void		quit_handler(void *data, t_gr_vm *vm, SDL_Event *e)
 void		mouse_button_handler(void *data, t_gr_vm *vm, SDL_Event *e)
 {
 	int		i;
-	
+
 	i = 0;
 	while (vm->keys && i < vm->nkeys)
 	{
@@ -71,11 +71,11 @@ void		key_handler(void *data, t_gr_vm *vm, SDL_Event *e)
 
 t_handler	get_handler(int type)
 {
-	t_event	events[] = {
-		{SDL_QUIT, quit_handler}, {SDL_MOUSEBUTTONDOWN, mouse_button_handler},
-		{SDL_MOUSEBUTTONUP, mouse_button_handler}, {SDL_KEYDOWN, key_handler},
-		{SDL_KEYUP, key_handler}, {SDL_MOUSEMOTION, mouse_move_handler}, {0, 0}};
-	int		i;
+	static t_event	events[] = {
+	{SDL_QUIT, quit_handler}, {SDL_MOUSEBUTTONDOWN, mouse_button_handler},
+	{SDL_MOUSEBUTTONUP, mouse_button_handler}, {SDL_KEYDOWN, key_handler},
+	{SDL_KEYUP, key_handler}, {SDL_MOUSEMOTION, mouse_move_handler}, {0, 0}};
+	int				i;
 
 	i = 0;
 	while (events[i].handler)

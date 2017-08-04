@@ -14,7 +14,7 @@
 
 static int	check(t_proc *p)
 {
-	int 	die;
+	int		die;
 
 	die = p->arena->cycles - p->last_live > p->arena->ctd ? 1 : 0;
 	if (die && (p->arena->verbose_lvl & V_LVL_DEATH))

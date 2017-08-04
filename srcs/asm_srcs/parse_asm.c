@@ -15,7 +15,7 @@
 char	*getfile(char *file)
 {
 	int			fd;
-	int 		len;
+	int			len;
 	char		*line;
 	char		*source;
 	struct stat	stat_;
@@ -35,25 +35,34 @@ char	*getfile(char *file)
 	return (source);
 }
 
-char 	*err(char *format, ...)
+char	*err(int index, ...)
 {
+	static const char	*tab[] = {
+		"Invalid argument",
+		"Unexpected token %s : \"%s\"",
+		"Unexpected symbol \"%.1s\"",
+		"Error : %s : File too small to be a champion.\n",
+		"Error : %s : This does not appear to be a champion.\n",
+		"Error : %s : Corrupted source (size doesn't match (%zu))\n",
+		"Can't open %s for writing\n"
+	};
 	va_list va;
-	char 	*e;
+	char	*e;
 
-	va_start(va, format);
+	va_start(va, index);
 	e = NULL;
-	ft_vasprintf(&e, format, va);
+	ft_vasprintf(&e, tab[index], va);
 	va_end(va);
 	return (e);
 }
 
-char 	*get_err(t_parser *p, char *ret, int *c)
+char	*get_err(t_parser *p, char *ret, int *c)
 {
 	t_expr	*expr;
 	t_list	*stack;
 	t_tok	*tok;
-	char 	*t;
-	char 	*e;
+	char	*t;
+	char	*e;
 
 	stack = p->err;
 	tok = stack->content;
@@ -62,32 +71,35 @@ char 	*get_err(t_parser *p, char *ret, int *c)
 	{
 		*c += ((t_tok *)ft_lstend(stack)->content)->pos - ret;
 		ft_lstdel(&stack, ft_del);
-		return (err("Invalid argument"));
+		return (err(0));
 	}
 	ft_lstdel(&stack, ft_del);
 	t = parser_getl(ret);
 	if ((e = run_parser(p, t, "EXPR", &expr)) == NULL)
 	{
-		e = err("Unexpected token %s : \"%s\"", expr->rule, expr->expr);
+		e = err(1, expr->rule, expr->expr);
 		parser_clear_expr(&expr);
 		free(t);
 		return (e);
 	}
 	free(t);
-	return (err("Unexpected symbol \"%.1s\"", ret));
+	return (err(2, ret));
 }
 
 void	*compile_error(t_parser *p, char *file, char *source, char *ret)
 {
-	int 	l;
-	int 	c;
-	char 	*s;
-	char 	*err;
+	int		l;
+	int		c;
+	char	*s;
+	char	*err;
 
 	parser_get_pos(ret, source, &l, &c);
 	s = parser_getl(ret - c + 1);
 	err = get_err(p, ret, &c);
-	ft_dprintf(2, "%s:%d:%d: %serror:%s %s\n", file, l, c, COLOR_RED, COLOR_END, err);
+	ft_dprintf(2, "%s:%d:%d: %serror:%s %s\n", file, l,
+		c, COLOR_RED, COLOR_END, err);
+	ft_dprintf(2, "\t%s\n", s);
+	ft_dprintf(2, "\t%s%.*s%s\n", COLOR_GREEN, c, "^", COLOR_END);
 	free(err);
 	err = s;
 	while (ft_iswhite(*err))
@@ -104,14 +116,14 @@ void	*compile_error(t_parser *p, char *file, char *source, char *ret)
 t_expr	*parse_asm(t_parser *p, char *file, char **source)
 {
 	t_expr		*expr;
-	char 		*s;
+	char		*s;
 	char		*ret;
 	int			err;
 
 	if ((*source = getfile(file)) == NULL || *source == (void *)-1)
 	{
-		ft_dprintf(2, *source ? "File %s is too heavy for a corewar champion\n" :
-			"Can't read file %s\n", file);
+		ft_dprintf(2, *source ? "File %s is too heavy for a corewar champion\n"
+			: "Can't read file %s\n", file);
 		if (*source)
 			*source = 0;
 		return (NULL);

@@ -45,7 +45,7 @@ static void	set_opt(t_env *e, t_expr **expr)
 		die(EXIT_FAILURE, "error : unsupported combination of options\n");
 }
 
-static void read_path(t_env *e, t_expr **expr)
+static void	read_path(t_env *e, t_expr **expr)
 {
 	char	*file;
 
@@ -53,7 +53,7 @@ static void read_path(t_env *e, t_expr **expr)
 	ft_pushback((void **)&e->files, sizeof(char *), e->n_file++, &file);
 }
 
-void	read_opts(t_env *e, t_expr *expr)
+void		read_opts(t_env *e, t_expr *expr)
 {
 	const char	*s[] = {"PATH", "OPTION_A", "OPTION_X", "OPTION_C",
 		"OPTION_D", 0};

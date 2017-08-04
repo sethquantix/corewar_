@@ -16,7 +16,7 @@ static int	add_key(t_key **keys, int keycode, t_f_key press, t_f_key hold)
 {
 	static int		n = 0;
 	static t_key	**p = NULL;
-	t_key	key;
+	t_key			key;
 
 	if (p != keys)
 	{

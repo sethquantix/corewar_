@@ -52,7 +52,7 @@ void				write_ops(t_deco *all)
 	tmp = all->lst;
 	while (tmp)
 	{
-		op = op_tab[tmp->opcode - 1];
+		op = g_op_tab[tmp->opcode - 1];
 		write_label_ins(all, tmp, op.name);
 		i = 0;
 		while (i < op.argc)

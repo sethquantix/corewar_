@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
- #include "corewar.h"
+#include "corewar.h"
 
-void	update_mem(uint32_t	*mem)
+void	update_mem(uint32_t *mem)
 {
 	int			i;
 	uint32_t	o;
@@ -32,7 +32,7 @@ void	update_mem(uint32_t	*mem)
 
 int		loop(t_arena *a)
 {
-	int 		i;
+	int			i;
 
 	i = a->proc_count - 1;
 	update_mem(a->mem);
@@ -83,7 +83,7 @@ int		usage(char *s)
 void 	winner(t_arena *arena)
 {
 	int		i;
-	int 	w;
+	int		w;
 
 	i = 0;
 	w = -1;

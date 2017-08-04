@@ -26,7 +26,7 @@ int			check_op(char *file, t_deco *all, int iter)
 	if (!(node = (t_dec_op *)ft_memalloc(sizeof(t_dec_op))))
 		die(EXIT_FAILURE, "Malloc failed");
 	node->opcode = file[0];
-	op = op_tab[node->opcode - 1];
+	op = g_op_tab[node->opcode - 1];
 	ret = op.octal ? 2 : 1;
 	ret == 2 ? node->octal = 1 : 0;
 	node->addr = iter;

@@ -40,7 +40,7 @@ int					set_param_no_octal(char *file, t_dec_op *node)
 	t_op			op;
 	int				iter;
 
-	op = op_tab[node->opcode - 1];
+	op = g_op_tab[node->opcode - 1];
 	iter = 0;
 	if (op.argc)
 	{
@@ -69,7 +69,7 @@ int					set_param_with_octal(char *file, t_dec_op *node)
 	int				i;
 	int				iter;
 
-	op = op_tab[node->opcode - 1];
+	op = g_op_tab[node->opcode - 1];
 	sizes[2] = op.dir_size;
 	iter = 1;
 	i = 0;

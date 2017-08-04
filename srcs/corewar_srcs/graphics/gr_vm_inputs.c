@@ -32,8 +32,8 @@ void		speed(void *data, t_gr_vm *vm, t_key *key)
 
 void		toggle_opt(void *data, t_gr_vm *vm, t_key *key)
 {
-	const int 	opts[] = { SDLK_SLASH, SDLK_r, SDLK_BACKSLASH };
-	int 		i;
+	const int	opts[] = { SDLK_SLASH, SDLK_r, SDLK_BACKSLASH };
+	int			i;
 
 	(void)data;
 	i = 0;

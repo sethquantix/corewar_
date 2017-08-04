@@ -9,7 +9,7 @@ include_directories(
 	includes
 	includes/asm
 	includes/corewar
-c	includes/corewar/graphics
+	includes/corewar/graphics
 	includes/corewar/internals
 	lib/soil2/incs
 	lib/libft

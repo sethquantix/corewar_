@@ -15,7 +15,7 @@
 static GLuint 	build_program(const char *vs, const char *fs)
 {
 	t_gl_shader	shaders[2];
-	GLuint 		program;
+	GLuint		program;
 
 	shaders[0].file = ft_strdup(vs);
 	shaders[0].type = GL_VERTEX_SHADER;
@@ -27,12 +27,12 @@ static GLuint 	build_program(const char *vs, const char *fs)
 	return (program);
 }
 
-void 			init_gl(t_gr_vm *cxt, t_cam *cam)
+void			init_gl(t_gr_vm *cxt, t_cam *cam)
 {
 	const char 	*shaders[][2] = {
-			{"assets/shaders/vertex.shader", "assets/shaders/frag.shader"},
-			{"assets/shaders/vertex_board.shader",
-			 "assets/shaders/frag_board.shader"}
+		{"assets/shaders/vertex.shader", "assets/shaders/frag.shader"},
+		{"assets/shaders/vertex_board.shader",
+		 "assets/shaders/frag_board.shader"}
 	};
 
 	glewInit();

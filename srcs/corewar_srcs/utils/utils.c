@@ -20,6 +20,24 @@ header_t	empty_head(void)
 	return (head);
 }
 
+//<<<<<<< HEAD:srcs/corewar_srcs/utils.c
+//int			err(int index, ...)
+//{
+//	static const char	*tab[] = {
+//		"Invalid argument",
+//		"Unexpected token %s : \"%s\"",
+//		"Unexpected symbol \"%.1s\"",
+//		"Error : %s : File too small to be a champion.\n",
+//		"Error : %s : This does not appear to be a champion.\n",
+//		"Error : %s : Corrupted source (size doesn't match (%zu))\n",
+//		"Can't open %s for writing\n",
+//	};
+//	va_list		va;
+//
+//	va_start(va, index);
+//	ft_vadprintf(2, tab[index], va);
+//=======
+
 int		err(int level, const char *format, ...)
 {
 	const int	colors[2][3] = {{4, 1, 0}, {5, 0, 0}};
@@ -35,7 +53,7 @@ int		err(int level, const char *format, ...)
 	return (-1);
 }
 
-void	die(int exit_status, const char *format, ...)
+void		die(int exit_status, const char *format, ...)
 {
 	va_list	va;
 
@@ -43,9 +61,9 @@ void	die(int exit_status, const char *format, ...)
 	ft_vadprintf(2, format, va);
 	va_end(va);
 	exit(exit_status);
-} 
+}
 
-void	dump(uint8_t mem[], int mod)
+void		dump(uint8_t mem[], int mod)
 {
 	int		i;
 
