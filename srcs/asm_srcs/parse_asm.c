@@ -12,7 +12,7 @@
 
 #include "asm.h"
 
-char	*getfile(char *file)
+static char	*getfile(char *file)
 {
 	int			fd;
 	int			len;
@@ -35,58 +35,35 @@ char	*getfile(char *file)
 	return (source);
 }
 
-char	*err(int index, ...)
-{
-	static const char	*tab[] = {
-		"Invalid argument",
-		"Unexpected token %s : \"%s\"",
-		"Unexpected symbol \"%.1s\"",
-		"Error : %s : File too small to be a champion.\n",
-		"Error : %s : This does not appear to be a champion.\n",
-		"Error : %s : Corrupted source (size doesn't match (%zu))\n",
-		"Can't open %s for writing\n"
-	};
-	va_list va;
-	char	*e;
-
-	va_start(va, index);
-	e = NULL;
-	ft_vasprintf(&e, tab[index], va);
-	va_end(va);
-	return (e);
-}
-
-char	*get_err(t_parser *p, char *ret, int *c)
+static char	*get_err(t_parser *p, char *ret, int *c)
 {
 	t_expr	*expr;
 	t_list	*stack;
-	t_tok	*tok;
 	char	*t;
 	char	*e;
 
 	stack = p->err;
-	tok = stack->content;
 	p->err = NULL;
-	if (tok->pos == ret)
+	if (((t_tok *)stack->content)->pos == ret)
 	{
 		*c += ((t_tok *)ft_lstend(stack)->content)->pos - ret;
 		ft_lstdel(&stack, ft_del);
-		return (err(0));
+		return (err(ERR_INV_ARG));
 	}
 	ft_lstdel(&stack, ft_del);
 	t = parser_getl(ret);
 	if ((e = run_parser(p, t, "EXPR", &expr)) == NULL)
 	{
-		e = err(1, expr->rule, expr->expr);
+		e = err(ERR_BAD_TOK, expr->rule, expr->expr);
 		parser_clear_expr(&expr);
 		free(t);
 		return (e);
 	}
 	free(t);
-	return (err(2, ret));
+	return (err(ERR_BAD_SYM, ret));
 }
 
-void	*compile_error(t_parser *p, char *file, char *source, char *ret)
+static void	*compile_error(t_parser *p, char *file, char *source, char *ret)
 {
 	int		l;
 	int		c;
@@ -98,9 +75,6 @@ void	*compile_error(t_parser *p, char *file, char *source, char *ret)
 	err = get_err(p, ret, &c);
 	ft_dprintf(2, "%s:%d:%d: %serror:%s %s\n", file, l,
 		c, COLOR_RED, COLOR_END, err);
-	ft_dprintf(2, "\t%s\n", s);
-	ft_dprintf(2, "\t%s%.*s%s\n", COLOR_GREEN, c, "^", COLOR_END);
-	free(err);
 	err = s;
 	while (ft_iswhite(*err))
 	{
@@ -113,7 +87,18 @@ void	*compile_error(t_parser *p, char *file, char *source, char *ret)
 	return (NULL);
 }
 
-t_expr	*parse_asm(t_parser *p, char *file, char **source)
+static void	print_err(t_expr **expr, char *file, int err)
+{
+	if (err)
+	{
+		parser_clear_expr(expr);
+		ft_printf("compiling %s : %sFAILURE !%s\n", file, COLOR_RED, COLOR_END);
+		err >= 20 ? ft_printf("Too many errors ! (stopped at 20)\n\n") :
+			ft_printf("%d errors\n\n", err);
+	}
+}
+
+t_expr		*parse_asm(t_parser *p, char *file, char **source)
 {
 	t_expr		*expr;
 	char		*s;
@@ -124,8 +109,7 @@ t_expr	*parse_asm(t_parser *p, char *file, char **source)
 	{
 		ft_dprintf(2, *source ? "File %s is too heavy for a corewar champion\n"
 			: "Can't read file %s\n", file);
-		if (*source)
-			*source = 0;
+		(*source) ? *source = 0 : 0;
 		return (NULL);
 	}
 	err = 0;
@@ -139,12 +123,6 @@ t_expr	*parse_asm(t_parser *p, char *file, char **source)
 		expr = NULL;
 		s = ft_strchr(ret, '\n');
 	}
-	if (err)
-	{
-		parser_clear_expr(&expr);
-		ft_printf("compiling %s : %sFAILURE !%s\n", file, COLOR_RED, COLOR_END);
-		err >= 20 ? ft_printf("Too many errors ! (stopped at 20)\n\n") :
-			ft_printf("%d errors\n\n", err);
-	}
+	print_err(&expr, file, err);
 	return (err ? NULL : expr);
 }

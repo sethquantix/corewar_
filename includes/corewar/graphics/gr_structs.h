@@ -6,7 +6,7 @@
 /*   By: cchaumar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/06 12:30:05 by cchaumar          #+#    #+#             */
-/*   Updated: 2017/08/01 08:10:35 by cchaumar         ###   ########.fr       */
+/*   Updated: 2017/08/04 08:47:00 by tsedigi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define SELECT_PROC	1
 # define SELECT_REG		2
 
-typedef enum 	e_faces
+typedef enum		e_faces
 {
 	F_DOWN,
 	F_UP,
@@ -34,93 +34,93 @@ typedef enum 	e_faces
 	F_RIGHT,
 	F_FRONT,
 	F_BACK
-}				t_faces;
+}					t_faces;
 
-typedef struct	s_cam
+typedef struct		s_cam
 {
-	t_vec4		pos;
-	t_mat		m;
-	int			x;
-	int			y;
-}				t_cam;
+	t_vec4			pos;
+	t_mat			m;
+	int				x;
+	int				y;
+}					t_cam;
 
-typedef struct 	s_pos
+typedef struct		s_pos
 {
-	SDL_Rect	p;
-	SDL_Color	c;
-}				t_pos;
+	SDL_Rect		p;
+	SDL_Color		c;
+}					t_pos;
 
-typedef struct s_style
+typedef struct		s_style
 {
-    SDL_Color   c;
-    TTF_Font    *font;
-}               t_style;
+	SDL_Color		c;
+	TTF_Font		*font;
+}					t_style;
 
-typedef struct  s_text_p
+typedef struct		s_text_p
 {
-    SDL_Rect    pos;
-    t_style     *styles;
-    int         style;
-    int         nstyle;
-}               t_text_p;
+	SDL_Rect		pos;
+	t_style			*styles;
+	int				style;
+	int				nstyle;
+}					t_text_p;
 
-typedef struct 	s_cursor
+typedef struct		s_cursor
 {
-	int			player;
-	int 		proc;
-	int 		pos;
-	int			reg;
-	t_vec4		player_box;
-	t_vec4		proc_box;
-	t_vec4		reg_box;
-}				t_cursor;
+	int				player;
+	int				proc;
+	int				pos;
+	int				reg;
+	t_vec4			player_box;
+	t_vec4			proc_box;
+	t_vec4			reg_box;
+}					t_cursor;
 
-typedef struct	s_gr_vm
+typedef struct		s_gr_vm
 {
 	SDL_Window		*arena;
 	SDL_Window		*UI;
-    SDL_Surface     *screen;
+	SDL_Surface		*screen;
 	SDL_GLContext	arena_context;
 	GLuint			program;
 	GLuint			program_board;
 	GLuint			matVBO;
 	GLuint			valVBO;
-	GLuint 			arenaVBO;
+	GLuint			arenaVBO;
 	GLuint			vao;
-	GLuint 			vao_board;
-	GLuint 			glyphs;
+	GLuint			vao_board;
+	GLuint			glyphs;
 	GLuint			diffuseTexture;
-	GLuint 			board;
+	GLuint			board;
 	GLfloat			model[MEM_SIZE][9];
-    float           scale[MEM_SIZE];
-	int 			values[MEM_SIZE];
+	float			scale[MEM_SIZE];
+	int				values[MEM_SIZE];
 	int				anim42;
 	char			text42[4 * 64 * 64];
 	t_cam			camera;
-	int 			opts;
+	int				opts;
 	struct s_key	*keys;
 	t_cursor		cursor;
 	int				nkeys;
 	int				run;
-	int 			cps;
+	int				cps;
 	int				time;
 	t_text_p		sst;
-}				t_gr_vm;
+}					t_gr_vm;
 
-typedef struct	s_key
+typedef struct		s_key
 {
-	int			keycode;
-	int			pressed;
-	t_f_key		press;
-	t_f_key		hold;
-	int			x;
-	int			y;
-}				t_key;
+	int				keycode;
+	int				pressed;
+	t_f_key			press;
+	t_f_key			hold;
+	int				x;
+	int				y;
+}					t_key;
 
-typedef struct	s_event
+typedef struct		s_event
 {
-	int			sdl_event_type;
-	t_handler	handler;
-}				t_event;
+	int				sdl_event_type;
+	t_handler		handler;
+}					t_event;
 
 #endif

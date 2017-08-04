@@ -14,6 +14,7 @@
 # define OP_H
 
 # define MAX_EXP_ARGS			4
+
 /*
 ** Toutes les tailles sont en octets.
 ** On part du principe qu'un int fait 32 bits. Est-ce vrai chez vous ?
@@ -58,10 +59,6 @@
 # define NBR_LIVE				21
 # define MAX_CHECKS				10
 
-/*
-**
-*/
-
 # define PROG_NAME_LENGTH		(128)
 # define COMMENT_LENGTH			(2048)
 # define COREWAR_EXEC_MAGIC		0x00ea83f3
@@ -72,13 +69,13 @@ typedef char	t_arg_type;
 # define T_DIR					0x02
 # define T_IND					0x04
 
-typedef struct		header_s
+typedef struct		s_header
 {
 	unsigned int	magic;
 	char			prog_name[PROG_NAME_LENGTH + 1];
 	unsigned int	prog_size;
 	char			prog_desc[COMMENT_LENGTH + 1];
-}					header_t;
+}					t_header;
 
 typedef struct		s_op
 {

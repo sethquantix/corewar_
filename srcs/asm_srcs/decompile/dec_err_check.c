@@ -32,7 +32,7 @@ int	err_param(char *src)
 	return (fd);
 }
 
-int	invalid_header(header_t *head)
+int	invalid_header(t_header *head)
 {
 	if (!head)
 	{

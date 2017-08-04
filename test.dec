@@ -1,0 +1,151 @@
+.name          "Douceur"
+.comment       "DA WARUDO ORAORAORAORAORAORAORAORAORAORAORAORAORA"
+
+label0:
+        st              r1, 7
+        ld              %323, r1
+        ld              %252645135, r9
+        st              r2, :label0
+        sti             r2, %:label0, %:label0
+        sti             r1, %:label0, %:label0
+        sti             r1, %:label0, %:label0
+        sti             r1, %:label0, %:label0
+        sti             r1, %:label0, %:label0
+        sti             r1, %:label0, %:label0
+        sti             r1, %:label0, %:label0
+        sti             r1, %:label0, %:label0
+        sti             r1, %:label0, %:label0
+        sti             r1, %:label0, %:label0
+        sti             r1, %:label0, %:label0
+        sti             r1, %:label0, %:label0
+        ld              %17432558, r15
+        ld              %42991616, r16
+        ld              %-255, r10
+        ld              %0, r2
+        live            %12345
+        fork            %:label1
+
+label2:
+        st              r9, -9
+        st              r9, -12
+        st              r9, -23
+        st              r9, -35
+        st              r9, -47
+        st              r9, -59
+        st              r9, -83
+        st              r9, -95
+        st              r9, -119
+        st              r9, -131
+        st              r9, -155
+        st              r9, -167
+        st              r9, -179
+        st              r9, -191
+        st              r9, -203
+        st              r9, -215
+        st              r9, -159
+        st              r9, -227
+        st              r9, -178
+        st              r9, :label0
+        st              r9, -251
+        st              r9, -263
+        st              r15, -300
+        st              r16, -311
+        st              r1, -320
+        st              r10, -329
+        st              r1, -335
+        st              r10, -344
+        live            %12345
+        zjmp            %:label2
+
+label1:
+        live            %12345
+        fork            %:label3
+
+label6:
+        live            %12345
+        fork            %:label4
+        live            %12345
+        fork            %:label5
+        zjmp            %:label6
+
+label5:
+        live            %12345
+        live            %12345
+        live            %12345
+        live            %12345
+        zjmp            %:label5
+
+label3:
+        live            %12345
+        ldi             %0, %:label5, r4
+        sti             r1, %:label0, %:label0
+        ldi             %0, %:label7, r5
+        zjmp            %:label8
+
+label4:
+        live            %12345
+        ldi             %:label9, %:label8, r2
+
+label9:
+        ldi             %0, %:label5, r4
+        sti             r1, %:label0, %:label0
+        ldi             %0, %:label7, r5
+        st              r5, 500
+        zjmp            %450
+
+label7:
+        st              r4, 256
+
+label8:
+        ldi             %:label10, %0, r2
+
+label10:
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        st              r2, 256
+        live            %12345

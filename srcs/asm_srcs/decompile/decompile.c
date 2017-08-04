@@ -44,7 +44,7 @@ void			decompile(char *src)
 	ft_bzero((void *)&all, sizeof(t_deco));
 	if ((all.fd = err_param(src)) == -1)
 		return ;
-	if (read(all.fd, &all.head, sizeof(header_t)) == -1)
+	if (read(all.fd, &all.head, sizeof(t_header)) == -1)
 		die(EXIT_FAILURE, "Read failed");
 	ft_bzero(file, CHAMP_MAX_SIZE + 1);
 	if (invalid_header(&all.head))

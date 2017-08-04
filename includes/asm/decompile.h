@@ -33,7 +33,7 @@ typedef struct		s_dec_op
 
 typedef struct		s_deco
 {
-	header_t		head;
+	t_header		head;
 	int				fd;
 	int				lbl;
 	t_dec_op		*lst;
@@ -41,7 +41,7 @@ typedef struct		s_deco
 
 void				decompile(char *src);
 int					err_param(char *src);
-int					invalid_header(header_t *head);
+int					invalid_header(t_header *head);
 int					check_op(char *file, t_deco *all, int iter);
 int					set_param_no_octal(char *file, t_dec_op *node);
 int					set_param_with_octal(char *file, t_dec_op *node);

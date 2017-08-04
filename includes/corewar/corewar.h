@@ -34,7 +34,7 @@ void		read_args(t_expr *expr, t_arena *a);
 void		init(t_arena *a);
 
 void		check_process(t_arena *a);
-int 		cmp_id(int *ref, t_champ *data);
+int			cmp_id(int *ref, t_champ *data);
 int			check_set(t_champ *champs, int count, int n);
 
 t_proc		*add_proc(t_arena *a, t_champ *c, int pc);
@@ -63,11 +63,11 @@ void		i_lfork(t_proc *proc);
 t_val		val(void *p, uint8_t s);
 int			mem_mod(int addr);
 int			idx_mod(int pc, int addr);
-void 		winner(t_arena *arena);
+void		winner(t_arena *arena);
 void		write_mem(int addr, t_val v, uint8_t mem[]);
 void		read_mem(int addr, t_val v, uint8_t mem[]);
 void		set_mem(uint32_t *mem, int addr, int size, int player);
-int 		get_value(t_proc *p, int *v, int index, t_type type);
+int			get_value(t_proc *p, int *v, int index, t_type type);
 
 int			err(int level, const char *format, ...);
 void		die(int exit_status, const char *format, ...);

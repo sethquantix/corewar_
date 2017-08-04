@@ -1,8 +1,8 @@
-# Install script for directory: /Users/cchaumar/Documents/42projects/working/_corewar
+# Install script for directory: /Users/tsedigi/Desktop/on_work/corewar
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/Users/cchaumar/.brew")
+  set(CMAKE_INSTALL_PREFIX "/Users/tsedigi/.brew")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -35,5 +35,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/cchaumar/Documents/42projects/working/_corewar/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/tsedigi/Desktop/on_work/corewar/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
