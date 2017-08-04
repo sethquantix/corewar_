@@ -1,8 +1,8 @@
 libs
 *.o
 **/*.o
-asm
-corewar
+./asm
+./corewar
 .DS_Store
 CMakeCache.txt
 CMakeFiles

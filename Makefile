@@ -1000,6 +1000,33 @@ srcs/corewar_srcs/core/instructions/process.c.s:
 	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/instructions/process.c.s
 .PHONY : srcs/corewar_srcs/core/instructions/process.c.s
 
+srcs/corewar_srcs/core/instructions/process_read.o: srcs/corewar_srcs/core/instructions/process_read.c.o
+
+.PHONY : srcs/corewar_srcs/core/instructions/process_read.o
+
+# target to build an object file
+srcs/corewar_srcs/core/instructions/process_read.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/instructions/process_read.c.o
+.PHONY : srcs/corewar_srcs/core/instructions/process_read.c.o
+
+srcs/corewar_srcs/core/instructions/process_read.i: srcs/corewar_srcs/core/instructions/process_read.c.i
+
+.PHONY : srcs/corewar_srcs/core/instructions/process_read.i
+
+# target to preprocess a source file
+srcs/corewar_srcs/core/instructions/process_read.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/instructions/process_read.c.i
+.PHONY : srcs/corewar_srcs/core/instructions/process_read.c.i
+
+srcs/corewar_srcs/core/instructions/process_read.s: srcs/corewar_srcs/core/instructions/process_read.c.s
+
+.PHONY : srcs/corewar_srcs/core/instructions/process_read.s
+
+# target to generate assembly for a file
+srcs/corewar_srcs/core/instructions/process_read.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/instructions/process_read.c.s
+.PHONY : srcs/corewar_srcs/core/instructions/process_read.c.s
+
 srcs/corewar_srcs/core/memory/mem.o: srcs/corewar_srcs/core/memory/mem.c.o
 
 .PHONY : srcs/corewar_srcs/core/memory/mem.o
@@ -1243,6 +1270,60 @@ srcs/corewar_srcs/graphics/gr_gen_tex.c.s:
 	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_gen_tex.c.s
 .PHONY : srcs/corewar_srcs/graphics/gr_gen_tex.c.s
 
+srcs/corewar_srcs/graphics/gr_gl_init_vbos.o: srcs/corewar_srcs/graphics/gr_gl_init_vbos.c.o
+
+.PHONY : srcs/corewar_srcs/graphics/gr_gl_init_vbos.o
+
+# target to build an object file
+srcs/corewar_srcs/graphics/gr_gl_init_vbos.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_gl_init_vbos.c.o
+.PHONY : srcs/corewar_srcs/graphics/gr_gl_init_vbos.c.o
+
+srcs/corewar_srcs/graphics/gr_gl_init_vbos.i: srcs/corewar_srcs/graphics/gr_gl_init_vbos.c.i
+
+.PHONY : srcs/corewar_srcs/graphics/gr_gl_init_vbos.i
+
+# target to preprocess a source file
+srcs/corewar_srcs/graphics/gr_gl_init_vbos.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_gl_init_vbos.c.i
+.PHONY : srcs/corewar_srcs/graphics/gr_gl_init_vbos.c.i
+
+srcs/corewar_srcs/graphics/gr_gl_init_vbos.s: srcs/corewar_srcs/graphics/gr_gl_init_vbos.c.s
+
+.PHONY : srcs/corewar_srcs/graphics/gr_gl_init_vbos.s
+
+# target to generate assembly for a file
+srcs/corewar_srcs/graphics/gr_gl_init_vbos.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_gl_init_vbos.c.s
+.PHONY : srcs/corewar_srcs/graphics/gr_gl_init_vbos.c.s
+
+srcs/corewar_srcs/graphics/gr_gl_update.o: srcs/corewar_srcs/graphics/gr_gl_update.c.o
+
+.PHONY : srcs/corewar_srcs/graphics/gr_gl_update.o
+
+# target to build an object file
+srcs/corewar_srcs/graphics/gr_gl_update.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_gl_update.c.o
+.PHONY : srcs/corewar_srcs/graphics/gr_gl_update.c.o
+
+srcs/corewar_srcs/graphics/gr_gl_update.i: srcs/corewar_srcs/graphics/gr_gl_update.c.i
+
+.PHONY : srcs/corewar_srcs/graphics/gr_gl_update.i
+
+# target to preprocess a source file
+srcs/corewar_srcs/graphics/gr_gl_update.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_gl_update.c.i
+.PHONY : srcs/corewar_srcs/graphics/gr_gl_update.c.i
+
+srcs/corewar_srcs/graphics/gr_gl_update.s: srcs/corewar_srcs/graphics/gr_gl_update.c.s
+
+.PHONY : srcs/corewar_srcs/graphics/gr_gl_update.s
+
+# target to generate assembly for a file
+srcs/corewar_srcs/graphics/gr_gl_update.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_gl_update.c.s
+.PHONY : srcs/corewar_srcs/graphics/gr_gl_update.c.s
+
 srcs/corewar_srcs/graphics/gr_vm_camera_handling.o: srcs/corewar_srcs/graphics/gr_vm_camera_handling.c.o
 
 .PHONY : srcs/corewar_srcs/graphics/gr_vm_camera_handling.o
@@ -1296,6 +1377,33 @@ srcs/corewar_srcs/graphics/gr_vm_camera_handling_rot.s: srcs/corewar_srcs/graphi
 srcs/corewar_srcs/graphics/gr_vm_camera_handling_rot.c.s:
 	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_camera_handling_rot.c.s
 .PHONY : srcs/corewar_srcs/graphics/gr_vm_camera_handling_rot.c.s
+
+srcs/corewar_srcs/graphics/gr_vm_clear.o: srcs/corewar_srcs/graphics/gr_vm_clear.c.o
+
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_clear.o
+
+# target to build an object file
+srcs/corewar_srcs/graphics/gr_vm_clear.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_clear.c.o
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_clear.c.o
+
+srcs/corewar_srcs/graphics/gr_vm_clear.i: srcs/corewar_srcs/graphics/gr_vm_clear.c.i
+
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_clear.i
+
+# target to preprocess a source file
+srcs/corewar_srcs/graphics/gr_vm_clear.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_clear.c.i
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_clear.c.i
+
+srcs/corewar_srcs/graphics/gr_vm_clear.s: srcs/corewar_srcs/graphics/gr_vm_clear.c.s
+
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_clear.s
+
+# target to generate assembly for a file
+srcs/corewar_srcs/graphics/gr_vm_clear.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_clear.c.s
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_clear.c.s
 
 srcs/corewar_srcs/graphics/gr_vm_gl.o: srcs/corewar_srcs/graphics/gr_vm_gl.c.o
 
@@ -1808,6 +1916,9 @@ help:
 	@echo "... srcs/corewar_srcs/core/instructions/process.o"
 	@echo "... srcs/corewar_srcs/core/instructions/process.i"
 	@echo "... srcs/corewar_srcs/core/instructions/process.s"
+	@echo "... srcs/corewar_srcs/core/instructions/process_read.o"
+	@echo "... srcs/corewar_srcs/core/instructions/process_read.i"
+	@echo "... srcs/corewar_srcs/core/instructions/process_read.s"
 	@echo "... srcs/corewar_srcs/core/memory/mem.o"
 	@echo "... srcs/corewar_srcs/core/memory/mem.i"
 	@echo "... srcs/corewar_srcs/core/memory/mem.s"
@@ -1835,12 +1946,21 @@ help:
 	@echo "... srcs/corewar_srcs/graphics/gr_gen_tex.o"
 	@echo "... srcs/corewar_srcs/graphics/gr_gen_tex.i"
 	@echo "... srcs/corewar_srcs/graphics/gr_gen_tex.s"
+	@echo "... srcs/corewar_srcs/graphics/gr_gl_init_vbos.o"
+	@echo "... srcs/corewar_srcs/graphics/gr_gl_init_vbos.i"
+	@echo "... srcs/corewar_srcs/graphics/gr_gl_init_vbos.s"
+	@echo "... srcs/corewar_srcs/graphics/gr_gl_update.o"
+	@echo "... srcs/corewar_srcs/graphics/gr_gl_update.i"
+	@echo "... srcs/corewar_srcs/graphics/gr_gl_update.s"
 	@echo "... srcs/corewar_srcs/graphics/gr_vm_camera_handling.o"
 	@echo "... srcs/corewar_srcs/graphics/gr_vm_camera_handling.i"
 	@echo "... srcs/corewar_srcs/graphics/gr_vm_camera_handling.s"
 	@echo "... srcs/corewar_srcs/graphics/gr_vm_camera_handling_rot.o"
 	@echo "... srcs/corewar_srcs/graphics/gr_vm_camera_handling_rot.i"
 	@echo "... srcs/corewar_srcs/graphics/gr_vm_camera_handling_rot.s"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_clear.o"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_clear.i"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_clear.s"
 	@echo "... srcs/corewar_srcs/graphics/gr_vm_gl.o"
 	@echo "... srcs/corewar_srcs/graphics/gr_vm_gl.i"
 	@echo "... srcs/corewar_srcs/graphics/gr_vm_gl.s"

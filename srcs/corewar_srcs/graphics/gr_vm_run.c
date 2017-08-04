@@ -13,9 +13,9 @@
 #include "corewar.h"
 #include "gr_vm_internals.h"
 
-void		update_name(t_gr_vm *ctx, t_arena *a)
+static void	update_name(t_gr_vm *ctx, t_arena *a)
 {
-	char 		*t;
+	char	*t;
 
 	t = NULL;
 	ft_sprintf(&t, "corewar : %d cycles  -  %d cycles / s",
@@ -24,12 +24,30 @@ void		update_name(t_gr_vm *ctx, t_arena *a)
 	free(t);
 }
 
+static void	render_loop(void *data, t_gr_vm *ctx)
+{
+	void		(*handler)(void *, t_gr_vm *, SDL_Event *);
+	SDL_Event	e;
+	int			i;
+
+	while (SDL_PollEvent(&e))
+		if ((handler = get_handler(e.type)))
+			handler(data, ctx, &e);
+	i = 0;
+	while (i < ctx->nkeys)
+	{
+		if (ctx->keys[i].pressed && ctx->keys[i].hold)
+			ctx->keys[i].hold(data, ctx, ctx->keys + i);
+		i++;
+	}
+	render_opengl(ctx, data);
+	SDL_UpdateWindowSurface(ctx->UI);
+}
+
 void		gr_vm_run(t_vm_loop loop, void *data, t_gr_vm *ctx)
 {
 	SDL_Event	e;
 	int			ticks;
-	void 		(*handler)(void *, t_gr_vm *, SDL_Event *);
-	int			i;
 
 	ticks = SDL_GetTicks();
 	while (SDL_PollEvent(&e))
@@ -38,7 +56,8 @@ void		gr_vm_run(t_vm_loop loop, void *data, t_gr_vm *ctx)
 	while (ctx->run)
 	{
 		update_name(ctx, data);
-		while (ctx->cps > 0 && SDL_GetTicks() - ticks > (1000.0 / (float)ctx->cps))
+		while (ctx->cps > 0 &&
+			SDL_GetTicks() - ticks > (1000.0 / (float)ctx->cps))
 			if (loop(data) == 0)
 			{
 				ctx->cps = -1;
@@ -47,18 +66,7 @@ void		gr_vm_run(t_vm_loop loop, void *data, t_gr_vm *ctx)
 			}
 			else
 				ticks += 1000 / (float)ctx->cps;
-		while (SDL_PollEvent(&e))
-			if ((handler = get_handler(e.type)))
-				handler(data, ctx, &e);
-		i = 0;
-		while (i < ctx->nkeys)
-		{
-			if (ctx->keys[i].pressed && ctx->keys[i].hold)
-				ctx->keys[i].hold(data, ctx, ctx->keys + i);
-			i++;
-		}
-		render_opengl(ctx, data);
-		SDL_UpdateWindowSurface(ctx->UI);
+		render_loop(data, ctx);
 	}
 }
 

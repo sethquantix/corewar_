@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include <corewar.h>
 
 int		tok_func_path(char **s)
 {
@@ -38,7 +38,7 @@ int		tok_func_verbose(char **s)
 		*s = p;
 		return (1);
 	}
-	return (0);{}
+	return (0);
 }
 
 int		tok_func_none(char **s)

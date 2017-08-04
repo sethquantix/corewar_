@@ -15,8 +15,8 @@
 void	i_add(t_proc *proc)
 {
 	int		r1;
-	int 	r2;
-	int 	r3;
+	int		r2;
+	int		r3;
 
 	if (get_value(proc, &r1, 0, V_REFERENCE))
 		return ;
@@ -33,8 +33,8 @@ void	i_add(t_proc *proc)
 void	i_sub(t_proc *proc)
 {
 	int		r1;
-	int 	r2;
-	int 	r3;
+	int		r2;
+	int		r3;
 
 	if (get_value(proc, &r1, 0, V_REFERENCE))
 		return ;
@@ -51,8 +51,8 @@ void	i_sub(t_proc *proc)
 void	i_and(t_proc *proc)
 {
 	int		v1;
-	int 	v2;
-	int 	r;
+	int		v2;
+	int		r;
 
 	if (get_value(proc, &v1, 0, V_VALUE))
 		return ;
@@ -69,8 +69,8 @@ void	i_and(t_proc *proc)
 void	i_or(t_proc *proc)
 {
 	int		v1;
-	int 	v2;
-	int 	r;
+	int		v2;
+	int		r;
 
 	if (get_value(proc, &v1, 0, V_VALUE))
 		return ;
@@ -87,8 +87,8 @@ void	i_or(t_proc *proc)
 void	i_xor(t_proc *proc)
 {
 	int		v1;
-	int 	v2;
-	int 	r;
+	int		v2;
+	int		r;
 
 	if (get_value(proc, &v1, 0, V_VALUE))
 		return ;

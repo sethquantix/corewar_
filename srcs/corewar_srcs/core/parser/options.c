@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include <corewar.h>
 
 void	option_d(t_expr **e, t_arena *a)
 {
@@ -23,9 +23,8 @@ void	option_s(t_expr **e, t_arena *a)
 {
 	a->opts |= S_OPT;
 	*e = (*e)->next;
-	a->dump_cycles = ft_atoi((*e)->expr);	
+	a->dump_cycles = ft_atoi((*e)->expr);
 }
-
 
 void	option_g(t_expr **e, t_arena *a)
 {

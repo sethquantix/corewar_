@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include <corewar.h>
 
 static int	check(t_proc *p)
 {
@@ -23,7 +23,7 @@ static int	check(t_proc *p)
 	if (die)
 	{
 		p->arena->alive--;
-		UNSET_PLAYER(p->arena->mem[p->pc], p->player);
+		proc_set(p, UNSET_PLAYER);
 	}
 	return (die);
 }
@@ -50,7 +50,7 @@ void		check_process(t_arena *a)
 	a->nbr_lives = 0;
 }
 
-int 		cmp_id(int *ref, t_champ *data)
+int			cmp_id(int *ref, t_champ *data)
 {
 	return (*ref == data->id);
 }

@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
-#include "gr_vm_internals.h"
+#include <corewar.h>
+#include <gr_vm_internals.h>
 
-void	info_proc(t_gr_vm *cxt, SDL_Surface *s, t_proc *proc, SDL_Rect pos)
+static void	info_proc(t_gr_vm *cxt, SDL_Surface *s, t_proc *proc, SDL_Rect pos)
 {
 	s = print_text(&cxt->sst, WHITE_MEDIUM, "%3d = 0x%08x", cxt->cursor.reg,
 		proc->reg[cxt->cursor.reg]);
@@ -23,7 +23,7 @@ void	info_proc(t_gr_vm *cxt, SDL_Surface *s, t_proc *proc, SDL_Rect pos)
 	pos = draw_text(cxt->screen, s, pos, 0);
 	cxt->cursor.reg_box = box(pos);
 	s = print_text(&cxt->sst, WHITE_MEDIUM, "(%s) | ",
-				   proc->dead ? "Dead " : "Alive");
+		proc->dead ? "Dead " : "Alive");
 	pos.x -= s->w;
 	pos = draw_text(cxt->screen, s, pos, 0);
 	pos.y += pos.h * 1.5;
@@ -36,22 +36,33 @@ void	info_proc(t_gr_vm *cxt, SDL_Surface *s, t_proc *proc, SDL_Rect pos)
 	draw_text(cxt->screen, s, pos, 0);
 }
 
-void	clean(t_gr_vm *cxt, SDL_Surface *s, SDL_Rect pos)
+static void	proc_content(t_gr_vm *cxt, t_arena *arena, SDL_Surface *s,
+	SDL_Rect pos)
 {
+	static int	cleaned = 1;
+
+	if (cxt->cursor.proc >= 0)
+	{
+		cleaned = 0;
+		info_proc(cxt, s, arena->procs[cxt->cursor.proc], pos);
+		return ;
+	}
+	if (cleaned)
+		return ;
 	pos.x += 1 * pos.w;
 	s = print_text(&cxt->sst, WHITE_MEDIUM, "%40s", " ");
 	pos = draw_text(cxt->screen, s, pos, 0);
 	pos.y += 1.1 * pos.h;
 	ft_bzero(cxt->screen->pixels + 4 * pos.y * BOARD_WIDTH,
 		BOARD_WIDTH * (BOARD_HEIGHT - pos.y) * 4);
+	cleaned = 1;
 }
 
-void	draw_proc(t_gr_vm *cxt, t_arena *arena, SDL_Surface *s)
+static void	draw_proc(t_gr_vm *cxt, t_arena *arena, SDL_Surface *s)
 {
-	const char 	*proc[] = {0, "All", "None"};
+	const char	*proc[] = {0, "All", "None"};
 	SDL_Rect	pos;
-	char 		*p;
-	static int	cleaned = 1;
+	char		*p;
 
 	pos.y = 0.55 * BOARD_HEIGHT;
 	p = cxt->cursor.player == PLAYER_NONE ? ft_strdup("NONE") :
@@ -68,19 +79,10 @@ void	draw_proc(t_gr_vm *cxt, t_arena *arena, SDL_Surface *s)
 	free(p);
 	pos = draw_text(cxt->screen, s, pos, 0);
 	cxt->cursor.proc_box = box(pos);
-	if (cxt->cursor.proc >= 0)
-	{
-		cleaned = 0;
-		info_proc(cxt, s, arena->procs[cxt->cursor.proc], pos);
-	}
-	else if (!cleaned)
-	{
-		clean(cxt, s, pos);
-		cleaned = 1;
-	}
+	proc_content(cxt, arena, s, pos);
 }
 
-void	draw_info(int start, t_gr_vm *cxt, t_arena *arena, SDL_Surface *s)
+static void	draw_info(int start, t_gr_vm *cxt, t_arena *arena, SDL_Surface *s)
 {
 	SDL_Rect	pos;
 
@@ -98,10 +100,10 @@ void	draw_info(int start, t_gr_vm *cxt, t_arena *arena, SDL_Surface *s)
 	pos = draw_text(cxt->screen, s, pos, 0);
 }
 
-void draw_ui(t_gr_vm *cxt, t_arena *arena)
+void		draw_ui(t_gr_vm *cxt, t_arena *arena)
 {
-	static int 	start = 0;
-    SDL_Surface *s;
+	static int	start = 0;
+	SDL_Surface	*s;
 	SDL_Rect	pos;
 
 	pos = (SDL_Rect){0, 0, 0, 0};

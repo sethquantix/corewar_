@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "gr_vm_internals.h"
-#include "corewar.h"
+#include <corewar.h>
+#include <gr_vm_internals.h>
 
 static void	next_proc(t_arena *arena, t_cursor *cursor, int key)
 {
@@ -36,7 +36,7 @@ static void	next_proc(t_arena *arena, t_cursor *cursor, int key)
 				-arena->champs[cursor->player].id - 1)
 			{
 				found = 1;
-				break;
+				break ;
 			}
 	cursor->proc = found || key == SDLK_UP ? i : cursor->proc;
 	cursor->proc = cursor->proc < PROC_NONE ? PROC_NONE : cursor->proc;
@@ -44,7 +44,7 @@ static void	next_proc(t_arena *arena, t_cursor *cursor, int key)
 
 static void	next_player(t_arena *arena, t_cursor *cursor, int key)
 {
-	int 		i;
+	int		i;
 
 	i = cursor->player;
 	if (key == SDLK_UP && --cursor->player < PLAYER_NONE)
@@ -84,7 +84,7 @@ void		select_proc(void *data, t_gr_vm *vm, t_key *key)
 	static void	(*funcs[])(t_arena *, t_cursor *, int) = {
 		move_cursor, move_cursor, next_player, next_player, next_proc,
 		next_proc, next_reg, next_reg};
-	const int 	keycodes[] = {
+	const int	keycodes[] = {
 		SDLK_LEFT, SDLK_RIGHT, SDLK_UP, SDLK_DOWN
 	};
 	int			i;

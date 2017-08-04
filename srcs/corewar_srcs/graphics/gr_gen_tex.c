@@ -15,7 +15,7 @@
 
 static void	add_tex(TTF_Font *font, int v, SDL_Surface **buff)
 {
-	const char 		text[17] = "0123456789ABCDEF";
+	const char		text[17] = "0123456789ABCDEF";
 	const SDL_Color	color = {255, 255, 255, 255};
 
 	buff[v] = TTF_RenderGlyph_Blended(font, text[v], color);
@@ -63,16 +63,6 @@ static void	assemble(SDL_Surface **buff, int l, int r, uint32_t *tex)
 	fill(pad, buff[l], tex);
 	pad += buff[l]->w + 5;
 	fill(pad, buff[r], tex);
-}
-
-static void	clear_surfaces(SDL_Surface **buff)
-{
-	int		i;
-
-	i = 0;
-	while (i < 16)
-		SDL_FreeSurface(buff[i++]);
-	free(buff);
 }
 
 GLuint		gen_texture(const char *font_file)

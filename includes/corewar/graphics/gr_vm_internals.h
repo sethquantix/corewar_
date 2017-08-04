@@ -55,8 +55,15 @@ void		select_proc(void *data, t_gr_vm *vm, t_key *key);
 
 GLuint		gen_texture(const char *font_file);
 void		init_text_p(t_text_p *sst);
-void 		init_gl(t_gr_vm *cxt, t_cam *cam);
-void        draw_ui(t_gr_vm *cxt, t_arena *arena);
+void		init_gl(t_gr_vm *cxt, t_cam *cam);
+void		init_pos(t_gr_vm *cxt);
+GLuint		init_values(void);
+GLuint		init_transfer(void);
+GLuint		init_instancing(void);
+
+void		draw_ui(t_gr_vm *cxt, t_arena *arena);
+void		push_board_uni(t_gr_vm *cxt);
+void		push_uniform(t_gr_vm *cxt);
 
 t_vec4		box(SDL_Rect pos);
 SDL_Surface	*print_text(t_text_p *sst, t_styles style, const char *text, ...);
@@ -64,5 +71,6 @@ SDL_Rect	draw_text(SDL_Surface *dst, SDL_Surface *s, SDL_Rect pos, int al);
 void 		draw_base(t_gr_vm *cxt, t_arena *arena, SDL_Rect *pos,
 	SDL_Surface *s);
 
+void		clear_surfaces(SDL_Surface **buff);
 
 #endif
