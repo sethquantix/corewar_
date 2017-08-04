@@ -78,24 +78,21 @@ typedef struct		s_cursor
 typedef struct		s_gr_vm
 {
 	SDL_Window		*arena;
-	SDL_Window		*UI;
+	SDL_Window		*ui;
 	SDL_Surface		*screen;
 	SDL_GLContext	arena_context;
 	GLuint			program;
 	GLuint			program_board;
-	GLuint			matVBO;
-	GLuint			valVBO;
-	GLuint			arenaVBO;
+	GLuint			mat_vbo;
+	GLuint			val_vbo;
+	GLuint			arena_vbo;
 	GLuint			vao;
 	GLuint			vao_board;
 	GLuint			glyphs;
-	GLuint			diffuseTexture;
+	GLuint			diffuse_texture;
 	GLuint			board;
 	GLfloat			model[MEM_SIZE][9];
 	float			scale[MEM_SIZE];
-	int				values[MEM_SIZE];
-	int				anim42;
-	char			text42[4 * 64 * 64];
 	t_cam			camera;
 	int				opts;
 	struct s_key	*keys;

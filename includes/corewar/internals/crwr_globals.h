@@ -13,8 +13,9 @@
 #ifndef CRWR_GLOBALS_H
 # define CRWR_GLOBALS_H
 
-#include "includes.h"
+# include "includes.h"
 
-extern t_token g_crwr_opts[];
+extern t_token	g_crwr_opts[];
+extern t_op		g_tab[17];
 
 #endif

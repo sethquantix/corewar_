@@ -13,10 +13,10 @@
 #ifndef GR_TYPES_H
 # define GR_TYPES_H
 
-#include "includes.h"
+# include "includes.h"
 
-struct			s_key;
-struct			s_gr_vm;
+struct s_key;
+struct s_gr_vm;
 
 typedef int		(*t_vm_loop)(void *);
 typedef void	(*t_f_key)(void *, struct s_gr_vm *, struct s_key *);

@@ -48,7 +48,7 @@ void		cam_trans_left(void *data, t_gr_vm *vm, t_key *key);
 void		cam_trans_up(void *data, t_gr_vm *vm, t_key *key);
 void		cam_trans_down(void *data, t_gr_vm *vm, t_key *key);
 
-void 		speed(void *data, t_gr_vm *vm, t_key *key);
+void		speed(void *data, t_gr_vm *vm, t_key *key);
 void		toggle_opt(void *data, t_gr_vm *vm, t_key *key);
 void		rotate(t_gr_vm *vm, int relx, int rely);
 void		select_proc(void *data, t_gr_vm *vm, t_key *key);
@@ -68,7 +68,7 @@ void		push_uniform(t_gr_vm *cxt);
 t_vec4		box(SDL_Rect pos);
 SDL_Surface	*print_text(t_text_p *sst, t_styles style, const char *text, ...);
 SDL_Rect	draw_text(SDL_Surface *dst, SDL_Surface *s, SDL_Rect pos, int al);
-void 		draw_base(t_gr_vm *cxt, t_arena *arena, SDL_Rect *pos,
+void		draw_base(t_gr_vm *cxt, t_arena *arena, SDL_Rect *pos,
 	SDL_Surface *s);
 
 void		clear_surfaces(SDL_Surface **buff);

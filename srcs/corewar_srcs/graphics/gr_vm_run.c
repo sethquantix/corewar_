@@ -41,7 +41,7 @@ static void	render_loop(void *data, t_gr_vm *ctx)
 		i++;
 	}
 	render_opengl(ctx, data);
-	SDL_UpdateWindowSurface(ctx->UI);
+	SDL_UpdateWindowSurface(ctx->ui);
 }
 
 void		gr_vm_run(t_vm_loop loop, void *data, t_gr_vm *ctx)

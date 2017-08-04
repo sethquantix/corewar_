@@ -19,7 +19,7 @@
 # define BOARD_HEIGHT	1800
 # define BOARD_WIDTH	3000
 
-typedef enum 	e_fontsize
+typedef enum	e_fontsize
 {
 	SF_SMALL = 60,
 	SF_MEDIUM = 80,
@@ -27,7 +27,7 @@ typedef enum 	e_fontsize
 	SF_HUGE = 320
 }				t_fontsize;
 
-typedef enum    e_styles
+typedef enum	e_styles
 {
 	WHITE_SMALL,
 	WHITE_MEDIUM,
@@ -37,7 +37,7 @@ typedef enum    e_styles
 	P_2MEDIUM,
 	P_3MEDIUM,
 	P_4MEDIUM
-}               t_styles;
+}				t_styles;
 
 typedef enum	e_align
 {

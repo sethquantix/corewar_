@@ -12,7 +12,8 @@
 
 #include "gl_handler.h"
 
-/* TODO
+/*
+** TODO
 ** I need a way to properly do this. I wanna be able to instantiate buffer
 ** relatively to vao (make sense, i guess), with type argument, and fill it
 ** I want this to be flexible and generic, so I guess I depend on knowing
@@ -20,18 +21,7 @@
 ** different parameters ? dunno what to do here
 */
 
-// GLuint	create_buffer(GLuint vao, GLuint type)
-// {
-// 	GLuint	id;
-//
-// 	glBindVertexArray(vao);
-// 	glGenBuffers(1, &id);
-// 	glBindBuffer(type, id);
-// 	glBindVertexArray(0);
-// 	return (id);
-// }
-
-static void	release_shaders(GLuint program, int count, t_gl_shader *shaders)
+static void		release_shaders(GLuint program, int count, t_gl_shader *shaders)
 {
 	int		i;
 

@@ -23,7 +23,6 @@ typedef enum	e_type
 	V_REFERENCE
 }				t_type;
 
-
 typedef struct	s_val
 {
 	void	*p;
@@ -34,12 +33,12 @@ typedef struct	s_champ
 {
 	char		*file_name;
 	uint8_t		*source;
-	header_t	head;
+	t_header	head;
 	int			id;
 	int			num;
 	int			set;
-	int 		nbr_live;
-	int 		last_live;
+	int			nbr_live;
+	int			last_live;
 }				t_champ;
 
 typedef struct	s_proc
@@ -70,15 +69,15 @@ typedef struct	s_arena
 	uint32_t	mem[MEM_SIZE];
 	t_f_add		add_proc;
 	t_f_filter	check;
-	char 		*aff;
+	char		*aff;
 	int			champ_count;
-	int 		proc_count;
+	int			proc_count;
 	int			proc_id;
 	int			ctd;
 	int			last_check;
-	int 		cycles;
+	int			cycles;
 	int			check_cycles;
-	int 		nbr_lives;
+	int			nbr_lives;
 	int			dump_cycles;
 	int			opts;
 	int			alive;

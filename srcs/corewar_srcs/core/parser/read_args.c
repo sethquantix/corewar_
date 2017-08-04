@@ -23,7 +23,7 @@ int				load_source(t_champ *c)
 		return (err(ERR, "[%s] : Error (ERR_UNKNOWN_ERROR)\n", c->file_name));
 	if (file.st_size == 0)
 		return (err(ERR, "[%s] : Error (ERR_BAD_FILE)\n", c->file_name));
-	if (read(fd, &c->head, sizeof(header_t)) != sizeof(header_t))
+	if (read(fd, &c->head, sizeof(t_header)) != sizeof(t_header))
 		return (err(ERR, "[%s] : Error (ERR_TOO_SMALL)\n", c->file_name));
 	ft_endian(&c->head.prog_size, 4);
 	ft_endian(&c->head.magic, 4);

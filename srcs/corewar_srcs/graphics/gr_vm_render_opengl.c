@@ -14,7 +14,7 @@
 #include <gr_vm_internals.h>
 
 static void		update_values(t_gr_vm *cxt, t_arena *a, t_proc *current,
-	uint8_t values[])
+	uint32_t values[])
 {
 	int				i;
 
@@ -42,20 +42,19 @@ static void		update_values(t_gr_vm *cxt, t_arena *a, t_proc *current,
 static void		stream_transform(t_gr_vm *cxt, t_arena *a)
 {
 	static uint32_t	values[MEM_SIZE];
-	int				i;
 	t_proc			*p;
 
 	p = NULL;
 	(cxt->cursor.proc >= 0) ? p = a->procs[cxt->cursor.proc] : 0;
 	update_values(cxt, a, p, values);
 	glBindVertexArray(cxt->vao);
-	glBindBuffer(GL_ARRAY_BUFFER, cxt->matVBO);
+	glBindBuffer(GL_ARRAY_BUFFER, cxt->mat_vbo);
 	glBufferData(GL_ARRAY_BUFFER,
 		MEM_SIZE * 9 * sizeof(float), cxt->model, GL_DYNAMIC_DRAW);
-	glBindBuffer(GL_ARRAY_BUFFER, cxt->valVBO);
+	glBindBuffer(GL_ARRAY_BUFFER, cxt->val_vbo);
 	glBufferData(GL_ARRAY_BUFFER,
 		MEM_SIZE * sizeof(uint32_t), a->mem, GL_DYNAMIC_DRAW);
-	glBindBuffer(GL_ARRAY_BUFFER, cxt->arenaVBO);
+	glBindBuffer(GL_ARRAY_BUFFER, cxt->arena_vbo);
 	glBufferData(GL_ARRAY_BUFFER,
 		MEM_SIZE * sizeof(uint32_t), values, GL_DYNAMIC_DRAW);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);

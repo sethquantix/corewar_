@@ -25,7 +25,7 @@ void		gl_compile_log(GLuint shader, char *name)
 	free(log_info);
 }
 
-int		compile_shader(t_gl_shader *shader)
+int			compile_shader(t_gl_shader *shader)
 {
 	char	*source;
 	GLuint	id;

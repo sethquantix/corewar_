@@ -28,7 +28,7 @@ void		option_v(t_expr **e, t_arena *a);
 void		option_d(t_expr **e, t_arena *a);
 void		option_s(t_expr **e, t_arena *a);
 int			check_set(t_champ *champs, int n, int num);
-header_t	empty_head(void);
+t_header	empty_head(void);
 void		read_args(t_expr *expr, t_arena *a);
 
 void		init(t_arena *a);
@@ -73,8 +73,5 @@ int			err(int level, const char *format, ...);
 void		die(int exit_status, const char *format, ...);
 void		dump(uint8_t mem[], int mod);
 void		proc_set(t_proc *p, int state);
-
-
-extern t_op g_tab[17];
 
 #endif

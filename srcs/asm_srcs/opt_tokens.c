@@ -6,7 +6,7 @@
 /*   By: lnagy <lnagy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/07 15:23:53 by lnagy             #+#    #+#             */
-/*   Updated: 2017/03/07 15:23:55 by lnagy            ###   ########.fr       */
+/*   Updated: 2017/08/04 09:15:58 by cchaumar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ t_token	g_asm_opts[] = {
 	{"OPT_X", 0, "-x", TOKEN_TYPE_EXP},
 	{"OPT_D", 0, "-d", TOKEN_TYPE_EXP},
 	{"OPT_C", 0, "-c", TOKEN_TYPE_EXP},
+	{"INTERRUPT", 0, "--", TOKEN_TYPE_EXP},
 	{"NONE", tok_func_none, 0, TOKEN_TYPE_FNC},
 	{0, 0, 0, 0}
 };

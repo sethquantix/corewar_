@@ -16,11 +16,10 @@ t_mat	gl_proj_mat(float ratio, float near, float far, float fov)
 {
 	float	range;
 	float	tan_half;
- 	t_mat	m;
+	t_mat	m;
 
 	range = near - far;
 	tan_half = tan(fov * CL_M_PI / 360.0);
-
 	m.r[0] = vec4(1.0 / (ratio * tan_half), 0, 0, 0);
 	m.r[1] = vec4(0, 1.0 / tan_half, 0.0, 0.0);
 	m.r[2] = vec4(0.0, 0.0, (-near - far) / range, 2 * far * near / range);

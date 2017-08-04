@@ -43,7 +43,7 @@ void		push_uniform(t_gr_vm *cxt)
 	rtime = SDL_GetTicks();
 	push_mats(cxt->program, cxt);
 	loc = glGetUniformLocation(cxt->program, "textNoise");
-	glUniform1i(loc, cxt->diffuseTexture);
+	glUniform1i(loc, cxt->diffuse_texture);
 	loc = glGetUniformLocation(cxt->program, "font");
 	glUniform1i(loc, cxt->glyphs);
 	loc = glGetUniformLocation(cxt->program, "in_time");
@@ -64,7 +64,7 @@ void		push_board_uni(t_gr_vm *cxt)
 	loc = glGetUniformLocation(cxt->program_board, "board");
 	glUniform1i(loc, cxt->board);
 	loc = glGetUniformLocation(cxt->program_board, "texNoise");
-	glUniform1i(loc, cxt->diffuseTexture);
+	glUniform1i(loc, cxt->diffuse_texture);
 	loc = glGetUniformLocation(cxt->program_board, "_time");
 	glUniform1f(loc, (SDL_GetTicks() - cxt->time) / 1000.0f);
 	loc = glGetUniformLocation(cxt->program_board, "cursor_pos");

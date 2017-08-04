@@ -170,9 +170,9 @@ GLuint				generate_cube(t_gr_vm *cxt)
 	create_vbo_vnt((float *)g_cube, (int *)g_faces,
 		sizeof(g_cube) / sizeof(float) / 8, vao);
 	cxt->vao = vao;
-	cxt->matVBO = init_instancing();
-	cxt->valVBO = init_transfer();
-	cxt->arenaVBO = init_values();
+	cxt->mat_vbo = init_instancing();
+	cxt->val_vbo = init_transfer();
+	cxt->arena_vbo = init_values();
 	init_pos(cxt);
 	gen_board(cxt);
 	return (vao);

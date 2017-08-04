@@ -12,11 +12,11 @@
 
 #include "corewar.h"
 
-header_t	empty_head(void)
+t_header	empty_head(void)
 {
-	header_t	head;
+	t_header	head;
 
-	ft_bzero(&head, sizeof(header_t));
+	ft_bzero(&head, sizeof(t_header));
 	return (head);
 }
 

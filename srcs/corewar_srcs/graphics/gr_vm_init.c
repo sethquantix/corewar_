@@ -31,14 +31,14 @@ void	set_sdl_attributes(void)
 void	load_noise(t_gr_vm *cxt)
 {
 	glActiveTexture(GL_TEXTURE1);
-	cxt->diffuseTexture = SOIL_load_OGL_texture(
+	cxt->diffuse_texture = SOIL_load_OGL_texture(
 		"assets/img/noise.png",
 		SOIL_LOAD_AUTO, SOIL_CREATE_NEW_ID, SOIL_FLAG_INVERT_Y |
 		SOIL_FLAG_TEXTURE_REPEATS | SOIL_FLAG_MIPMAPS |
 		SOIL_FLAG_COMPRESS_TO_DXT);
-	if (!cxt->diffuseTexture)
+	if (!cxt->diffuse_texture)
 		die(EXIT_FAILURE, "failed to load texture\n");
-	glBindTexture(GL_TEXTURE_2D, cxt->diffuseTexture);
+	glBindTexture(GL_TEXTURE_2D, cxt->diffuse_texture);
 }
 
 GLuint	gen_board_tex(void)
