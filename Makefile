@@ -39,10 +39,17 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
+<<<<<<< HEAD
 CMAKE_COMMAND = /Users/tsedigi/.brew/Cellar/cmake/3.8.1/bin/cmake
 
 # The command to remove a file.
 RM = /Users/tsedigi/.brew/Cellar/cmake/3.8.1/bin/cmake -E remove -f
+=======
+CMAKE_COMMAND = /sgoinfre/goinfre/Perso/cchaumar/.brew/Cellar/cmake/3.9.0/bin/cmake
+
+# The command to remove a file.
+RM = /sgoinfre/goinfre/Perso/cchaumar/.brew/Cellar/cmake/3.9.0/bin/cmake -E remove -f
+>>>>>>> 378561dd66dc5ff65f2a4e739cce3748d7e2ccb1
 
 # Escaping for special characters.
 EQUALS = =
@@ -59,7 +66,11 @@ CMAKE_BINARY_DIR = /Users/tsedigi/Desktop/on_work/corewar
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+<<<<<<< HEAD
 	/Users/tsedigi/.brew/Cellar/cmake/3.8.1/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+=======
+	/sgoinfre/goinfre/Perso/cchaumar/.brew/Cellar/cmake/3.9.0/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+>>>>>>> 378561dd66dc5ff65f2a4e739cce3748d7e2ccb1
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -69,8 +80,13 @@ rebuild_cache/fast: rebuild_cache
 
 # Special rule for the target edit_cache
 edit_cache:
+<<<<<<< HEAD
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
 	/Users/tsedigi/.brew/Cellar/cmake/3.8.1/bin/ccmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+=======
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/sgoinfre/goinfre/Perso/cchaumar/.brew/Cellar/cmake/3.9.0/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+>>>>>>> 378561dd66dc5ff65f2a4e739cce3748d7e2ccb1
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -649,59 +665,387 @@ srcs/asm_srcs/write.c.s:
 	$(MAKE) -f CMakeFiles/asm.dir/build.make CMakeFiles/asm.dir/srcs/asm_srcs/write.c.s
 .PHONY : srcs/asm_srcs/write.c.s
 
-srcs/corewar_srcs/arena_ini.o: srcs/corewar_srcs/arena_ini.c.o
+srcs/corewar_srcs/core/init/arena_ini.o: srcs/corewar_srcs/core/init/arena_ini.c.o
 
-.PHONY : srcs/corewar_srcs/arena_ini.o
-
-# target to build an object file
-srcs/corewar_srcs/arena_ini.c.o:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/arena_ini.c.o
-.PHONY : srcs/corewar_srcs/arena_ini.c.o
-
-srcs/corewar_srcs/arena_ini.i: srcs/corewar_srcs/arena_ini.c.i
-
-.PHONY : srcs/corewar_srcs/arena_ini.i
-
-# target to preprocess a source file
-srcs/corewar_srcs/arena_ini.c.i:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/arena_ini.c.i
-.PHONY : srcs/corewar_srcs/arena_ini.c.i
-
-srcs/corewar_srcs/arena_ini.s: srcs/corewar_srcs/arena_ini.c.s
-
-.PHONY : srcs/corewar_srcs/arena_ini.s
-
-# target to generate assembly for a file
-srcs/corewar_srcs/arena_ini.c.s:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/arena_ini.c.s
-.PHONY : srcs/corewar_srcs/arena_ini.c.s
-
-srcs/corewar_srcs/check_process.o: srcs/corewar_srcs/check_process.c.o
-
-.PHONY : srcs/corewar_srcs/check_process.o
+.PHONY : srcs/corewar_srcs/core/init/arena_ini.o
 
 # target to build an object file
-srcs/corewar_srcs/check_process.c.o:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/check_process.c.o
-.PHONY : srcs/corewar_srcs/check_process.c.o
+srcs/corewar_srcs/core/init/arena_ini.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/init/arena_ini.c.o
+.PHONY : srcs/corewar_srcs/core/init/arena_ini.c.o
 
-srcs/corewar_srcs/check_process.i: srcs/corewar_srcs/check_process.c.i
+srcs/corewar_srcs/core/init/arena_ini.i: srcs/corewar_srcs/core/init/arena_ini.c.i
 
-.PHONY : srcs/corewar_srcs/check_process.i
+.PHONY : srcs/corewar_srcs/core/init/arena_ini.i
 
 # target to preprocess a source file
-srcs/corewar_srcs/check_process.c.i:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/check_process.c.i
-.PHONY : srcs/corewar_srcs/check_process.c.i
+srcs/corewar_srcs/core/init/arena_ini.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/init/arena_ini.c.i
+.PHONY : srcs/corewar_srcs/core/init/arena_ini.c.i
 
-srcs/corewar_srcs/check_process.s: srcs/corewar_srcs/check_process.c.s
+srcs/corewar_srcs/core/init/arena_ini.s: srcs/corewar_srcs/core/init/arena_ini.c.s
 
-.PHONY : srcs/corewar_srcs/check_process.s
+.PHONY : srcs/corewar_srcs/core/init/arena_ini.s
 
 # target to generate assembly for a file
-srcs/corewar_srcs/check_process.c.s:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/check_process.c.s
-.PHONY : srcs/corewar_srcs/check_process.c.s
+srcs/corewar_srcs/core/init/arena_ini.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/init/arena_ini.c.s
+.PHONY : srcs/corewar_srcs/core/init/arena_ini.c.s
+
+srcs/corewar_srcs/core/init/check_process.o: srcs/corewar_srcs/core/init/check_process.c.o
+
+.PHONY : srcs/corewar_srcs/core/init/check_process.o
+
+# target to build an object file
+srcs/corewar_srcs/core/init/check_process.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/init/check_process.c.o
+.PHONY : srcs/corewar_srcs/core/init/check_process.c.o
+
+srcs/corewar_srcs/core/init/check_process.i: srcs/corewar_srcs/core/init/check_process.c.i
+
+.PHONY : srcs/corewar_srcs/core/init/check_process.i
+
+# target to preprocess a source file
+srcs/corewar_srcs/core/init/check_process.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/init/check_process.c.i
+.PHONY : srcs/corewar_srcs/core/init/check_process.c.i
+
+srcs/corewar_srcs/core/init/check_process.s: srcs/corewar_srcs/core/init/check_process.c.s
+
+.PHONY : srcs/corewar_srcs/core/init/check_process.s
+
+# target to generate assembly for a file
+srcs/corewar_srcs/core/init/check_process.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/init/check_process.c.s
+.PHONY : srcs/corewar_srcs/core/init/check_process.c.s
+
+srcs/corewar_srcs/core/instructions/ins_basic.o: srcs/corewar_srcs/core/instructions/ins_basic.c.o
+
+.PHONY : srcs/corewar_srcs/core/instructions/ins_basic.o
+
+# target to build an object file
+srcs/corewar_srcs/core/instructions/ins_basic.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/instructions/ins_basic.c.o
+.PHONY : srcs/corewar_srcs/core/instructions/ins_basic.c.o
+
+srcs/corewar_srcs/core/instructions/ins_basic.i: srcs/corewar_srcs/core/instructions/ins_basic.c.i
+
+.PHONY : srcs/corewar_srcs/core/instructions/ins_basic.i
+
+# target to preprocess a source file
+srcs/corewar_srcs/core/instructions/ins_basic.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/instructions/ins_basic.c.i
+.PHONY : srcs/corewar_srcs/core/instructions/ins_basic.c.i
+
+srcs/corewar_srcs/core/instructions/ins_basic.s: srcs/corewar_srcs/core/instructions/ins_basic.c.s
+
+.PHONY : srcs/corewar_srcs/core/instructions/ins_basic.s
+
+# target to generate assembly for a file
+srcs/corewar_srcs/core/instructions/ins_basic.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/instructions/ins_basic.c.s
+.PHONY : srcs/corewar_srcs/core/instructions/ins_basic.c.s
+
+<<<<<<< HEAD
+srcs/corewar_srcs/gr_vm_camera_handling.o: srcs/corewar_srcs/gr_vm_camera_handling.c.o
+=======
+srcs/corewar_srcs/core/instructions/ins_calc.o: srcs/corewar_srcs/core/instructions/ins_calc.c.o
+
+.PHONY : srcs/corewar_srcs/core/instructions/ins_calc.o
+
+# target to build an object file
+srcs/corewar_srcs/core/instructions/ins_calc.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/instructions/ins_calc.c.o
+.PHONY : srcs/corewar_srcs/core/instructions/ins_calc.c.o
+
+srcs/corewar_srcs/core/instructions/ins_calc.i: srcs/corewar_srcs/core/instructions/ins_calc.c.i
+
+.PHONY : srcs/corewar_srcs/core/instructions/ins_calc.i
+
+# target to preprocess a source file
+srcs/corewar_srcs/core/instructions/ins_calc.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/instructions/ins_calc.c.i
+.PHONY : srcs/corewar_srcs/core/instructions/ins_calc.c.i
+
+srcs/corewar_srcs/core/instructions/ins_calc.s: srcs/corewar_srcs/core/instructions/ins_calc.c.s
+
+.PHONY : srcs/corewar_srcs/core/instructions/ins_calc.s
+
+# target to generate assembly for a file
+srcs/corewar_srcs/core/instructions/ins_calc.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/instructions/ins_calc.c.s
+.PHONY : srcs/corewar_srcs/core/instructions/ins_calc.c.s
+
+srcs/corewar_srcs/core/instructions/ins_fork.o: srcs/corewar_srcs/core/instructions/ins_fork.c.o
+>>>>>>> 378561dd66dc5ff65f2a4e739cce3748d7e2ccb1
+
+.PHONY : srcs/corewar_srcs/core/instructions/ins_fork.o
+
+# target to build an object file
+srcs/corewar_srcs/core/instructions/ins_fork.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/instructions/ins_fork.c.o
+.PHONY : srcs/corewar_srcs/core/instructions/ins_fork.c.o
+
+srcs/corewar_srcs/core/instructions/ins_fork.i: srcs/corewar_srcs/core/instructions/ins_fork.c.i
+
+.PHONY : srcs/corewar_srcs/core/instructions/ins_fork.i
+
+# target to preprocess a source file
+srcs/corewar_srcs/core/instructions/ins_fork.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/instructions/ins_fork.c.i
+.PHONY : srcs/corewar_srcs/core/instructions/ins_fork.c.i
+
+srcs/corewar_srcs/core/instructions/ins_fork.s: srcs/corewar_srcs/core/instructions/ins_fork.c.s
+
+.PHONY : srcs/corewar_srcs/core/instructions/ins_fork.s
+
+# target to generate assembly for a file
+srcs/corewar_srcs/core/instructions/ins_fork.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/instructions/ins_fork.c.s
+.PHONY : srcs/corewar_srcs/core/instructions/ins_fork.c.s
+
+srcs/corewar_srcs/core/instructions/ins_index.o: srcs/corewar_srcs/core/instructions/ins_index.c.o
+
+.PHONY : srcs/corewar_srcs/core/instructions/ins_index.o
+
+# target to build an object file
+srcs/corewar_srcs/core/instructions/ins_index.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/instructions/ins_index.c.o
+.PHONY : srcs/corewar_srcs/core/instructions/ins_index.c.o
+
+srcs/corewar_srcs/core/instructions/ins_index.i: srcs/corewar_srcs/core/instructions/ins_index.c.i
+
+.PHONY : srcs/corewar_srcs/core/instructions/ins_index.i
+
+# target to preprocess a source file
+srcs/corewar_srcs/core/instructions/ins_index.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/instructions/ins_index.c.i
+.PHONY : srcs/corewar_srcs/core/instructions/ins_index.c.i
+
+srcs/corewar_srcs/core/instructions/ins_index.s: srcs/corewar_srcs/core/instructions/ins_index.c.s
+
+.PHONY : srcs/corewar_srcs/core/instructions/ins_index.s
+
+# target to generate assembly for a file
+srcs/corewar_srcs/core/instructions/ins_index.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/instructions/ins_index.c.s
+.PHONY : srcs/corewar_srcs/core/instructions/ins_index.c.s
+
+srcs/corewar_srcs/core/instructions/process.o: srcs/corewar_srcs/core/instructions/process.c.o
+
+.PHONY : srcs/corewar_srcs/core/instructions/process.o
+
+# target to build an object file
+srcs/corewar_srcs/core/instructions/process.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/instructions/process.c.o
+.PHONY : srcs/corewar_srcs/core/instructions/process.c.o
+
+srcs/corewar_srcs/core/instructions/process.i: srcs/corewar_srcs/core/instructions/process.c.i
+
+.PHONY : srcs/corewar_srcs/core/instructions/process.i
+
+# target to preprocess a source file
+srcs/corewar_srcs/core/instructions/process.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/instructions/process.c.i
+.PHONY : srcs/corewar_srcs/core/instructions/process.c.i
+
+srcs/corewar_srcs/core/instructions/process.s: srcs/corewar_srcs/core/instructions/process.c.s
+
+.PHONY : srcs/corewar_srcs/core/instructions/process.s
+
+# target to generate assembly for a file
+srcs/corewar_srcs/core/instructions/process.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/instructions/process.c.s
+.PHONY : srcs/corewar_srcs/core/instructions/process.c.s
+
+srcs/corewar_srcs/core/memory/mem.o: srcs/corewar_srcs/core/memory/mem.c.o
+
+.PHONY : srcs/corewar_srcs/core/memory/mem.o
+
+# target to build an object file
+srcs/corewar_srcs/core/memory/mem.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/memory/mem.c.o
+.PHONY : srcs/corewar_srcs/core/memory/mem.c.o
+
+srcs/corewar_srcs/core/memory/mem.i: srcs/corewar_srcs/core/memory/mem.c.i
+
+.PHONY : srcs/corewar_srcs/core/memory/mem.i
+
+# target to preprocess a source file
+srcs/corewar_srcs/core/memory/mem.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/memory/mem.c.i
+.PHONY : srcs/corewar_srcs/core/memory/mem.c.i
+
+srcs/corewar_srcs/core/memory/mem.s: srcs/corewar_srcs/core/memory/mem.c.s
+
+.PHONY : srcs/corewar_srcs/core/memory/mem.s
+
+# target to generate assembly for a file
+srcs/corewar_srcs/core/memory/mem.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/memory/mem.c.s
+.PHONY : srcs/corewar_srcs/core/memory/mem.c.s
+
+srcs/corewar_srcs/core/memory/values.o: srcs/corewar_srcs/core/memory/values.c.o
+
+.PHONY : srcs/corewar_srcs/core/memory/values.o
+
+# target to build an object file
+srcs/corewar_srcs/core/memory/values.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/memory/values.c.o
+.PHONY : srcs/corewar_srcs/core/memory/values.c.o
+
+srcs/corewar_srcs/core/memory/values.i: srcs/corewar_srcs/core/memory/values.c.i
+
+.PHONY : srcs/corewar_srcs/core/memory/values.i
+
+# target to preprocess a source file
+srcs/corewar_srcs/core/memory/values.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/memory/values.c.i
+.PHONY : srcs/corewar_srcs/core/memory/values.c.i
+
+srcs/corewar_srcs/core/memory/values.s: srcs/corewar_srcs/core/memory/values.c.s
+
+.PHONY : srcs/corewar_srcs/core/memory/values.s
+
+# target to generate assembly for a file
+srcs/corewar_srcs/core/memory/values.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/memory/values.c.s
+.PHONY : srcs/corewar_srcs/core/memory/values.c.s
+
+srcs/corewar_srcs/core/parser/options.o: srcs/corewar_srcs/core/parser/options.c.o
+
+.PHONY : srcs/corewar_srcs/core/parser/options.o
+
+# target to build an object file
+srcs/corewar_srcs/core/parser/options.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/parser/options.c.o
+.PHONY : srcs/corewar_srcs/core/parser/options.c.o
+
+srcs/corewar_srcs/core/parser/options.i: srcs/corewar_srcs/core/parser/options.c.i
+
+.PHONY : srcs/corewar_srcs/core/parser/options.i
+
+# target to preprocess a source file
+srcs/corewar_srcs/core/parser/options.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/parser/options.c.i
+.PHONY : srcs/corewar_srcs/core/parser/options.c.i
+
+srcs/corewar_srcs/core/parser/options.s: srcs/corewar_srcs/core/parser/options.c.s
+
+.PHONY : srcs/corewar_srcs/core/parser/options.s
+
+# target to generate assembly for a file
+srcs/corewar_srcs/core/parser/options.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/parser/options.c.s
+.PHONY : srcs/corewar_srcs/core/parser/options.c.s
+
+srcs/corewar_srcs/core/parser/options2.o: srcs/corewar_srcs/core/parser/options2.c.o
+
+.PHONY : srcs/corewar_srcs/core/parser/options2.o
+
+# target to build an object file
+srcs/corewar_srcs/core/parser/options2.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/parser/options2.c.o
+.PHONY : srcs/corewar_srcs/core/parser/options2.c.o
+
+srcs/corewar_srcs/core/parser/options2.i: srcs/corewar_srcs/core/parser/options2.c.i
+
+.PHONY : srcs/corewar_srcs/core/parser/options2.i
+
+# target to preprocess a source file
+srcs/corewar_srcs/core/parser/options2.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/parser/options2.c.i
+.PHONY : srcs/corewar_srcs/core/parser/options2.c.i
+
+srcs/corewar_srcs/core/parser/options2.s: srcs/corewar_srcs/core/parser/options2.c.s
+
+.PHONY : srcs/corewar_srcs/core/parser/options2.s
+
+# target to generate assembly for a file
+srcs/corewar_srcs/core/parser/options2.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/parser/options2.c.s
+.PHONY : srcs/corewar_srcs/core/parser/options2.c.s
+
+srcs/corewar_srcs/core/parser/opts_tokens.o: srcs/corewar_srcs/core/parser/opts_tokens.c.o
+
+.PHONY : srcs/corewar_srcs/core/parser/opts_tokens.o
+
+# target to build an object file
+srcs/corewar_srcs/core/parser/opts_tokens.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/parser/opts_tokens.c.o
+.PHONY : srcs/corewar_srcs/core/parser/opts_tokens.c.o
+
+srcs/corewar_srcs/core/parser/opts_tokens.i: srcs/corewar_srcs/core/parser/opts_tokens.c.i
+
+.PHONY : srcs/corewar_srcs/core/parser/opts_tokens.i
+
+# target to preprocess a source file
+srcs/corewar_srcs/core/parser/opts_tokens.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/parser/opts_tokens.c.i
+.PHONY : srcs/corewar_srcs/core/parser/opts_tokens.c.i
+
+srcs/corewar_srcs/core/parser/opts_tokens.s: srcs/corewar_srcs/core/parser/opts_tokens.c.s
+
+.PHONY : srcs/corewar_srcs/core/parser/opts_tokens.s
+
+# target to generate assembly for a file
+srcs/corewar_srcs/core/parser/opts_tokens.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/parser/opts_tokens.c.s
+.PHONY : srcs/corewar_srcs/core/parser/opts_tokens.c.s
+
+srcs/corewar_srcs/core/parser/parse_args.o: srcs/corewar_srcs/core/parser/parse_args.c.o
+
+.PHONY : srcs/corewar_srcs/core/parser/parse_args.o
+
+# target to build an object file
+srcs/corewar_srcs/core/parser/parse_args.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/parser/parse_args.c.o
+.PHONY : srcs/corewar_srcs/core/parser/parse_args.c.o
+
+srcs/corewar_srcs/core/parser/parse_args.i: srcs/corewar_srcs/core/parser/parse_args.c.i
+
+.PHONY : srcs/corewar_srcs/core/parser/parse_args.i
+
+# target to preprocess a source file
+srcs/corewar_srcs/core/parser/parse_args.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/parser/parse_args.c.i
+.PHONY : srcs/corewar_srcs/core/parser/parse_args.c.i
+
+srcs/corewar_srcs/core/parser/parse_args.s: srcs/corewar_srcs/core/parser/parse_args.c.s
+
+.PHONY : srcs/corewar_srcs/core/parser/parse_args.s
+
+# target to generate assembly for a file
+srcs/corewar_srcs/core/parser/parse_args.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/parser/parse_args.c.s
+.PHONY : srcs/corewar_srcs/core/parser/parse_args.c.s
+
+srcs/corewar_srcs/core/parser/read_args.o: srcs/corewar_srcs/core/parser/read_args.c.o
+
+.PHONY : srcs/corewar_srcs/core/parser/read_args.o
+
+# target to build an object file
+srcs/corewar_srcs/core/parser/read_args.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/parser/read_args.c.o
+.PHONY : srcs/corewar_srcs/core/parser/read_args.c.o
+
+srcs/corewar_srcs/core/parser/read_args.i: srcs/corewar_srcs/core/parser/read_args.c.i
+
+.PHONY : srcs/corewar_srcs/core/parser/read_args.i
+
+# target to preprocess a source file
+srcs/corewar_srcs/core/parser/read_args.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/parser/read_args.c.i
+.PHONY : srcs/corewar_srcs/core/parser/read_args.c.i
+
+srcs/corewar_srcs/core/parser/read_args.s: srcs/corewar_srcs/core/parser/read_args.c.s
+
+.PHONY : srcs/corewar_srcs/core/parser/read_args.s
+
+# target to generate assembly for a file
+srcs/corewar_srcs/core/parser/read_args.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/core/parser/read_args.c.s
+.PHONY : srcs/corewar_srcs/core/parser/read_args.c.s
 
 srcs/corewar_srcs/corewar.o: srcs/corewar_srcs/corewar.c.o
 
@@ -730,842 +1074,491 @@ srcs/corewar_srcs/corewar.c.s:
 	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/corewar.c.s
 .PHONY : srcs/corewar_srcs/corewar.c.s
 
-srcs/corewar_srcs/gr_gen_tex.o: srcs/corewar_srcs/gr_gen_tex.c.o
+srcs/corewar_srcs/graphics/gr_gen_tex.o: srcs/corewar_srcs/graphics/gr_gen_tex.c.o
 
-.PHONY : srcs/corewar_srcs/gr_gen_tex.o
-
-# target to build an object file
-srcs/corewar_srcs/gr_gen_tex.c.o:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_gen_tex.c.o
-.PHONY : srcs/corewar_srcs/gr_gen_tex.c.o
-
-srcs/corewar_srcs/gr_gen_tex.i: srcs/corewar_srcs/gr_gen_tex.c.i
-
-.PHONY : srcs/corewar_srcs/gr_gen_tex.i
-
-# target to preprocess a source file
-srcs/corewar_srcs/gr_gen_tex.c.i:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_gen_tex.c.i
-.PHONY : srcs/corewar_srcs/gr_gen_tex.c.i
-
-srcs/corewar_srcs/gr_gen_tex.s: srcs/corewar_srcs/gr_gen_tex.c.s
-
-.PHONY : srcs/corewar_srcs/gr_gen_tex.s
-
-# target to generate assembly for a file
-srcs/corewar_srcs/gr_gen_tex.c.s:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_gen_tex.c.s
-.PHONY : srcs/corewar_srcs/gr_gen_tex.c.s
-
-srcs/corewar_srcs/gr_vm_camera_handling.o: srcs/corewar_srcs/gr_vm_camera_handling.c.o
-
-.PHONY : srcs/corewar_srcs/gr_vm_camera_handling.o
+.PHONY : srcs/corewar_srcs/graphics/gr_gen_tex.o
 
 # target to build an object file
-srcs/corewar_srcs/gr_vm_camera_handling.c.o:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_camera_handling.c.o
-.PHONY : srcs/corewar_srcs/gr_vm_camera_handling.c.o
+srcs/corewar_srcs/graphics/gr_gen_tex.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_gen_tex.c.o
+.PHONY : srcs/corewar_srcs/graphics/gr_gen_tex.c.o
 
-srcs/corewar_srcs/gr_vm_camera_handling.i: srcs/corewar_srcs/gr_vm_camera_handling.c.i
+srcs/corewar_srcs/graphics/gr_gen_tex.i: srcs/corewar_srcs/graphics/gr_gen_tex.c.i
 
-.PHONY : srcs/corewar_srcs/gr_vm_camera_handling.i
+.PHONY : srcs/corewar_srcs/graphics/gr_gen_tex.i
 
 # target to preprocess a source file
-srcs/corewar_srcs/gr_vm_camera_handling.c.i:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_camera_handling.c.i
-.PHONY : srcs/corewar_srcs/gr_vm_camera_handling.c.i
+srcs/corewar_srcs/graphics/gr_gen_tex.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_gen_tex.c.i
+.PHONY : srcs/corewar_srcs/graphics/gr_gen_tex.c.i
 
-srcs/corewar_srcs/gr_vm_camera_handling.s: srcs/corewar_srcs/gr_vm_camera_handling.c.s
+srcs/corewar_srcs/graphics/gr_gen_tex.s: srcs/corewar_srcs/graphics/gr_gen_tex.c.s
 
-.PHONY : srcs/corewar_srcs/gr_vm_camera_handling.s
+.PHONY : srcs/corewar_srcs/graphics/gr_gen_tex.s
 
 # target to generate assembly for a file
-srcs/corewar_srcs/gr_vm_camera_handling.c.s:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_camera_handling.c.s
-.PHONY : srcs/corewar_srcs/gr_vm_camera_handling.c.s
+srcs/corewar_srcs/graphics/gr_gen_tex.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_gen_tex.c.s
+.PHONY : srcs/corewar_srcs/graphics/gr_gen_tex.c.s
 
-srcs/corewar_srcs/gr_vm_camera_handling_rot.o: srcs/corewar_srcs/gr_vm_camera_handling_rot.c.o
+srcs/corewar_srcs/graphics/gr_vm_camera_handling.o: srcs/corewar_srcs/graphics/gr_vm_camera_handling.c.o
 
-.PHONY : srcs/corewar_srcs/gr_vm_camera_handling_rot.o
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_camera_handling.o
 
 # target to build an object file
-srcs/corewar_srcs/gr_vm_camera_handling_rot.c.o:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_camera_handling_rot.c.o
-.PHONY : srcs/corewar_srcs/gr_vm_camera_handling_rot.c.o
+srcs/corewar_srcs/graphics/gr_vm_camera_handling.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_camera_handling.c.o
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_camera_handling.c.o
 
-srcs/corewar_srcs/gr_vm_camera_handling_rot.i: srcs/corewar_srcs/gr_vm_camera_handling_rot.c.i
+srcs/corewar_srcs/graphics/gr_vm_camera_handling.i: srcs/corewar_srcs/graphics/gr_vm_camera_handling.c.i
 
-.PHONY : srcs/corewar_srcs/gr_vm_camera_handling_rot.i
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_camera_handling.i
 
 # target to preprocess a source file
-srcs/corewar_srcs/gr_vm_camera_handling_rot.c.i:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_camera_handling_rot.c.i
-.PHONY : srcs/corewar_srcs/gr_vm_camera_handling_rot.c.i
+srcs/corewar_srcs/graphics/gr_vm_camera_handling.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_camera_handling.c.i
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_camera_handling.c.i
 
-srcs/corewar_srcs/gr_vm_camera_handling_rot.s: srcs/corewar_srcs/gr_vm_camera_handling_rot.c.s
+srcs/corewar_srcs/graphics/gr_vm_camera_handling.s: srcs/corewar_srcs/graphics/gr_vm_camera_handling.c.s
 
-.PHONY : srcs/corewar_srcs/gr_vm_camera_handling_rot.s
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_camera_handling.s
 
 # target to generate assembly for a file
-srcs/corewar_srcs/gr_vm_camera_handling_rot.c.s:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_camera_handling_rot.c.s
-.PHONY : srcs/corewar_srcs/gr_vm_camera_handling_rot.c.s
+srcs/corewar_srcs/graphics/gr_vm_camera_handling.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_camera_handling.c.s
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_camera_handling.c.s
 
-srcs/corewar_srcs/gr_vm_gl.o: srcs/corewar_srcs/gr_vm_gl.c.o
+srcs/corewar_srcs/graphics/gr_vm_camera_handling_rot.o: srcs/corewar_srcs/graphics/gr_vm_camera_handling_rot.c.o
 
-.PHONY : srcs/corewar_srcs/gr_vm_gl.o
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_camera_handling_rot.o
 
 # target to build an object file
-srcs/corewar_srcs/gr_vm_gl.c.o:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_gl.c.o
-.PHONY : srcs/corewar_srcs/gr_vm_gl.c.o
+srcs/corewar_srcs/graphics/gr_vm_camera_handling_rot.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_camera_handling_rot.c.o
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_camera_handling_rot.c.o
 
-srcs/corewar_srcs/gr_vm_gl.i: srcs/corewar_srcs/gr_vm_gl.c.i
+srcs/corewar_srcs/graphics/gr_vm_camera_handling_rot.i: srcs/corewar_srcs/graphics/gr_vm_camera_handling_rot.c.i
 
-.PHONY : srcs/corewar_srcs/gr_vm_gl.i
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_camera_handling_rot.i
 
 # target to preprocess a source file
-srcs/corewar_srcs/gr_vm_gl.c.i:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_gl.c.i
-.PHONY : srcs/corewar_srcs/gr_vm_gl.c.i
+srcs/corewar_srcs/graphics/gr_vm_camera_handling_rot.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_camera_handling_rot.c.i
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_camera_handling_rot.c.i
 
-srcs/corewar_srcs/gr_vm_gl.s: srcs/corewar_srcs/gr_vm_gl.c.s
+srcs/corewar_srcs/graphics/gr_vm_camera_handling_rot.s: srcs/corewar_srcs/graphics/gr_vm_camera_handling_rot.c.s
 
-.PHONY : srcs/corewar_srcs/gr_vm_gl.s
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_camera_handling_rot.s
 
 # target to generate assembly for a file
-srcs/corewar_srcs/gr_vm_gl.c.s:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_gl.c.s
-.PHONY : srcs/corewar_srcs/gr_vm_gl.c.s
+srcs/corewar_srcs/graphics/gr_vm_camera_handling_rot.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_camera_handling_rot.c.s
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_camera_handling_rot.c.s
 
-srcs/corewar_srcs/gr_vm_handlers.o: srcs/corewar_srcs/gr_vm_handlers.c.o
+srcs/corewar_srcs/graphics/gr_vm_gl.o: srcs/corewar_srcs/graphics/gr_vm_gl.c.o
 
-.PHONY : srcs/corewar_srcs/gr_vm_handlers.o
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_gl.o
 
 # target to build an object file
-srcs/corewar_srcs/gr_vm_handlers.c.o:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_handlers.c.o
-.PHONY : srcs/corewar_srcs/gr_vm_handlers.c.o
+srcs/corewar_srcs/graphics/gr_vm_gl.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_gl.c.o
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_gl.c.o
 
-srcs/corewar_srcs/gr_vm_handlers.i: srcs/corewar_srcs/gr_vm_handlers.c.i
+srcs/corewar_srcs/graphics/gr_vm_gl.i: srcs/corewar_srcs/graphics/gr_vm_gl.c.i
 
-.PHONY : srcs/corewar_srcs/gr_vm_handlers.i
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_gl.i
 
 # target to preprocess a source file
-srcs/corewar_srcs/gr_vm_handlers.c.i:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_handlers.c.i
-.PHONY : srcs/corewar_srcs/gr_vm_handlers.c.i
+srcs/corewar_srcs/graphics/gr_vm_gl.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_gl.c.i
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_gl.c.i
 
-srcs/corewar_srcs/gr_vm_handlers.s: srcs/corewar_srcs/gr_vm_handlers.c.s
+srcs/corewar_srcs/graphics/gr_vm_gl.s: srcs/corewar_srcs/graphics/gr_vm_gl.c.s
 
-.PHONY : srcs/corewar_srcs/gr_vm_handlers.s
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_gl.s
 
 # target to generate assembly for a file
-srcs/corewar_srcs/gr_vm_handlers.c.s:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_handlers.c.s
-.PHONY : srcs/corewar_srcs/gr_vm_handlers.c.s
+srcs/corewar_srcs/graphics/gr_vm_gl.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_gl.c.s
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_gl.c.s
 
-srcs/corewar_srcs/gr_vm_init.o: srcs/corewar_srcs/gr_vm_init.c.o
+srcs/corewar_srcs/graphics/gr_vm_handlers.o: srcs/corewar_srcs/graphics/gr_vm_handlers.c.o
 
-.PHONY : srcs/corewar_srcs/gr_vm_init.o
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_handlers.o
 
 # target to build an object file
-srcs/corewar_srcs/gr_vm_init.c.o:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_init.c.o
-.PHONY : srcs/corewar_srcs/gr_vm_init.c.o
+srcs/corewar_srcs/graphics/gr_vm_handlers.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_handlers.c.o
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_handlers.c.o
 
-srcs/corewar_srcs/gr_vm_init.i: srcs/corewar_srcs/gr_vm_init.c.i
+srcs/corewar_srcs/graphics/gr_vm_handlers.i: srcs/corewar_srcs/graphics/gr_vm_handlers.c.i
 
-.PHONY : srcs/corewar_srcs/gr_vm_init.i
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_handlers.i
 
 # target to preprocess a source file
-srcs/corewar_srcs/gr_vm_init.c.i:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_init.c.i
-.PHONY : srcs/corewar_srcs/gr_vm_init.c.i
+srcs/corewar_srcs/graphics/gr_vm_handlers.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_handlers.c.i
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_handlers.c.i
 
-srcs/corewar_srcs/gr_vm_init.s: srcs/corewar_srcs/gr_vm_init.c.s
+srcs/corewar_srcs/graphics/gr_vm_handlers.s: srcs/corewar_srcs/graphics/gr_vm_handlers.c.s
 
-.PHONY : srcs/corewar_srcs/gr_vm_init.s
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_handlers.s
 
 # target to generate assembly for a file
-srcs/corewar_srcs/gr_vm_init.c.s:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_init.c.s
-.PHONY : srcs/corewar_srcs/gr_vm_init.c.s
+srcs/corewar_srcs/graphics/gr_vm_handlers.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_handlers.c.s
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_handlers.c.s
 
-srcs/corewar_srcs/gr_vm_init_cube.o: srcs/corewar_srcs/gr_vm_init_cube.c.o
+srcs/corewar_srcs/graphics/gr_vm_init.o: srcs/corewar_srcs/graphics/gr_vm_init.c.o
 
-.PHONY : srcs/corewar_srcs/gr_vm_init_cube.o
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_init.o
 
 # target to build an object file
-srcs/corewar_srcs/gr_vm_init_cube.c.o:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_init_cube.c.o
-.PHONY : srcs/corewar_srcs/gr_vm_init_cube.c.o
+srcs/corewar_srcs/graphics/gr_vm_init.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_init.c.o
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_init.c.o
 
-srcs/corewar_srcs/gr_vm_init_cube.i: srcs/corewar_srcs/gr_vm_init_cube.c.i
+srcs/corewar_srcs/graphics/gr_vm_init.i: srcs/corewar_srcs/graphics/gr_vm_init.c.i
 
-.PHONY : srcs/corewar_srcs/gr_vm_init_cube.i
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_init.i
 
 # target to preprocess a source file
-srcs/corewar_srcs/gr_vm_init_cube.c.i:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_init_cube.c.i
-.PHONY : srcs/corewar_srcs/gr_vm_init_cube.c.i
+srcs/corewar_srcs/graphics/gr_vm_init.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_init.c.i
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_init.c.i
 
-srcs/corewar_srcs/gr_vm_init_cube.s: srcs/corewar_srcs/gr_vm_init_cube.c.s
+srcs/corewar_srcs/graphics/gr_vm_init.s: srcs/corewar_srcs/graphics/gr_vm_init.c.s
 
-.PHONY : srcs/corewar_srcs/gr_vm_init_cube.s
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_init.s
 
 # target to generate assembly for a file
-srcs/corewar_srcs/gr_vm_init_cube.c.s:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_init_cube.c.s
-.PHONY : srcs/corewar_srcs/gr_vm_init_cube.c.s
+srcs/corewar_srcs/graphics/gr_vm_init.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_init.c.s
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_init.c.s
 
-srcs/corewar_srcs/gr_vm_inputs.o: srcs/corewar_srcs/gr_vm_inputs.c.o
+srcs/corewar_srcs/graphics/gr_vm_init_cube.o: srcs/corewar_srcs/graphics/gr_vm_init_cube.c.o
 
-.PHONY : srcs/corewar_srcs/gr_vm_inputs.o
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_init_cube.o
 
 # target to build an object file
-srcs/corewar_srcs/gr_vm_inputs.c.o:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_inputs.c.o
-.PHONY : srcs/corewar_srcs/gr_vm_inputs.c.o
+srcs/corewar_srcs/graphics/gr_vm_init_cube.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_init_cube.c.o
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_init_cube.c.o
 
-srcs/corewar_srcs/gr_vm_inputs.i: srcs/corewar_srcs/gr_vm_inputs.c.i
+srcs/corewar_srcs/graphics/gr_vm_init_cube.i: srcs/corewar_srcs/graphics/gr_vm_init_cube.c.i
 
-.PHONY : srcs/corewar_srcs/gr_vm_inputs.i
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_init_cube.i
 
 # target to preprocess a source file
-srcs/corewar_srcs/gr_vm_inputs.c.i:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_inputs.c.i
-.PHONY : srcs/corewar_srcs/gr_vm_inputs.c.i
+srcs/corewar_srcs/graphics/gr_vm_init_cube.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_init_cube.c.i
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_init_cube.c.i
 
-srcs/corewar_srcs/gr_vm_inputs.s: srcs/corewar_srcs/gr_vm_inputs.c.s
+srcs/corewar_srcs/graphics/gr_vm_init_cube.s: srcs/corewar_srcs/graphics/gr_vm_init_cube.c.s
 
-.PHONY : srcs/corewar_srcs/gr_vm_inputs.s
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_init_cube.s
 
 # target to generate assembly for a file
-srcs/corewar_srcs/gr_vm_inputs.c.s:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_inputs.c.s
-.PHONY : srcs/corewar_srcs/gr_vm_inputs.c.s
+srcs/corewar_srcs/graphics/gr_vm_init_cube.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_init_cube.c.s
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_init_cube.c.s
 
-srcs/corewar_srcs/gr_vm_keys.o: srcs/corewar_srcs/gr_vm_keys.c.o
+srcs/corewar_srcs/graphics/gr_vm_inputs.o: srcs/corewar_srcs/graphics/gr_vm_inputs.c.o
 
-.PHONY : srcs/corewar_srcs/gr_vm_keys.o
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_inputs.o
 
 # target to build an object file
-srcs/corewar_srcs/gr_vm_keys.c.o:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_keys.c.o
-.PHONY : srcs/corewar_srcs/gr_vm_keys.c.o
+srcs/corewar_srcs/graphics/gr_vm_inputs.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_inputs.c.o
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_inputs.c.o
 
-srcs/corewar_srcs/gr_vm_keys.i: srcs/corewar_srcs/gr_vm_keys.c.i
+srcs/corewar_srcs/graphics/gr_vm_inputs.i: srcs/corewar_srcs/graphics/gr_vm_inputs.c.i
 
-.PHONY : srcs/corewar_srcs/gr_vm_keys.i
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_inputs.i
 
 # target to preprocess a source file
-srcs/corewar_srcs/gr_vm_keys.c.i:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_keys.c.i
-.PHONY : srcs/corewar_srcs/gr_vm_keys.c.i
+srcs/corewar_srcs/graphics/gr_vm_inputs.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_inputs.c.i
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_inputs.c.i
 
-srcs/corewar_srcs/gr_vm_keys.s: srcs/corewar_srcs/gr_vm_keys.c.s
+srcs/corewar_srcs/graphics/gr_vm_inputs.s: srcs/corewar_srcs/graphics/gr_vm_inputs.c.s
 
-.PHONY : srcs/corewar_srcs/gr_vm_keys.s
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_inputs.s
 
 # target to generate assembly for a file
-srcs/corewar_srcs/gr_vm_keys.c.s:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_keys.c.s
-.PHONY : srcs/corewar_srcs/gr_vm_keys.c.s
+srcs/corewar_srcs/graphics/gr_vm_inputs.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_inputs.c.s
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_inputs.c.s
 
-srcs/corewar_srcs/gr_vm_load_texture.o: srcs/corewar_srcs/gr_vm_load_texture.c.o
+srcs/corewar_srcs/graphics/gr_vm_keys.o: srcs/corewar_srcs/graphics/gr_vm_keys.c.o
 
-.PHONY : srcs/corewar_srcs/gr_vm_load_texture.o
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_keys.o
 
 # target to build an object file
-srcs/corewar_srcs/gr_vm_load_texture.c.o:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_load_texture.c.o
-.PHONY : srcs/corewar_srcs/gr_vm_load_texture.c.o
+srcs/corewar_srcs/graphics/gr_vm_keys.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_keys.c.o
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_keys.c.o
 
-srcs/corewar_srcs/gr_vm_load_texture.i: srcs/corewar_srcs/gr_vm_load_texture.c.i
+srcs/corewar_srcs/graphics/gr_vm_keys.i: srcs/corewar_srcs/graphics/gr_vm_keys.c.i
 
-.PHONY : srcs/corewar_srcs/gr_vm_load_texture.i
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_keys.i
 
 # target to preprocess a source file
-srcs/corewar_srcs/gr_vm_load_texture.c.i:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_load_texture.c.i
-.PHONY : srcs/corewar_srcs/gr_vm_load_texture.c.i
+srcs/corewar_srcs/graphics/gr_vm_keys.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_keys.c.i
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_keys.c.i
 
-srcs/corewar_srcs/gr_vm_load_texture.s: srcs/corewar_srcs/gr_vm_load_texture.c.s
+srcs/corewar_srcs/graphics/gr_vm_keys.s: srcs/corewar_srcs/graphics/gr_vm_keys.c.s
 
-.PHONY : srcs/corewar_srcs/gr_vm_load_texture.s
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_keys.s
 
 # target to generate assembly for a file
-srcs/corewar_srcs/gr_vm_load_texture.c.s:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_load_texture.c.s
-.PHONY : srcs/corewar_srcs/gr_vm_load_texture.c.s
+srcs/corewar_srcs/graphics/gr_vm_keys.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_keys.c.s
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_keys.c.s
 
-srcs/corewar_srcs/gr_vm_matrix.o: srcs/corewar_srcs/gr_vm_matrix.c.o
+srcs/corewar_srcs/graphics/gr_vm_matrix.o: srcs/corewar_srcs/graphics/gr_vm_matrix.c.o
 
-.PHONY : srcs/corewar_srcs/gr_vm_matrix.o
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_matrix.o
 
 # target to build an object file
-srcs/corewar_srcs/gr_vm_matrix.c.o:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_matrix.c.o
-.PHONY : srcs/corewar_srcs/gr_vm_matrix.c.o
+srcs/corewar_srcs/graphics/gr_vm_matrix.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_matrix.c.o
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_matrix.c.o
 
-srcs/corewar_srcs/gr_vm_matrix.i: srcs/corewar_srcs/gr_vm_matrix.c.i
+srcs/corewar_srcs/graphics/gr_vm_matrix.i: srcs/corewar_srcs/graphics/gr_vm_matrix.c.i
 
-.PHONY : srcs/corewar_srcs/gr_vm_matrix.i
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_matrix.i
 
 # target to preprocess a source file
-srcs/corewar_srcs/gr_vm_matrix.c.i:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_matrix.c.i
-.PHONY : srcs/corewar_srcs/gr_vm_matrix.c.i
+srcs/corewar_srcs/graphics/gr_vm_matrix.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_matrix.c.i
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_matrix.c.i
 
-srcs/corewar_srcs/gr_vm_matrix.s: srcs/corewar_srcs/gr_vm_matrix.c.s
+srcs/corewar_srcs/graphics/gr_vm_matrix.s: srcs/corewar_srcs/graphics/gr_vm_matrix.c.s
 
-.PHONY : srcs/corewar_srcs/gr_vm_matrix.s
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_matrix.s
 
 # target to generate assembly for a file
-srcs/corewar_srcs/gr_vm_matrix.c.s:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_matrix.c.s
-.PHONY : srcs/corewar_srcs/gr_vm_matrix.c.s
+srcs/corewar_srcs/graphics/gr_vm_matrix.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_matrix.c.s
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_matrix.c.s
 
-srcs/corewar_srcs/gr_vm_render_opengl.o: srcs/corewar_srcs/gr_vm_render_opengl.c.o
+srcs/corewar_srcs/graphics/gr_vm_render_opengl.o: srcs/corewar_srcs/graphics/gr_vm_render_opengl.c.o
 
-.PHONY : srcs/corewar_srcs/gr_vm_render_opengl.o
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_render_opengl.o
 
 # target to build an object file
-srcs/corewar_srcs/gr_vm_render_opengl.c.o:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_render_opengl.c.o
-.PHONY : srcs/corewar_srcs/gr_vm_render_opengl.c.o
+srcs/corewar_srcs/graphics/gr_vm_render_opengl.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_render_opengl.c.o
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_render_opengl.c.o
 
-srcs/corewar_srcs/gr_vm_render_opengl.i: srcs/corewar_srcs/gr_vm_render_opengl.c.i
+srcs/corewar_srcs/graphics/gr_vm_render_opengl.i: srcs/corewar_srcs/graphics/gr_vm_render_opengl.c.i
 
-.PHONY : srcs/corewar_srcs/gr_vm_render_opengl.i
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_render_opengl.i
 
 # target to preprocess a source file
-srcs/corewar_srcs/gr_vm_render_opengl.c.i:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_render_opengl.c.i
-.PHONY : srcs/corewar_srcs/gr_vm_render_opengl.c.i
+srcs/corewar_srcs/graphics/gr_vm_render_opengl.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_render_opengl.c.i
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_render_opengl.c.i
 
-srcs/corewar_srcs/gr_vm_render_opengl.s: srcs/corewar_srcs/gr_vm_render_opengl.c.s
+srcs/corewar_srcs/graphics/gr_vm_render_opengl.s: srcs/corewar_srcs/graphics/gr_vm_render_opengl.c.s
 
-.PHONY : srcs/corewar_srcs/gr_vm_render_opengl.s
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_render_opengl.s
 
 # target to generate assembly for a file
-srcs/corewar_srcs/gr_vm_render_opengl.c.s:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_render_opengl.c.s
-.PHONY : srcs/corewar_srcs/gr_vm_render_opengl.c.s
+srcs/corewar_srcs/graphics/gr_vm_render_opengl.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_render_opengl.c.s
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_render_opengl.c.s
 
-srcs/corewar_srcs/gr_vm_run.o: srcs/corewar_srcs/gr_vm_run.c.o
+srcs/corewar_srcs/graphics/gr_vm_run.o: srcs/corewar_srcs/graphics/gr_vm_run.c.o
 
-.PHONY : srcs/corewar_srcs/gr_vm_run.o
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_run.o
 
 # target to build an object file
-srcs/corewar_srcs/gr_vm_run.c.o:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_run.c.o
-.PHONY : srcs/corewar_srcs/gr_vm_run.c.o
+srcs/corewar_srcs/graphics/gr_vm_run.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_run.c.o
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_run.c.o
 
-srcs/corewar_srcs/gr_vm_run.i: srcs/corewar_srcs/gr_vm_run.c.i
+srcs/corewar_srcs/graphics/gr_vm_run.i: srcs/corewar_srcs/graphics/gr_vm_run.c.i
 
-.PHONY : srcs/corewar_srcs/gr_vm_run.i
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_run.i
 
 # target to preprocess a source file
-srcs/corewar_srcs/gr_vm_run.c.i:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_run.c.i
-.PHONY : srcs/corewar_srcs/gr_vm_run.c.i
+srcs/corewar_srcs/graphics/gr_vm_run.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_run.c.i
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_run.c.i
 
-srcs/corewar_srcs/gr_vm_run.s: srcs/corewar_srcs/gr_vm_run.c.s
+srcs/corewar_srcs/graphics/gr_vm_run.s: srcs/corewar_srcs/graphics/gr_vm_run.c.s
 
-.PHONY : srcs/corewar_srcs/gr_vm_run.s
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_run.s
 
 # target to generate assembly for a file
-srcs/corewar_srcs/gr_vm_run.c.s:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_run.c.s
-.PHONY : srcs/corewar_srcs/gr_vm_run.c.s
+srcs/corewar_srcs/graphics/gr_vm_run.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_run.c.s
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_run.c.s
 
-srcs/corewar_srcs/gr_vm_selector.o: srcs/corewar_srcs/gr_vm_selector.c.o
+srcs/corewar_srcs/graphics/gr_vm_selector.o: srcs/corewar_srcs/graphics/gr_vm_selector.c.o
 
-.PHONY : srcs/corewar_srcs/gr_vm_selector.o
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_selector.o
 
 # target to build an object file
-srcs/corewar_srcs/gr_vm_selector.c.o:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_selector.c.o
-.PHONY : srcs/corewar_srcs/gr_vm_selector.c.o
+srcs/corewar_srcs/graphics/gr_vm_selector.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_selector.c.o
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_selector.c.o
 
-srcs/corewar_srcs/gr_vm_selector.i: srcs/corewar_srcs/gr_vm_selector.c.i
+srcs/corewar_srcs/graphics/gr_vm_selector.i: srcs/corewar_srcs/graphics/gr_vm_selector.c.i
 
-.PHONY : srcs/corewar_srcs/gr_vm_selector.i
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_selector.i
 
 # target to preprocess a source file
-srcs/corewar_srcs/gr_vm_selector.c.i:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_selector.c.i
-.PHONY : srcs/corewar_srcs/gr_vm_selector.c.i
+srcs/corewar_srcs/graphics/gr_vm_selector.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_selector.c.i
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_selector.c.i
 
-srcs/corewar_srcs/gr_vm_selector.s: srcs/corewar_srcs/gr_vm_selector.c.s
+srcs/corewar_srcs/graphics/gr_vm_selector.s: srcs/corewar_srcs/graphics/gr_vm_selector.c.s
 
-.PHONY : srcs/corewar_srcs/gr_vm_selector.s
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_selector.s
 
 # target to generate assembly for a file
-srcs/corewar_srcs/gr_vm_selector.c.s:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_selector.c.s
-.PHONY : srcs/corewar_srcs/gr_vm_selector.c.s
+srcs/corewar_srcs/graphics/gr_vm_selector.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_selector.c.s
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_selector.c.s
 
-srcs/corewar_srcs/gr_vm_styles.o: srcs/corewar_srcs/gr_vm_styles.c.o
+srcs/corewar_srcs/graphics/gr_vm_styles.o: srcs/corewar_srcs/graphics/gr_vm_styles.c.o
 
-.PHONY : srcs/corewar_srcs/gr_vm_styles.o
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_styles.o
 
 # target to build an object file
-srcs/corewar_srcs/gr_vm_styles.c.o:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_styles.c.o
-.PHONY : srcs/corewar_srcs/gr_vm_styles.c.o
+srcs/corewar_srcs/graphics/gr_vm_styles.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_styles.c.o
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_styles.c.o
 
-srcs/corewar_srcs/gr_vm_styles.i: srcs/corewar_srcs/gr_vm_styles.c.i
+srcs/corewar_srcs/graphics/gr_vm_styles.i: srcs/corewar_srcs/graphics/gr_vm_styles.c.i
 
-.PHONY : srcs/corewar_srcs/gr_vm_styles.i
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_styles.i
 
 # target to preprocess a source file
-srcs/corewar_srcs/gr_vm_styles.c.i:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_styles.c.i
-.PHONY : srcs/corewar_srcs/gr_vm_styles.c.i
+srcs/corewar_srcs/graphics/gr_vm_styles.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_styles.c.i
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_styles.c.i
 
-srcs/corewar_srcs/gr_vm_styles.s: srcs/corewar_srcs/gr_vm_styles.c.s
+srcs/corewar_srcs/graphics/gr_vm_styles.s: srcs/corewar_srcs/graphics/gr_vm_styles.c.s
 
-.PHONY : srcs/corewar_srcs/gr_vm_styles.s
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_styles.s
 
 # target to generate assembly for a file
-srcs/corewar_srcs/gr_vm_styles.c.s:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_styles.c.s
-.PHONY : srcs/corewar_srcs/gr_vm_styles.c.s
+srcs/corewar_srcs/graphics/gr_vm_styles.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_styles.c.s
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_styles.c.s
 
-srcs/corewar_srcs/gr_vm_ui.o: srcs/corewar_srcs/gr_vm_ui.c.o
+srcs/corewar_srcs/graphics/gr_vm_ui.o: srcs/corewar_srcs/graphics/gr_vm_ui.c.o
 
-.PHONY : srcs/corewar_srcs/gr_vm_ui.o
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_ui.o
 
 # target to build an object file
-srcs/corewar_srcs/gr_vm_ui.c.o:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_ui.c.o
-.PHONY : srcs/corewar_srcs/gr_vm_ui.c.o
+srcs/corewar_srcs/graphics/gr_vm_ui.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_ui.c.o
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_ui.c.o
 
-srcs/corewar_srcs/gr_vm_ui.i: srcs/corewar_srcs/gr_vm_ui.c.i
+srcs/corewar_srcs/graphics/gr_vm_ui.i: srcs/corewar_srcs/graphics/gr_vm_ui.c.i
 
-.PHONY : srcs/corewar_srcs/gr_vm_ui.i
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_ui.i
 
 # target to preprocess a source file
-srcs/corewar_srcs/gr_vm_ui.c.i:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_ui.c.i
-.PHONY : srcs/corewar_srcs/gr_vm_ui.c.i
+srcs/corewar_srcs/graphics/gr_vm_ui.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_ui.c.i
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_ui.c.i
 
-srcs/corewar_srcs/gr_vm_ui.s: srcs/corewar_srcs/gr_vm_ui.c.s
+srcs/corewar_srcs/graphics/gr_vm_ui.s: srcs/corewar_srcs/graphics/gr_vm_ui.c.s
 
-.PHONY : srcs/corewar_srcs/gr_vm_ui.s
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_ui.s
 
 # target to generate assembly for a file
-srcs/corewar_srcs/gr_vm_ui.c.s:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_ui.c.s
-.PHONY : srcs/corewar_srcs/gr_vm_ui.c.s
+srcs/corewar_srcs/graphics/gr_vm_ui.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_ui.c.s
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_ui.c.s
 
-srcs/corewar_srcs/gr_vm_ui_utils.o: srcs/corewar_srcs/gr_vm_ui_utils.c.o
+srcs/corewar_srcs/graphics/gr_vm_ui_utils.o: srcs/corewar_srcs/graphics/gr_vm_ui_utils.c.o
 
-.PHONY : srcs/corewar_srcs/gr_vm_ui_utils.o
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_ui_utils.o
 
 # target to build an object file
-srcs/corewar_srcs/gr_vm_ui_utils.c.o:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_ui_utils.c.o
-.PHONY : srcs/corewar_srcs/gr_vm_ui_utils.c.o
+srcs/corewar_srcs/graphics/gr_vm_ui_utils.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_ui_utils.c.o
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_ui_utils.c.o
 
-srcs/corewar_srcs/gr_vm_ui_utils.i: srcs/corewar_srcs/gr_vm_ui_utils.c.i
+srcs/corewar_srcs/graphics/gr_vm_ui_utils.i: srcs/corewar_srcs/graphics/gr_vm_ui_utils.c.i
 
-.PHONY : srcs/corewar_srcs/gr_vm_ui_utils.i
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_ui_utils.i
 
 # target to preprocess a source file
-srcs/corewar_srcs/gr_vm_ui_utils.c.i:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_ui_utils.c.i
-.PHONY : srcs/corewar_srcs/gr_vm_ui_utils.c.i
+srcs/corewar_srcs/graphics/gr_vm_ui_utils.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_ui_utils.c.i
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_ui_utils.c.i
 
-srcs/corewar_srcs/gr_vm_ui_utils.s: srcs/corewar_srcs/gr_vm_ui_utils.c.s
+srcs/corewar_srcs/graphics/gr_vm_ui_utils.s: srcs/corewar_srcs/graphics/gr_vm_ui_utils.c.s
 
-.PHONY : srcs/corewar_srcs/gr_vm_ui_utils.s
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_ui_utils.s
 
 # target to generate assembly for a file
-srcs/corewar_srcs/gr_vm_ui_utils.c.s:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/gr_vm_ui_utils.c.s
-.PHONY : srcs/corewar_srcs/gr_vm_ui_utils.c.s
+srcs/corewar_srcs/graphics/gr_vm_ui_utils.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/graphics/gr_vm_ui_utils.c.s
+.PHONY : srcs/corewar_srcs/graphics/gr_vm_ui_utils.c.s
 
-srcs/corewar_srcs/ins_basic.o: srcs/corewar_srcs/ins_basic.c.o
+srcs/corewar_srcs/utils/op.o: srcs/corewar_srcs/utils/op.c.o
 
-.PHONY : srcs/corewar_srcs/ins_basic.o
+.PHONY : srcs/corewar_srcs/utils/op.o
 
 # target to build an object file
-srcs/corewar_srcs/ins_basic.c.o:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_basic.c.o
-.PHONY : srcs/corewar_srcs/ins_basic.c.o
+srcs/corewar_srcs/utils/op.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/utils/op.c.o
+.PHONY : srcs/corewar_srcs/utils/op.c.o
 
-srcs/corewar_srcs/ins_basic.i: srcs/corewar_srcs/ins_basic.c.i
+srcs/corewar_srcs/utils/op.i: srcs/corewar_srcs/utils/op.c.i
 
-.PHONY : srcs/corewar_srcs/ins_basic.i
+.PHONY : srcs/corewar_srcs/utils/op.i
 
 # target to preprocess a source file
-srcs/corewar_srcs/ins_basic.c.i:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_basic.c.i
-.PHONY : srcs/corewar_srcs/ins_basic.c.i
+srcs/corewar_srcs/utils/op.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/utils/op.c.i
+.PHONY : srcs/corewar_srcs/utils/op.c.i
 
-srcs/corewar_srcs/ins_basic.s: srcs/corewar_srcs/ins_basic.c.s
+srcs/corewar_srcs/utils/op.s: srcs/corewar_srcs/utils/op.c.s
 
-.PHONY : srcs/corewar_srcs/ins_basic.s
+.PHONY : srcs/corewar_srcs/utils/op.s
 
 # target to generate assembly for a file
-srcs/corewar_srcs/ins_basic.c.s:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_basic.c.s
-.PHONY : srcs/corewar_srcs/ins_basic.c.s
+srcs/corewar_srcs/utils/op.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/utils/op.c.s
+.PHONY : srcs/corewar_srcs/utils/op.c.s
 
-srcs/corewar_srcs/ins_calc.o: srcs/corewar_srcs/ins_calc.c.o
+srcs/corewar_srcs/utils/utils.o: srcs/corewar_srcs/utils/utils.c.o
 
-.PHONY : srcs/corewar_srcs/ins_calc.o
+.PHONY : srcs/corewar_srcs/utils/utils.o
 
 # target to build an object file
-srcs/corewar_srcs/ins_calc.c.o:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_calc.c.o
-.PHONY : srcs/corewar_srcs/ins_calc.c.o
+srcs/corewar_srcs/utils/utils.c.o:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/utils/utils.c.o
+.PHONY : srcs/corewar_srcs/utils/utils.c.o
 
-srcs/corewar_srcs/ins_calc.i: srcs/corewar_srcs/ins_calc.c.i
+srcs/corewar_srcs/utils/utils.i: srcs/corewar_srcs/utils/utils.c.i
 
-.PHONY : srcs/corewar_srcs/ins_calc.i
-
-# target to preprocess a source file
-srcs/corewar_srcs/ins_calc.c.i:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_calc.c.i
-.PHONY : srcs/corewar_srcs/ins_calc.c.i
-
-srcs/corewar_srcs/ins_calc.s: srcs/corewar_srcs/ins_calc.c.s
-
-.PHONY : srcs/corewar_srcs/ins_calc.s
-
-# target to generate assembly for a file
-srcs/corewar_srcs/ins_calc.c.s:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_calc.c.s
-.PHONY : srcs/corewar_srcs/ins_calc.c.s
-
-srcs/corewar_srcs/ins_fork.o: srcs/corewar_srcs/ins_fork.c.o
-
-.PHONY : srcs/corewar_srcs/ins_fork.o
-
-# target to build an object file
-srcs/corewar_srcs/ins_fork.c.o:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_fork.c.o
-.PHONY : srcs/corewar_srcs/ins_fork.c.o
-
-srcs/corewar_srcs/ins_fork.i: srcs/corewar_srcs/ins_fork.c.i
-
-.PHONY : srcs/corewar_srcs/ins_fork.i
+.PHONY : srcs/corewar_srcs/utils/utils.i
 
 # target to preprocess a source file
-srcs/corewar_srcs/ins_fork.c.i:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_fork.c.i
-.PHONY : srcs/corewar_srcs/ins_fork.c.i
+srcs/corewar_srcs/utils/utils.c.i:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/utils/utils.c.i
+.PHONY : srcs/corewar_srcs/utils/utils.c.i
 
-srcs/corewar_srcs/ins_fork.s: srcs/corewar_srcs/ins_fork.c.s
+srcs/corewar_srcs/utils/utils.s: srcs/corewar_srcs/utils/utils.c.s
 
-.PHONY : srcs/corewar_srcs/ins_fork.s
-
-# target to generate assembly for a file
-srcs/corewar_srcs/ins_fork.c.s:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_fork.c.s
-.PHONY : srcs/corewar_srcs/ins_fork.c.s
-
-srcs/corewar_srcs/ins_index.o: srcs/corewar_srcs/ins_index.c.o
-
-.PHONY : srcs/corewar_srcs/ins_index.o
-
-# target to build an object file
-srcs/corewar_srcs/ins_index.c.o:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_index.c.o
-.PHONY : srcs/corewar_srcs/ins_index.c.o
-
-srcs/corewar_srcs/ins_index.i: srcs/corewar_srcs/ins_index.c.i
-
-.PHONY : srcs/corewar_srcs/ins_index.i
-
-# target to preprocess a source file
-srcs/corewar_srcs/ins_index.c.i:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_index.c.i
-.PHONY : srcs/corewar_srcs/ins_index.c.i
-
-srcs/corewar_srcs/ins_index.s: srcs/corewar_srcs/ins_index.c.s
-
-.PHONY : srcs/corewar_srcs/ins_index.s
+.PHONY : srcs/corewar_srcs/utils/utils.s
 
 # target to generate assembly for a file
-srcs/corewar_srcs/ins_index.c.s:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/ins_index.c.s
-.PHONY : srcs/corewar_srcs/ins_index.c.s
-
-srcs/corewar_srcs/mem.o: srcs/corewar_srcs/mem.c.o
-
-.PHONY : srcs/corewar_srcs/mem.o
-
-# target to build an object file
-srcs/corewar_srcs/mem.c.o:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/mem.c.o
-.PHONY : srcs/corewar_srcs/mem.c.o
-
-srcs/corewar_srcs/mem.i: srcs/corewar_srcs/mem.c.i
-
-.PHONY : srcs/corewar_srcs/mem.i
-
-# target to preprocess a source file
-srcs/corewar_srcs/mem.c.i:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/mem.c.i
-.PHONY : srcs/corewar_srcs/mem.c.i
-
-srcs/corewar_srcs/mem.s: srcs/corewar_srcs/mem.c.s
-
-.PHONY : srcs/corewar_srcs/mem.s
-
-# target to generate assembly for a file
-srcs/corewar_srcs/mem.c.s:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/mem.c.s
-.PHONY : srcs/corewar_srcs/mem.c.s
-
-srcs/corewar_srcs/op.o: srcs/corewar_srcs/op.c.o
-
-.PHONY : srcs/corewar_srcs/op.o
-
-# target to build an object file
-srcs/corewar_srcs/op.c.o:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/op.c.o
-.PHONY : srcs/corewar_srcs/op.c.o
-
-srcs/corewar_srcs/op.i: srcs/corewar_srcs/op.c.i
-
-.PHONY : srcs/corewar_srcs/op.i
-
-# target to preprocess a source file
-srcs/corewar_srcs/op.c.i:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/op.c.i
-.PHONY : srcs/corewar_srcs/op.c.i
-
-srcs/corewar_srcs/op.s: srcs/corewar_srcs/op.c.s
-
-.PHONY : srcs/corewar_srcs/op.s
-
-# target to generate assembly for a file
-srcs/corewar_srcs/op.c.s:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/op.c.s
-.PHONY : srcs/corewar_srcs/op.c.s
-
-srcs/corewar_srcs/options.o: srcs/corewar_srcs/options.c.o
-
-.PHONY : srcs/corewar_srcs/options.o
-
-# target to build an object file
-srcs/corewar_srcs/options.c.o:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/options.c.o
-.PHONY : srcs/corewar_srcs/options.c.o
-
-srcs/corewar_srcs/options.i: srcs/corewar_srcs/options.c.i
-
-.PHONY : srcs/corewar_srcs/options.i
-
-# target to preprocess a source file
-srcs/corewar_srcs/options.c.i:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/options.c.i
-.PHONY : srcs/corewar_srcs/options.c.i
-
-srcs/corewar_srcs/options.s: srcs/corewar_srcs/options.c.s
-
-.PHONY : srcs/corewar_srcs/options.s
-
-# target to generate assembly for a file
-srcs/corewar_srcs/options.c.s:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/options.c.s
-.PHONY : srcs/corewar_srcs/options.c.s
-
-srcs/corewar_srcs/options2.o: srcs/corewar_srcs/options2.c.o
-
-.PHONY : srcs/corewar_srcs/options2.o
-
-# target to build an object file
-srcs/corewar_srcs/options2.c.o:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/options2.c.o
-.PHONY : srcs/corewar_srcs/options2.c.o
-
-srcs/corewar_srcs/options2.i: srcs/corewar_srcs/options2.c.i
-
-.PHONY : srcs/corewar_srcs/options2.i
-
-# target to preprocess a source file
-srcs/corewar_srcs/options2.c.i:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/options2.c.i
-.PHONY : srcs/corewar_srcs/options2.c.i
-
-srcs/corewar_srcs/options2.s: srcs/corewar_srcs/options2.c.s
-
-.PHONY : srcs/corewar_srcs/options2.s
-
-# target to generate assembly for a file
-srcs/corewar_srcs/options2.c.s:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/options2.c.s
-.PHONY : srcs/corewar_srcs/options2.c.s
-
-srcs/corewar_srcs/opts_tokens.o: srcs/corewar_srcs/opts_tokens.c.o
-
-.PHONY : srcs/corewar_srcs/opts_tokens.o
-
-# target to build an object file
-srcs/corewar_srcs/opts_tokens.c.o:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/opts_tokens.c.o
-.PHONY : srcs/corewar_srcs/opts_tokens.c.o
-
-srcs/corewar_srcs/opts_tokens.i: srcs/corewar_srcs/opts_tokens.c.i
-
-.PHONY : srcs/corewar_srcs/opts_tokens.i
-
-# target to preprocess a source file
-srcs/corewar_srcs/opts_tokens.c.i:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/opts_tokens.c.i
-.PHONY : srcs/corewar_srcs/opts_tokens.c.i
-
-srcs/corewar_srcs/opts_tokens.s: srcs/corewar_srcs/opts_tokens.c.s
-
-.PHONY : srcs/corewar_srcs/opts_tokens.s
-
-# target to generate assembly for a file
-srcs/corewar_srcs/opts_tokens.c.s:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/opts_tokens.c.s
-.PHONY : srcs/corewar_srcs/opts_tokens.c.s
-
-srcs/corewar_srcs/parse_args.o: srcs/corewar_srcs/parse_args.c.o
-
-.PHONY : srcs/corewar_srcs/parse_args.o
-
-# target to build an object file
-srcs/corewar_srcs/parse_args.c.o:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/parse_args.c.o
-.PHONY : srcs/corewar_srcs/parse_args.c.o
-
-srcs/corewar_srcs/parse_args.i: srcs/corewar_srcs/parse_args.c.i
-
-.PHONY : srcs/corewar_srcs/parse_args.i
-
-# target to preprocess a source file
-srcs/corewar_srcs/parse_args.c.i:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/parse_args.c.i
-.PHONY : srcs/corewar_srcs/parse_args.c.i
-
-srcs/corewar_srcs/parse_args.s: srcs/corewar_srcs/parse_args.c.s
-
-.PHONY : srcs/corewar_srcs/parse_args.s
-
-# target to generate assembly for a file
-srcs/corewar_srcs/parse_args.c.s:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/parse_args.c.s
-.PHONY : srcs/corewar_srcs/parse_args.c.s
-
-srcs/corewar_srcs/process.o: srcs/corewar_srcs/process.c.o
-
-.PHONY : srcs/corewar_srcs/process.o
-
-# target to build an object file
-srcs/corewar_srcs/process.c.o:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/process.c.o
-.PHONY : srcs/corewar_srcs/process.c.o
-
-srcs/corewar_srcs/process.i: srcs/corewar_srcs/process.c.i
-
-.PHONY : srcs/corewar_srcs/process.i
-
-# target to preprocess a source file
-srcs/corewar_srcs/process.c.i:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/process.c.i
-.PHONY : srcs/corewar_srcs/process.c.i
-
-srcs/corewar_srcs/process.s: srcs/corewar_srcs/process.c.s
-
-.PHONY : srcs/corewar_srcs/process.s
-
-# target to generate assembly for a file
-srcs/corewar_srcs/process.c.s:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/process.c.s
-.PHONY : srcs/corewar_srcs/process.c.s
-
-srcs/corewar_srcs/read_args.o: srcs/corewar_srcs/read_args.c.o
-
-.PHONY : srcs/corewar_srcs/read_args.o
-
-# target to build an object file
-srcs/corewar_srcs/read_args.c.o:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/read_args.c.o
-.PHONY : srcs/corewar_srcs/read_args.c.o
-
-srcs/corewar_srcs/read_args.i: srcs/corewar_srcs/read_args.c.i
-
-.PHONY : srcs/corewar_srcs/read_args.i
-
-# target to preprocess a source file
-srcs/corewar_srcs/read_args.c.i:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/read_args.c.i
-.PHONY : srcs/corewar_srcs/read_args.c.i
-
-srcs/corewar_srcs/read_args.s: srcs/corewar_srcs/read_args.c.s
-
-.PHONY : srcs/corewar_srcs/read_args.s
-
-# target to generate assembly for a file
-srcs/corewar_srcs/read_args.c.s:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/read_args.c.s
-.PHONY : srcs/corewar_srcs/read_args.c.s
-
-srcs/corewar_srcs/utils.o: srcs/corewar_srcs/utils.c.o
-
-.PHONY : srcs/corewar_srcs/utils.o
-
-# target to build an object file
-srcs/corewar_srcs/utils.c.o:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/utils.c.o
-.PHONY : srcs/corewar_srcs/utils.c.o
-
-srcs/corewar_srcs/utils.i: srcs/corewar_srcs/utils.c.i
-
-.PHONY : srcs/corewar_srcs/utils.i
-
-# target to preprocess a source file
-srcs/corewar_srcs/utils.c.i:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/utils.c.i
-.PHONY : srcs/corewar_srcs/utils.c.i
-
-srcs/corewar_srcs/utils.s: srcs/corewar_srcs/utils.c.s
-
-.PHONY : srcs/corewar_srcs/utils.s
-
-# target to generate assembly for a file
-srcs/corewar_srcs/utils.c.s:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/utils.c.s
-.PHONY : srcs/corewar_srcs/utils.c.s
-
-srcs/corewar_srcs/values.o: srcs/corewar_srcs/values.c.o
-
-.PHONY : srcs/corewar_srcs/values.o
-
-# target to build an object file
-srcs/corewar_srcs/values.c.o:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/values.c.o
-.PHONY : srcs/corewar_srcs/values.c.o
-
-srcs/corewar_srcs/values.i: srcs/corewar_srcs/values.c.i
-
-.PHONY : srcs/corewar_srcs/values.i
-
-# target to preprocess a source file
-srcs/corewar_srcs/values.c.i:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/values.c.i
-.PHONY : srcs/corewar_srcs/values.c.i
-
-srcs/corewar_srcs/values.s: srcs/corewar_srcs/values.c.s
-
-.PHONY : srcs/corewar_srcs/values.s
-
-# target to generate assembly for a file
-srcs/corewar_srcs/values.c.s:
-	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/values.c.s
-.PHONY : srcs/corewar_srcs/values.c.s
+srcs/corewar_srcs/utils/utils.c.s:
+	$(MAKE) -f CMakeFiles/corewar.dir/build.make CMakeFiles/corewar.dir/srcs/corewar_srcs/utils/utils.c.s
+.PHONY : srcs/corewar_srcs/utils/utils.c.s
 
 # Help Target
 help:
@@ -1634,15 +1627,52 @@ help:
 	@echo "... srcs/asm_srcs/write.o"
 	@echo "... srcs/asm_srcs/write.i"
 	@echo "... srcs/asm_srcs/write.s"
-	@echo "... srcs/corewar_srcs/arena_ini.o"
-	@echo "... srcs/corewar_srcs/arena_ini.i"
-	@echo "... srcs/corewar_srcs/arena_ini.s"
-	@echo "... srcs/corewar_srcs/check_process.o"
-	@echo "... srcs/corewar_srcs/check_process.i"
-	@echo "... srcs/corewar_srcs/check_process.s"
+	@echo "... srcs/corewar_srcs/core/init/arena_ini.o"
+	@echo "... srcs/corewar_srcs/core/init/arena_ini.i"
+	@echo "... srcs/corewar_srcs/core/init/arena_ini.s"
+	@echo "... srcs/corewar_srcs/core/init/check_process.o"
+	@echo "... srcs/corewar_srcs/core/init/check_process.i"
+	@echo "... srcs/corewar_srcs/core/init/check_process.s"
+	@echo "... srcs/corewar_srcs/core/instructions/ins_basic.o"
+	@echo "... srcs/corewar_srcs/core/instructions/ins_basic.i"
+	@echo "... srcs/corewar_srcs/core/instructions/ins_basic.s"
+	@echo "... srcs/corewar_srcs/core/instructions/ins_calc.o"
+	@echo "... srcs/corewar_srcs/core/instructions/ins_calc.i"
+	@echo "... srcs/corewar_srcs/core/instructions/ins_calc.s"
+	@echo "... srcs/corewar_srcs/core/instructions/ins_fork.o"
+	@echo "... srcs/corewar_srcs/core/instructions/ins_fork.i"
+	@echo "... srcs/corewar_srcs/core/instructions/ins_fork.s"
+	@echo "... srcs/corewar_srcs/core/instructions/ins_index.o"
+	@echo "... srcs/corewar_srcs/core/instructions/ins_index.i"
+	@echo "... srcs/corewar_srcs/core/instructions/ins_index.s"
+	@echo "... srcs/corewar_srcs/core/instructions/process.o"
+	@echo "... srcs/corewar_srcs/core/instructions/process.i"
+	@echo "... srcs/corewar_srcs/core/instructions/process.s"
+	@echo "... srcs/corewar_srcs/core/memory/mem.o"
+	@echo "... srcs/corewar_srcs/core/memory/mem.i"
+	@echo "... srcs/corewar_srcs/core/memory/mem.s"
+	@echo "... srcs/corewar_srcs/core/memory/values.o"
+	@echo "... srcs/corewar_srcs/core/memory/values.i"
+	@echo "... srcs/corewar_srcs/core/memory/values.s"
+	@echo "... srcs/corewar_srcs/core/parser/options.o"
+	@echo "... srcs/corewar_srcs/core/parser/options.i"
+	@echo "... srcs/corewar_srcs/core/parser/options.s"
+	@echo "... srcs/corewar_srcs/core/parser/options2.o"
+	@echo "... srcs/corewar_srcs/core/parser/options2.i"
+	@echo "... srcs/corewar_srcs/core/parser/options2.s"
+	@echo "... srcs/corewar_srcs/core/parser/opts_tokens.o"
+	@echo "... srcs/corewar_srcs/core/parser/opts_tokens.i"
+	@echo "... srcs/corewar_srcs/core/parser/opts_tokens.s"
+	@echo "... srcs/corewar_srcs/core/parser/parse_args.o"
+	@echo "... srcs/corewar_srcs/core/parser/parse_args.i"
+	@echo "... srcs/corewar_srcs/core/parser/parse_args.s"
+	@echo "... srcs/corewar_srcs/core/parser/read_args.o"
+	@echo "... srcs/corewar_srcs/core/parser/read_args.i"
+	@echo "... srcs/corewar_srcs/core/parser/read_args.s"
 	@echo "... srcs/corewar_srcs/corewar.o"
 	@echo "... srcs/corewar_srcs/corewar.i"
 	@echo "... srcs/corewar_srcs/corewar.s"
+<<<<<<< HEAD
 	@echo "... srcs/corewar_srcs/gr_gen_tex.o"
 	@echo "... srcs/corewar_srcs/gr_gen_tex.i"
 	@echo "... srcs/corewar_srcs/gr_gen_tex.s"
@@ -1736,6 +1766,62 @@ help:
 	@echo "... srcs/corewar_srcs/values.o"
 	@echo "... srcs/corewar_srcs/values.i"
 	@echo "... srcs/corewar_srcs/values.s"
+=======
+	@echo "... srcs/corewar_srcs/graphics/gr_gen_tex.o"
+	@echo "... srcs/corewar_srcs/graphics/gr_gen_tex.i"
+	@echo "... srcs/corewar_srcs/graphics/gr_gen_tex.s"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_camera_handling.o"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_camera_handling.i"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_camera_handling.s"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_camera_handling_rot.o"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_camera_handling_rot.i"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_camera_handling_rot.s"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_gl.o"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_gl.i"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_gl.s"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_handlers.o"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_handlers.i"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_handlers.s"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_init.o"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_init.i"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_init.s"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_init_cube.o"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_init_cube.i"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_init_cube.s"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_inputs.o"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_inputs.i"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_inputs.s"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_keys.o"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_keys.i"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_keys.s"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_matrix.o"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_matrix.i"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_matrix.s"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_render_opengl.o"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_render_opengl.i"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_render_opengl.s"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_run.o"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_run.i"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_run.s"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_selector.o"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_selector.i"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_selector.s"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_styles.o"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_styles.i"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_styles.s"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_ui.o"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_ui.i"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_ui.s"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_ui_utils.o"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_ui_utils.i"
+	@echo "... srcs/corewar_srcs/graphics/gr_vm_ui_utils.s"
+	@echo "... srcs/corewar_srcs/utils/op.o"
+	@echo "... srcs/corewar_srcs/utils/op.i"
+	@echo "... srcs/corewar_srcs/utils/op.s"
+	@echo "... srcs/corewar_srcs/utils/utils.o"
+	@echo "... srcs/corewar_srcs/utils/utils.i"
+	@echo "... srcs/corewar_srcs/utils/utils.s"
+>>>>>>> 378561dd66dc5ff65f2a4e739cce3748d7e2ccb1
 .PHONY : help
 
 

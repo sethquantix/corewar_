@@ -46,7 +46,7 @@ static void		loop_check_lbl(t_deco *all, t_dec_op *tmp, int argc, int i)
 		{
 			if (!tmp->param_value[i] || (
 				tmp->param_value[i] + tmp->addr < 0 ||
-				tmp->param_value[i] + tmp->addr >= all->head.prog_size))
+				tmp->param_value[i] + tmp->addr >= (int)all->head.prog_size))
 			{
 				i++;
 				continue ;
@@ -65,7 +65,11 @@ void			set_check_lbl(t_deco *all)
 	tmp = all->lst;
 	while (tmp)
 	{
+<<<<<<< HEAD
 		op = g_op_tab[tmp->opcode];
+=======
+		op = op_tab[(int)tmp->opcode];
+>>>>>>> 378561dd66dc5ff65f2a4e739cce3748d7e2ccb1
 		loop_check_lbl(all, tmp, op.argc, 0);
 		tmp = tmp->next;
 	}

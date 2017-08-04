@@ -96,11 +96,23 @@ void	*compile_error(t_parser *p, char *file, char *source, char *ret)
 	parser_get_pos(ret, source, &l, &c);
 	s = parser_getl(ret - c + 1);
 	err = get_err(p, ret, &c);
+<<<<<<< HEAD
 	ft_dprintf(2, "%s:%d:%d: %serror:%s %s\n", file, l,
 		c, COLOR_RED, COLOR_END, err);
 	ft_dprintf(2, "\t%s\n", s);
 	ft_dprintf(2, "\t%s%.*s%s\n", COLOR_GREEN, c, "^", COLOR_END);
+=======
+	ft_dprintf(2, "%s:%d:%d: %serror:%s %s\n", file, l, c, COLOR_RED, COLOR_END, err);
+>>>>>>> 378561dd66dc5ff65f2a4e739cce3748d7e2ccb1
 	free(err);
+	err = s;
+	while (ft_iswhite(*err))
+	{
+		c--;
+		err++;
+	}
+	ft_dprintf(2, "\t%s\n", err);
+	ft_dprintf(2, "\t%s%.*s%s\n", COLOR_GREEN, c, "^", COLOR_END);
 	free(s);
 	return (NULL);
 }

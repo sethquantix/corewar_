@@ -16,7 +16,6 @@
 int	err_param(char *src)
 {
 	int			fd;
-	header_t	*head;
 	char		*chr;
 
 	if ((fd = open(src, O_RDONLY)) == -1)

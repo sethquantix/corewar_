@@ -6,7 +6,7 @@
 /*   By: lnagy <lnagy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/08 14:47:00 by lnagy             #+#    #+#             */
-/*   Updated: 2017/03/08 14:47:03 by lnagy            ###   ########.fr       */
+/*   Updated: 2017/08/01 08:21:46 by cchaumar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_expr		*parse_opts(char **av)
 
 	arg = join_args(av);
 	expr = NULL;
-	p = parse_engine("rules/asm_opts", g_asm_opts, (char **)list);
+	p = parse_engine("assets/rules/asm_opts", g_asm_opts, (char **)list);
 	err = run_parser(p, arg, "FORMAT", &expr);
 	destroy_engine(p);
 	parse_error(err);

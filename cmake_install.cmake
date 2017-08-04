@@ -2,7 +2,11 @@
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
+<<<<<<< HEAD
   set(CMAKE_INSTALL_PREFIX "/Users/tsedigi/.brew")
+=======
+  set(CMAKE_INSTALL_PREFIX "/usr/local")
+>>>>>>> 378561dd66dc5ff65f2a4e739cce3748d7e2ccb1
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 

@@ -18,7 +18,6 @@ int			check_op(char *file, t_deco *all, int iter)
 	t_dec_op	*node;
 	t_op		op;
 	int			ret;
-	int			i;
 
 	if (!file)
 		die(EXIT_FAILURE, "Unknown");

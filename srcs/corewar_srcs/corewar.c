@@ -6,7 +6,7 @@
 /*   By: lnagy <lnagy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/05 16:38:41 by lnagy             #+#    #+#             */
-/*   Updated: 2017/07/25 11:15:04 by cchaumar         ###   ########.fr       */
+/*   Updated: 2017/08/01 04:04:27 by cchaumar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ int		loop(t_arena *a)
 		a->check(a);
 	if (a->dump_cycles && a->cycles % a->dump_cycles == 0)
 	{
+		if (!(a->opts & S_OPT) && !a->cycles)
+			return (0);
 		dump(a->arena, DUMP_64);
 		if (a->opts & D_OPT)
 			return (0);
@@ -78,6 +80,7 @@ int		usage(char *s)
 	return (0);
 }
 
+<<<<<<< HEAD
 void	init(t_arena *arena)
 {
 	int			num;
@@ -102,6 +105,9 @@ void	init(t_arena *arena)
 }
 
 void	winner(t_arena *arena)
+=======
+void 	winner(t_arena *arena)
+>>>>>>> 378561dd66dc5ff65f2a4e739cce3748d7e2ccb1
 {
 	int		i;
 	int		w;
@@ -116,8 +122,8 @@ void	winner(t_arena *arena)
 			w = i;
 		i++;
 	}
-	ft_printf("Contestant %d, \"%s\", has won !\n", arena->champs[w].num,
-		arena->champs[w].head.prog_name);
+	ft_printf("\n%sContestant %d, \"%s\", has won !\n%s", acol(3, 2, 5),
+		arena->champs[w].num, arena->champs[w].head.prog_name, COLOR_END);
 }
 
 int		main(int ac, char **av)
@@ -133,10 +139,12 @@ int		main(int ac, char **av)
 	expr = parse_opts(av + 1);
 	read_args(expr, &arena);
 	init(&arena);
-	set_champs(&arena);
+	arena.add_proc = (t_f_add)fork_proc;
+	ft_printf("\n\n%s********** BEGIN ! *************%s\n\n",
+		acol(1, 1, 4), COLOR_END);
 	if (arena.opts & G_OPT)
 	{
-		gr_vm_init(&context, &arena);
+		gr_vm_init(&context);
 		gr_vm_run((t_vm_loop)loop, &arena, &context);
 		gr_vm_end(&context);
 	}
