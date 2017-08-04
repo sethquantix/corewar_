@@ -6,7 +6,7 @@
 #    By: cchaumar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/23 12:31:27 by cchaumar          #+#    #+#              #
-#    Updated: 2017/05/16 05:37:49 by cchaumar         ###   ########.fr        #
+#    Updated: 2017/08/02 20:08:37 by cchaumar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,12 +25,10 @@ SRCS   = $(addprefix $(SRCD),$(FILES))
 OBJS   = $(addprefix $(OBJD),$(FILES:.c=.o))
 FROPEN = -framework OpenGL -framework OpenCL
 FRMCOS = -framework Appkit
-LIBD   = libs
+LIBD   = ..
 LIBFT  = $(LIBD)/libft
-MLX    = $(LIBD)/mlx
-GLEW   = $(LIBD)
 FRAMEWORKS = $(FROPEN) $(FRMCOS)
-INCD   = -Iincludes -I$(LIBFT) -I$(MLX) -I$(GLEW)
+INCD   = -Iincludes -I$(LIBFT)
 
 all : $(NAME)
 
@@ -40,7 +38,6 @@ $(OBJD)%.o: $(SRCD)%.c
 
 build:
 		make -C $(LIBFT)
-		make -C $(MLX)
 
 $(NAME): $(OBJS) build
 		ar rc $@ $(OBJS)

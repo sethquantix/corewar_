@@ -60,7 +60,6 @@ static GLuint	gl_link_info(GLuint program)
 		free(log_info);
 		return (0);
 	}
-	ft_printf("compiled !\n");
 	return (program);
 }
 

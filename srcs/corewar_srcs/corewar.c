@@ -86,17 +86,18 @@ void 	winner(t_arena *arena)
 	int 	w;
 
 	i = 0;
-	w = 0;
+	w = -1;
 	while (i < arena->champ_count)
 	{
 		ft_printf("last live %d : %d\n", arena->champs[i].num,
 			arena->champs[i].last_live);
-		if (arena->champs[i].last_live > arena->champs[w].last_live)
+		if (w == -1 || arena->champs[i].last_live > arena->champs[w].last_live)
 			w = i;
 		i++;
 	}
-	ft_printf("\n%sContestant %d, \"%s\", has won !\n%s", acol(3, 2, 5),
-		arena->champs[w].num, arena->champs[w].head.prog_name, COLOR_END);
+	if (w != -1)
+		ft_printf("\n%sContestant %d, \"%s\", has won !\n%s", acol(3, 2, 5),
+			arena->champs[w].num, arena->champs[w].head.prog_name, COLOR_END);
 }
 
 int		main(int ac, char **av)

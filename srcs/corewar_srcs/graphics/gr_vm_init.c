@@ -73,7 +73,10 @@ void	gr_vm_init(t_gr_vm *cxt)
 	init_text_p(&cxt->sst);
 	cxt->screen = SDL_CreateRGBSurface(0, BOARD_WIDTH, BOARD_HEIGHT, 32,
 		0, 0, 0, 0);
-	cxt->cursor = (t_cursor){ PLAYER_NONE, PROC_NONE, SELECT_PLAYER, 1};
+	cxt->cursor.player = PLAYER_NONE;
+	cxt->cursor.proc = PROC_NONE;
+	cxt->cursor.pos = SELECT_PLAYER;
+	cxt->cursor.reg = 1;
 	cxt->glyphs = gen_texture("assets/fonts/Prototype.ttf");
 	cxt->vao = generate_cube(cxt);
 	cxt->board = gen_board_tex();

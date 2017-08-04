@@ -16,7 +16,7 @@
 static void	add_tex(TTF_Font *font, int v, SDL_Surface **buff)
 {
 	const char 		text[17] = "0123456789ABCDEF";
-	const SDL_Color	color = {255, 255, 255};
+	const SDL_Color	color = {255, 255, 255, 255};
 
 	buff[v] = TTF_RenderGlyph_Blended(font, text[v], color);
 }

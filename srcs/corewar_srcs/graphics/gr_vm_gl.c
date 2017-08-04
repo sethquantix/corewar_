@@ -12,7 +12,7 @@
 
 #include "gr_vm_internals.h"
 
-static GLint 	build_program(const char *vs, const char *fs)
+static GLuint 	build_program(const char *vs, const char *fs)
 {
 	t_gl_shader	shaders[2];
 	GLuint 		program;
@@ -30,8 +30,9 @@ static GLint 	build_program(const char *vs, const char *fs)
 void 			init_gl(t_gr_vm *cxt, t_cam *cam)
 {
 	const char 	*shaders[][2] = {
-			{"./shaders/vertex.shader", "./shaders/frag.shader"},
-			{"./shaders/vertex_board.shader", "./shaders/frag_board.shader"}
+			{"assets/shaders/vertex.shader", "assets/shaders/frag.shader"},
+			{"assets/shaders/vertex_board.shader",
+			 "assets/shaders/frag_board.shader"}
 	};
 
 	glewInit();

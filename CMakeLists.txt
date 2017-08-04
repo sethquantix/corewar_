@@ -3,7 +3,7 @@ project(_corewar)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(CMAKE_C_FLAGS "-Wall -Wextra -g -fsanitize=address")
+set(CMAKE_C_FLAGS "-Wall -Wextra -g")
 
 include_directories(
 	includes
