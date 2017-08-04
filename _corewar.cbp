@@ -255,6 +255,9 @@
 		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/core/instructions/process.c">
 			<Option target="corewar"/>
 		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/core/instructions/process_read.c">
+			<Option target="corewar"/>
+		</Unit>
 		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/core/memory/mem.c">
 			<Option target="corewar"/>
 		</Unit>
@@ -282,10 +285,19 @@
 		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/graphics/gr_gen_tex.c">
 			<Option target="corewar"/>
 		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/graphics/gr_gl_init_vbos.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/graphics/gr_gl_update.c">
+			<Option target="corewar"/>
+		</Unit>
 		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/graphics/gr_vm_camera_handling.c">
 			<Option target="corewar"/>
 		</Unit>
 		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/graphics/gr_vm_camera_handling_rot.c">
+			<Option target="corewar"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/graphics/gr_vm_clear.c">
 			<Option target="corewar"/>
 		</Unit>
 		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/corewar_srcs/graphics/gr_vm_gl.c">

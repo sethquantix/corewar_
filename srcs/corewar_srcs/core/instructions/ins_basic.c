@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include <corewar.h>
 
 void	i_live(t_proc *proc)
 {
@@ -32,13 +32,13 @@ void	i_live(t_proc *proc)
 	}
 	if ((proc->arena->verbose_lvl & V_LVL_LIVES) && v)
 		ft_printf("Player %d (%s) is said to be alive\n", v->num,
-				  v->head.prog_name);
+			v->head.prog_name);
 }
 
 void	i_ld(t_proc *proc)
 {
 	int		value;
-	int 	reg;
+	int		reg;
 
 	if (get_value(proc, &value, 0, V_VALUE))
 		return ;

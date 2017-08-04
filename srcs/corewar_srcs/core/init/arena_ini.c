@@ -40,7 +40,7 @@ t_proc	*fork_proc(t_arena *a, t_proc *p, int pc)
 	proc->oct = 0;
 	proc->get_inst = proc_read_inst;
 	proc->get_params = proc_read_params;
-	memcpy(proc->reg, p->reg, sizeof(p->reg));
+	ft_memcpy(proc->reg, p->reg, sizeof(p->reg));
 	proc->arena = a;
 	proc->op = NULL;
 	proc->cycles_left = 0;
@@ -61,13 +61,13 @@ void	load_code(t_arena *a, t_champ *c)
 	p = add_proc(a, c, pc);
 	ft_memcpy(a->arena + p->pc, c->source, c->head.prog_size);
 	set_mem(a->mem, p->pc, c->head.prog_size, p->player);
-	SET_PLAYER(a->mem[p->pc], p->player);
+	proc_set(p, SET_PLAYER);
 }
 
 void	init(t_arena *arena)
 {
-	int 		num;
-	int 		i;
+	int			num;
+	int			i;
 
 	arena->check = check_process;
 	arena->add_proc = (t_f_add)add_proc;
@@ -78,13 +78,14 @@ void	init(t_arena *arena)
 	{
 		if (!arena->champs[i].set)
 		{
-			while (check_set(arena->champs, arena->champ_count, num)) {
-				ft_printf("%s => %d\n", arena->champs[i].head.prog_name, num);
+			while (check_set(arena->champs, arena->champ_count, num))
 				num++;
-			}
 			arena->champs[i].num = num++;
 		}
 		load_code(arena, arena->champs + i);
 		i++;
 	}
+	arena->add_proc = (t_f_add)fork_proc;
+	ft_printf("\n\n%s********** BEGIN ! *************%s\n\n",
+		acol(1, 1, 4), COLOR_END);
 }

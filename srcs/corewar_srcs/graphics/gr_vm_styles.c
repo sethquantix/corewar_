@@ -10,14 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "gr_vm_internals.h"
+#include <gr_vm_internals.h>
 
-void	add_style(t_text_p *sst, t_style style)
+static void		add_style(t_text_p *sst, t_style style)
 {
 	ft_pushback((void **)&sst->styles, sizeof(t_style), sst->nstyle++, &style);
 }
 
-static t_style		style(SDL_Color c, const char *font, int size)
+static t_style	style(SDL_Color c, const char *font, int size)
 {
 	TTF_Font	*f;
 
@@ -27,7 +27,7 @@ static t_style		style(SDL_Color c, const char *font, int size)
 	return ((t_style){c, f});
 }
 
-void	init_text_p(t_text_p *sst)
+void			init_text_p(t_text_p *sst)
 {
 	const SDL_Color	colors[] = {
 		{250, 250, 250, 255},

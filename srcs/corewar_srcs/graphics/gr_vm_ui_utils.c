@@ -13,27 +13,26 @@
 #include "corewar.h"
 #include "gr_vm_internals.h"
 
-t_vec4	box(SDL_Rect pos)
+t_vec4		box(SDL_Rect pos)
 {
 	return (vec4(
 		(float)pos.x / (float)BOARD_WIDTH,
 		(float)pos.y / (float)BOARD_HEIGHT,
 		(float)pos.w / (float)BOARD_WIDTH,
-		(float)pos.h / (float)BOARD_HEIGHT
-	));
+		(float)pos.h / (float)BOARD_HEIGHT));
 }
 
 SDL_Surface	*print_text(t_text_p *sst, t_styles style, const char *text, ...)
 {
-	t_style     st;
-	va_list     va;
-	char        *s;
+	t_style		st;
+	va_list		va;
+	char		*s;
 
 	va_start(va, text);
 	ft_vasprintf(&s, text, va);
 	va_end(va);
 	st = sst->styles[style];
-	return (TTF_RenderText_Shaded(st.font, s, st.c, (SDL_Color){0, 0, 0,0}));
+	return (TTF_RenderText_Shaded(st.font, s, st.c, (SDL_Color){0, 0, 0, 0}));
 }
 
 SDL_Rect	draw_text(SDL_Surface *dst, SDL_Surface *s, SDL_Rect pos, int al)
@@ -78,7 +77,8 @@ static void	print_players(t_text_p *sst, SDL_Surface *board, SDL_Rect *pos,
 	}
 }
 
-void 	draw_base(t_gr_vm *cxt, t_arena *arena, SDL_Rect *pos, SDL_Surface *s)
+void		draw_base(t_gr_vm *cxt, t_arena *arena, SDL_Rect *pos,
+	SDL_Surface *s)
 {
 	static int		start = 0;
 	static SDL_Rect	rect = (SDL_Rect){0, 0, 0, 0};

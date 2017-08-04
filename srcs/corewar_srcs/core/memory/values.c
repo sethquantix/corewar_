@@ -10,14 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include <corewar.h>
 
 t_val	val(void *p, uint8_t s)
 {
 	return ((t_val){p, s});
 }
 
-int 	wrap_size(int v, int size)
+int		wrap_size(int v, int size)
 {
 	if (size == 4)
 		return (v);
@@ -26,8 +26,7 @@ int 	wrap_size(int v, int size)
 	return ((char)v);
 }
 
-
-int 	get_value(t_proc *p, int *v, int i, t_type type)
+int		get_value(t_proc *p, int *v, int i, t_type type)
 {
 	*v = wrap_size(p->params[i], p->p_sizes[i]);
 	if (p->p_types[i] == REG_CODE)

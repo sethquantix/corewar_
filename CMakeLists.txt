@@ -21,15 +21,15 @@ set(CRWR_INC
 	includes/corewar/corewar.h
 	includes/corewar/graphics/gr_structs.h
 	includes/corewar/graphics/gr_types.h
-    includes/corewar/graphics/gr_vm.h
+	includes/corewar/graphics/gr_vm.h
 	includes/corewar/graphics/gr_vm_internals.h
 	includes/corewar/internals/crwr_defines.h
 	includes/corewar/internals/crwr_globals.h
 	includes/corewar/internals/crwr_structs.h
 	includes/corewar/internals/crwr_types.h
 	includes/corewar/includes.h
-    includes/op.h
-)
+	includes/op.h
+	)
 
 set(ASM_INC
 	includes/asm/asm.h
@@ -52,13 +52,13 @@ add_executable(corewar ${CRWR_INC} ${CRWR_SRCS})
 add_executable(asm ${ASM_INC} ${ASM_SRCS})
 
 target_link_libraries(corewar
-        ft
-        glhandler
-        sdl2
+		ft
+		glhandler
+		sdl2
 		sdl2_ttf
-        glew
+		glew
 		SOIL2
-        ${OPENGL_LIBRARIES})
+		${OPENGL_LIBRARIES})
 
 target_link_libraries(asm
 		ft)

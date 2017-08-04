@@ -10,13 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
-#include "gr_vm_internals.h"
+#include <corewar.h>
+#include <gr_vm_internals.h>
 
-static void		set_procs(t_gr_vm *cxt, t_arena *a)
+static void		update_values(t_gr_vm *cxt, t_arena *a, t_proc *current,
+	uint8_t values[])
 {
-	int		i;
+	int				i;
 
+	i = 0;
+	while (i < MEM_SIZE)
+	{
+		a->mem[i] &= 0xFFFF00FF;
+		(current && current->pc == i) ? a->mem[i] |= 0x100 : 0;
+		values[i] = a->arena[i];
+		cxt->scale[i] = 1 + 4 * (float)a->arena[i] / 255.0;
+		cxt->model[i][7] += (cxt->scale[i] - cxt->model[i][7]) / TIME_TRAVEL;
+		i++;
+	}
+	if (cxt->cursor.proc != PROC_ALL || cxt->cursor.player < 0)
+		return ;
 	i = 0;
 	while (i < a->proc_count)
 	{
@@ -28,24 +41,13 @@ static void		set_procs(t_gr_vm *cxt, t_arena *a)
 
 static void		stream_transform(t_gr_vm *cxt, t_arena *a)
 {
-	static uint32_t		values[MEM_SIZE];
-	int					i;
-	t_proc				*p;
+	static uint32_t	values[MEM_SIZE];
+	int				i;
+	t_proc			*p;
 
 	p = NULL;
 	(cxt->cursor.proc >= 0) ? p = a->procs[cxt->cursor.proc] : 0;
-	i = 0;
-	while (i < MEM_SIZE)
-	{
-		a->mem[i] &= 0xFFFF00FF;
-		(p && p->pc == i) ? a->mem[i] |= 0x100 : 0;
-		values[i] = a->arena[i];
-		cxt->scale[i] = 1 + 4 * (float)a->arena[i] / 255.0;
-		cxt->model[i][7] += (cxt->scale[i] - cxt->model[i][7]) / TIME_TRAVEL;
-		i++;
-	}
-	if (cxt->cursor.proc == PROC_ALL && cxt->cursor.player >= 0)
-		set_procs(cxt, a);
+	update_values(cxt, a, p, values);
 	glBindVertexArray(cxt->vao);
 	glBindBuffer(GL_ARRAY_BUFFER, cxt->matVBO);
 	glBufferData(GL_ARRAY_BUFFER,
@@ -57,73 +59,6 @@ static void		stream_transform(t_gr_vm *cxt, t_arena *a)
 	glBufferData(GL_ARRAY_BUFFER,
 		MEM_SIZE * sizeof(uint32_t), values, GL_DYNAMIC_DRAW);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
-}
-
-void			uniform_vec4(GLuint location, t_vec4 v)
-{
-	glUniform4f(location, v.x, v.y, v.z, v.w);
-}
-
-static void		push_mats(GLuint program, t_gr_vm *cxt)
-{
-	GLfloat		mat[16];
-	int 		loc;
-
-	loc = glGetUniformLocation(program, "V");
-	glUniformMatrix4fv(loc, 1, GL_FALSE, cxt->camera.m.t);
-	loc = glGetUniformLocation(program, "P");
-	load_projection(mat, 1, 10000, 1.3);
-	glUniformMatrix4fv(loc, 1, GL_FALSE, mat);
-}
-
-static void		push_uniform(t_gr_vm *cxt)
-{
-	static int 		ltime = 0;
-	static int		rtime = 0;
-	GLint			loc;
-
-	glBindVertexArray(cxt->vao);
- 	if (!rtime)
-		rtime = SDL_GetTicks();
-	ltime += cxt->opts & OPT_ROTATION ? SDL_GetTicks() - rtime : 0;
-	rtime = SDL_GetTicks();
-	push_mats(cxt->program, cxt);
-	loc = glGetUniformLocation(cxt->program, "textNoise");
-	glUniform1i(loc, cxt->diffuseTexture);
-	loc = glGetUniformLocation(cxt->program, "font");
-	glUniform1i(loc, cxt->glyphs);
-	loc = glGetUniformLocation(cxt->program, "in_time");
-	glUniform1f(loc, (SDL_GetTicks() - cxt->time) / 1000.0f);
-	loc = glGetUniformLocation(cxt->program, "time");
-	glUniform1f(loc, ltime / 1000.0f);
-	loc = glGetUniformLocation(cxt->program, "opts");
-	glUniform1i(loc, cxt->opts);
-}
-
-static void		push_board_uni(t_gr_vm *cxt)
-{
-	GLint			loc;
-
-	push_mats(cxt->program_board, cxt);
-	loc = glGetUniformLocation(cxt->program, "res");
-	glUniform2f(loc, (float)WIN_WIDTH, (float)WIN_HEIGHT);
-	loc = glGetUniformLocation(cxt->program_board, "board");
-	glUniform1i(loc, cxt->board);
-	loc = glGetUniformLocation(cxt->program_board, "texNoise");
-	glUniform1i(loc, cxt->diffuseTexture);
-	loc = glGetUniformLocation(cxt->program_board, "_time");
-	glUniform1f(loc, (SDL_GetTicks() - cxt->time) / 1000.0f);
-	loc = glGetUniformLocation(cxt->program_board, "cursor_pos");
-	glUniform1i(loc, cxt->cursor.pos);
-	loc = glGetUniformLocation(cxt->program_board, "player_box_pos");
-	uniform_vec4
-(loc, cxt->cursor.player_box);
-	loc = glGetUniformLocation(cxt->program_board, "proc_box_pos");
-	uniform_vec4
-(loc, cxt->cursor.proc_box);
-	loc = glGetUniformLocation(cxt->program_board, "proc_reg_pos");
-	uniform_vec4
-(loc, cxt->cursor.reg_box);
 }
 
 void			render_opengl(t_gr_vm *cxt, t_arena *arena)

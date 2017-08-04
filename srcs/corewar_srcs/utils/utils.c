@@ -20,29 +20,23 @@ header_t	empty_head(void)
 	return (head);
 }
 
-//<<<<<<< HEAD:srcs/corewar_srcs/utils.c
-//int			err(int index, ...)
-//{
-//	static const char	*tab[] = {
-//		"Invalid argument",
-//		"Unexpected token %s : \"%s\"",
-//		"Unexpected symbol \"%.1s\"",
-//		"Error : %s : File too small to be a champion.\n",
-//		"Error : %s : This does not appear to be a champion.\n",
-//		"Error : %s : Corrupted source (size doesn't match (%zu))\n",
-//		"Can't open %s for writing\n",
-//	};
-//	va_list		va;
-//
-//	va_start(va, index);
-//	ft_vadprintf(2, tab[index], va);
-//=======
+void		proc_set(t_proc *p, int state)
+{
+	static t_arena	*a = NULL;
 
-int		err(int level, const char *format, ...)
+	if (!a)
+		a = p->arena;
+	if (state == SET_PLAYER)
+		a->mem[p->pc] |= 1 << p->player;
+	else
+		a->mem[p->pc] &= (-1) & ~(1 << p->player);
+}
+
+int			err(int level, const char *format, ...)
 {
 	const int	colors[2][3] = {{4, 1, 0}, {5, 0, 0}};
 	va_list		va;
-	char 		*col;
+	char		*col;
 
 	col = acol(colors[level][0], colors[level][1], colors[level][2]);
 	write(2, col, ft_strlen(col));

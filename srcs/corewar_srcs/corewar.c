@@ -80,7 +80,7 @@ int		usage(char *s)
 	return (0);
 }
 
-void 	winner(t_arena *arena)
+void	winner(t_arena *arena)
 {
 	int		i;
 	int		w;
@@ -113,9 +113,6 @@ int		main(int ac, char **av)
 	expr = parse_opts(av + 1);
 	read_args(expr, &arena);
 	init(&arena);
-	arena.add_proc = (t_f_add)fork_proc;
-	ft_printf("\n\n%s********** BEGIN ! *************%s\n\n",
-		acol(1, 1, 4), COLOR_END);
 	if (arena.opts & G_OPT)
 	{
 		gr_vm_init(&context);
@@ -123,12 +120,10 @@ int		main(int ac, char **av)
 		gr_vm_end(&context);
 	}
 	else
-	{
 		while (loop(&arena))
 			;
-		if (arena.opts & A_OPT)
-			ft_printf("aff buffer: %s\n", arena.aff);
-		winner(&arena);
-	}
+	if (arena.opts & A_OPT)
+		ft_printf("aff buffer: %s\n", arena.aff);
+	winner(&arena);
 	return (0);
 }

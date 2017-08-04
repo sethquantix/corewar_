@@ -72,6 +72,8 @@ int 		get_value(t_proc *p, int *v, int index, t_type type);
 int			err(int level, const char *format, ...);
 void		die(int exit_status, const char *format, ...);
 void		dump(uint8_t mem[], int mod);
+void		proc_set(t_proc *p, int state);
+
 
 extern t_op g_tab[17];
 

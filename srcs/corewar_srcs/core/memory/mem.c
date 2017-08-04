@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include <corewar.h>
 
 void	set_mem(uint32_t *mem, int addr, int size, int player)
 {
-	int 	i;
+	int		i;
 
 	i = 0;
 	while (i < size)

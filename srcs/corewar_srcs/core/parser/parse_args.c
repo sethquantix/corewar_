@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include <corewar.h>
 
 int			check_set(t_champ *champs, int count, int n)
 {
@@ -18,11 +18,10 @@ int			check_set(t_champ *champs, int count, int n)
 
 	i = 0;
 	while (i < count)
-	{
 		if (champs->set && champs->num == n)
 			return (-1);
+		else
 			i++;
-	}
 	return (0);
 }
 

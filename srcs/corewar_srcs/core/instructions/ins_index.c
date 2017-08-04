@@ -10,13 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include <corewar.h>
 
 void	i_ldi(t_proc *proc)
 {
 	int		addr;
 	int		off;
-	int 	dest;
+	int		dest;
 
 	if (get_value(proc, &addr, 0, V_REFERENCE))
 		return ;
@@ -30,7 +30,7 @@ void	i_ldi(t_proc *proc)
 	{
 		ft_printf("P %4d | ldi %d %d r%d\n", proc->id, addr, off, dest);
 		ft_printf("%7s| -> load from %d + %d = %d (with pc and mod %d)\n", "",
-				  addr, off, addr + off, proc->pc + (addr + off) % IDX_MOD);
+			addr, off, addr + off, proc->pc + (addr + off) % IDX_MOD);
 	}
 	addr += off;
 	read_mem(idx_mod(proc->pc, addr), val(&proc->reg[dest], sizeof(int)),
@@ -39,7 +39,7 @@ void	i_ldi(t_proc *proc)
 
 void	i_sti(t_proc *proc)
 {
-	int 	reg;
+	int		reg;
 	int		addr;
 	int		off;
 
@@ -65,7 +65,7 @@ void	i_sti(t_proc *proc)
 void	i_lld(t_proc *proc)
 {
 	int		value;
-	int 	dest;
+	int		dest;
 
 	if (get_value(proc, &value, 0, V_VALUE_NOIDX))
 		return ;
@@ -81,7 +81,7 @@ void	i_lldi(t_proc *proc)
 {
 	int		addr;
 	int		off;
-	int 	dest;
+	int		dest;
 
 	if (get_value(proc, &addr, 0, V_VALUE_NOIDX))
 		return ;
@@ -93,7 +93,7 @@ void	i_lldi(t_proc *proc)
 	{
 		ft_printf("P %4d | lldi %d %d r%d\n", proc->id, addr, off, dest);
 		ft_printf("%7s| -> load from %d + %d = %d (with pc %d)\n", "",
-				  addr, off, addr + off, proc->pc + (addr + off));
+			addr, off, addr + off, proc->pc + (addr + off));
 	}
 	addr += off + proc->pc;
 	read_mem(addr, val(&proc->reg[dest], sizeof(int)), proc->arena->arena);

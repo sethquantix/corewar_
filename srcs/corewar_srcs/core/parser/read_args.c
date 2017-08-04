@@ -12,12 +12,17 @@
 
 #include "corewar.h"
 
-int		load_source(t_champ *c)
+int				load_source(t_champ *c)
 {
-	int		fd;
+	int			fd;
+	struct stat	file;
 
 	if ((fd = open(c->file_name, O_RDONLY)) == -1)
 		return (err(ERR, "[%s] : Error (ERR_OPEN_FILE)\n", c->file_name));
+	if (fstat(fd, &file) == -1)
+		return (err(ERR, "[%s] : Error (ERR_UNKNOWN_ERROR)\n", c->file_name));
+	if (file.st_size == 0)
+		return (err(ERR, "[%s] : Error (ERR_BAD_FILE)\n", c->file_name));
 	if (read(fd, &c->head, sizeof(header_t)) != sizeof(header_t))
 		return (err(ERR, "[%s] : Error (ERR_TOO_SMALL)\n", c->file_name));
 	ft_endian(&c->head.prog_size, 4);
@@ -60,11 +65,13 @@ static t_champ	new_champion(char *name, char *number, t_arena *a)
 	return (c);
 }
 
-void 	player(t_expr **e, t_arena *a)
+void			player(t_expr **e, t_arena *a)
 {
+	const char	*warn[] = {"Warning : Didn't load champion %s%s",
+		" because there is already 4 champions loaded.\n"};
 	t_champ		c;
-	char 		*file;
-	char 		*number;
+	char		*file;
+	char		*number;
 
 	*e = (*e)->next;
 	number = ft_strcmp((*e)->rule, "NUMBER") == 0 ? (*e)->expr : NULL;
@@ -76,18 +83,23 @@ void 	player(t_expr **e, t_arena *a)
 		return ;
 	if (!a->champ_count)
 		ft_printf("\n%sLoading contestants :\n\n%s", acol(3, 4, 0), COLOR_END);
-	ft_pushback((void **)&a->champs, sizeof(t_champ), a->champ_count++, &c);
-	ft_printf("\t%s%s, packing %d bytes%s\n", acol(1, 5, 1), c.head.prog_name,
-		c.head.prog_size, COLOR_END);
+	if (a->champ_count >= 4)
+		err(WARN, warn[0], c.head.prog_name, warn[1]);
+	else
+	{
+		ft_pushback((void **)&a->champs, sizeof(t_champ), a->champ_count++, &c);
+		ft_printf("\t%s%s, packing %d bytes%s\n", acol(1, 5, 1),
+			c.head.prog_name, c.head.prog_size, COLOR_END);
+	}
 }
 
-void	read_args(t_expr *expr, t_arena *a)
+void			read_args(t_expr *expr, t_arena *a)
 {
 	const char	*rules[] = {"OPTION_G", "OPTION_V", "OPTION_D", "OPTION_O",
-							  "OPTION_A", "OPTION_S", "PLAYER", NULL};
-	static void	(*handlers[])(t_expr **, t_arena *) =
-			{option_g, option_v, option_d, option_o, option_a, option_s,
-			 player, NULL};
+		"OPTION_A", "OPTION_S", "PLAYER", NULL};
+	static void	(*handlers[])(t_expr **, t_arena *) = {
+		option_g, option_v, option_d, option_o, option_a, option_s,
+		player, NULL};
 	int			i;
 
 	while (expr)
