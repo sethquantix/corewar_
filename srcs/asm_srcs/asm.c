@@ -17,11 +17,11 @@ int	main(int ac, char **av)
 {
 	t_expr	*expr;
 	t_env	*e;
-	int 	i;
+	int		i;
 
 	e = env();
 	if (ac == 1)
-	return (usage(av[0]));
+		return (usage(av[0]));
 	ft_bzero(e, sizeof(t_env));
 	expr = parse_opts(av + 1);
 	read_opts(e, expr);

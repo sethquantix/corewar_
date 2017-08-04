@@ -12,10 +12,10 @@
 
 #include "gr_vm_internals.h"
 
-static GLint 	build_program(const char *vs, const char *fs)
+static GLint	build_program(const char *vs, const char *fs)
 {
 	t_gl_shader	shaders[2];
-	GLuint 		program;
+	GLuint		program;
 
 	shaders[0].file = ft_strdup(vs);
 	shaders[0].type = GL_VERTEX_SHADER;
@@ -27,11 +27,11 @@ static GLint 	build_program(const char *vs, const char *fs)
 	return (program);
 }
 
-void 			init_gl(t_gr_vm *cxt, t_cam *cam)
+void			init_gl(t_gr_vm *cxt, t_cam *cam)
 {
-	const char 	*shaders[][2] = {
-			{"./shaders/vertex.shader", "./shaders/frag.shader"},
-			{"./shaders/vertex_board.shader", "./shaders/frag_board.shader"}
+	const char	*shaders[][2] = {
+		{"./shaders/vertex.shader", "./shaders/frag.shader"},
+		{"./shaders/vertex_board.shader", "./shaders/frag_board.shader"}
 	};
 
 	glewInit();

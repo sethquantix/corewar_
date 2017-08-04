@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   gr_vm_render_opengl.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tsedigi <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/08/01 06:02:02 by tsedigi           #+#    #+#             */
+/*   Updated: 2017/08/01 06:02:03 by tsedigi          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 #include "gr_vm_internals.h"
 
 static void		set_procs(t_gr_vm *cxt, t_arena *a)
 {
-	int 	i;
+	int		i;
 
 	i = 0;
 	while (i < a->proc_count)
@@ -21,14 +33,12 @@ static void		stream_transform(t_gr_vm *cxt, t_arena *a)
 	t_proc				*p;
 
 	p = NULL;
-	if (cxt->cursor.proc >= 0)
-		p = a->procs[cxt->cursor.proc];
+	(cxt->cursor.proc >= 0) ? p = a->procs[cxt->cursor.proc] : 0;
 	i = 0;
 	while (i < MEM_SIZE)
 	{
 		a->mem[i] &= 0xFFFF00FF;
-		if (p && p->pc == i)
-			a->mem[i] |= 0x100;
+		(p && p->pc == i) ? a->mem[i] |= 0x100 : 0;
 		values[i] = a->arena[i];
 		cxt->scale[i] = 1 + 4 * (float)a->arena[i] / 255.0;
 		cxt->model[i][7] += (cxt->scale[i] - cxt->model[i][7]) / TIME_TRAVEL;
@@ -38,15 +48,18 @@ static void		stream_transform(t_gr_vm *cxt, t_arena *a)
 		set_procs(cxt, a);
 	glBindVertexArray(cxt->vao);
 	glBindBuffer(GL_ARRAY_BUFFER, cxt->matVBO);
-	glBufferData(GL_ARRAY_BUFFER, MEM_SIZE * 9 * sizeof(float), cxt->model, GL_DYNAMIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER,
+		MEM_SIZE * 9 * sizeof(float), cxt->model, GL_DYNAMIC_DRAW);
 	glBindBuffer(GL_ARRAY_BUFFER, cxt->valVBO);
-	glBufferData(GL_ARRAY_BUFFER, MEM_SIZE * sizeof(uint32_t), a->mem, GL_DYNAMIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER,
+		MEM_SIZE * sizeof(uint32_t), a->mem, GL_DYNAMIC_DRAW);
 	glBindBuffer(GL_ARRAY_BUFFER, cxt->arenaVBO);
-	glBufferData(GL_ARRAY_BUFFER, MEM_SIZE * sizeof(uint32_t), values, GL_DYNAMIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER,
+		MEM_SIZE * sizeof(uint32_t), values, GL_DYNAMIC_DRAW);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
-void		uniformVec4(GLuint location, t_vec4 v)
+void			uniform_vec4(GLuint location, t_vec4 v)
 {
 	glUniform4f(location, v.x, v.y, v.z, v.w);
 }
@@ -103,11 +116,14 @@ static void		push_board_uni(t_gr_vm *cxt)
 	loc = glGetUniformLocation(cxt->program_board, "cursor_pos");
 	glUniform1i(loc, cxt->cursor.pos);
 	loc = glGetUniformLocation(cxt->program_board, "player_box_pos");
-	uniformVec4(loc, cxt->cursor.player_box);
+	uniform_vec4
+(loc, cxt->cursor.player_box);
 	loc = glGetUniformLocation(cxt->program_board, "proc_box_pos");
-	uniformVec4(loc, cxt->cursor.proc_box);
+	uniform_vec4
+(loc, cxt->cursor.proc_box);
 	loc = glGetUniformLocation(cxt->program_board, "proc_reg_pos");
-	uniformVec4(loc, cxt->cursor.reg_box);
+	uniform_vec4
+(loc, cxt->cursor.reg_box);
 }
 
 void			render_opengl(t_gr_vm *cxt, t_arena *arena)

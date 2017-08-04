@@ -1,0 +1,168 @@
+.name          "Underscore"
+.comment       "__UNDERSCORE_S__"
+
+        ld              %0, r2
+        zjmp            %:label0
+        zjmp            %-511
+
+label2:
+        live            %-42
+        sti             r10, r11, r13
+        add             r12, r13, r13
+        xor             r13, %:label0, r14
+        zjmp            %:label1
+        ld              %0, r14
+        zjmp            %:label2
+
+label1:
+        ld              %0, r13
+        zjmp            %:label2
+
+label18:
+        live            %-42
+        ld              %-128, r6
+        fork            %:label3
+        ld              %190056198, r7
+        ld              %0, r5
+        ld              %0, r16
+        zjmp            %:label4
+
+label3:
+        ld              %84541307, r7
+        ld              %4, r5
+        ld              %190056198, r16
+        st              r16, -490
+        st              r7, -491
+
+label4:
+        ld              %0, r2
+        zjmp            %-511
+        lldi            %42, %:label0, r16
+
+label6:
+        live            %-42
+        sti             r1, %:label0, %:label0
+        ld              %57672959, r10
+        ld              %-30, r11
+        ld              %-5, r12
+        st              r1, 6
+
+label5:
+        live            %-42
+
+label7:
+        fork            %:label2
+        ld              %-165, r13
+        ld              %0, r2
+        zjmp            %:label5
+
+label20:
+        sti             r1, %:label0, %:label0
+        sti             r1, %:label0, %:label0
+
+label9:
+        fork            %:label6
+        st              r1, 6
+        live            %:label7
+        or              r1, r1, r7
+        ld              %1880161814, r9
+        ld              %1879571989, r10
+        ld              %34209281, r11
+
+label19:
+        fork            %:label8
+
+label13:
+        live            %:label9
+        fork            %:label10
+        ld              %0, r2
+        zjmp            %:label11
+
+label10:
+        ld              %191104768, r7
+        ld              %5, r6
+        ld              %0, r2
+        zjmp            %:label12
+
+label8:
+        live            %:label13
+        fork            %:label14
+        ld              %101056768, r7
+        ld              %9, r6
+        ld              %0, r2
+        zjmp            %:label12
+
+label14:
+        ld              %0, r2
+        ld              %12, r6
+        ld              %0, r2
+        zjmp            %:label12
+
+label12:
+        st              r1, 6
+        live            %-42
+        sti             r7, r6, %:label0
+        ld              %0, r2
+        zjmp            %309
+        sti             r16, %:label0, %:label0
+        fork            %:label15
+        ld              %:label16, r16
+        sti             r16, %:label0, %:label0
+        st              r1, 6
+
+label17:
+        live            %-42
+
+label16:
+        ld              %0, r2
+        zjmp            %511
+
+label11:
+        ld              %16, r12
+        add             r12, r9, r9
+        add             r12, r10, r10
+        add             r12, r11, r11
+        st              r1, 6
+        live            %:label17
+        ld              %0, r2
+        sti             r1, %:label0, %:label0
+        sti             r9, %:label0, %:label0
+        sti             r10, %:label0, %:label0
+        sti             r11, %:label0, %:label0
+        fork            %:label18
+        zjmp            %:label19
+
+label0:
+        ld              %16777216, r16
+        sti             r16, %:label0, %:label0
+        st              r1, 117
+        sti             r1, %:label0, %:label0
+        ld              %507, r4
+        ld              %507, r6
+        st              r1, 6
+        live            %-42
+
+label15:
+        ld              %190055170, r8
+        ld              %67699190, r9
+        st              r8, 511
+        st              r9, 510
+        ld              %24, r8
+        fork            %:label20
+        fork            %:label21
+        live            %-1
+        ld              %0, r2
+        ld              %190055682, r3
+        ld              %190056194, r5
+        ld              %190056194, r7
+        ld              %0, r16
+        zjmp            %448
+
+label21:
+        live            %0
+        ld              %4, r2
+        ld              %101253622, r3
+        ld              %134807571, r5
+        ld              %134807571, r7
+        ld              %0, r16
+        zjmp            %405

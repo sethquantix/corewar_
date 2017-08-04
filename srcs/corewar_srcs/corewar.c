@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
- #include "corewar.h"
+#include "corewar.h"
 
-void	update_mem(uint32_t	*mem)
+void	update_mem(uint32_t *mem)
 {
 	int			i;
 	uint32_t	o;
@@ -32,7 +32,7 @@ void	update_mem(uint32_t	*mem)
 
 int		loop(t_arena *a)
 {
-	int 		i;
+	int			i;
 
 	i = a->proc_count - 1;
 	update_mem(a->mem);
@@ -49,9 +49,8 @@ int		loop(t_arena *a)
 	if (a->dump_cycles && a->cycles % a->dump_cycles == 0)
 	{
 		dump(a->arena, DUMP_64);
-		if (a->opts & D_OPT) {
+		if (a->opts & D_OPT)
 			return (0);
-		}
 	}
 	return (a->alive != 0);
 }
@@ -81,8 +80,8 @@ int		usage(char *s)
 
 void	init(t_arena *arena)
 {
-	int 		num;
-	int 		i;
+	int			num;
+	int			i;
 
 	arena->load = load_champ;
 	arena->check = check_process;
@@ -102,10 +101,10 @@ void	init(t_arena *arena)
 	}
 }
 
-void 	winner(t_arena *arena)
+void	winner(t_arena *arena)
 {
 	int		i;
-	int 	w;
+	int		w;
 
 	i = 0;
 	w = 0;

@@ -15,25 +15,25 @@
 const char	*g_list[] = {"LIVE_NAME", "LD_NAME", "ST_NAME", "ADD_NAME",
 	"SUB_NAME", "AND_NAME", "OR_NAME", "XOR_NAME", "ZJMP_NAME", "FORK_NAME",
 	"LDI_NAME", "STI_NAME", "LLD_NAME", "LLDI_NAME", "LFORK_NAME",
-	"AFF_NAME",	"INSTRUCTION", "LABEL", "NAME_CMD_STRING",
+	"AFF_NAME", "INSTRUCTION", "LABEL", "NAME_CMD_STRING",
 	"COMMENT_CMD_STRING", "DIRECT", "DIRECT_LABEL", "INDIRECT",
 	"INDIRECT_LABEL", "REG", "STRING", 0
 };
 
-t_op	*op_for_name(char *name)
+t_op		*op_for_name(char *name)
 {
 	int	i;
 
 	i = 0;
-	while (op_tab[i].name)
-		if (ft_strcmp(name, op_tab[i].name) == 0)
-			return (&op_tab[i]);
+	while (g_op_tab[i].name)
+		if (ft_strcmp(name, g_op_tab[i].name) == 0)
+			return (&g_op_tab[i]);
 		else
 			i++;
 	return (NULL);
 }
 
-t_inst	*new_inst(char *name, int type, int addr)
+t_inst		*new_inst(char *name, int type, int addr)
 {
 	t_inst	*inst;
 
@@ -45,12 +45,12 @@ t_inst	*new_inst(char *name, int type, int addr)
 	return (inst);
 }
 
-int		cmp_label(t_inst *inst, char *label)
+int			cmp_label(t_inst *inst, char *label)
 {
 	return (inst->type == LBL && ft_strcmp(inst->name, label) == 0);
 }
 
-void	read_label(t_file *f, t_expr **expr)
+void		read_label(t_file *f, t_expr **expr)
 {
 	t_inst	*inst;
 	t_list	*node;
@@ -74,12 +74,12 @@ void	read_label(t_file *f, t_expr **expr)
 	ft_lstadd_end(&f->inst, node);
 }
 
-void	fill_param(int type, t_inst *inst, t_expr *expr, int i)
+void		fill_param(int type, t_inst *inst, t_expr *expr, int i)
 {
 	static int	size[] = {REG_NUMBER_SIZE, 0, IND_SIZE, 0, IND_SIZE};
 	static int	oct[] = {REG_CODE, DIR_CODE, IND_CODE, DIR_CODE, IND_CODE};
 	char		*s;
-	char 		*p;
+	char		*p;
 
 	size[1] = inst->op->dir_size;
 	size[3] = inst->op->dir_size;
@@ -96,7 +96,8 @@ void	fill_param(int type, t_inst *inst, t_expr *expr, int i)
 	}
 	if (type > 2)
 	{
-		inst->label[i] = ft_strsub(s, 1 + (type == 3), ft_strlen(s + 1 + (type == 3)));
+		inst->label[i] = ft_strsub(s, 1 + (type == 3),
+			ft_strlen(s + 1 + (type == 3)));
 		return ;
 	}
 	ft_strtolower(s);
@@ -106,7 +107,7 @@ void	fill_param(int type, t_inst *inst, t_expr *expr, int i)
 	free(s - (type != 2));
 }
 
-t_expr	*get_params(t_inst *inst, t_expr *expr)
+t_expr		*get_params(t_inst *inst, t_expr *expr)
 {
 	const char	*types[] = {"REG", "DIRECT", "INDIRECT", "DIRECT_LABEL",
 		"INDIRECT_LABEL"};
@@ -127,7 +128,7 @@ t_expr	*get_params(t_inst *inst, t_expr *expr)
 	return (expr);
 }
 
-void	read_instruction(t_file *f, t_expr **expr)
+void		read_instruction(t_file *f, t_expr **expr)
 {
 	t_inst	*inst;
 	t_list	*node;
@@ -143,28 +144,31 @@ void	read_instruction(t_file *f, t_expr **expr)
 	ft_lstadd_end(&f->inst, node);
 }
 
-void 	print(t_list *list)
+void		print(t_list *list)
 {
-	int i;
+	int		i;
 	t_inst	*inst;
 
 	while (list)
 	{
 		i = 0;
 		inst = list->content;
-		ft_printf("%s (%d) %d => %s\n", inst->op ? "INSTRUCTION" : "LABEL", inst->addr, inst->oct, inst->name);
+		ft_printf("%s (%d) %d => %s\n", inst->op ? "INSTRUCTION" :
+			"LABEL", inst->addr, inst->oct, inst->name);
 		if (inst->op)
 			while (i < inst->op->argc)
 			{
-				(inst->label[i]) ? ft_printf("(%d) => %s (%d)\n", i, inst->label[i], inst->p_size[i])
-				: ft_printf("(%d) => %d (%d)\n", i, inst->params[i], inst->p_size[i]);
+				(inst->label[i]) ? ft_printf("(%d) => %s (%d)\n", i,
+					inst->label[i], inst->p_size[i]) :
+					ft_printf("(%d) => %d (%d)\n", i,
+					inst->params[i], inst->p_size[i]);
 				i++;
 			}
 		list = list->next;
 	}
 }
 
-void 	get_error(int error)
+void		get_error(int error)
 {
 	if (error == 0)
 		return ;
@@ -174,7 +178,7 @@ void 	get_error(int error)
 		die(EXIT_FAILURE, ERR_LEN);
 }
 
-int	get_cmd(t_expr **expr, int max_size, char *dest, char *cmd)
+int			get_cmd(t_expr **expr, int max_size, char *dest, char *cmd)
 {
 	if (ft_strcmp((*expr)->rule, cmd))
 		return (-1);
@@ -186,7 +190,7 @@ int	get_cmd(t_expr **expr, int max_size, char *dest, char *cmd)
 	return (0);
 }
 
-t_file	*read_asm(t_env *e, t_expr *expr, char *source, char *file_name)
+t_file		*read_asm(t_env *e, t_expr *expr, char *source, char *file_name)
 {
 	t_file		*file;
 	const char	*s[] = {"LABEL", "INSTRUCTION", 0};
@@ -196,10 +200,13 @@ t_file	*read_asm(t_env *e, t_expr *expr, char *source, char *file_name)
 	file->head.magic = ft_endian_int(COREWAR_EXEC_MAGIC);
 	file->source = source;
 	file->name = file_name;
-	file->print_header = e->opts & OPT_A ? print_file_header : write_file_header;
+	file->print_header = e->opts & OPT_A ? print_file_header :
+		write_file_header;
 	file->print_inst = e->opts & OPT_A ? print_inst : write_inst;
-	get_error(get_cmd(&expr, PROG_NAME_LENGTH, file->head.prog_name, "NAME_CMD_STRING"));
-	get_error(get_cmd(&expr, COMMENT_LENGTH, file->head.prog_desc, "COMMENT_CMD_STRING"));
+	get_error(get_cmd(&expr, PROG_NAME_LENGTH, file->head.prog_name,
+		"NAME_CMD_STRING"));
+	get_error(get_cmd(&expr, COMMENT_LENGTH, file->head.prog_desc,
+		"COMMENT_CMD_STRING"));
 	while (expr)
 	{
 		if (expr->rule)
@@ -209,7 +216,7 @@ t_file	*read_asm(t_env *e, t_expr *expr, char *source, char *file_name)
 	return (file);
 }
 
-void	compile(t_env *e)
+void		compile(t_env *e)
 {
 	t_expr	*expr;
 	int		i;
@@ -226,11 +233,11 @@ void	compile(t_env *e)
 			file = read_asm(e, expr, source, e->files[i]);
 			if ((e->opts & OPT_A) == 0)
 				ft_printf("Compiling %s : %sSuccess%s\n", file->name,
-					  COLOR_GREEN, COLOR_END);
+					COLOR_GREEN, COLOR_END);
 			print_instructions(file);
 			parser_clear_expr(&expr);
 			free(file);
-		};
+		}
 		free(source);
 		i++;
 	}

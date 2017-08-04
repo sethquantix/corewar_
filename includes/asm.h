@@ -39,7 +39,7 @@
 # define ERR_LEN	"Champion name or comment too long\n"
 extern t_token	g_asm_opts[];
 extern t_token	g_asm_tokens[];
-extern t_op    	op_tab[17];
+extern t_op    	g_op_tab[17];
 
 typedef struct	s_env
 {

@@ -47,7 +47,7 @@ void	option_o(t_expr **e, t_arena *a)
 	*e = (*e)->next;
 	a->opts |= D_OPT;
 	if ((fd = open((*e)->expr, O_RDONLY)) == -1)
-		err("Can't open %s for writing\n", (*e)->expr);
+		err(6, (*e)->expr);
 	else
 		a->debug_fd = fd;
 }

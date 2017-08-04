@@ -14,7 +14,7 @@
 
 static int	check(t_proc *p)
 {
-	int 	die;
+	int		die;
 
 	die = p->arena->cycles - p->last_live > p->arena->ctd ? 1 : 0;
 	if (die && (p->arena->verbose_lvl & V_LVL_DEATH))
@@ -50,7 +50,7 @@ void		check_process(t_arena *a)
 	a->nbr_lives = 0;
 }
 
-int 		cmp_id(uint32_t	*ref, t_champ *data)
+int			cmp_id(uint32_t *ref, t_champ *data)
 {
 	return (*ref == data->id);
 }

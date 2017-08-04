@@ -65,7 +65,7 @@ void			set_check_lbl(t_deco *all)
 	tmp = all->lst;
 	while (tmp)
 	{
-		op = op_tab[tmp->opcode];
+		op = g_op_tab[tmp->opcode];
 		loop_check_lbl(all, tmp, op.argc, 0);
 		tmp = tmp->next;
 	}

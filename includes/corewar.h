@@ -68,7 +68,7 @@ void		read_mem(int addr, t_val v, uint8_t mem[]);
 void		set_mem(uint32_t *mem, int addr, int size, int player);
 int 		get_value(t_proc *p, int *v, int index, t_type type);
 
-int			err(const char *format, ...);
+int			err(int index, ...);
 void		die(int exit_status, const char *format, ...);
 void		dump(uint8_t mem[], int mod);
 

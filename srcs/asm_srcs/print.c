@@ -15,8 +15,8 @@
 static char		*get_color_(int nb, char type)
 {
 	char		*ret;
-	static int	first[18] = {0, 0, 0, 1, 2, 1, 1, 2, 2, 0, 0, 0, 1, 2, 1, 1, 2, 2};
-	static int	scd[18] = {0, 1, 2, 0, 0, 1, 2, 1, 2, 0, 1, 2, 0, 0, 1, 2, 1, 2};
+	static int	f[18] = {0, 0, 0, 1, 2, 1, 1, 2, 2, 0, 0, 0, 1, 2, 1, 1, 2, 2};
+	static int	s[18] = {0, 1, 2, 0, 0, 1, 2, 1, 2, 0, 1, 2, 0, 0, 1, 2, 1, 2};
 	char		*ato;
 	int			ito;
 
@@ -28,8 +28,8 @@ static char		*get_color_(int nb, char type)
 	if (type == 'r')
 	{
 		ito += nb <= 9 ? 36 * 4 : 36 * 5;
-		ito += 6 * first[nb];
-		ito += scd[nb];
+		ito += 6 * f[nb];
+		ito += s[nb];
 	}
 	else
 	{
@@ -37,8 +37,8 @@ static char		*get_color_(int nb, char type)
 			ito += nb <= 9 ? 6 * 4 : 6 * 5;
 		else
 			ito += nb <= 9 ? 4 : 5;
-		ito += 36 * first[nb];
-		ito += type == 'g' ? scd[nb] : 6 * scd[nb];
+		ito += 36 * f[nb];
+		ito += type == 'g' ? s[nb] : 6 * s[nb];
 	}
 	ft_strcat(ret, ato = ft_itoa(ito));
 	ft_strcat(ret, "m");
@@ -46,7 +46,7 @@ static char		*get_color_(int nb, char type)
 	return (ret);
 }
 
-t_inst	*addr_label(t_file *file, char *label, t_list *inst)
+t_inst			*addr_label(t_file *file, char *label, t_list *inst)
 {
 	static int		color = 1;
 	t_list			*ret;
@@ -65,7 +65,7 @@ t_inst	*addr_label(t_file *file, char *label, t_list *inst)
 	return (INST(ret));
 }
 
-int 	get_labels(t_file *file, t_list *inst)
+int				get_labels(t_file *file, t_list *inst)
 {
 	int		i;
 	t_list	*start;
@@ -96,9 +96,9 @@ int 	get_labels(t_file *file, t_list *inst)
 	return (0);
 }
 
-void	hex_print(int v, int size)
+void			hex_print(int v, int size)
 {
-	int	i;
+	int				i;
 	unsigned char	c[4];
 
 	ft_memcpy(c, &v, size);
@@ -116,7 +116,7 @@ void	hex_print(int v, int size)
 	ft_printf("  ");
 }
 
-void	print_params(t_inst *inst, int type)
+void			print_params(t_inst *inst, int type)
 {
 	int		i;
 
@@ -131,7 +131,7 @@ void	print_params(t_inst *inst, int type)
 	ft_putchar('\n');
 }
 
-void	print_colored(const char *format, char *color, char *data)
+void			print_colored(const char *format, char *color, char *data)
 {
 	if (env()->opts & OPT_C)
 		ft_printf(format, color, data, COLOR_END);
@@ -139,27 +139,28 @@ void	print_colored(const char *format, char *color, char *data)
 		ft_printf(format, "", data, "");
 }
 
-void 	print_inst(t_inst *inst, t_file *file)
+void			print_inst(t_inst *inst, t_file *file)
 {
 	int		i;
 	char	*col;
 
 	(void)file;
 	col = ft_itoa(inst->addr);
-	print_colored("%s%-5s%s",COLOR_ADDR, col);
+	print_colored("%s%-5s%s", COLOR_ADDR, col);
 	free(col);
 	col = ft_itoa(inst->size);
-	print_colored((inst->type == LBL ? "      :" : "(%s%-3s%s) :"),COLOR_SIZE, col);
+	print_colored((inst->type == LBL ? "      :" : "(%s%-3s%s) :"),
+		COLOR_SIZE, col);
 	free(col);
 	if (inst->type == LBL)
 	{
 		if (!inst->color)
 			addr_label(file, inst->name, file->inst);
-		print_colored("    %s%s%s:\n",inst->color, inst->name);
+		print_colored("    %s%s%s:\n", inst->color, inst->name);
 		return ;
 	}
 	col = get_color_(inst->op->opcode, 'r');
-	print_colored("        %s%-10s%s",col, inst->name);
+	print_colored("        %s%-10s%s", col, inst->name);
 	ft_memdel((void **)&col);
 	i = 0;
 	while (i < inst->op->argc)
@@ -175,7 +176,7 @@ void 	print_inst(t_inst *inst, t_file *file)
 	ft_putchar('\n');
 }
 
-void	write_inst(t_inst *inst, t_file *file)
+void			write_inst(t_inst *inst, t_file *file)
 {
 	int				i;
 	unsigned short	s;
@@ -198,9 +199,9 @@ void	write_inst(t_inst *inst, t_file *file)
 	}
 }
 
-void	del_inst(t_inst *inst, size_t size)
+void			del_inst(t_inst *inst, size_t size)
 {
-	int 	i;
+	int		i;
 
 	i = 0;
 	ft_memdel((void **)&inst->name);
@@ -214,7 +215,7 @@ void	del_inst(t_inst *inst, size_t size)
 	ft_memdel((void **)&inst);
 }
 
-void	print_instructions(t_file *file)
+void			print_instructions(t_file *file)
 {
 	t_list	*inst;
 
@@ -238,7 +239,7 @@ void	print_instructions(t_file *file)
 		close(file->fd);
 }
 
-char	*output_file(char *path)
+char			*output_file(char *path)
 {
 	char	*t;
 
@@ -248,7 +249,7 @@ char	*output_file(char *path)
 	return (ft_strjoinfree(t, ".cor", 1));
 }
 
-char	*local(char **path)
+char			*local(char **path)
 {
 	char	*p;
 
@@ -259,7 +260,7 @@ char	*local(char **path)
 	return (*path = p);
 }
 
-void	write_file_header(t_file *file)
+void			write_file_header(t_file *file)
 {
 	char			*o;
 
@@ -275,13 +276,12 @@ void	write_file_header(t_file *file)
 			COLOR_WARN, COLOR_END);
 		ft_printf(", output to working directory instead\n");
 	}
-
 	ft_printf("Writing output to %s\n", o);
 	free(o);
 	write(file->fd, &file->head, sizeof(header_t));
 }
 
-void	print_file_header(t_file *file)
+void			print_file_header(t_file *file)
 {
 	ft_printf("Dumping annotated program on standard output\n");
 	ft_printf("Program size : %d bytes\n", file->addr);
