@@ -6,7 +6,7 @@
 /*   By: cchaumar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/19 08:17:11 by cchaumar          #+#    #+#             */
-/*   Updated: 2017/03/19 08:17:11 by cchaumar         ###   ########.fr       */
+/*   Updated: 2017/08/07 12:25:33 by cchaumar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void	gr_vm_init(t_gr_vm *cxt)
 {
 	if (TTF_Init() == -1)
 		exit(EXIT_FAILURE);
-	srand(time(NULL));
 	cxt->run = 1;
 	set_sdl_attributes();
 	cxt->arena = SDL_CreateWindow("corewar", 0, 0,
