@@ -39,6 +39,7 @@ int			compile_shader(t_gl_shader *shader)
 	glGetShaderiv(id, GL_COMPILE_STATUS, &success);
 	if (!success)
 		gl_compile_log(id, shader->file);
+	free(source);
 	return (success);
 }
 

@@ -21,9 +21,11 @@ static char	*getfile(char *file)
 	struct stat	stat_;
 
 	len = 0;
-	stat(file, &stat_);
-	if (stat_.st_size < 4 || (fd = open(file, O_RDONLY)) == -1)
+	if ((fd = open(file, O_RDONLY)) == -1)
 		return (NULL);
+	fstat(fd, &stat_);
+	if (stat_.st_size < 4 || stat_.st_size > MAX_SIZE)
+		return ((void *)-1);
 	source = NULL;
 	line = NULL;
 	while (get_next_line(fd, &line) > 0)
@@ -107,10 +109,13 @@ t_expr		*parse_asm(t_parser *p, char *file, char **source)
 
 	if ((*source = getfile(file)) == NULL || *source == (void *)-1)
 	{
-		ft_dprintf(2, *source ? "File %s is too heavy for a corewar champion\n"
-			: "Can't read file %s\n", file);
-		(*source) ? *source = 0 : 0;
-		return (NULL);
+		if (*source)
+			ft_dprintf(2, "%sError : file %s exceeds max size of %d%s\n",
+				acol(4, 0, 0), file, MAX_SIZE, COLOR_END);
+		else
+			ft_dprintf(2, "%sError : Can't read file %s%s\n",
+				acol(4, 0, 0), file, COLOR_END);
+		return ((t_expr *)(*source = NULL));
 	}
 	err = 0;
 	expr = NULL;

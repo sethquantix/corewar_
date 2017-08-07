@@ -78,7 +78,6 @@ typedef struct		s_cursor
 typedef struct		s_gr_vm
 {
 	SDL_Window		*arena;
-	SDL_Window		*ui;
 	SDL_Surface		*screen;
 	SDL_GLContext	arena_context;
 	GLuint			program;

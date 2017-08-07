@@ -45,18 +45,3 @@ char		*err(int err_code, ...)
 	va_end(va);
 	return (e);
 }
-
-void		ft_strtolower(char *str)
-{
-	char	*p;
-
-	if (str)
-	{
-		p = str;
-		while (*p)
-		{
-			*p = ft_tolower(*p);
-			p++;
-		}
-	}
-}

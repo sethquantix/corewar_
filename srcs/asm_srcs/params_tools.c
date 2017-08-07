@@ -65,6 +65,7 @@ void		fill_param(int type, t_inst *inst, t_expr *expr, int i)
 	{
 		inst->label[i] = ft_strsub(s, 1 + (type == 3),
 			ft_strlen(s + 1 + (type == 3)));
+		free(s);
 		return ;
 	}
 	ft_strtolower(s);

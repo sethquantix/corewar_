@@ -6,7 +6,7 @@
 /*   By: cchaumar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/28 05:45:51 by cchaumar          #+#    #+#             */
-/*   Updated: 2017/06/28 05:45:51 by cchaumar         ###   ########.fr       */
+/*   Updated: 2017/08/07 07:39:37 by cchaumar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_vec4		box(SDL_Rect pos)
 
 SDL_Surface	*print_text(t_text_p *sst, t_styles style, const char *text, ...)
 {
+	SDL_Surface	*p;
 	t_style		st;
 	va_list		va;
 	char		*s;
@@ -32,7 +33,9 @@ SDL_Surface	*print_text(t_text_p *sst, t_styles style, const char *text, ...)
 	ft_vasprintf(&s, text, va);
 	va_end(va);
 	st = sst->styles[style];
-	return (TTF_RenderText_Shaded(st.font, s, st.c, (SDL_Color){0, 0, 0, 0}));
+	p = TTF_RenderText_Shaded(st.font, s, st.c, (SDL_Color){0, 0, 0, 0});
+	free(s);
+	return (p);
 }
 
 SDL_Rect	draw_text(SDL_Surface *dst, SDL_Surface *s, SDL_Rect pos, int al)
@@ -52,7 +55,7 @@ SDL_Rect	draw_text(SDL_Surface *dst, SDL_Surface *s, SDL_Rect pos, int al)
 	if (al & Y_CENTER)
 		pos.y = (BOARD_HEIGHT - pos.h) / 2;
 	SDL_BlitSurface(s, NULL, dst, &pos);
-	free(s);
+	SDL_FreeSurface(s);
 	return (pos);
 }
 

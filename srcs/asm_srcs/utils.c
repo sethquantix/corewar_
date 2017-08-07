@@ -22,10 +22,12 @@ t_env	*env(void)
 void	die(int exit_code, char *s, ...)
 {
 	va_list		args;
+	char 		*buff;
 
 	va_start(args, s);
-	ft_vaprintf(s, args);
+	ft_vasprintf(&buff, s, args);
 	va_end(args);
+	ft_dprintf(2, "%sError : %s%s", acol(4, 0, 0), buff, COLOR_END);
 	exit(exit_code);
 }
 

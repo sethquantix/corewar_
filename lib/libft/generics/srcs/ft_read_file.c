@@ -23,6 +23,7 @@ char	*ft_read_file(char *name)
 		return (NULL);
 	while (get_next_line(fd, &line) > 0)
 		s = ft_strjoinfree(s, ft_strjoinfree(line, "\n", 1), s ? 3 : 2);
+	free(line);
 	close(fd);
 	return (s);
 }

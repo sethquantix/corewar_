@@ -6,7 +6,7 @@
 /*   By: cchaumar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/07 17:58:38 by cchaumar          #+#    #+#             */
-/*   Updated: 2017/04/07 17:58:43 by cchaumar         ###   ########.fr       */
+/*   Updated: 2017/08/07 06:14:26 by cchaumar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,9 @@ t_token	g_crwr_opts[] = {
 	{"PATH", tok_func_path, 0, TOKEN_TYPE_FNC},
 	{"WS", 0, " \t", TOKEN_TYPE_STR},
 	{"OPT_G", 0, "-g", TOKEN_TYPE_EXP},
+	{"INTERRUPT", 0, "--", TOKEN_TYPE_EXP},
 	{"OPT_GRAPHIC", 0, "--graphic", TOKEN_TYPE_EXP},
+	{"OPT_AFF", 0, "--aff", TOKEN_TYPE_EXP},
 	{"OPT_N", 0, "-n", TOKEN_TYPE_EXP},
 	{"OPT_A", 0, "-a", TOKEN_TYPE_EXP},
 	{"OPT_O", 0, "-o", TOKEN_TYPE_EXP},

@@ -1,4 +1,4 @@
-.name "yolo"
+.name "¯\_(ツ)_/¯"
 .comment "stuff"
 
 shrug:

@@ -6,7 +6,7 @@
 /*   By: lnagy <lnagy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/08 14:47:00 by lnagy             #+#    #+#             */
-/*   Updated: 2017/08/01 08:21:46 by cchaumar         ###   ########.fr       */
+/*   Updated: 2017/08/07 05:55:39 by cchaumar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,7 @@ t_expr		*parse_opts(char **av)
 {
 	t_expr		*expr;
 	t_parser	*p;
-	const char	*list[] = {"PATH", "OPTION_A", "OPTION_X", "OPTION_D",
-		"OPTION_C", 0};
+	const char	*list[] = {"PATH", "OPTION_VAL", 0};
 	char		*arg;
 	char		*err;
 

@@ -62,8 +62,7 @@ static t_file	*read_asm(t_env *e, t_expr *expr,
 		"COMMENT_CMD_STRING"));
 	while (expr)
 	{
-		if (expr->rule)
-			find_rule(file, &expr, s, (void (**)(void *, t_expr **))f);
+		find_rule(file, &expr, s, (void (**)(void *, t_expr **))f);
 		expr = expr->next;
 	}
 	return (file);
@@ -86,7 +85,7 @@ void			compile(t_env *e)
 			file = read_asm(e, expr, source, e->files[i]);
 			if ((e->opts & OPT_A) == 0)
 				ft_printf("Compiling %s : %sSuccess%s\n", file->name,
-					COLOR_GREEN, COLOR_END);
+					acol(0, 5, 0), COLOR_END);
 			print_instructions(file);
 			parser_clear_expr(&expr);
 			free(file);
