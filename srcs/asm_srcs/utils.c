@@ -55,12 +55,3 @@ void	find_rule(void *data, t_expr **expr, const char *s[], t_f_rule f[])
 		i++;
 	}
 }
-
-void	print_expr(t_expr *expr)
-{
-	while (expr)
-	{
-		ft_printf("%s (%s)\n", expr->rule, expr->expr);
-		expr = expr->next;
-	}
-}
