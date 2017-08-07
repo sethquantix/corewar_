@@ -61,7 +61,6 @@ void		gr_vm_run(t_vm_loop loop, void *data, t_gr_vm *ctx)
 			if (loop(data) == 0)
 			{
 				ctx->cps = -1;
-				winner(data);
 				break ;
 			}
 			else

@@ -183,6 +183,9 @@
 		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/asm_srcs/asm_tokens.c">
 			<Option target="asm"/>
 		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/asm_srcs/color.c">
+			<Option target="asm"/>
+		</Unit>
 		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/asm_srcs/compile.c">
 			<Option target="asm"/>
 		</Unit>
@@ -210,10 +213,22 @@
 		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/asm_srcs/decompile/write_ops.c">
 			<Option target="asm"/>
 		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/asm_srcs/inst_tools.c">
+			<Option target="asm"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/asm_srcs/labels_tools.c">
+			<Option target="asm"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/asm_srcs/more_utils.c">
+			<Option target="asm"/>
+		</Unit>
 		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/asm_srcs/op.c">
 			<Option target="asm"/>
 		</Unit>
 		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/asm_srcs/opt_tokens.c">
+			<Option target="asm"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/asm_srcs/params_tools.c">
 			<Option target="asm"/>
 		</Unit>
 		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/asm_srcs/parse_asm.c">
@@ -223,6 +238,9 @@
 			<Option target="asm"/>
 		</Unit>
 		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/asm_srcs/print.c">
+			<Option target="asm"/>
+		</Unit>
+		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/asm_srcs/print_instruction.c">
 			<Option target="asm"/>
 		</Unit>
 		<Unit filename="/Users/cchaumar/Documents/42projects/working/_corewar/srcs/asm_srcs/read_opts.c">

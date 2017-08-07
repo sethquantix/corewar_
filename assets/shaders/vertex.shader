@@ -19,7 +19,8 @@ out vec2    uv;
 out vec3    normal;
 out vec3    scale;
 out vec3    camPos;
-
+// out vec3    box_pos;
+// out vec3    box_dir;
 
 flat out uint   data;
 flat out uint   val;
@@ -54,7 +55,9 @@ void main(void)
 	yrot[2].z = cos(0.5 * time);
 	yrot[2].x = -sin(0.5 * time);
 	yrot[0].z = sin(0.5 * time);
+	// box_pos = gl_Position.xyz;
 	gl_Position.xyz += in_trans;// * (1 + 0.5 * sin(time));
+	// box_dir = gl_Position.xyz;
 	gl_Position *= yrot;
 	pos_color = gl_Position.xyz;
 	gl_Position.xyz += cam;
