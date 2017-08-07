@@ -113,6 +113,8 @@ int		main(int ac, char **av)
 	expr = parse_opts(av + 1);
 	read_args(expr, &arena);
 	init(&arena);
+	if (!arena.champ_count)
+		return(usage(av[0]));
 	if (arena.opts & G_OPT)
 	{
 		gr_vm_init(&context);

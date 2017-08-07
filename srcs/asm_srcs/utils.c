@@ -31,11 +31,12 @@ void	die(int exit_code, char *s, ...)
 
 int		usage(char *path)
 {
-	ft_printf("Usage: %s [-ax] <source.s> ...\n", path);
+	ft_printf("Usage: %s [-axc] <source.s> ...\n", path);
 	ft_printf("\t-a : instead of compiling the file, output stripped ");
 	ft_printf("and annotated version of the code to the standard output\n");
 	ft_printf("\t-x : decompile .cor file. Will try to mark labels if ");
 	ft_printf("address parameters are relevant.\n");
+	ft_printf("\t-c : colorized output when annotating code.\n");
 	ft_printf("\tNote : [-a] and [-x] options are mutually exclusive.\n");
 	return (0);
 }

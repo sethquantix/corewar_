@@ -86,6 +86,7 @@ void	init(t_arena *arena)
 		i++;
 	}
 	arena->add_proc = (t_f_add)fork_proc;
-	ft_printf("\n\n%s********** BEGIN ! *************%s\n\n",
-		acol(1, 1, 4), COLOR_END);
+	if (arena->champ_count)
+		ft_printf("\n\n%s********** BEGIN ! *************%s\n\n",
+			acol(1, 1, 4), COLOR_END);
 }

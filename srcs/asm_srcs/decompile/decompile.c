@@ -32,6 +32,9 @@ static void		print_file(char *src, t_deco *all)
 	set_check_lbl(all);
 	write_ops(all);
 	close(all->fd);
+	ft_printf("Decompiling %s : %sSuccess%s\n", src,
+		COLOR_GREEN, COLOR_END);
+	ft_printf("Writing output to %s\n", path);
 	del_all_op(all->lst);
 }
 

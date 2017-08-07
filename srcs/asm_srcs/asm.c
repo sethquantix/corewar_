@@ -26,6 +26,8 @@ int	main(int ac, char **av)
 	expr = parse_opts(av + 1);
 	read_opts(e, expr);
 	parser_clear_expr(&expr);
+	if (!e->n_file)
+		return(usage(av[0]));
 	if ((e->opts & OPT_X) == 0)
 		compile(e);
 	else if (ac == 3)
