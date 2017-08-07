@@ -25,7 +25,7 @@ void	i_add(t_proc *proc)
 	if (get_value(proc, &r3, 2, V_REFERENCE))
 		return ;
 	if (proc->arena->verbose_lvl & V_LVL_OP)
-		ft_printf("P %4d | sub r%d r%d r%d\n", proc->id, r1, r2, r3);
+		ft_printf("P %4d | add r%d r%d r%d\n", proc->id, r1, r2, r3);
 	proc->reg[r3] = proc->reg[r1] + proc->reg[r2];
 	proc->carry = proc->reg[r3] == 0;
 }

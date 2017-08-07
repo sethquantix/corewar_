@@ -6,7 +6,7 @@
 /*   By: lnagy <lnagy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/10 16:51:13 by lnagy             #+#    #+#             */
-/*   Updated: 2017/03/10 16:51:14 by lnagy            ###   ########.fr       */
+/*   Updated: 2017/08/07 10:37:24 by cchaumar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ static void	*compile_error(t_parser *p, char *file, char *source, char *ret)
 	return (NULL);
 }
 
-static void	print_err(t_expr **expr, char *file, int err)
+static void	*print_err(t_expr **expr, char *file, int err)
 {
 	if (err)
 	{
@@ -98,6 +98,7 @@ static void	print_err(t_expr **expr, char *file, int err)
 		err >= 20 ? ft_printf("Too many errors ! (stopped at 20)\n\n") :
 			ft_printf("%d errors\n\n", err);
 	}
+	return (NULL);
 }
 
 t_expr		*parse_asm(t_parser *p, char *file, char **source)
@@ -118,16 +119,13 @@ t_expr		*parse_asm(t_parser *p, char *file, char **source)
 		return ((t_expr *)(*source = NULL));
 	}
 	err = 0;
-	expr = NULL;
 	s = *source;
 	while (err < 20 && s && (ret = run_parser(p, s, "EXPR", &expr)) != NULL)
 	{
 		err++;
 		compile_error(p, file, *source, ret);
 		parser_clear_expr(&expr);
-		expr = NULL;
 		s = ft_strchr(ret, '\n');
 	}
-	print_err(&expr, file, err);
-	return (err ? NULL : expr);
+	return (err ? print_err(&expr, file, err) : expr);
 }

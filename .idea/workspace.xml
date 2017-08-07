@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true" buildAllGenerated="true">
-    <generated>
-      <config projectName="_corewar" targetName="corewar" />
-      <config projectName="_corewar" targetName="asm" />
-    </generated>
+    <generated />
   </component>
   <component name="CMakeSettings" AUTO_RELOAD="true">
     <configurations>
@@ -13,41 +10,77 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d03a427-4362-4e96-8f0e-4f3853e0da78" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/shaders/yolo.shader" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/box" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yolo.cor" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yolo.s" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/asm" afterPath="$PROJECT_DIR$/asm" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/corewar" afterPath="$PROJECT_DIR$/corewar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/glhandler/libglhandler.a" afterPath="$PROJECT_DIR$/lib/glhandler/libglhandler.a" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/libft/libft.a" afterPath="$PROJECT_DIR$/lib/libft/libft.a" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/_corewar.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.make_save" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/CMakeCache.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_corewar.cbp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/asm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/asm.dSYM/Contents/Info.plist" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/asm.dSYM/Contents/Resources/DWARF/asm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cmake_install.cmake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/corewar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/corewar.dSYM/Contents/Info.plist" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/corewar.dSYM/Contents/Resources/DWARF/corewar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/k" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/glhandler/libglhandler.a" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/libft/libft.a" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/soil2/libSOIL2.a" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/soil2/libSOIL2.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/soil2/libSOIL2.so.dSYM/Contents/Info.plist" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/soil2/libSOIL2.so.dSYM/Contents/Resources/DWARF/libSOIL2.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/objs/asm_objs/asm.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/objs/asm_objs/opt_tokens.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/objs/corewar_objs/arena_ini.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/objs/corewar_objs/check_process.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/objs/corewar_objs/corewar.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/objs/corewar_objs/gr_gl_buffer.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/objs/corewar_objs/gr_vm_handlers.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/objs/corewar_objs/gr_vm_init.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/objs/corewar_objs/gr_vm_inputs.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/objs/corewar_objs/gr_vm_run.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/objs/corewar_objs/ins_basic.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/objs/corewar_objs/ins_calc.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/objs/corewar_objs/ins_fork.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/objs/corewar_objs/ins_index.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/objs/corewar_objs/mem.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/objs/corewar_objs/op.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/objs/corewar_objs/options.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/objs/corewar_objs/opts_tokens.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/objs/corewar_objs/parse_args.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/objs/corewar_objs/process.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/objs/corewar_objs/read_args.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/objs/corewar_objs/utils.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/yolo.dec" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/rules/asm_opts" afterPath="$PROJECT_DIR$/assets/rules/asm_opts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/rules/crwr_opts" afterPath="$PROJECT_DIR$/assets/rules/crwr_opts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/champ/yolo.s" afterPath="$PROJECT_DIR$/champ/yolo.s" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/asm/asm.h" afterPath="$PROJECT_DIR$/includes/asm/asm.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/corewar/graphics/gr_structs.h" afterPath="$PROJECT_DIR$/includes/corewar/graphics/gr_structs.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/glhandler/srcs/gl_shader.c" afterPath="$PROJECT_DIR$/lib/glhandler/srcs/gl_shader.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/libft/generics/includes/ft_generics.h" afterPath="$PROJECT_DIR$/lib/libft/generics/includes/ft_generics.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/libft/generics/srcs/ft_read_file.c" afterPath="$PROJECT_DIR$/lib/libft/generics/srcs/ft_read_file.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/libft/generics/srcs/ft_strtolower.c" afterPath="$PROJECT_DIR$/lib/libft/generics/srcs/ft_strtolower.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/libft/generics/srcs/ft_strtoupper.c" afterPath="$PROJECT_DIR$/lib/libft/generics/srcs/ft_strtoupper.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Makefile" afterPath="$PROJECT_DIR$/Makefile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/corewar/graphics/gr_vm.h" afterPath="$PROJECT_DIR$/includes/corewar/graphics/gr_vm.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/libft/bmp/srcs/load.c" afterPath="$PROJECT_DIR$/lib/libft/bmp/srcs/load.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/libft/generics/srcs/ft_arr_find.c" afterPath="$PROJECT_DIR$/lib/libft/generics/srcs/ft_arr_find.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/libft/parser/srcs/engine_run.c" afterPath="$PROJECT_DIR$/lib/libft/parser/srcs/engine_run.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/libft/parser/srcs/parser_destroy.c" afterPath="$PROJECT_DIR$/lib/libft/parser/srcs/parser_destroy.c" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/srcs/asm_srcs/asm.c" afterPath="$PROJECT_DIR$/srcs/asm_srcs/asm.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/srcs/asm_srcs/compile.c" afterPath="$PROJECT_DIR$/srcs/asm_srcs/compile.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/srcs/asm_srcs/more_utils.c" afterPath="$PROJECT_DIR$/srcs/asm_srcs/more_utils.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/srcs/asm_srcs/opt_tokens.c" afterPath="$PROJECT_DIR$/srcs/asm_srcs/opt_tokens.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/srcs/asm_srcs/params_tools.c" afterPath="$PROJECT_DIR$/srcs/asm_srcs/params_tools.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/srcs/asm_srcs/decompile/dec_err_check.c" afterPath="$PROJECT_DIR$/srcs/asm_srcs/decompile/dec_err_check.c" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/srcs/asm_srcs/parse_asm.c" afterPath="$PROJECT_DIR$/srcs/asm_srcs/parse_asm.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/srcs/asm_srcs/parse_opts.c" afterPath="$PROJECT_DIR$/srcs/asm_srcs/parse_opts.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/srcs/asm_srcs/print.c" afterPath="$PROJECT_DIR$/srcs/asm_srcs/print.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/srcs/asm_srcs/read_opts.c" afterPath="$PROJECT_DIR$/srcs/asm_srcs/read_opts.c" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/srcs/asm_srcs/utils.c" afterPath="$PROJECT_DIR$/srcs/asm_srcs/utils.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/srcs/corewar_srcs/core/parser/opts_tokens.c" afterPath="$PROJECT_DIR$/srcs/corewar_srcs/core/parser/opts_tokens.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/srcs/corewar_srcs/core/parser/parse_args.c" afterPath="$PROJECT_DIR$/srcs/corewar_srcs/core/parser/parse_args.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/srcs/corewar_srcs/core/init/arena_ini.c" afterPath="$PROJECT_DIR$/srcs/corewar_srcs/core/init/arena_ini.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/srcs/corewar_srcs/core/init/check_process.c" afterPath="$PROJECT_DIR$/srcs/corewar_srcs/core/init/check_process.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/srcs/corewar_srcs/core/instructions/ins_basic.c" afterPath="$PROJECT_DIR$/srcs/corewar_srcs/core/instructions/ins_basic.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/srcs/corewar_srcs/core/instructions/ins_calc.c" afterPath="$PROJECT_DIR$/srcs/corewar_srcs/core/instructions/ins_calc.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/srcs/corewar_srcs/core/instructions/ins_fork.c" afterPath="$PROJECT_DIR$/srcs/corewar_srcs/core/instructions/ins_fork.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/srcs/corewar_srcs/core/instructions/ins_index.c" afterPath="$PROJECT_DIR$/srcs/corewar_srcs/core/instructions/ins_index.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/srcs/corewar_srcs/core/parser/read_args.c" afterPath="$PROJECT_DIR$/srcs/corewar_srcs/core/parser/read_args.c" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/srcs/corewar_srcs/corewar.c" afterPath="$PROJECT_DIR$/srcs/corewar_srcs/corewar.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/srcs/corewar_srcs/graphics/gr_gen_tex.c" afterPath="$PROJECT_DIR$/srcs/corewar_srcs/graphics/gr_gen_tex.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/srcs/corewar_srcs/graphics/gr_vm_camera_handling.c" afterPath="$PROJECT_DIR$/srcs/corewar_srcs/graphics/gr_vm_camera_handling.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/srcs/corewar_srcs/graphics/gr_vm_handlers.c" afterPath="$PROJECT_DIR$/srcs/corewar_srcs/graphics/gr_vm_handlers.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/srcs/corewar_srcs/graphics/gr_vm_render_opengl.c" afterPath="$PROJECT_DIR$/srcs/corewar_srcs/graphics/gr_vm_render_opengl.c" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/srcs/corewar_srcs/graphics/gr_vm_run.c" afterPath="$PROJECT_DIR$/srcs/corewar_srcs/graphics/gr_vm_run.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/srcs/corewar_srcs/graphics/gr_vm_ui_utils.c" afterPath="$PROJECT_DIR$/srcs/corewar_srcs/graphics/gr_vm_ui_utils.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/srcs/corewar_srcs/utils/op.c" afterPath="$PROJECT_DIR$/srcs/corewar_srcs/utils/op.c" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <ignored path="$PROJECT_DIR$/CMakeFiles/" />
@@ -67,31 +100,61 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="gr_vm_gl.c" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/graphics/gr_vm_gl.c">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="765">
-              <caret line="51" column="1" lean-forward="true" selection-start-line="51" selection-start-column="1" selection-end-line="51" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="corewar.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/corewar.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="817">
-              <caret line="117" column="16" lean-forward="false" selection-start-line="117" selection-start-column="16" selection-end-line="117" selection-end-column="16" />
+            <state relative-caret-position="645">
+              <caret line="43" column="42" lean-forward="false" selection-start-line="43" selection-start-column="42" selection-end-line="43" selection-end-column="42" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="gr_vm_init.c" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/graphics/gr_vm_init.c">
+      <file leaf-file-name="ins_calc.c" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/core/instructions/ins_calc.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="997">
-              <caret line="83" column="0" lean-forward="true" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+            <state relative-caret-position="555">
+              <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ins_fork.c" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/core/instructions/ins_fork.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="540">
+              <caret line="36" column="35" lean-forward="false" selection-start-line="36" selection-start-column="35" selection-end-line="36" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Makefile" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Makefile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="779">
+              <caret line="134" column="0" lean-forward="false" selection-start-line="134" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="check_process.c" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/core/init/check_process.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="25" column="8" lean-forward="false" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="arena_ini.c" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/core/init/arena_ini.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="862">
+              <caret line="89" column="4" lean-forward="false" selection-start-line="89" selection-start-column="4" selection-end-line="89" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -111,7 +174,7 @@
         <entry file="file://$PROJECT_DIR$/includes/corewar/internals/crwr_structs.h">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="877">
-              <caret line="80" column="21" lean-forward="true" selection-start-line="80" selection-start-column="21" selection-end-line="80" selection-end-column="21" />
+              <caret line="80" column="21" lean-forward="false" selection-start-line="80" selection-start-column="21" selection-end-line="80" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -132,36 +195,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gl_shader.c" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/glhandler/srcs/gl_shader.c">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="33" column="40" lean-forward="true" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ft_read_file.c" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/libft/generics/srcs/ft_read_file.c">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" column="15" lean-forward="false" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gl_objects.c" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/glhandler/srcs/gl_objects.c">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="827">
-              <caret line="78" column="26" lean-forward="false" selection-start-line="78" selection-start-column="26" selection-end-line="78" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -220,18 +253,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/srcs/corewar_srcs/core/init/check_process.c" />
-        <option value="$PROJECT_DIR$/srcs/corewar_srcs/core/memory/values.c" />
-        <option value="$PROJECT_DIR$/srcs/corewar_srcs/core/instructions/process_read.c" />
-        <option value="$PROJECT_DIR$/srcs/corewar_srcs/core/init/arena_ini.c" />
-        <option value="$PROJECT_DIR$/srcs/corewar_srcs/graphics/gr_vm_clear.c" />
         <option value="$PROJECT_DIR$/srcs/corewar_srcs/core/instructions/process.c" />
         <option value="$PROJECT_DIR$/srcs/corewar_srcs/utils/op.c" />
         <option value="$PROJECT_DIR$/srcs/corewar_srcs/graphics/gr_vm_selector.c" />
         <option value="$PROJECT_DIR$/srcs/corewar_srcs/graphics/gr_vm_styles.c" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/srcs/corewar_srcs/graphics/gr_gl_init_vbos.c" />
-        <option value="$PROJECT_DIR$/srcs/corewar_srcs/core/parser/read_args.c" />
         <option value="$PROJECT_DIR$/srcs/corewar_srcs/utils/utils.c" />
         <option value="$PROJECT_DIR$/srcs/corewar_srcs/graphics/gr_gl_update.c" />
         <option value="$PROJECT_DIR$/includes/corewar/graphics/gr_types.h" />
@@ -267,10 +294,16 @@
         <option value="$PROJECT_DIR$/srcs/corewar_srcs/core/parser/parse_args.c" />
         <option value="$PROJECT_DIR$/includes/corewar/graphics/gr_structs.h" />
         <option value="$PROJECT_DIR$/srcs/corewar_srcs/graphics/gr_vm_run.c" />
-        <option value="$PROJECT_DIR$/srcs/corewar_srcs/corewar.c" />
         <option value="$PROJECT_DIR$/lib/libft/generics/srcs/ft_read_file.c" />
         <option value="$PROJECT_DIR$/srcs/corewar_srcs/graphics/gr_vm_gl.c" />
         <option value="$PROJECT_DIR$/srcs/corewar_srcs/graphics/gr_vm_init.c" />
+        <option value="$PROJECT_DIR$/srcs/corewar_srcs/core/parser/read_args.c" />
+        <option value="$PROJECT_DIR$/srcs/corewar_srcs/core/init/arena_ini.c" />
+        <option value="$PROJECT_DIR$/srcs/corewar_srcs/corewar.c" />
+        <option value="$PROJECT_DIR$/srcs/corewar_srcs/core/init/check_process.c" />
+        <option value="$PROJECT_DIR$/srcs/corewar_srcs/core/instructions/ins_calc.c" />
+        <option value="$PROJECT_DIR$/srcs/corewar_srcs/core/instructions/ins_fork.c" />
+        <option value="$PROJECT_DIR$/Makefile" />
       </list>
     </option>
   </component>
@@ -866,11 +899,11 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" PASS_PARENT_ENVS_2="true" PROJECT_NAME="_corewar" TARGET_NAME="asm" CONFIG_NAME="Default" TEST_MODE="SUITE_TEST">
+    <configuration default="true" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Project" TARGET_NAME="asm" CONFIG_NAME="Default" TEST_MODE="SUITE_TEST">
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="_corewar" TARGET_NAME="_corewar" CONFIG_NAME="Debug">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Project" TARGET_NAME="_corewar" CONFIG_NAME="Debug">
       <envs />
       <method />
     </configuration>
@@ -1041,15 +1074,15 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method />
     </configuration>
-    <configuration default="false" name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Default" RUN_TARGET_PROJECT_NAME="_corewar" RUN_TARGET_NAME="corewar" EXPLICIT_BUILD_TARGET_NAME="all">
+    <configuration default="false" name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Default" RUN_TARGET_PROJECT_NAME="Project" RUN_TARGET_NAME="corewar" EXPLICIT_BUILD_TARGET_NAME="all">
       <envs />
       <method />
     </configuration>
-    <configuration default="false" name="asm" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="Asombra.s" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="_corewar" TARGET_NAME="asm" CONFIG_NAME="Default" RUN_TARGET_PROJECT_NAME="_corewar" RUN_TARGET_NAME="asm">
+    <configuration default="false" name="asm" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="Asombra.s" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Project" TARGET_NAME="asm" CONFIG_NAME="Default" RUN_TARGET_PROJECT_NAME="Project" RUN_TARGET_NAME="asm">
       <envs />
       <method />
     </configuration>
-    <configuration default="false" name="corewar" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="-g yolo.cor -n 2 tests/Douceur.cor -n 4 tests/_.cor" PASS_PARENT_ENVS_2="true" PROJECT_NAME="_corewar" TARGET_NAME="corewar" CONFIG_NAME="Default" RUN_TARGET_PROJECT_NAME="_corewar" RUN_TARGET_NAME="corewar">
+    <configuration default="false" name="corewar" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="-g yolo.cor -n 2 tests/Douceur.cor -n 4 tests/_.cor" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Project" TARGET_NAME="corewar" CONFIG_NAME="Default" RUN_TARGET_PROJECT_NAME="Project" RUN_TARGET_NAME="corewar">
       <envs />
       <method />
     </configuration>
@@ -1163,7 +1196,7 @@
       <workItem from="1501815365453" duration="8798000" />
       <workItem from="1501887778504" duration="1769000" />
       <workItem from="1502076410584" duration="2803000" />
-      <workItem from="1502087908731" duration="2591000" />
+      <workItem from="1502087908731" duration="5054000" />
     </task>
     <task id="LOCAL-00001" summary="OK that's nice">
       <created>1497419793419</created>
@@ -1183,7 +1216,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="289861000" />
+    <option name="totallyTimeSpent" value="292324000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1200,9 +1233,9 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16600476" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329927" sideWeight="0.49704608" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21605839" sideWeight="0.49389523" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21605839" sideWeight="0.49389523" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32846716" sideWeight="0.5154885" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18832117" sideWeight="0.48451152" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18832117" sideWeight="0.48451152" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919708" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329927" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24970461" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1310,27 +1343,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lib/libft/parser/srcs/engine_run.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/rules/asm_parse">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="135" lean-forward="false" selection-start-line="1" selection-start-column="135" selection-end-line="1" selection-end-column="135" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/srcs/asm_srcs/utils.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
-          <caret line="29" column="68" lean-forward="false" selection-start-line="29" selection-start-column="68" selection-end-line="29" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/srcs/asm_srcs/compile.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="736">
@@ -1461,7 +1473,7 @@
         <state relative-caret-position="160">
           <caret line="16" column="1" lean-forward="false" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
           <folding>
-            <element signature="e#892#912#0" expanded="true" />
+            <element signature="e#892#912#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1479,7 +1491,7 @@
         <state relative-caret-position="-1751">
           <caret line="6" column="7" lean-forward="false" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
           <folding>
-            <element signature="e#892#912#0" expanded="true" />
+            <element signature="e#892#912#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1501,14 +1513,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/graphics/gr_vm_matrix.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/core/init/check_process.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1540,14 +1544,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/core/init/arena_ini.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
-          <caret line="66" column="8" lean-forward="false" selection-start-line="66" selection-start-column="8" selection-end-line="66" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/core/memory/mem.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-131">
@@ -1561,16 +1557,8 @@
         <state relative-caret-position="229">
           <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
           <folding>
-            <element signature="e#892#912#0" expanded="true" />
+            <element signature="e#892#912#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/core/parser/read_args.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="86" column="54" lean-forward="true" selection-start-line="86" selection-start-column="54" selection-end-line="86" selection-end-column="54" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1627,7 +1615,7 @@
         <state relative-caret-position="922">
           <caret line="85" column="20" lean-forward="false" selection-start-line="85" selection-start-column="20" selection-end-line="85" selection-end-column="20" />
           <folding>
-            <element signature="e#936#956#0" expanded="true" />
+            <element signature="e#936#956#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1656,10 +1644,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/graphics/gr_vm_gl.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="51" column="1" lean-forward="false" selection-start-line="51" selection-start-column="1" selection-end-line="51" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/graphics/gr_vm_init.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="997">
+          <caret line="83" column="0" lean-forward="true" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/core/parser/read_args.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="562">
+          <caret line="85" column="0" lean-forward="false" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lib/glhandler/srcs/gl_shader.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="495">
-          <caret line="33" column="40" lean-forward="true" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="40" />
+          <caret line="33" column="40" lean-forward="false" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="40" />
           <folding />
         </state>
       </provider>
@@ -1683,7 +1695,7 @@
     <entry file="file://$PROJECT_DIR$/includes/corewar/internals/crwr_structs.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="877">
-          <caret line="80" column="21" lean-forward="true" selection-start-line="80" selection-start-column="21" selection-end-line="80" selection-end-column="21" />
+          <caret line="80" column="21" lean-forward="false" selection-start-line="80" selection-start-column="21" selection-end-line="80" selection-end-column="21" />
           <folding />
         </state>
       </provider>
@@ -1696,26 +1708,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/graphics/gr_vm_gl.c">
+    <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/core/init/arena_ini.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="51" column="1" lean-forward="true" selection-start-line="51" selection-start-column="1" selection-end-line="51" selection-end-column="1" />
+        <state relative-caret-position="862">
+          <caret line="89" column="4" lean-forward="false" selection-start-line="89" selection-start-column="4" selection-end-line="89" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/core/init/check_process.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="8" lean-forward="false" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/corewar.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="817">
-          <caret line="117" column="16" lean-forward="false" selection-start-line="117" selection-start-column="16" selection-end-line="117" selection-end-column="16" />
+        <state relative-caret-position="645">
+          <caret line="43" column="42" lean-forward="false" selection-start-line="43" selection-start-column="42" selection-end-line="43" selection-end-column="42" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/graphics/gr_vm_init.c">
+    <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/core/instructions/ins_calc.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="997">
-          <caret line="83" column="0" lean-forward="true" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+        <state relative-caret-position="555">
+          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/srcs/corewar_srcs/core/instructions/ins_fork.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" column="35" lean-forward="false" selection-start-line="36" selection-start-column="35" selection-end-line="36" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Makefile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="779">
+          <caret line="134" column="0" lean-forward="false" selection-start-line="134" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
           <folding />
         </state>
       </provider>

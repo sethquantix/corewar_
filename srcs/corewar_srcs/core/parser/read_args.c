@@ -81,16 +81,10 @@ void			player(t_expr **e, t_arena *a)
 	c = new_champion(file, number, a);
 	if (c.source == NULL)
 		return ;
-	if (!a->champ_count)
-		ft_printf("\n%sLoading contestants :\n\n%s", acol(3, 4, 0), COLOR_END);
 	if (a->champ_count >= 4)
 		err(WARN, warn[0], c.head.prog_name, warn[1]);
 	else
-	{
 		ft_pushback((void **)&a->champs, sizeof(t_champ), a->champ_count++, &c);
-		ft_printf("\t%s%s, packing %d bytes%s\n", acol(1, 5, 1),
-			c.head.prog_name, c.head.prog_size, COLOR_END);
-	}
 }
 
 void			read_args(t_expr *expr, t_arena *a)

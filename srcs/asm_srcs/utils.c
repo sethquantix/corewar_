@@ -6,7 +6,7 @@
 /*   By: lnagy <lnagy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/08 14:24:13 by lnagy             #+#    #+#             */
-/*   Updated: 2017/03/08 14:24:15 by lnagy            ###   ########.fr       */
+/*   Updated: 2017/08/07 10:34:21 by cchaumar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_env	*env(void)
 void	die(int exit_code, char *s, ...)
 {
 	va_list		args;
-	char 		*buff;
+	char		*buff;
 
 	va_start(args, s);
 	ft_vasprintf(&buff, s, args);

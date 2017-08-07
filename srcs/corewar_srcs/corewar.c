@@ -6,7 +6,7 @@
 /*   By: lnagy <lnagy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/05 16:38:41 by lnagy             #+#    #+#             */
-/*   Updated: 2017/08/07 07:43:30 by cchaumar         ###   ########.fr       */
+/*   Updated: 2017/08/07 10:39:18 by cchaumar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,24 +59,30 @@ int		loop(t_arena *a)
 
 int		usage(char *s)
 {
-	ft_printf("Usage: %s [-d N -s N -v N | -g] [-a] [[-n N] <champ1.cor>]", s);
-	ft_printf(" [...] \n");
-	ft_printf(" -a               : Prints output from \"aff\"");
-	ft_printf("(Default is to hide it)\n");
-	ft_printf(" (--graphic) -g   : Graphical mode\n");
-	ft_printf("############ TEXT OUTPUT MODE #################\n");
-	ft_printf(" (--dump) -d N    : Dumps memory after N cycles then exits\n");
-	ft_printf(" (--step) -s N    : Runs N cycles, dumps memory, pauses, then");
-	ft_printf("repeats\n");
-	ft_printf(" (--verbose) -v N : Verbosity levels, can be added\n");
-	ft_printf("                    - 0  : Show only essentials\n");
-	ft_printf("                    - 1  : Show lives\n");
-	ft_printf("                    - 2  : Show cycles\n");
-	ft_printf("                    - 4  : Show operations (Params are not ");
-	ft_printf("litteral ...)\n");
-	ft_printf("                    - 8  : Show deaths\n");
-	ft_printf("                    - 16 : Show PC movements (except zjmp)\n");
-	ft_printf("##############################################\n");
+	const char	*use[] = {
+		"[-d N -s N -v N | -g] [-a] [[-n N] <champ1.cor>] [...] \n",
+		" -a               : Prints output from \"aff\"",
+		"(Default is to hide it)\n",
+		" (--graphic) -g   : Graphical mode\n",
+		"############ TEXT OUTPUT MODE #################\n",
+		" (--dump) -d N    : Dumps memory after N cycles then exits\n",
+		" (--step) -s N    : Runs N cycles, dumps memory, then repeats\n",
+		" (--verbose) -v N : Verbosity levels, can be added\n",
+		"                    - 0  : Show only essentials\n",
+		"                    - 1  : Show lives\n",
+		"                    - 2  : Show cycles\n",
+		"                    - 4  : Show operations (Params are not ",
+		"litteral ...)\n",
+		"                    - 8  : Show deaths\n",
+		"                    - 16 : Show PC movements (except zjmp)\n",
+		"##############################################\n",
+		0};
+	int			i;
+
+	i = 0;
+	ft_dprintf(2, "\nUsage: %s", s);
+	while (use[i])
+		ft_dprintf(2, use[i++]);
 	return (0);
 }
 
@@ -87,9 +93,11 @@ void	winner(t_arena *arena)
 
 	i = 0;
 	w = -1;
+	if (arena->opts & A_OPT)
+		ft_printf("aff buffer: %s\n", arena->aff);
 	while (i < arena->champ_count)
 	{
-		ft_printf("last live %d : %d\n", arena->champs[i].num,
+		ft_printf("Player %d last lived at cycle %d\n", arena->champs[i].num,
 			arena->champs[i].last_live);
 		if (w == -1 || arena->champs[i].last_live > arena->champs[w].last_live)
 			w = i;
@@ -112,9 +120,9 @@ int		main(int ac, char **av)
 	ft_bzero(&arena, sizeof(t_arena));
 	expr = parse_opts(av + 1);
 	read_args(expr, &arena);
-	init(&arena);
 	if (!arena.champ_count)
-		return(usage(av[0]));
+		return (usage(av[0]));
+	init(&arena);
 	if (arena.opts & G_OPT)
 	{
 		gr_vm_init(&context);
@@ -124,8 +132,6 @@ int		main(int ac, char **av)
 	else
 		while (loop(&arena))
 			;
-	if (arena.opts & A_OPT)
-		ft_printf("aff buffer: %s\n", arena.aff);
 	winner(&arena);
 	return (0);
 }

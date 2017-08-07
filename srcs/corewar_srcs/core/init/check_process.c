@@ -6,7 +6,7 @@
 /*   By: cchaumar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/07 17:36:39 by cchaumar          #+#    #+#             */
-/*   Updated: 2017/04/07 17:36:42 by cchaumar         ###   ########.fr       */
+/*   Updated: 2017/08/07 11:14:09 by cchaumar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	check(t_proc *p)
 {
 	int		die;
 
-	die = p->arena->cycles - p->last_live > p->arena->ctd ? 1 : 0;
+	die = p->arena->cycles - p->last_live >= p->arena->ctd ? 1 : 0;
 	if (die && (p->arena->verbose_lvl & V_LVL_DEATH))
 		ft_printf("Process %d hasn't lived for %d cycles (CTD %d)\n",
 			p->id, p->arena->cycles - p->last_live, p->arena->ctd);
@@ -32,12 +32,12 @@ void		check_process(t_arena *a)
 {
 	int		i;
 
-	i = 0;
-	while (i < a->proc_count)
+	i = a->proc_count - 1;
+	while (i >= 0)
 	{
 		if (!a->procs[i]->dead)
 			a->procs[i]->dead = check(a->procs[i]);
-		i++;
+		--i;
 	}
 	a->last_check = a->cycles;
 	if (++a->check_cycles >= MAX_CHECKS || a->nbr_lives >= NBR_LIVE)

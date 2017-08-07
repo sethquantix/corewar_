@@ -34,7 +34,7 @@ void	i_lfork(t_proc *proc)
 		return ;
 	if (proc->arena->verbose_lvl & V_LVL_OP)
 		ft_printf("P %4d | lfork %d (%d)\n", proc->id,
-			addr, mem_mod(addr + proc->pc));
+			addr, addr + proc->pc);//mem_mod(addr + proc->pc));
 	addr = mem_mod(addr + proc->pc);
 	proc->arena->add_proc(proc->arena, proc, addr);
 }

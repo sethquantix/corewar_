@@ -12,7 +12,7 @@
 
 #include "corewar.h"
 
-t_proc	*add_proc(t_arena *a, t_champ *c, int pc)
+t_proc		*add_proc(t_arena *a, t_champ *c, int pc)
 {
 	t_proc	*proc;
 
@@ -30,7 +30,7 @@ t_proc	*add_proc(t_arena *a, t_champ *c, int pc)
 	return (proc);
 }
 
-t_proc	*fork_proc(t_arena *a, t_proc *p, int pc)
+t_proc		*fork_proc(t_arena *a, t_proc *p, int pc)
 {
 	t_proc	*proc;
 
@@ -52,7 +52,7 @@ t_proc	*fork_proc(t_arena *a, t_proc *p, int pc)
 	return (proc);
 }
 
-void	load_code(t_arena *a, t_champ *c)
+static void	load_code(t_arena *a, t_champ *c)
 {
 	int		pc;
 	t_proc	*p;
@@ -64,25 +64,33 @@ void	load_code(t_arena *a, t_champ *c)
 	proc_set(p, SET_PLAYER);
 }
 
-void	init(t_arena *arena)
+static void	init_champ(t_arena *a, t_champ *c)
 {
-	int			num;
+	static int num = 1;
+
+	if (!c->set)
+	{
+		while (check_set(a->champs, a->champ_count, num))
+			num++;
+		c->num = num++;
+	}
+	load_code(a, c);
+	ft_printf("%sPlayer %d : %s, packing %d bytes%s\n", acol(1, 5, 1),
+		c->num, c->head.prog_name, c->head.prog_size, COLOR_END);
+}
+
+void		init(t_arena *arena)
+{
 	int			i;
 
 	arena->check = check_process;
 	arena->add_proc = (t_f_add)add_proc;
 	arena->ctd = CYCLE_TO_DIE;
 	i = 0;
-	num = 1;
+	ft_printf("\n%sLoading contestants :\n\n%s", acol(3, 4, 0), COLOR_END);
 	while (i < arena->champ_count)
 	{
-		if (!arena->champs[i].set)
-		{
-			while (check_set(arena->champs, arena->champ_count, num))
-				num++;
-			arena->champs[i].num = num++;
-		}
-		load_code(arena, arena->champs + i);
+		init_champ(arena, arena->champs + i);
 		i++;
 	}
 	arena->add_proc = (t_f_add)fork_proc;

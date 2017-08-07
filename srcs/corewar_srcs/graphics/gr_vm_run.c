@@ -6,7 +6,7 @@
 /*   By: cchaumar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/19 08:17:20 by cchaumar          #+#    #+#             */
-/*   Updated: 2017/03/19 08:17:21 by cchaumar         ###   ########.fr       */
+/*   Updated: 2017/08/07 10:39:37 by cchaumar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void		gr_vm_run(t_vm_loop loop, void *data, t_gr_vm *ctx)
 
 void		gr_vm_end(t_gr_vm *ctx)
 {
-	int 	i;
+	int		i;
 
 	SDL_FreeSurface(ctx->screen);
 	SDL_DestroyWindow(ctx->arena);

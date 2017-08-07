@@ -6,7 +6,7 @@
 /*   By: lnagy <lnagy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/05 16:41:01 by lnagy             #+#    #+#             */
-/*   Updated: 2017/08/07 07:23:11 by cchaumar         ###   ########.fr       */
+/*   Updated: 2017/08/07 10:34:05 by cchaumar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int ac, char **av)
 	read_opts(e, expr);
 	parser_clear_expr(&expr);
 	if (!e->n_file)
-		return(usage(av[0]));
+		return (usage(av[0]));
 	if ((e->opts & OPT_X) == 0)
 		compile(e);
 	else if (ac == 3)
