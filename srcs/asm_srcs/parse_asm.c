@@ -6,7 +6,7 @@
 /*   By: lnagy <lnagy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/10 16:51:13 by lnagy             #+#    #+#             */
-/*   Updated: 2017/08/07 10:37:24 by cchaumar         ###   ########.fr       */
+/*   Updated: 2017/08/07 12:38:26 by cchaumar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static char	*getfile(char *file)
 	int			fd;
 	int			len;
 	char		*line;
-	char		*source;
 	struct stat	stat_;
 
 	len = 0;
@@ -26,15 +25,20 @@ static char	*getfile(char *file)
 	fstat(fd, &stat_);
 	if (stat_.st_size < 4 || stat_.st_size > MAX_SIZE)
 		return ((void *)-1);
-	source = NULL;
 	line = NULL;
 	while (get_next_line(fd, &line) > 0)
 	{
-		len += ft_strlen(line);
-		source = ft_strjoinfree(source, ft_strjoinfree(line, "\n", 1), 3);
+		len += ft_strlen(line) + 1;
+		free(line);
 	}
 	free(line);
-	return (source);
+	close(fd);
+	if (len < 4 || (fd = open(file, O_RDONLY)) == -1)
+		return (NULL);
+	line = try(len + 1);
+	read(fd, line, len);
+	close(fd);
+	return (line);
 }
 
 static char	*get_err(t_parser *p, char *ret, int *c)
