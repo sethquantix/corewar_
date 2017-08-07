@@ -12,11 +12,12 @@
 
 #include "ft_generics.h"
 
-void	ft_strtolower(char *s)
+char	*ft_strtolower(char *s)
 {
 	while (*s)
 	{
 		*s = ft_isupper(*s) ? *s + 32 : *s;
 		++s;
 	}
+	return (s);
 }

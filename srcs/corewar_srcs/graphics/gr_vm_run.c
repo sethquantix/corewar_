@@ -41,7 +41,6 @@ static void	render_loop(void *data, t_gr_vm *ctx)
 		i++;
 	}
 	render_opengl(ctx, data);
-	SDL_UpdateWindowSurface(ctx->ui);
 }
 
 void		gr_vm_run(t_vm_loop loop, void *data, t_gr_vm *ctx)
@@ -71,8 +70,15 @@ void		gr_vm_run(t_vm_loop loop, void *data, t_gr_vm *ctx)
 
 void		gr_vm_end(t_gr_vm *ctx)
 {
+	int 	i;
+
+	SDL_FreeSurface(ctx->screen);
 	SDL_DestroyWindow(ctx->arena);
 	SDL_GL_DeleteContext(ctx->arena_context);
+	i = 0;
+	while (i < ctx->sst.nstyle)
+		TTF_CloseFont(ctx->sst.styles[i++].font);
+	free(ctx->sst.styles);
 	SDL_Quit();
 	TTF_Quit();
 }

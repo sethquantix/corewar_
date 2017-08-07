@@ -47,6 +47,7 @@ void			del_inst(t_inst *inst, size_t size)
 		ft_memdel((void **)&inst->args[i]);
 		i++;
 	}
+	ft_memdel((void**)&inst->color);
 	ft_bzero(inst, size);
 	ft_memdel((void **)&inst);
 }
@@ -77,7 +78,7 @@ void			print_instructions(t_file *file)
 
 void			print_file_header(t_file *file)
 {
-	ft_printf("%sDumping : %s%s\n", acol(0, 4, 1), file->name, COLOR_END);
+	ft_printf("%sDumping : %s%s\n", acol(0, 5, 0), file->name, COLOR_END);
 	ft_printf("Program size : %d bytes\n", file->addr);
 	ft_printf("Name : \"%s\"\n", file->head.prog_name);
 	ft_printf("Comment : \"%s\"\n\n", file->head.prog_desc);

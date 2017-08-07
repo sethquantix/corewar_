@@ -33,6 +33,7 @@ static void	gen_glyphs(const char *font_name, SDL_Surface ***buff)
 	i = 0;
 	while (i <= 0xF)
 		add_tex(font, i++, *buff);
+	TTF_CloseFont(font);
 	TTF_Quit();
 }
 

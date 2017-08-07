@@ -66,5 +66,6 @@ t_expr		*parse_opts(char **av)
 	err = run_parser(p, arg, "FORMAT", &expr);
 	destroy_engine(p);
 	parse_error(err);
+	free(arg);
 	return (expr);
 }

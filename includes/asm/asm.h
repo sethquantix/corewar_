@@ -30,6 +30,8 @@
 
 # define INST(x)	((t_inst *)(x->content))
 
+# define MAX_SIZE	65536
+
 # define COLOR_RED	"\033[;1;31m"
 # define COLOR_WARN	"\033[38;5;214m"
 # define COLOR_GREEN	"\033[;1;32m"
@@ -124,10 +126,8 @@ int					tok_func_ascii(char **s);
 int					tok_func_number(char **s);
 int					tok_func_reg_nbr(char **s);
 
-void				print_expr(t_expr *expr);
 char				*err(int err_code, ...);
 
-void				ft_strtolower(char *str);
 char				*get_color_(int nb, char type);
 
 #endif
