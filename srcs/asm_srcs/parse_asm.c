@@ -12,16 +12,32 @@
 
 #include "asm.h"
 
-void	print_stack(t_list *stack)
-{
-	t_tok	*tok;
+// void print_stack(t_list *stack)
+// {
+// 	t_tok	*tok;
+// 
+// 	while (stack)
+// 	{
+// 		tok = stack->content;
+// 		ft_printf("%s %s\n", tok->rule->name, parser_getl(tok->pos));
+// 		stack = stack->next;
+// 	}
+// }
 
-	while (stack)
+static char	*format_err(char *err)
+{
+	char	*s;
+
+	while (ft_iswhite(*err))
+		err++;
+	s = err;
+	while (*s)
 	{
-		tok = stack->content;
-		ft_dprintf(2, "%s [%s]\n", tok->rule->name, parser_getl(tok->pos));
-		stack = stack->next;
+		if (*s == '\t')
+			*s = ' ';
+		s++;
 	}
+	return (err);
 }
 
 static char	*get_err(t_parser *p, char *ret, int *c)
@@ -32,9 +48,9 @@ static char	*get_err(t_parser *p, char *ret, int *c)
 	char	*e;
 
 	stack = p->stack;
-	print_stack(stack);
 	p->stack = NULL;
-	if (((t_tok *)stack->content)->pos == ret)
+	e = format_err(((t_tok *)stack->content)->pos, NULL);
+	if (e == ret)
 	{
 		*c += ((t_tok *)ft_lstend(stack)->content)->pos - ret;
 		ft_lstdel(&stack, ft_del);
@@ -65,12 +81,6 @@ static void	*compile_error(t_parser *p, char *file, char *source, char *ret)
 	err = get_err(p, ret, &c);
 	ft_dprintf(2, "%s:%d:%d: %serror:%s %s\n", file, l,
 		c, COLOR_RED, COLOR_END, err);
-	err = s;
-	while (ft_iswhite(*err))
-	{
-		c--;
-		err++;
-	}
 	ft_dprintf(2, "\t%s\n", err);
 	ft_dprintf(2, "\t%s%.*s%s\n", COLOR_GREEN, c, "^", COLOR_END);
 	free(s);

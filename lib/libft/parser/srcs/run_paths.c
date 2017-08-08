@@ -19,8 +19,11 @@ static int		build_expr_rule(t_rule *rule, char **s, t_parser *parser,
 	int		r;
 	char	*p;
 	t_expr	*e;
+	t_tok	t;
+	t_list	*ps;
 
-	err_stack_push(parser, (t_tok){rule, *s}, NULL);
+	t = (t_tok){rule, *s};
+	err_stack_push(parser, t, &ps);
 	p = NULL;
 	if (parser_tab_find(parser->list, rule->name) == 0)
 		p = *s;
@@ -33,6 +36,18 @@ static int		build_expr_rule(t_rule *rule, char **s, t_parser *parser,
 		p = ft_strsub(p, 0, *s - p);
 		e->expr = ft_trim(&p);
 		*ret = e;
+	}
+	if (ps && t.pos < ((t_tok *)ps->content)->pos)
+		ft_lstdel(&ps->next, ft_del);
+	return (r);
+}
+
+static	int		keep_stack(t_parser *p, t_list *temp, t_list *ps, int r)
+{
+	if (temp)
+	{
+		ft_lstend(temp)->next = ps;
+		p->stack = temp;
 	}
 	return (r);
 }
@@ -52,17 +67,10 @@ static	int		build_expr_opts(t_rule **rules, char **s, t_parser *p,
 	t = *s;
 	while (r && *rules)
 	{
-		ft_dprintf(2, "option => %s\n", (*rules)->name);
 		if ((r = build_expr_rule(*rules, s, p, ret)))
 			*s = t;
-		ft_dprintf(2, "%d %p option %s got %d\n", r, ps, (*rules)->name,
-			ft_lstsize(p->stack));
-		if (!r || !ps || ft_lstsize(ps) < ft_lstsize(p->stack))
+		if ((!r && t != *s) || !ps || ft_lstsize(ps) < ft_lstsize(p->stack))
 		{
-			ft_dprintf(2, "replacing %s with %s\n",
-				!ps ? "-" :
-				((t_tok *)ps->content)->rule->name,
-				((t_tok *)p->stack->content)->rule->name);
 			ft_lstdel(&ps, ft_del);
 			ps = p->stack;
 			p->stack = NULL;
@@ -71,14 +79,7 @@ static	int		build_expr_opts(t_rule **rules, char **s, t_parser *p,
 			ft_lstdel(&p->stack, ft_del);
 		rules++;
 	}
-	if (temp)
-	{
-		ft_lstend(temp)->next = ps;
-		p->stack = temp;
-	}
-	// else
-	// 	p->stack = ps;
-	return (r);
+	return (keep_stack(p, temp, ps, r));
 }
 
 int				march_path(t_path *path, char **s, t_expr **expr,

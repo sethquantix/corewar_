@@ -17,7 +17,6 @@
 
 int		march_path(t_path *path, char **s, t_expr **expr, t_parser *p);
 void	err_stack_push(t_parser *p, t_tok st, t_list **ps);
-void	err_stack_pop(t_parser *p, t_list *ps, int r, t_list **s);
 void	print_stak(t_list *stack);
 void	stock_stack(t_list **st, t_list *o);
 
