@@ -6,7 +6,7 @@
 /*   By: lnagy <lnagy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/05 16:44:19 by lnagy             #+#    #+#             */
-/*   Updated: 2017/08/01 08:22:20 by cchaumar         ###   ########.fr       */
+/*   Updated: 2017/08/08 04:07:44 by cchaumar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ typedef void		(*t_f_rule)(void *, t_expr **);
 t_env				*env(void);
 t_expr				*parse_opts(char **av);
 t_expr				*parse_asm(t_parser *p, char *file, char **source);
+char				*getfile(char *file);
 void				die(int exit_code, char *s, ...);
 int					usage(char *path);
 void				find_rule(void *data, t_expr **expr,

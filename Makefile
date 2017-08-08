@@ -12,7 +12,8 @@
 
 CRWR   = corewar
 ASM    = asm
-CFLG   = -Wall -Wextra -Werror
+CFLG   = -Wall -Wextra -Werror -g
+THIS   = Makefile
 
 CRWRF  =	utils/op.c \
 			corewar.c \
@@ -55,6 +56,7 @@ CRWRF  =	utils/op.c \
 ASMF   =    asm.c \
             asm_tokens.c \
             color.c \
+			file.c \
             compile.c \
             inst_tools.c \
             labels_tools.c \
@@ -142,10 +144,10 @@ lib/libft/libft.a:
 lib/glhandler/libglhandler.a:
 	@make -C lib/glhandler
 
-$(CRWROD)%.o: $(CRWRSD)%.c ${CRWRH}
+$(CRWROD)%.o: $(CRWRSD)%.c ${CRWRH} ${THIS}
 	gcc $(CFLG) $(CRINC) -c -o $@ $<
 
-$(ASMOD)%.o: $(ASMSD)%.c ${ASMH}
+$(ASMOD)%.o: $(ASMSD)%.c ${ASMH} ${THIS}
 	gcc $(CFLG) $(ASMINC) -c -o $@ $<
 
 $(CRWR): $(OBJDIR) $(CRWRO) $(LIBFT) $(LIBGL) $(SOIL2)

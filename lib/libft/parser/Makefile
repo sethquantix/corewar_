@@ -6,7 +6,7 @@
 #    By: cchaumar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/23 12:31:27 by cchaumar          #+#    #+#              #
-#    Updated: 2017/07/13 07:20:51 by cchaumar         ###   ########.fr        #
+#    Updated: 2017/08/08 07:00:39 by cchaumar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ ifeq ($(FAST),1)
 endif
 
 FILES  = 	parser.c build_engine.c opts.c evals.c opts.c \
-			engine_run.c check_tokens.c expr.c \
+			engine_run.c check_tokens.c expr.c stack.c \
 			utils.c parser_destroy.c run_paths.c
 SRCD   = srcs/
 OBJD   = objs/

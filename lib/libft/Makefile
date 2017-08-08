@@ -63,7 +63,7 @@ PRF_F    =	printf.c		funcs.c			parse.c			output.c \
 BMP_F    =	load.c			write.c
 PRSR_F	 =	parser.c		build_engine.c	opts.c			evals.c \
 			engine_run.c	check_tokens.c	expr.c			run_paths.c \
-			utils.c 		parser_destroy.c \
+			utils.c 		stack.c			parser_destroy.c \
 
 MATH_F   =	quat.c			vect.c			mat.c			quat_op.c \
 			vect_op.c

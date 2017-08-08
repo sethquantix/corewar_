@@ -66,7 +66,6 @@ typedef struct	s_parser
 	t_rule			**rules;
 	struct s_path	*path;
 	char			**list;
-	t_list			*err;
 	t_list			*stack;
 	int				n_rules;
 	void			(*destroy)(struct s_parser *);

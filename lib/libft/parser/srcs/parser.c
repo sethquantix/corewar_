@@ -90,7 +90,6 @@ void		destroy_engine(t_parser *p)
 		ft_memdel((void **)&p->rules[i]);
 		i++;
 	}
-	ft_lstdel(&p->err, ft_del);
 	ft_lstdel(&p->stack, ft_del);
 	ft_memdel((void **)&p->rules);
 	ft_memdel((void **)&p);

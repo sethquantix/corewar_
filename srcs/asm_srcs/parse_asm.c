@@ -6,39 +6,22 @@
 /*   By: lnagy <lnagy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/10 16:51:13 by lnagy             #+#    #+#             */
-/*   Updated: 2017/08/07 12:38:26 by cchaumar         ###   ########.fr       */
+/*   Updated: 2017/08/08 04:54:28 by cchaumar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-static char	*getfile(char *file)
+void	print_stack(t_list *stack)
 {
-	int			fd;
-	int			len;
-	char		*line;
-	struct stat	stat_;
+	t_tok	*tok;
 
-	len = 0;
-	if ((fd = open(file, O_RDONLY)) == -1)
-		return (NULL);
-	fstat(fd, &stat_);
-	if (stat_.st_size < 4 || stat_.st_size > MAX_SIZE)
-		return ((void *)-1);
-	line = NULL;
-	while (get_next_line(fd, &line) > 0)
+	while (stack)
 	{
-		len += ft_strlen(line) + 1;
-		free(line);
+		tok = stack->content;
+		ft_dprintf(2, "%s [%s]\n", tok->rule->name, parser_getl(tok->pos));
+		stack = stack->next;
 	}
-	free(line);
-	close(fd);
-	if (len < 4 || (fd = open(file, O_RDONLY)) == -1)
-		return (NULL);
-	line = try(len + 1);
-	read(fd, line, len);
-	close(fd);
-	return (line);
 }
 
 static char	*get_err(t_parser *p, char *ret, int *c)
@@ -48,8 +31,9 @@ static char	*get_err(t_parser *p, char *ret, int *c)
 	char	*t;
 	char	*e;
 
-	stack = p->err;
-	p->err = NULL;
+	stack = p->stack;
+	print_stack(stack);
+	p->stack = NULL;
 	if (((t_tok *)stack->content)->pos == ret)
 	{
 		*c += ((t_tok *)ft_lstend(stack)->content)->pos - ret;

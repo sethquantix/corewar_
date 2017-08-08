@@ -32,9 +32,7 @@ char			*run_parser(t_parser *parser, char *file, char *rule,
 	t_path	*path;
 
 	*start = NULL;
-	ft_lstdel(&parser->err, ft_del);
 	ft_lstdel(&parser->stack, ft_del);
-	parser->err = NULL;
 	parser->stack = NULL;
 	path = rule_path(parser->rules, rule);
 	path = path ? path : parser->path;
@@ -46,10 +44,8 @@ char			*run_parser(t_parser *parser, char *file, char *rule,
 		if (march_path(path, &s, start, parser) || (s == p))
 			break ;
 		ft_lstdel(&parser->stack, ft_del);
-		ft_lstdel(&parser->err, ft_del);
 	}
-	ft_lstdel(&parser->stack, ft_del);
 	if (!*s)
-		ft_lstdel(&parser->err, ft_del);
+		ft_lstdel(&parser->stack, ft_del);
 	return (*s ? s : 0);
 }
