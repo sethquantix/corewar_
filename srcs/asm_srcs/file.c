@@ -51,5 +51,3 @@ char			*getfile(char *file)
 	close(fd);
 	return (source);
 }
-
-

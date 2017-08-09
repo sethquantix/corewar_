@@ -67,7 +67,7 @@ static t_champ	new_champion(char *name, char *number, t_arena *a)
 
 void			player(t_expr **e, t_arena *a)
 {
-	const char	*warn[] = {"Warning : Didn't load champion %s%s",
+	const char	*warn[] = {"Warning : Didn't load champion \"%s\"%s",
 		" because there is already 4 champions loaded.\n"};
 	t_champ		c;
 	char		*file;

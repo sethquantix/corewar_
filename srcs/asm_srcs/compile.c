@@ -6,7 +6,7 @@
 /*   By: lnagy <lnagy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/11 17:07:48 by lnagy             #+#    #+#             */
-/*   Updated: 2017/08/01 08:22:11 by cchaumar         ###   ########.fr       */
+/*   Updated: 2017/08/09 08:35:03 by cchaumar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 const char		*g_list[] = {"LIVE_NAME", "LD_NAME", "ST_NAME", "ADD_NAME",
 	"SUB_NAME", "AND_NAME", "OR_NAME", "XOR_NAME", "ZJMP_NAME", "FORK_NAME",
 	"LDI_NAME", "STI_NAME", "LLD_NAME", "LLDI_NAME", "LFORK_NAME",
-	"AFF_NAME", "INSTRUCTION", "LABEL", "NAME_CMD_STRING",
+	"AFF_NAME", "INSTRUCTION", "LABEL", "NAME_CMD_STRING", "NAME",
 	"COMMENT_CMD_STRING", "DIRECT", "DIRECT_LABEL", "INDIRECT",
 	"INDIRECT_LABEL", "REG", "STRING", 0
 };
@@ -32,7 +32,7 @@ static void		get_error(int error)
 
 static int		get_cmd(t_expr **expr, int max_size, char *dest, char *cmd)
 {
-	if (ft_strcmp((*expr)->rule, cmd))
+	if (!(*expr) || ft_strcmp((*expr)->rule, cmd))
 		return (-1);
 	*expr = (*expr)->next;
 	if (ft_strlen((*expr)->expr) - 2 > (size_t)max_size)
@@ -80,17 +80,18 @@ void			compile(t_env *e)
 	i = 0;
 	while (i < e->n_file)
 	{
-		if ((expr = parse_asm(e->asm_parser, e->files[i], &source)))
+		expr = parse_asm(e->asm_parser, e->files[i], &source, NULL);
+		if (expr != (void *)-1)
 		{
 			file = read_asm(e, expr, source, e->files[i]);
 			if ((e->opts & OPT_A) == 0)
 				ft_printf("Compiling %s : %sSuccess%s\n", file->name,
-					acol(0, 5, 0), COLOR_END);
+				acol(0, 5, 0), COLOR_END);
 			print_instructions(file);
 			parser_clear_expr(&expr);
 			free(file);
+			free(source);
 		}
-		free(source);
 		i++;
 	}
 	destroy_engine(e->asm_parser);

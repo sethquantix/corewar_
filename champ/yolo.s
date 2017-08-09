@@ -1,5 +1,5 @@
-.name "¯\_(ツ)_/¯"
-.comment "stuff"
+.name "Like I give a fuck"
+.comment "¯\_(ツ)_/¯"
 
 shrug:
 sti		r1, %:live, %1

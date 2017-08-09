@@ -156,3 +156,6 @@ write:
 	st      r2, 256
 ll:
 	live	%12345
+to:
+	st      r4, 256
+	st      r5, 256

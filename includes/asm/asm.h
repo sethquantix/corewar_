@@ -26,6 +26,7 @@
 # define ERR_INV_ARG 0
 # define ERR_BAD_TOK 1
 # define ERR_BAD_SYM 2
+# define ERR_BAD_INS 3
 # define EXA_CHAR	"0123456789abcdef"
 
 # define INST(x)	((t_inst *)(x->content))
@@ -47,6 +48,7 @@
 
 extern t_token		g_asm_opts[];
 extern t_token		g_asm_tokens[];
+extern const char	*g_list[];
 extern t_op			g_op_tab[17];
 
 typedef struct		s_env
@@ -92,7 +94,8 @@ typedef void		(*t_f_rule)(void *, t_expr **);
 
 t_env				*env(void);
 t_expr				*parse_opts(char **av);
-t_expr				*parse_asm(t_parser *p, char *file, char **source);
+t_expr				*parse_asm(t_parser *p, char *file, char **source,
+	t_expr *e);
 char				*getfile(char *file);
 void				die(int exit_code, char *s, ...);
 int					usage(char *path);
@@ -128,6 +131,9 @@ int					tok_func_number(char **s);
 int					tok_func_reg_nbr(char **s);
 
 char				*err(int err_code, ...);
+t_tok				*tok(t_list *t);
+char				*getword(char *s);
+t_list				*get_rule(t_list *stack);
 
 char				*get_color_(int nb, char type);
 

@@ -75,8 +75,10 @@ static void	init_champ(t_arena *a, t_champ *c)
 		c->num = num++;
 	}
 	load_code(a, c);
-	ft_printf("%sPlayer %d : %s, packing %d bytes%s\n", acol(1, 5, 1),
-		c->num, c->head.prog_name, c->head.prog_size, COLOR_END);
+	ft_printf("%s", acol(1, 5, 1));
+	ft_printf("Player %d : %s, packing %d bytes %s(%s)%s\n", c->num,
+		c->head.prog_name, c->head.prog_size, acol(1, 2, 5), c->head.prog_desc,
+		COLOR_END);
 }
 
 void		init(t_arena *arena)

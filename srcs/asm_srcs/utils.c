@@ -31,6 +31,13 @@ void	die(int exit_code, char *s, ...)
 	exit(exit_code);
 }
 
+t_tok	*tok(t_list *t)
+{
+	if (t && t->content)
+		return (t->content);
+	return (NULL);
+}
+
 int		usage(char *path)
 {
 	ft_printf("Usage: %s [-axc] <source.s> ...\n", path);
