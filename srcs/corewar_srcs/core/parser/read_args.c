@@ -6,7 +6,7 @@
 /*   By: cchaumar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/08 17:48:43 by cchaumar          #+#    #+#             */
-/*   Updated: 2017/08/01 08:37:24 by cchaumar         ###   ########.fr       */
+/*   Updated: 2017/08/09 08:53:56 by cchaumar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ int				load_source(t_champ *c)
 	if (file.st_size == 0)
 		return (err(ERR, "[%s] : Error (ERR_BAD_FILE)\n", c->file_name));
 	if (read(fd, &c->head, sizeof(t_header)) != sizeof(t_header))
-		return (err(ERR, "[%s] : Error (ERR_TOO_SMALL)\n", c->file_name));
+		return (err(ERR, "[%s] : Error (ERR_BAD_HEADER)\n", c->file_name));
 	ft_endian(&c->head.prog_size, 4);
 	ft_endian(&c->head.magic, 4);
 	if (c->head.magic != COREWAR_EXEC_MAGIC)
 		return (err(ERR, "[%s] : Error (ERR_BAD_MAGIC)\n", c->file_name));
 	c->source = try(c->head.prog_size);
 	if (read(fd, c->source, c->head.prog_size) != c->head.prog_size)
-		return (err(ERR, "[%s] : Error (ERR_CORRUPT_SIZE)\n", c->file_name));
+		return (err(ERR, "[%s] : Error (ERR_CORRUPT)\n", c->file_name));
 	close(fd);
 	return (0);
 }

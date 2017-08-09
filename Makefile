@@ -87,11 +87,11 @@ CRWRSD = $(SRCD)/corewar_srcs/
 ASMSD  = $(SRCD)/asm_srcs/
 CRWROD = $(OBJD)/corewar_objs/
 ASMOD  = $(OBJD)/asm_objs/
-LIBFT  = lib/libft/libft.a
-LIBGL  = lib/glhandler/libglhandler.a
-SOIL2  = lib/soil2/libSOIL2.a
-ALIBS  = -Llib/libft -lft
-CLIBS  = -Llib/libft -lft -Llib/glhandler -lglhandler -Llib/soil2 \
+LIBFT  = libft/libft.a
+LIBGL  = glhandler/libglhandler.a
+SOIL2  = soil2/libSOIL2.a
+ALIBS  = -Llibft -lft
+CLIBS  = -Llibft -lft -Lglhandler -lglhandler -Lsoil2 \
 		 -L$(BLIB) -lglew -lSDL2 -lSOIL2 -lSDL2_ttf -framework OpenGL
 CRWRS  = $(addprefix $(CRWRSD), $(CRWRF))
 CRWRO  = $(addprefix $(CRWROD), $(CRWRF:.c=.o))
@@ -124,25 +124,25 @@ CRWRH  =    includes/corewar/corewar.h \
             includes/op.h
 CRINC   = -Iincludes -Iincludes/corewar -Iincludes/corewar/graphics \
 		  -Iincludes/internals \
-		  -Ilib/libft -Ilib/glhandler/includes -Ilib/soil2/incs -I$(BINC)
-ASMINC  = -Iincludes -Iincludes/asm -Ilib/libft
+		  -Ilibft -Iglhandler/includes -Isoil2/incs -I$(BINC)
+ASMINC  = -Iincludes -Iincludes/asm -Ilibft
 OBJS   = $(CRWRO) $(ASMO)
 
-.PHONY: lib all clean re fclean libft glhandler update
+.PHONY: all clean re fclean
 
 all : $(CRWR) $(ASM)
 
 $(OBJDIR):
 	@mkdir -p $(OBJDIR)
 
-lib/soil2/libSOIL2.a:
-	@make -C lib/soil2/
+$(SOIL2):
+	@make -C soil2/ re
 
-lib/libft/libft.a:
-	@make -C lib/libft
+$(LIBFT):
+	@make -C libft
 
-lib/glhandler/libglhandler.a:
-	@make -C lib/glhandler
+$(LIBGL):
+	@make -C glhandler
 
 $(CRWROD)%.o: $(CRWRSD)%.c ${CRWRH} ${THIS}
 	gcc $(CFLG) $(CRINC) -c -o $@ $<
