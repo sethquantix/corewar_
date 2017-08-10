@@ -6,7 +6,7 @@
 #    By: cchaumar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/01 03:54:10 by cchaumar          #+#    #+#              #
-#    Updated: 2017/07/20 01:05:46 by cchaumar         ###   ########.fr        #
+#    Updated: 2017/08/10 04:22:32 by cchaumar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -126,10 +126,14 @@ OCL_S     = $(addprefix $(OCL_SD), $(OCL_F))
 OCL_O     = $(addprefix $(OCL_OD), $(OCL_F:.c=.o))
 SRCS     = $(GEN_S) $(PRF_S) $(BMP_S) $(PRSR_S) $(MATH_S) $(OCL_S)
 OBJS     = $(GEN_O) $(PRF_O) $(BMP_O) $(PRSR_O) $(MATH_O) $(OCL_O)
+OBJD     = $(GEN_OD) $(PRF_OD) $(PRSR_OD) $(BMP_OD) $(MATH_OD) $(OCL_OD)
 
 .PHONY: printf generic ocl bmp parser math all
 
 all : $(NAME)
+
+$(OBJD):
+	@mkdir -p $@
 
 $(GEN_OD)%.o: $(GEN_SD)%.c ${GEN_H} ${THIS}
 	$(CC) $(FLAGS) $(GEN_INC) -c -o $@ $<
@@ -149,7 +153,7 @@ $(MATH_OD)%.o: $(MATH_SD)%.c ${MATH_H} ${THIS}
 $(OCL_OD)%.o: $(OCL_SD)%.c ${OCL_H} ${THIS}
 	$(CC) $(FLAGS) $(OCL_INC) -c -o $@ $<
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(OBJD)
 		@printf "Linking : "
 		@ar rc $@ $(OBJS)
 		@printf "Linked.\nOrdering : "
