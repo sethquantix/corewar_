@@ -6,7 +6,7 @@
 /*   By: lnagy <lnagy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/10 16:51:13 by lnagy             #+#    #+#             */
-/*   Updated: 2017/08/08 04:54:28 by cchaumar         ###   ########.fr       */
+/*   Updated: 2017/08/10 05:40:15 by cchaumar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ static void	*compile_error(t_parser *p, char *file, char *source, char *ret)
 
 static void	*print_err(t_expr **expr, char *file, int err)
 {
-	ft_printf("%016p\n%016p\n%016p\n", expr, file, *expr);
 	if (err)
 	{
 		parser_clear_expr(expr);
