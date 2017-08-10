@@ -6,7 +6,7 @@
 #    By: cchaumar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/23 12:31:27 by cchaumar          #+#    #+#              #
-#    Updated: 2017/08/10 04:26:41 by tsedigi          ###   ########.fr        #
+#    Updated: 2017/08/10 05:36:19 by cchaumar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,10 +36,10 @@ $(OBJD)%.o: $(SRCD)%.c
 	@mkdir -p objs
 	gcc $(CFLG) $(INCD) -c -o $@ $<
 
-build:
-		make -C $(LIBFT)
+$(LIBFT)/libft.a:
+	make -C $(LIBFT)
 
-$(NAME): $(OBJS) build
+$(NAME): $(LIBFT)/libft.a $(OBJS)
 		ar rc $@ $(OBJS)
 		ranlib $(NAME)
 
