@@ -6,7 +6,7 @@
 #    By: cchaumar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/01 03:54:10 by cchaumar          #+#    #+#              #
-#    Updated: 2017/08/10 04:22:32 by cchaumar         ###   ########.fr        #
+#    Updated: 2017/08/10 04:24:23 by cchaumar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -153,7 +153,7 @@ $(MATH_OD)%.o: $(MATH_SD)%.c ${MATH_H} ${THIS}
 $(OCL_OD)%.o: $(OCL_SD)%.c ${OCL_H} ${THIS}
 	$(CC) $(FLAGS) $(OCL_INC) -c -o $@ $<
 
-$(NAME): $(OBJS) $(OBJD)
+$(NAME): $(OBJD) $(OBJS)
 		@printf "Linking : "
 		@ar rc $@ $(OBJS)
 		@printf "Linked.\nOrdering : "
