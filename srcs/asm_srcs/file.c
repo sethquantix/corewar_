@@ -6,7 +6,7 @@
 /*   By: cchaumar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/08 03:37:01 by cchaumar          #+#    #+#             */
-/*   Updated: 2017/08/08 03:52:03 by cchaumar         ###   ########.fr       */
+/*   Updated: 2017/08/10 05:30:52 by cchaumar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,11 @@ char			*getfile(char *file)
 	if ((fd = open(file, O_RDONLY)) == -1)
 		return (NULL);
 	source = try(len + 1);
-	if (read(fd, source, len) != len)
+	if (read(fd, source, len) != len || (int)ft_strlen(source) != len)
+	{
+		free(source);
 		return (NULL);
+	}
 	close(fd);
 	return (source);
 }

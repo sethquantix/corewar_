@@ -101,7 +101,7 @@ prep:
 	st 		r5, 500
 	zjmp	%450
 
-to:
+to2:
 	st      r4, 256
 
 write:
